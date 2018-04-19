@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *= require normalize-rails
+
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation_and_overrides
+
+ */
+
+h1 img {
+  max-height: 50px;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+@media (min-width: 800px) {
+    .menu{
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-right: 2em;
+    }
+
+    .menu li:first-of-type {
+      align-self: flex-start;
+    }
+
+  .menu-item-has-children > a:after{
+  font-size: .75em;
+  content: '▼';
+  padding: .5em;
+  }
+
+  nav ul ul {
+    display: none;
+  }
+}
+
+  @media (min-width: 800px) {
+    nav ul ul {
+      display: none;
+      position:absolute;
+    }
+  }
+
+  nav ul li:hover > ul {
+    display:block;
+    padding-left: 0;
+  }
+
+  @media (min-width: 800px) {
+    nav ul li:hover > ul {
+      padding-left:0;
+      background:hsl(0, 0%, 46%);
+
+    }
+
+    nav ul li:hover > ul a{
+      color:hsl(0, 0%, 0%);
+    }
+
+    .sub-menu li {
+      display:flex;
+      padding-right:2em;
+    }
+
+    .sub-menu  li:hover, li a:hover{
+      background:hsl(0, 0%, 86%);
+      color:hsl(0, 0%, 46%);
+    }
+
+    nav ul ul ul{
+      margin:0 0 0 100%;
+      box-shadow: 0 0 2px hsla(0, 0%, 0%, 0.6);
+    }
+
+    /* .menu-item-has-children .menu-item-has-children > a:after{
+    font-family:'Genericons';
+    content: '\f431';
+    padding:1px;
+    transform: rotate(-90deg);
+    } */
+
+  }
