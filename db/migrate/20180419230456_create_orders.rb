@@ -10,7 +10,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :zip
       t.string :name_cc
       t.string :credit_card
-      t.Date :expiry
+      t.date :expiry
       t.string :ccv
       t.string :billing_zip
 
