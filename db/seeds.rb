@@ -150,32 +150,32 @@ CSV.foreach(OP_FILE, :headers => true) do |row|
   end
 end
 
-puts "Added #{ProductCategory.count} product_category records"
-puts "#{product_category_failures.length} product_category failed to save"
-p product_category_failures
+puts "Added #{OrderItem.count} order-item records"
+puts "#{order_item_failures.length} order_item failed to save"
+p order_item_failures
 puts
 
-OP_FILE = Rails.root.join('db','seed-data', 'product_category_joins.csv')
-puts "Loading raw order_item data from #{OP_FILE}"
-
-product_category_failures = []
-CSV.foreach(OP_FILE, :headers => true) do |row|
-  product_category = ProductCategory.new
-  product_category.product_id = row['product_id']
-  product_category.category_id = row['category_id']
-  puts "Created product_category: #{product_category.inspect}"
-  successful = product_category.save
-  if !successful
-    product_category_failures << product_category
-  end
-end
-
-puts "Added #{ProductCategory.count} product_category records"
-puts "#{product_category_failures.length} product_category failed to save"
-p product_category_failures
-puts
-
-puts "Manually resetting PK sequence on each table"
-ActiveRecord::Base.connection.tables.each do |t|
-  ActiveRecord::Base.connection.reset_pk_sequence!(t)
-end
+# OP_FILE = Rails.root.join('db','seed-data', 'products_categories_joins.csv')
+# puts "Loading raw order_item data from #{OP_FILE}"
+#
+# product_category_failures = []
+# CSV.foreach(OP_FILE, :headers => true) do |row|
+#   product_category = ProductCategory.new
+#   product_category.product_id = row['product_id']
+#   product_category.category_id = row['category_id']
+#   puts "Created product_category: #{product_category.inspect}"
+#   successful = product_category.save
+#   if !successful
+#     product_category_failures << product_category
+#   end
+# end
+#
+# puts "Added #{ProductCategory.count} product_category records"
+# puts "#{product_category_failures.length} product_category failed to save"
+# p product_category_failures
+# puts
+#
+# puts "Manually resetting PK sequence on each table"
+# ActiveRecord::Base.connection.tables.each do |t|
+#   ActiveRecord::Base.connection.reset_pk_sequence!(t)
+# end
