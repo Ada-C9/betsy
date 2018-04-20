@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
     if @category.save
       flash[:status] = :success
       flash[:result_text] = "Successfully created a category for #{@category.name}!"
-      redirect_to: user_path(@user)
+      # redirect_to user_path(@user)
     else
       flash[:status] = :failure
       flash[:result_text] = "Could not create this category."
@@ -26,6 +26,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-  params.require(:category).permit(:name)
-end
+    params.require(:category).permit(:name)
+  end
 end

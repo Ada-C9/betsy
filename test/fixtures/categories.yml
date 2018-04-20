@@ -1,7 +1,20 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
-
-two:
-  name: MyString
+category_1:
+  name: category_1
+category_2:
+  name: category_2
+category_3:
+  name: category_3
+category_4:
+  name: category_4
+category_5:
+  name: category_5
+category_6:
+  name: category_6
+category_7:
+  name: category_7
+category_8:
+  name: category_8
+category_9:
+  name: category_9
+category_10:
+  name: category_10

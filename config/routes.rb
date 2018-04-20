@@ -1,65 +1,52 @@
 Rails.application.routes.draw do
-  get 'products/index'
 
-  get 'products/new'
 
-  get 'products/create'
 
-  get 'products/show'
+get '/auth/:provider/callback', as: 'auth_callback', to: 'sessions#create'
+get '/auth/github', as: 'github_login'
 
-  get 'products/edit'
 
-  get 'products/update'
+  resources :orders
+  resources :sessions
 
-  get 'order_items/update'
 
-  get 'productes/index'
+  resources :categories, except: [:edit, :update, :show, :destroy] do
+    resources :products, only: [:index]
+  end
 
-  get 'productes/new'
+  resources :users, only: [:index, :show] do
+    resources :products, except: [:destroy]
+  end
 
-  get 'productes/create'
+  resources :products, only: [:index, :show, :update]
 
-  get 'productes/show'
+  resources :products do
+    resources :reviews, only: [:index,:new,:create,:show]
+  end
 
-  get 'productes/edit'
 
-  get 'productes/update'
 
-  get 'orders/index'
 
-  get 'orders/new'
 
-  get 'orders/create'
+  # resources :session, only:[:new,:create,:destroy]
 
-  get 'orders/show'
 
-  get 'orders/edit'
 
-  get 'orders/update'
 
-  get 'orders/destroy'
 
-  get 'reviews/index'
 
-  get 'reviews/new'
 
-  get 'reviews/create'
+  # resources :products, except:[:destroy]
 
-  get 'users/index'
+  # resources :categories do
+  #   resources :products, only: [:index], controller: 'categories/products'
+  # end
+  #
+  # resources :users do
+  #   resources :producs, only: [:index], controller: 'merchants/products'
+  # end
 
-  get 'users/show'
 
-  get 'categories/index'
-
-  get 'categories/new'
-
-  get 'categories/create'
-
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

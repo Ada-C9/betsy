@@ -12,10 +12,13 @@
   </head>
 
   <body>
-
+  <%
+=begin %>
     <header class="page-header row">
-      <h2><%= link_to "Puppsy", root_path %></h2>
+  <%
+=begin %>
 
+  <h2><%= link_to "Puppsy", root_path %></h2>
       <nav>
         <%= link_to "Home", root_path, class: "button" %>
         <%= link_to "Cart", cart_path, class: "button" %>
@@ -26,6 +29,12 @@
         <% end %>
       </nav>
     </header>
+<<<<<<< HEAD
+    <%
+=======
+  <%
+>>>>>>> 72323e816d329b7e739cd00f7802b3cd7878f847
+=end %>
 
     <main class="main-container row">
       <%= yield %>

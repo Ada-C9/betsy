@@ -23,7 +23,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = @product.find_by(product_id: params[:id])
+    @product = Product.find_by(id: params[:id])
+    @review = Review.new
   end
 
   def edit
@@ -46,6 +47,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :is_active, :description, :price, :photo_url, :stock)
+    params.require(:product).permit(:name, :is_active, :description, :price, :photo_url, :stock, :user_id)
   end
 end

@@ -1,3 +1,7 @@
+
+<%
+=begin
+%>
 <section class="product_details">
   <h3><%= @product.name %></h3>
   <%= display_image(@product.photo_url) %>
@@ -11,6 +15,8 @@
   <% end %>
 </section>
 
+<%
+=begin %>
 <section class="new_review">
   <h4>Write a Review</h4>
   <%= form_for @review do |f| %>
@@ -23,6 +29,8 @@
     <%= f.submit "Sumbit", class: "button" %>
   <% end %>
 </section>
+<%
+=end %>
 
 <section class="product_reviews">
   <h4>Reviews</h4>
@@ -31,3 +39,8 @@
     <p><%= review.content %></p>
   <% end %>
 </section>
+
+
+<%
+=end
+%>

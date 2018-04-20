@@ -1,9 +1,50 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+order_item_1:
   quantity: 1
   is_shipped: false
-
-two:
-  quantity: 1
+  product: product_1
+  order: order_1
+order_item_2:
+  quantity: 2
   is_shipped: false
+  product: product_2
+  order: order_2
+order_item_3:
+  quantity: 3
+  is_shipped: false
+  product: product_3
+  order: order_2
+order_item_4:
+  quantity: 4
+  is_shipped: false
+  product: product_4
+  order: order_3
+order_item_5:
+  quantity: 5
+  is_shipped: false
+  product: product_5
+  order: order_3
+order_item_6:
+  quantity: 6
+  is_shipped: false
+  product: product_6
+  order: order_3
+order_item_7:
+  quantity: 7
+  is_shipped: false
+  product: product_7
+  order: order_4
+order_item_8:
+  quantity: 8
+  is_shipped: false
+  product: product_8
+  order: order_4
+order_item_9:
+  quantity: 9
+  is_shipped: false
+  product: product_9
+  order: order_4
+order_item_10:
+  quantity: 10
+  is_shipped: false
+  product: product_10
+  order: order_4

@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
 
+=======
+
   def index
-    @users = @user.all
+  @users = User.all
   end
 
   def show
-    @user = User.find_by(:id params[:id])
+    @user = User.find_by(id: params[:id])
+    render_404 unless @user
   end
+
 end
