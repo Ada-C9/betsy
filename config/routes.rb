@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
 
+
+get '/auth/:provider/callback', as: 'auth_callback', to: 'sessions#create'
+get '/auth/github', as: 'github_login'
+
+
+  resources :orders
+  resources :sessions
+
+
   resources :categories, except: [:edit, :update, :show, :destroy] do
     resources :products, only: [:index]
   end
@@ -11,6 +20,31 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show, :update]
 
+  resources :products do
+    resources :reviews, only: [:index,:new,:create,:show]
+  end
+
+
+
+
+
+  # resources :session, only:[:new,:create,:destroy]
+
+
+
+
+
+
+
+  # resources :products, except:[:destroy]
+
+  # resources :categories do
+  #   resources :products, only: [:index], controller: 'categories/products'
+  # end
+  #
+  # resources :users do
+  #   resources :producs, only: [:index], controller: 'merchants/products'
+  # end
 
 
 
