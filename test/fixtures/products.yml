@@ -4,7 +4,14 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+eclairs: {
+  name: "eclairs",
+  price: 4.50,
+  description: "puff pastry filled with cream",
+  image: "generic pic",
+  stock: 4,
+  visible: true
+  }
 # column: value
 #
 two: {}
