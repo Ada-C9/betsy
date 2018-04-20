@@ -3,10 +3,9 @@ require "test_helper"
 describe SessionsController do
 
   describe "auth_callback" do
-    it "logs in an existing user and redirect to root route" do
+    it "logs in an existing merchant and redirect to root route" do
       merchant = Merchant.first
       old_merchant_count = Merchant.count
-
       login(merchant)
 
       must_redirect_to root_path
@@ -14,40 +13,39 @@ describe SessionsController do
       session[:merchant_id].must_equal merchant.id
     end
 
-    it "creates a DB entry for a new user and redirect to root path" do
-      skip
-      user = User.new(
+    it "creates a DB entry for a new merchant and redirect to root path" do
+      merchant = Merchant.new(
         provider: "github",
         uid: 505,
         email: "dada@test.org",
         username: "dadatest"
       )
 
-      user.must_be :valid?
-      old_user_count = User.count
+      merchant.must_be :valid?
+      old_merchant_count = Merchant.count
 
-      login(user)
+      login(merchant)
 
-      User.count.must_equal old_user_count + 1
+      Merchant.count.must_equal old_merchant_count + 1
       must_redirect_to root_path
-      session[:user_id].must_equal User.last.id
+      session[:merchant_id].must_equal Merchant.last.id
     end
 
     it "does not log in with insufficient data and redirect to root path" do
       skip
-      user = User.new(
+      merchant = Merchant.new(
         provider: "github",
         uid: 505,
         email: "dada@test.org",
         username: ""
       )
 
-      user.wont_be :valid?
-      old_user_count = User.count
+      merchant.wont_be :valid?
+      old_merchant_count = Merchant.count
 
-      login(user)
+      login(merchant)
 
-      User.count.must_equal old_user_count
+      Merchant.count.must_equal old_merchant_count
       must_redirect_to root_path
     end
 
