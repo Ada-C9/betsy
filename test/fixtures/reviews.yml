@@ -1,9 +1,40 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+review_1:
   rating: 1
-  content: MyText
-
-two:
+  content: content_1
+  product: product_1
+review_2:
+  rating: 2
+  content: content_2
+  product: product_2
+review_3:
+  rating: 3
+  content: content_3
+  product: product_3
+review_4:
+  rating: 4
+  content: content_4
+  product: product_4
+review_5:
+  rating: 5
+  content: content_5
+  product: product_5
+review_6:
   rating: 1
-  content: MyText
+  content: content_6
+  product: product_6
+review_7:
+  rating: 2
+  content: content_7
+  product: product_7
+review_8:
+  rating: 3
+  content: content_8
+  product: product_8
+review_9:
+  rating: 4
+  content: content_9
+  product: product_9
+review_10:
+  rating: 5
+  content: content_10
+  product: product_10
