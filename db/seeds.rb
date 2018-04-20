@@ -175,7 +175,30 @@ puts
 # p product_category_failures
 # puts
 #
-# puts "Manually resetting PK sequence on each table"
-# ActiveRecord::Base.connection.tables.each do |t|
-#   ActiveRecord::Base.connection.reset_pk_sequence!(t)
-# end
+c=Category.find(1); p = Product.find(1);  p.categories << c
+c=Category.find(2); p = Product.find(1);  p.categories << c
+c=Category.find(1); p = Product.find(2);  p.categories << c
+c=Category.find(2); p = Product.find(2);  p.categories << c
+c=Category.find(1); p = Product.find(3);  p.categories << c
+c=Category.find(2); p = Product.find(3);  p.categories << c
+c=Category.find(2); p = Product.find(4);  p.categories << c
+c=Category.find(4); p = Product.find(4);  p.categories << c
+c=Category.find(4); p = Product.find(5);  p.categories << c
+c=Category.find(7); p = Product.find(6);  p.categories << c
+c=Category.find(2); p = Product.find(7);  p.categories << c
+c=Category.find(9); p = Product.find(8);  p.categories << c
+c=Category.find(7); p = Product.find(9);  p.categories << c
+c=Category.find(7); p = Product.find(10);  p.categories << c
+c=Category.find(9); p = Product.find(11);  p.categories << c
+c=Category.find(9); p = Product.find(12);  p.categories << c
+c=Category.find(4); p = Product.find(13);  p.categories << c
+c=Category.find(7); p = Product.find(14);  p.categories << c
+c=Category.find(1); p = Product.find(15);  p.categories << c
+c=Category.find(4); p = Product.find(16);  p.categories << c
+c=Category.find(9); p = Product.find(17);  p.categories << c
+
+
+puts "Manually resetting PK sequence on each table"
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
