@@ -1,0 +1,7 @@
+<h2>Index</h2>
+<section class="product-list"
+<% @products.each do |product| %>
+<article class="product-item">
+<img src=<%= product.url %> alt=""
+<%= product.name %>
+<% end %>

@@ -1,0 +1,13 @@
+<h3>Client Summary</h3>
+
+<%= render partial: "layouts/error_messages", locals: { model: @user } %>
+
+<p>Joined site <%= render_date @user.created_at %></p>
+
+<p>Name: <span><%= @user.name %></span></p>
+<p>Username: <span><%= @user.username %></span></p>
+<p>Email: <span><%= @user.email %></span></p>
+
+<%= link_to "Back to Product List", root_path, class: "button" %>
+
+<%= link_to "Edit", edit_user_path(@user), class: 'button' %>

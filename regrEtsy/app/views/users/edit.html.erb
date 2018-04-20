@@ -1,0 +1,12 @@
+<h3>Edit Client</h3>
+<%= form_for @user do |u| %>
+<%= u.label :name %>
+<%= u.text_field :name %>
+<%= u.label :username %>
+<%= u.text_field :username %>
+<%= u.label :email  %>
+<%= u.text_field :email %>
+<%= u.label :password %>
+<%= u.password_field :password_confirmation %>
+<%= u.submit "Update", class: "button" %>
+<% end %>

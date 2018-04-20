@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <header>
+    <h1>
+      <%= image_tag "site-icon.png", alt: "Site logo", class: "logo" %>
+      regrEtsy
+    </h1>
+    <nav>
+      <ul class="menu">
+        <li class="menu-item-has-children"><%= link_to "Browse", root_path%>
+          <ul>
+            <li class="sub-menu"><%= link_to "Browse all products", products_path%></li>
+            <li class="sub-menu"><%= link_to "Browse all categories", categories_path%></li>
+            <!-- change to live link -->
+            <li class="sub-menu"><%= link_to "Browse all merchants", root_path%></li>
+          </ul>
+        </li>
+        <li><%= link_to "Register", new_user_path %></li>
+        <% if session[:user_id] %>
+        <%= link_to "Logout", logout_path, method: :delete%>
+        <% else %>
+        <%= link_to "Login", login_path %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<section class="flash">
+  <% flash.each do |name, message| %>
+  <div class="callout <%= name %>"><%= message %></div>
+  <% end %>
+</section>
+
+<%= yield %>
+
+</body>
+</html>

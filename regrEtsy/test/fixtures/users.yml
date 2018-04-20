@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+anne:
+  name: "Anne"
+  username: "annehwatson"
+  email: "anne@email.com"
+  password: "helloworld"
+  uid: nil
+  provider: nil
