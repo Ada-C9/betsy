@@ -4,6 +4,7 @@ describe CartsController do
 
   describe "show" do
     it "succeeds for an extant cart ID" do
+      skip
       cart1 = Cart.first
       get cart_path(cart1)
       must_respond_with :success
