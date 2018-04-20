@@ -1,0 +1,10 @@
+<h1>Categories</h1>
+<h3 id="green-head">Add a new category</h3>
+<section>
+  <%= form_for @category do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit class: "button"%>
+  <% end %>
+</section>
