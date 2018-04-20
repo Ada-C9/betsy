@@ -8,7 +8,11 @@ class OrdersController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
     @order = Order.new(order_params)
+=======
+    @order = Order.create(order_params)
+>>>>>>> 1504eecfa8b01e4394aedad9d216da1a0cb29ddb
   end
 
   def show
