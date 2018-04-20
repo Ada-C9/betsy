@@ -1,0 +1,20 @@
+id,name,price,stock,description,photo_url,is_active,user_id
+1,canned food,200,10,BLUE Homestyle Recipe® Adult Dog Food,https://images.petsmartassets.com/is/image/PetSmart/5127109?$sclp-prd-main_small$,true,1
+2,dog food,70,5,Cesar Sunrise® Canine Cuisine Adult Dog Food
+,https://images.petsmartassets.com/is/image/PetSmart/5138744?$sclp-prd-main_large$,true,2
+3,chewy treat,1299,5,Authority® Chewy Wrap Dog Treat,https://images.petsmartassets.com/is/image/PetSmart/5211193?$sclp-prd-main_small$,true,3
+4,dental treat,2799,6,GREENIES® Teenie Dental Dog Treat,https://images.petsmartassets.com/is/image/PetSmart/PB1801_PROD_GROUP-Greenies_Dog_Treats?$CL0404$,true,4
+5,Teether Puppy,499,3,Puppies"R"Us™ Teether Puppy Flattie Dog Toy - Crinkle (CHARACTER VARIES),https://images.petsmartassets.com/is/image/PetSmart/5214195?$sclp-prd-main_small$,true,1
+6,Dog Bed,2299,9,Canine Cushion Orthopedic Fleece Dog Bed,https://images.petsmartassets.com/is/image/PetSmart/5037565?$sclp-prd-main_small$,true,2
+7,Dog chewables,2999,1,21st Century™ Essential Pet™ Adult Hip & Joint Ages 5+ Dog Chewables,https://images.petsmartassets.com/is/image/PetSmart/5146561?$sclp-prd-main_small$,true,3
+8,Dog collar,5499,5,Seresto® Flea & Tick Dog Collar,https://images.petsmartassets.com/is/image/PetSmart/5192438?$sclp-prd-main_small$,true,4
+9,Dog Crate,11499,3,Grreat Choice® Dog Crate,https://images.petsmartassets.com/is/image/PetSmart/5194189?$sclp-prd-main_small$,true,1
+10,Dog pads,617,1,Top Paw® X-Large Dog Pads,https://images.petsmartassets.com/is/image/PetSmart/5277157,true,2
+11,Jersey,1287,3,Chicago Cubs MLB Jersey,https://images.petsmartassets.com/is/image/PetSmart/5251938?$sclp-prd-main_small$,true,3
+12,Bandana,1,Top Paw® Americana Pet Bandana,https://images.petsmartassets.com/is/image/PetSmart/5277726?$sclp-prd-main_small$,true,4
+13,Carpet shampoo,1127,5,Nature's Miracle® Pet Carpet Shampoo
+https://images.petsmartassets.com/is/image/PetSmart/5174422?$sclp-prd-main_small$,true,1
+14,DogBed,5249,4,KONG® Lounger Dog Bed,https://images.petsmartassets.com/is/image/PetSmart/5268449?$sclp-prd-main_small$,true,2
+15,Dog Bowl,1500,2,Top Paw® Bone Dog Bowl,https://images.petsmartassets.com/is/image/PetSmart/5176778?$sclp-prd-main_small$,true,3
+16,Shampoo,621,3,FURminator® deShedding Ultra Premium Dog Shampoo,https://images.petsmartassets.com/is/image/PetSmart/5210830?$sclp-prd-main_small$,true,4
+17,vest,2500,2,Hip Doggie Swiss Alpine Ski Vest,https://images.petsmartassets.com/is/image/PetSmart/5196147?$sclp-prd-main_small$,true,4
