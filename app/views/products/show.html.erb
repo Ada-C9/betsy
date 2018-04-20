@@ -1,2 +1,33 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<section class="product_details">
+  <h3><%= @product.name %></h3>
+  <%= display_image(@product.photo_url) %>
+  <p>Price: <%= @product.price %></p>
+  <p>Description: <%= @product.description %></p>
+  <p>Stock: <%= @product.stock %></p>
+  <% if @product.stock > 0 %>
+    <%= link_to "Add to Cart", products_path, method: :post, class: "button" %>
+  <% else %>
+    <p class="button">Out of Stock</p>
+  <% end %>
+</section>
+
+<section class="new_review">
+  <h4>Write a Review</h4>
+  <%= form_for @review do |f| %>
+    <%= f.label :rating %>
+    <%= f.select :rating, (1..5).to_a %>
+
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+
+    <%= f.submit "Sumbit", class: "button" %>
+  <% end %>
+</section>
+
+<section class="product_reviews">
+  <h4>Reviews</h4>
+  <% @product.reviews.each do |review| %>
+    <p>Rating: <%= review.rating %></p>
+    <p><%= review.content %></p>
+  <% end %>
+</section>
