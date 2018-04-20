@@ -8,8 +8,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-
+    @order = Order.create(order_params)
+    raise
+    kitten = "kitten"
   end
 
   def show
