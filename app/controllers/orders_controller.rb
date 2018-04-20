@@ -35,6 +35,13 @@ class OrdersController < ApplicationController
        @order.expiry = params[:expiry]
        @order.ccv= params[:ccv]
        @order.billing_zip = params[:billing_zip]
+       if @order.save
+         redirect_to order_path(@order.id)
+         flash[:success] = "#{@order.name} has been updated"
+       else
+         render :new
+         flash[:error] = "#{@order.name} update has failed"
+       end
      end
   end
 
