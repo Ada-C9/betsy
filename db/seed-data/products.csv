@@ -11,8 +11,8 @@ id,name,price,stock,description,photo_url,is_active,user_id
 9,Dog Crate,11499,3,Grreat Choice® Dog Crate,https://images.petsmartassets.com/is/image/PetSmart/5194189?$sclp-prd-main_small$,true,1
 10,Dog pads,617,1,Top Paw® X-Large Dog Pads,https://images.petsmartassets.com/is/image/PetSmart/5277157,true,2
 11,Jersey,1287,3,Chicago Cubs MLB Jersey,https://images.petsmartassets.com/is/image/PetSmart/5251938?$sclp-prd-main_small$,true,3
-12,Bandana,1,Top Paw® Americana Pet Bandana,https://images.petsmartassets.com/is/image/PetSmart/5277726?$sclp-prd-main_small$,true,4
-13,Carpet shampoo,1127,5,Nature's Miracle® Pet Carpet Shampoo
+12,Bandana,399,1,Top Paw® Americana Pet Bandana,https://images.petsmartassets.com/is/image/PetSmart/5277726?$sclp-prd-main_small$,true,4
+13,Carpet shampoo,1127,5,Nature's Miracle® Pet Carpet Shampoo,
 https://images.petsmartassets.com/is/image/PetSmart/5174422?$sclp-prd-main_small$,true,1
 14,DogBed,5249,4,KONG® Lounger Dog Bed,https://images.petsmartassets.com/is/image/PetSmart/5268449?$sclp-prd-main_small$,true,2
 15,Dog Bowl,1500,2,Top Paw® Bone Dog Bowl,https://images.petsmartassets.com/is/image/PetSmart/5176778?$sclp-prd-main_small$,true,3
