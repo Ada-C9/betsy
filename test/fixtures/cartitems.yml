@@ -5,7 +5,6 @@
 # below each fixture, per the syntax in the comments below
 #
 
-
 item_one:
   product: bonbon
   quantity: 4
