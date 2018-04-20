@@ -142,7 +142,7 @@ CSV.foreach(OP_FILE, :headers => true) do |row|
   order_item.order_id = row['order_id']
   order_item.product_id = row['product_id']
   order_item.quantity= row['quantity']
-  order_item.shipped = row['is_shipped']
+  order_item.is_shipped = row['is_shipped']
   puts "Created order_item: #{order_item.inspect}"
   successful = order_item.save
   if !successful
