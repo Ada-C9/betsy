@@ -3,7 +3,7 @@
 # This model initially had no columns defined. If you add columns to the
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
-#
+
 ada:
   provider: github
   uid: 12345
@@ -27,3 +27,11 @@ jenny:
   uid: 447345
   email: jenny@adadevelopersacademy.org
   username: great_jenny
+
+analisa:
+  username: analisa
+  email: analist@alibonbon.com
+
+wini:
+  username: wini
+  email: wini@alibonbon.com

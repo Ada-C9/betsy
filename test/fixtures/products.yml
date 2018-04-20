@@ -4,6 +4,7 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+<<<<<<< HEAD
 one:
   name: "tiramisu"
   price: 12.99
@@ -30,3 +31,16 @@ three:
   image: "www.mangopudding.jpg"
   visible: true
   merchant: coco
+=======
+cheesecake:
+  name: cheesecake
+  price: 4.99
+
+bonbon:
+  name: bonbon
+  price: 3.29
+
+macaron:
+  name: macaron
+  price: 4.00
+>>>>>>> cn_model_testing
