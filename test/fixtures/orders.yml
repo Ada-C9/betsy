@@ -6,7 +6,7 @@
 #
 
 order_one:
-  cart: cart_one
+  cart_id: cart_one.id
   name: 'Grace Hopper'
   email: 'grace@somethingcool.com'
   creditcard: '1234123412341234'
@@ -19,7 +19,7 @@ order_one:
   status: 'completed'
 
 order_two:
-  cart: cart_two
+  cart_id: cart_two.id
   name: 'Ada Lovelace'
   email: 'ada@somethingcool.com'
   creditcard: '1234123412341234'
