@@ -9,8 +9,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.create(order_params)
-    raise
-    kitten = "kitten"
   end
 
   def show
