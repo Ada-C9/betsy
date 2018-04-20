@@ -13,7 +13,27 @@
 
   <body>
 
-    <%= yield %>
+    <header class="page-header row">
+      <h2><%= link_to "Puppsy", root_path %></h2>
+
+      <nav>
+        <%= link_to "Home", root_path, class: "button" %>
+        <%= link_to "Cart", cart_path, class: "button" %>
+        <% if @find_user.nil? %>
+          <%= link_to "Log In", login_form_path, class: "button" %>
+        <% else %>
+          <%= link_to "Log Out", logout_path, method: :delete, class: "button" %>
+        <% end %>
+      </nav>
+    </header>
+
+    <main class="main-container row">
+      <%= yield %>
+    </main>
+
+    <footer>
+      <h5>©2018 Fur-eign Keys</h5>
+    </footer>
 
   </body>
 </html>
