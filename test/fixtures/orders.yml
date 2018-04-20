@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: pending
+  user_id: ada
+  name_on_card: Ada Lovelace
+  cc_num: 1234123412341234
+  cvv: 123
+  email: ada@adadevelopersacademy.org
+  street_address: 123 Pine Street
+  apt: Apt 123
+  state: WA
+  city: Seattle
+  zip: 98104
+
+two:
+  status: paid
+  user_id: gretchen
+  name_on_card: Gretchen Greps
+  cc_num: 4321432143214321
+  cvv: 321
+  email: gretchen@adadevelopersacademy.org
+  street_address: 321 Pike street
+  apt: Apt 321
+  state: WA
+  city: Seattle
+  zip: 98122
