@@ -29,9 +29,13 @@ jenny:
   username: great_jenny
 
 analisa:
+  provider: github
+  uid: 639135
   username: analisa
   email: analist@alibonbon.com
 
 wini:
+  provider: github
+  uid: 96527
   username: wini
   email: wini@alibonbon.com
