@@ -12,7 +12,8 @@
   </head>
 
   <body>
-
+  <%
+=begin %>
     <header class="page-header row">
       <h2><%= link_to "Puppsy", root_path %></h2>
 
@@ -26,6 +27,8 @@
         <% end %>
       </nav>
     </header>
+    <%
+=end %>
 
     <main class="main-container row">
       <%= yield %>
