@@ -5,8 +5,38 @@
         1,
         null
       ],
+      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/helpers/cartitems_helper.rb": [
+        1,
+        null
+      ],
       "/Users/tra_css/Documents/ada/c9/projects/betsy/app/helpers/sessions_helper.rb": [
         1,
+        null
+      ],
+      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/controllers/cartitems_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
         null
       ],
       "/Users/tra_css/Documents/ada/c9/projects/betsy/app/controllers/sessions_controller.rb": [
@@ -40,11 +70,6 @@
         0,
         0,
         null,
-        null
-      ],
-      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/controllers/application_controller.rb": [
-        1,
-        1,
         null
       ],
       "/Users/tra_css/Documents/ada/c9/projects/betsy/app/models/cartitem.rb": [
@@ -155,6 +180,6 @@
         0
       ]
     },
-    "timestamp": 1524184762
+    "timestamp": 1524199410
   }
 }
