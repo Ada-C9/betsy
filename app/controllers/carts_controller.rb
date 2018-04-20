@@ -5,7 +5,7 @@ class CartsController < ApplicationController
 
   # Empty the cart
   def destroy
-    # need delete all cartitems in the cart 
+    # need delete all cartitems in the cart
     # @cart.cartitems.each do |cartitem|
     #   cartitem.destroy
     # end
