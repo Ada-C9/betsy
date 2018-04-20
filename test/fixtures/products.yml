@@ -1,0 +1,26 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+cat:
+    name: British Short-Hair
+    stock: 4
+    price: 500.00
+    description: Excellent company on a rainy day
+    status: true
+    user_id: ada
+    image_url: https://placebear.com/g/500/400
+dog:
+    name: Cavalier King Charles Spaniel
+    stock: 2
+    price: 2750.00
+    description: Each and every one is a unique princess
+    status: false
+    user_id: grace
+    image_url: https://placebear.com/g/500/400
+dragon:
+    name: Norweigan Ridgeback
+    stock: 1
+    price: 25000.00
+    description: Very Rare; in excellent health
+    status: true
+    user_id: gretchen
+    image_url: https://placebear.com/g/500/400
