@@ -4,8 +4,29 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  name: "tiramisu"
+  price: 12.99
+  description: "Italian desert"
+  stock: 8
+  image: "www.tiramisu.jpg"
+  visible: true
+  merchant: ada
+
+two:
+  name: "cheesecake"
+  price: 6.99
+  description: "Yummy desert"
+  stock: 3
+  image: "www.cheesecake.jpg"
+  visible: true
+  merchant: grace
+
+three:
+  name: "mango pudding"
+  price: 3.99
+  description: "Tropical desert"
+  stock: 19
+  image: "www.mangopudding.jpg"
+  visible: true
+  merchant: coco
