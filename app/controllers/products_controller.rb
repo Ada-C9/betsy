@@ -42,13 +42,12 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find_by(id: params[:id])
-    @product.user = User.find(params[:user_id])
-    @action = user_products_path(params[:user_id])
+    @action = product_path(params[:id])
   end
 
   def update
-    @product = Product.new(product_params)
-    @product.user = User.find(params[:user_id])
+    @product = Product.find_by(id: params[:id])
+    @product.update(product_params)
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} has been successfully updated!"
@@ -56,7 +55,7 @@ class ProductsController < ApplicationController
     else
       flash[:status] = :failure
       flash[:result_text] = "Update failed."
-      flash[:messages] = @work.errors.messages
+      flash[:messages] = @product.errors.messages
       render :edit, status: :bad_request
     end
   end
