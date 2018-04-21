@@ -8,11 +8,14 @@
 item_one:
   product: bonbon
   quantity: 4
+  cart: cart_one
 
 item_two:
   product: cheesecake
   quantity: 2
+  cart: cart_two
 
 item_three:
   product: macaron
   quantity: 1
+  cart: cart_one

@@ -7,8 +7,7 @@ class CartitemsController < ApplicationController
   def update
     @cartitem.update_attributes(quantity: params[:cartitem][:quantity])
     # business login to find if available in model product
-    binding.pry
-
+    # binding.pry
     if @cartitem.product.available?(@cartitem.quantity)
       if @cartitem.save
         flash[:status] = :success
