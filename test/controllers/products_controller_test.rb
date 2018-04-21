@@ -26,6 +26,8 @@ describe ProductsController do
     it "renders 404 not found for a fake id" do
       fake_product_id = Product.last.id + 1
       get product_path(fake_product_id)
+
+      must_respond_with :not_found
     end
   end
 end

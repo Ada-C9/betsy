@@ -1,6 +1,6 @@
 require "test_helper"
 
-describe CategorysController do
+describe CategoriesController do
   describe 'index' do
     it 'can succeed with all categories' do
       Category.count.must_be :>, 0
