@@ -1,2 +1,24 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<h3>Update a New Product</h3>
+
+<%= form_for @product, url: @action do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :select_a_category %>
+  <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {}, {multiple: true} %>
+
+  <%= f.label :photo_url %>
+  <%= f.text_field :photo_url %>
+
+  <%= f.label :stock %>
+  <%= f.text_field :stock %>
+
+ <%= f.submit "Update", class: "button" %>
+<% end %>

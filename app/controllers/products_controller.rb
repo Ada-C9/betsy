@@ -42,13 +42,13 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find_by(id: params[:id])
-    @product.user = User.find(params[:user_id])
-    @action = user_products_path(params[:user_id])
+    @product.user = User.find_by(id: params[:user_id])
+    # @action = user_products_path(params[:user_id])
   end
 
   def update
     @product = Product.new(product_params)
-    @product.user = User.find(params[:user_id])
+    @product.user = User.find_by(id: params[:user_id])
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} has been successfully updated!"
