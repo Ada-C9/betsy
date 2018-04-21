@@ -1,27 +1,34 @@
+
+<section>
+
 <%= form_for @order do |t|%>
-<%= t.label :email %>
-<%= t.text_field :email%>
 
-<%= t.label :name_on_card%>
-<%= t.text_field :name_on_card%>
+  <%= t.label :email %>
+  <%= t.email_field :email%>
 
-<%= t.label :creditcard%>
-<%= t.integer_field :creditcard%>
+  <%= t.label :name_on_card%>
+  <%= t.text_field :name_on_card%>
 
-<%= t.label :expiration_date%>
-<%= t.date_field :expiration_date%>
+  <%= t.label :creditcard%>
+  <%= t.number_field :creditcard%>
 
-<%= t.label :cvv%>
-<%= t.integer_field :cvv%>
+  <%= t.label :expiration_date%>
+  <%= select_month(Date.today, use_month_numbers: true)%>
+  <%= select_year(Date.today, start_year: 2018, end_year: 2030)%>
 
-<%= t.label :mail_address%>
-<%= t.text_field :mail_address%>
+  <%= t.label :cvv%>
+  <%= t.number_field :cvv%>
 
-<%= t.label :billing_address%>
-<%= t.text_field :billing_address%>
+  <%= t.label :mail_address%>
+  <%= t.text_field :mail_address%>
 
-<%= t.label :zipcode%>
-<%= t.integer_field :zipcode%>
+  <%= t.label :billing_address%>
+  <%= t.text_field :billing_address%>
 
-<%= t.submit "Place Order", class: "button"%>
+  <%= t.label :zipcode%>
+  <%= t.number_field :zipcode%>
+
+  <%= t.submit "Place Order", class: "button"%>
 <%end%>
+
+</section>

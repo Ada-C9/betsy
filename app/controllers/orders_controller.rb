@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    
     if @order.save
 
       flash[:status] = :success
@@ -21,7 +22,7 @@ class OrdersController < ApplicationController
 
       render :new, status: :bad_request
     end
-  end 
+  end
 
   def show
     @order = Order.find_by(id: params[:id])
