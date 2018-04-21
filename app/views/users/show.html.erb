@@ -19,13 +19,61 @@
     <tr>
       <td><%= link_to product.name, product_path(product) %></td>
       <td>$<%= product.price %></td>
-      <td>$<%= product.stock %></td>
-      <td>Update button to be added</td>
-      <td>Retire button to be added</td>
+      <td><%= product.stock %></td>
+      <td>Update(to be linked)</td>
+      <td>Retire(to be linked, if clicked, hide product)</td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
 <h4>List of Orders</h4>
-<h4>Statistics</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Order Number</th>
+      <th>Status(filter to be implemented)</th>
+      <th>Order Items</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+      <th>Shipping Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.products.each do |product| %>
+      <% product.order_items.each do |order_item| %>
+        <tr>
+          <td><%= order_item.order.id %>(to be linked)</td>
+          <td><%= order_item.order.status %></td>
+          <td><%= link_to order_item.product.name, product_path(order_item.product.id) %></td>
+          <td><%= order_item.quantity %></td>
+          <td>$<%= order_item.product.price * order_item.quantity %>(replaced with model method)</td>
+          <td>
+            <% if order_item.is_shipped %>
+              <span>Shipped</span>
+            <% else %>
+              <span class="button">Mark Shipped</span>(to be linked)
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<h4>Order Statistics</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Total Revenue</th>
+      <th>Number of Orders</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$ total revenue to be shown</td>
+      <td>number of orders to be shown</td>
+    </tr>
+  </tbody>
+</table>
