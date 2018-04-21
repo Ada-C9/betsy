@@ -11,6 +11,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = User.find(params[:user_id])
+#     if params[:user_id]
+#       #want this to be a session id - to connect with a cart possibly?
+# end
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} has been successfully created!"
@@ -21,6 +24,7 @@ class ProductsController < ApplicationController
       flash[:messages] = @product.errors.messages
       render :new, status: :bad_request
     end
+    redirect_to
   end
 
   def show
