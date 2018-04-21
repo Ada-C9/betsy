@@ -26,8 +26,13 @@
 }
 
 .main-container {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding: 2rem 10rem;
+  text-align: center;
+  min-height: 50rem;
+}
+
+footer {
+  text-align: center;
 }
 
 /********** header **********/
@@ -35,6 +40,7 @@
   max-width: 100%;
   margin-bottom: 10px;
   padding: 25px 20px 10px 20px;
+  border-bottom: 2px solid grey;
 }
 
 .page-header h2 {

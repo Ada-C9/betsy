@@ -18,8 +18,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  end
-
   def show
       @order = Order.find_by(id: params[:id])
   end

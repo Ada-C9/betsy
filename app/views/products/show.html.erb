@@ -1,7 +1,5 @@
+<h3>Product Details</h3>
 
-<%
-=begin
-%>
 <section class="product_details">
   <h3><%= @product.name %></h3>
   <%= display_image(@product.photo_url) %>
@@ -11,7 +9,7 @@
   <% if @product.stock > 0 %>
     <%= link_to "Add to Cart", products_path, method: :post, class: "button" %>
   <% else %>
-    <p class="button">Out of Stock</p>
+    <p class="alert button">Out of Stock</p>
   <% end %>
 </section>
 
