@@ -29,7 +29,7 @@ describe Review do
     end
 
     it 'is invalid when the rating is not an integer' do
-      @review.rating = 'four'
+      @review.rating = 3.5
 
       result = @review.valid?
 
@@ -54,9 +54,10 @@ describe Review do
   end
 
   describe 'relations' do
-    it 'has a product' do
-      review = reviews(:one)
+    it 'belongs to a product' do
+      review = reviews(:review_one)
       review.product.must_equal products(:cheesecake)
+      review.product_id.must_equal products(:cheesecake).id
     end
 
     it 'can set the product' do

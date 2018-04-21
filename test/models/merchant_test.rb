@@ -52,7 +52,7 @@ describe Merchant do
       merchant = merchants(:wini)
       product = Product.create!(
         name: 'key lime pie',
-        price: 3.99,
+        price: 399,
         merchant: merchant)
 
       merchant.products.must_include product
