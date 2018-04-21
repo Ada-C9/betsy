@@ -1,19 +1,32 @@
 <h3>Order Details</h3>
 
-<h4>Order Number: <%= @order.id %></h4>
-<h4>Status: <%= @order.status %></h4>
+<h5>Order Number: <%= @order.id %></h5>
+<h5>Status: <%= @order.status %></h5>
 
 <h4>Customer Information</h4>
-<p>Name: <%= @order.name %></p>
-<p>Email: <%= @order.email %></p>
-<p>Street Address: <%= @order.street_address %></p>
-<p>City: <%= @order.city %></p>
-<p>State: <%= @order.state %></p>
-<p>Zip Code: <%= @order.zip %></p>
-
-<h4>Billing Information</h4>
-<p>Name On Card: <%= @order.name_cc %></p>
-<p>Card Number: <%= @order.credit_card %>(only show last four digits)</p>
-<p>Expiration Date: <%= @order.expiry %></p>
-<p>Security Code: <%= @order.ccv %></p>
-<p>Billing Zip Code: <%= @order.billing_zip %></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Street Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip Code</th>
+      <th>Last 4 digits of Card</th>
+      <th>Expiration Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @order.name %></td>
+      <td><%= @order.email %></td>
+      <td><%= @order.street_address %></td>
+      <td><%= @order.city %></td>
+      <td><%= @order.state %></td>
+      <td><%= @order.zip %></td>
+      <td>last 4 digits to be shown</td>
+      <td><%= @order.expiry %></td>
+    </tr>
+  </tbody>
+</table>
