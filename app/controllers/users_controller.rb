@@ -4,6 +4,13 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def create
+    user_id = params[:user][:id]
+    if user_id
+      redirect_to category_products_path(user_id)
+    end
+  end
+
   def show
     @user = User.find_by(id: params[:id])
     render_404 unless @user

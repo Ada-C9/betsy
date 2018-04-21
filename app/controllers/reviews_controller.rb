@@ -5,7 +5,6 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @action = product_reviews_path(params[:product_id])
   end
 
   def create

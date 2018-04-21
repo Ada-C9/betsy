@@ -1,7 +1,16 @@
 <h3>List of Products</h3>
 
-<p>Categories filter to be implemented</p>
-<p>Merchants filter to be implemented</p>
+<div class="filter">
+  <%= form_for @category do |f| %>
+    <%= f.select :id, Category.all.map { |category| [category.name, category.id] },  :prompt => 'Select a category' %>
+    <%= f.submit "Sumbit", class: "button" %>
+  <% end %>
+
+  <%= form_for @user do |f| %>
+    <%= f.select :id, User.all.map { |user| [user.username, user.id] },  :prompt => 'Select a user' %>
+    <%= f.submit "Sumbit", class: "button" %>
+  <% end %>
+</div>
 
 <ul class="product_list">
   <% @products.each do |product| %>

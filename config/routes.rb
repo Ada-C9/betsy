@@ -14,7 +14,7 @@ delete "/logout", to: "sessions#destroy", as: "logout"
     resources :products, only: [:index]
   end
 
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index, :show, :create] do
     resources :products, only: [:index, :new, :create]
   end
 

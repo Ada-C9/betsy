@@ -3,9 +3,11 @@ class ProductsController < ApplicationController
   # before_action :find_user
 
   def index
+    @category = Category.new
+    @user = User.new
     if params[:category_id]
       category = Category.find_by(id: params[:category_id])
-      @products = user.products
+      @products = category.products
     elsif params[:user_id]
       user = User.find_by(id: params[:user_id])
       @products = user.products

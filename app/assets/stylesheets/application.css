@@ -75,7 +75,7 @@ h3 {
 }
 
 .product_details {
-  width: 500px;
+  min-width: 400px;
 }
 
 .product_container {
@@ -86,4 +86,15 @@ h3 {
 
 .new_review select {
   width: 150px;
+}
+
+.filter {
+  display: grid;
+  grid-template-columns: 150px 150px;
+  grid-gap: 20px;
+  justify-content: right;
+}
+
+.filter .button {
+  display: none;
 }
