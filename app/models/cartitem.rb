@@ -6,7 +6,7 @@ class Cartitem < ApplicationRecord
 
   def subtotal
     unit_price = (self.product.price.to_f / 100)
-    return (unit_price * self.quantity * 1.1).round(2)
+    return (unit_price * self.quantity).round(2)
   end
 
 end
