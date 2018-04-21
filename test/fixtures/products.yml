@@ -9,13 +9,16 @@ cheesecake:
   merchant: analisa
   name: cheesecake
   price: 499
+  stock: 6
 
 bonbon:
   merchant: wini
   name: bonbon
   price: 329
+  stock: 10
 
 macaron:
   merchant: wini
   name: macaron
   price: 400
+  stock: 19

@@ -66,4 +66,12 @@ describe Cartitem do
       cartitem.cart_id.must_equal carts(:cart_one).id
     end
   end
+
+  describe "subtotal" do
+    it "calculates the subtotal for cartitem" do
+      cartitem1 = Cartitem.first
+      result = cartitem1.subtotal
+      result.must_equal 13.16
+    end
+  end
 end

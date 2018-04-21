@@ -36,4 +36,12 @@ describe Cart do
       cart.order.must_equal orders(:order_one)
     end
   end
+
+  describe "subtotal" do
+    it "calculates subtotal for all items in the cart" do
+      cart1 = Cart.first
+      result = cart1.subtotal
+      result.must_equal 17.16
+    end
+  end
 end
