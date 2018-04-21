@@ -13,7 +13,7 @@
 
 <h4>Billing Information</h4>
 <p>Name On Card: <%= @order.name_cc %></p>
-<p>Card Number: <%= @order.credit_card %></p>
+<p>Card Number: <%= @order.credit_card %>(only show last four digits)</p>
 <p>Expiration Date: <%= @order.expiry %></p>
 <p>Security Code: <%= @order.ccv %></p>
 <p>Billing Zip Code: <%= @order.billing_zip %></p>
