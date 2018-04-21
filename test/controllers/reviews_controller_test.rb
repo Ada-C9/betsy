@@ -26,6 +26,7 @@ describe ReviewsController do
     it "renders 404 not found for a fake id" do
       fake_review_id = Review.last.id + 1
       get review_path(fake_review_id)
+      must_respond_with :not_found
     end
   end
 end

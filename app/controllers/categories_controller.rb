@@ -4,6 +4,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.find_by(id: params[:id])
+    if @category == nil
+      head :not_found unless @category
+    end
   end
 end
+# TODO: TESTING FOR THIS CONTROLLER

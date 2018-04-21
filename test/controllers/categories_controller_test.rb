@@ -26,6 +26,7 @@ describe CategoriesController do
     it "renders 404 not found for a fake id" do
       fake_category_id = Category.last.id + 1
       get category_path(fake_category_id)
+      must_respond_with :not_found
     end
   end
 end

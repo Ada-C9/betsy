@@ -4,6 +4,9 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
+    @review = Review.find_by(id: params[:id])
+    if @review == nil
+      head :not_found unless @review
+    end
   end
 end

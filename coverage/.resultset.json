@@ -29,15 +29,10 @@
         1,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/products_controller.rb": [
+      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/reviews_controller.rb": [
         1,
-        null,
-        1,
-        null,
         1,
         2,
-        null,
-        null,
         null,
         null,
         1,
@@ -205,6 +200,29 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        null
+      ],
+      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/products_controller.rb": [
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/sessions_controller.rb": [
@@ -240,17 +258,6 @@
         0,
         0
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/reviews_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0
-      ],
       "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/channels/application_cable/connection.rb": [
         0,
         0,
@@ -264,6 +271,6 @@
         0
       ]
     },
-    "timestamp": 1524264172
+    "timestamp": 1524354849
   }
 }
