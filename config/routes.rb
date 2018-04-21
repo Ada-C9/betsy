@@ -5,7 +5,7 @@ get '/auth/github', as: 'github_login'
 
 delete "/logout", to: "sessions#destroy", as: "logout"
 
-
+  get 'orders/:id/confirmation', to: 'orders#confirmation', as: 'order_confirmation'
   resources :orders
   resources :sessions, except: [:destroy]
 
