@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user = User.find(params[:user_id])
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} has been successfully created!"
@@ -17,7 +18,7 @@ class ProductsController < ApplicationController
     else
       flash[:status] = :failure
       flash[:result_text] = "Could not create this product."
-      flash[:messages] = @work.errors.messages
+      flash[:messages] = @product.errors.messages
       render :new, status: :bad_request
     end
   end
@@ -39,7 +40,7 @@ class ProductsController < ApplicationController
     else
       flash[:status] = :failure
       flash[:result_text] = "Update failed."
-      flash[:messages] = @work.errors.messages
+      flash[:messages] = @product.errors.messages
       render :edit, status: :bad_request
     end
   end
