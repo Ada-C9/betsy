@@ -15,37 +15,11 @@ delete "/logout", to: "sessions#destroy", as: "logout"
   end
 
   resources :users, only: [:index, :show] do
-    resources :products, except: [:destroy]
+    resources :products, only: [:index, :new, :create]
   end
 
-  resources :products, only: [:index, :show] do
-    resources :reviews, only: [:index, :new, :create]
-  end
+  resources :products, only: [:index, :show, :edit, :update,] do
+   resources :reviews, only: [:index, :new, :create]
+ end
 
-
-
-
-
-
-  # resources :session, only:[:new,:create,:destroy]
-
-
-
-
-
-
-
-  # resources :products, except:[:destroy]
-
-  # resources :categories do
-  #   resources :products, only: [:index], controller: 'categories/products'
-  # end
-  #
-  # resources :users do
-  #   resources :producs, only: [:index], controller: 'merchants/products'
-  # end
-
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -26,8 +26,26 @@
 }
 
 .main-container {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding: 2rem 5rem;
+  text-align: center;
+  min-height: 50rem;
+}
+
+footer {
+  text-align: center;
+}
+
+img {
+  height: 300px;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+h3 {
+  padding: 1rem 0 2rem 0;
 }
 
 /********** header **********/
@@ -35,9 +53,37 @@
   max-width: 100%;
   margin-bottom: 10px;
   padding: 25px 20px 10px 20px;
+  border-bottom: 2px solid grey;
 }
 
 .page-header h2 {
   text-align: center;
   margin: 25px auto 40px auto;
+}
+
+/********** product **********/
+.product_list {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.product_list li {
+  width: 300px;
+  padding-top: 20px;
+}
+
+.product_details {
+  width: 500px;
+}
+
+.product_container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 50px;
+}
+
+.new_review select {
+  width: 150px;
 }

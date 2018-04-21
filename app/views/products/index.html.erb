@@ -1,5 +1,16 @@
-<h3>Products</h3>
+<h3>List of Products</h3>
 
-<p>List of products with images/linksto be added</p>
-<p>Categories dropdown menu to be implemented</p>
-<p>Merchants dropdown menu to be implemented</p>
+<p>Categories filter to be implemented</p>
+<p>Merchants filter to be implemented</p>
+
+<ul class="product_list">
+  <% @products.each do |product| %>
+  <li class="product_info">
+    <h4><%= product.name %></h4>
+    <%= display_image(product.photo_url) %>
+    <p>Price: $<%= product.price %></p>
+    <p><%= product.description %></p>
+    <p><%= product.stock %> in stock</p>
+  </li>
+  <% end %>
+</ul>
