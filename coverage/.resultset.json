@@ -29,26 +29,24 @@
         1,
         null
       ],
-      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/controllers/carts_controller.rb": [
+      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/models/cart.rb": [
         1,
         1,
         1,
         null,
-        null,
         1,
         1,
-        2,
+        1,
         2,
         null,
-        2,
+        null,
+        1,
         null,
         null
       ],
-      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/controllers/application_controller.rb": [
+      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/models/application_record.rb": [
         1,
         1,
-        null,
-        null,
         null
       ],
       "/Users/tra_css/Documents/ada/c9/projects/betsy/app/models/cartitem.rb": [
@@ -59,21 +57,10 @@
         1,
         null,
         1,
-        0,
-        0,
+        2,
+        2,
         null,
         null,
-        null
-      ],
-      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/models/application_record.rb": [
-        1,
-        1,
-        null
-      ],
-      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/models/cart.rb": [
-        1,
-        1,
-        1,
         null
       ],
       "/Users/tra_css/Documents/ada/c9/projects/betsy/app/models/category.rb": [
@@ -158,6 +145,13 @@
         0,
         0
       ],
+      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/controllers/application_controller.rb": [
+        0,
+        0,
+        null,
+        null,
+        0
+      ],
       "/Users/tra_css/Documents/ada/c9/projects/betsy/app/controllers/cartitems_controller.rb": [
         0,
         0,
@@ -196,6 +190,19 @@
         0,
         0,
         null,
+        0
+      ],
+      "/Users/tra_css/Documents/ada/c9/projects/betsy/app/controllers/carts_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       "/Users/tra_css/Documents/ada/c9/projects/betsy/app/controllers/categories_controller.rb": [
@@ -281,6 +288,6 @@
         0
       ]
     },
-    "timestamp": 1524291099
+    "timestamp": 1524292403
   }
 }
