@@ -14,26 +14,26 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-04-20T21:46:32-07:00">2018-04-20T21:46:32-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-04-20T22:07:50-07:00">2018-04-20T22:07:50-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">44.03%</span></span>
+    (<span class="covered_percent"><span class="red">43.31%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.47
+         0.46
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>26</b> files in total.
-    <b>159</b> relevant lines. 
-    <span class="green"><b>70</b> lines covered</span> and
+    <b>157</b> relevant lines. 
+    <span class="green"><b>68</b> lines covered</span> and
     <span class="red"><b>89</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -73,9 +73,9 @@
       <tr>
         <td class="strong"><a href="#20a4f1383120cb41faeffeefe4417659429543ba" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>8</td>
-        <td>4</td>
-        <td>4</td>
+        <td>5</td>
+        <td>2</td>
+        <td>2</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -83,7 +83,7 @@
       <tr>
         <td class="strong"><a href="#f88b1fb1d06fe228a8013ceed936089b689a152a" class="src_link" title="app/controllers/cartitems_controller.rb">app/controllers/cartitems_controller.rb</a></td>
         <td class="red strong">75.0 %</td>
-        <td>44</td>
+        <td>45</td>
         <td>24</td>
         <td>18</td>
         <td>6</td>
@@ -319,19 +319,19 @@
           <div class="file_list_container" id="Controllers">
   <h2>
     <span class="group_name">Controllers</span>
-    (<span class="covered_percent"><span class="red">23.66%</span></span>
+    (<span class="covered_percent"><span class="red">21.98%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.28
+         0.26
        </span>
     </span> hits/line)
   </h2>
   <a name="Controllers"></a>
   <div>
     <b>7</b> files in total.
-    <b>93</b> relevant lines. 
-    <span class="green"><b>22</b> lines covered</span> and
+    <b>91</b> relevant lines. 
+    <span class="green"><b>20</b> lines covered</span> and
     <span class="red"><b>71</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -351,9 +351,9 @@
       <tr>
         <td class="strong"><a href="#20a4f1383120cb41faeffeefe4417659429543ba" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>8</td>
-        <td>4</td>
-        <td>4</td>
+        <td>5</td>
+        <td>2</td>
+        <td>2</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -361,7 +361,7 @@
       <tr>
         <td class="strong"><a href="#f88b1fb1d06fe228a8013ceed936089b689a152a" class="src_link" title="app/controllers/cartitems_controller.rb">app/controllers/cartitems_controller.rb</a></td>
         <td class="red strong">75.0 %</td>
-        <td>44</td>
+        <td>45</td>
         <td>24</td>
         <td>18</td>
         <td>6</td>
@@ -936,8 +936,8 @@
     <h3>app/controllers/application_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>4</b> relevant lines. 
-      <span class="green"><b>4</b> lines covered</span> and
+      <b>2</b> relevant lines. 
+      <span class="green"><b>2</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -963,31 +963,13 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="4">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="4">
           
-          <code class="ruby">  def render_404</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="5">
-          
-          
-          <code class="ruby">    # DPR: this will actually render a 404 page in production</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    raise ActionController::RoutingError.new(&#39;Not Found&#39;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="7">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="8">
           
           
           <code class="ruby">end</code>
@@ -1234,43 +1216,49 @@
           <code class="ruby">    @cartitem = Cartitem.find_by(id: params[:id])</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="38">
-          <span class="hits">3</span>
-          
-          <code class="ruby">    render_404 unless @cartitem</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="39">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="covered" data-hits="3" data-linenumber="39">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    head :not_found unless @cartitem</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="40">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="41">
           
           
-          <code class="ruby">  # def cartitem_params</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
           
           
-          <code class="ruby">  #   params.require(:cartitem).permit(:quantity)</code>
+          <code class="ruby">  # def cartitem_params</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="43">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  #   params.require(:cartitem).permit(:quantity)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="44">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby">end</code>

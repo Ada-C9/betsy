@@ -1,13 +1,9 @@
 class CartitemsController < ApplicationController
   before_action :find_cartitem
 
-  def edit
-  end
-
   def update
     @cartitem.update_attributes(quantity: params[:cartitem][:quantity])
-    # business login to find if available in model product
-    # binding.pry
+
     if @cartitem.product.available?(@cartitem.quantity)
       if @cartitem.save
         flash[:status] = :success
@@ -35,10 +31,8 @@ class CartitemsController < ApplicationController
   private
   def find_cartitem
     @cartitem = Cartitem.find_by(id: params[:id])
-    render_404 unless @cartitem
+
+    head :not_found unless @cartitem
   end
 
-  # def cartitem_params
-  #   params.require(:cartitem).permit(:quantity)
-  # end
 end
