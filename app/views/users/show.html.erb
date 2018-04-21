@@ -17,7 +17,7 @@
   <tbody>
     <% @user.products.each do |product| %>
     <tr>
-      <td><%= link_to product.name, products_path(product.id) %></td>
+      <td><%= link_to product.name, product_path(product) %></td>
       <td>$<%= product.price %></td>
       <td>$<%= product.stock %></td>
       <td>Update button to be added</td>
