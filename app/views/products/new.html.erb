@@ -11,9 +11,8 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
 
-  <%# TODO: add categories dropdown menu %>
-  <%= f.label :category %>
-  <%# f.select :category, @categries %>
+  <%= f.label :select_a_category %>
+  <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {}, {multiple: true} %>
 
   <%= f.label :photo_url %>
   <%= f.text_field :photo_url %>
