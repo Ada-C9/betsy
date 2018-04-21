@@ -26,8 +26,13 @@
 }
 
 .main-container {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding: 2rem 10rem;
+  text-align: center;
+  min-height: 50rem;
+}
+
+footer {
+  text-align: center;
 }
 
 /********** header **********/
