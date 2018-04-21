@@ -74,4 +74,12 @@ describe Cartitem do
       result.must_equal 13.16
     end
   end
+
+  describe "subtotal" do
+    it "calculates the subtotal for cartitem" do
+      cartitem1 = Cartitem.first
+      result = cartitem1.subtotal
+      result.must_equal 13.16
+    end
+  end
 end
