@@ -8,7 +8,14 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.create(order_params)
+    @order = Order.new(order_params)
+    @order.save
+    if @order
+      flash[:success] = "Your order has been made - congratulations!"
+    else
+      flash[:error] = "Something has gone wrong in your orders processing."
+      render :new
+    end
   end
 
   def show
