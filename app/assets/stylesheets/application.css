@@ -44,6 +44,10 @@ ul {
   list-style: none;
 }
 
+h3 {
+  padding: 1rem 0 2rem 0;
+}
+
 /********** header **********/
 .page-header {
   max-width: 100%;
@@ -57,7 +61,7 @@ ul {
   margin: 25px auto 40px auto;
 }
 
-/********** product list **********/
+/********** product **********/
 .product_list {
   display: flex;
   flex-flow: row wrap;
@@ -67,5 +71,19 @@ ul {
 
 .product_list li {
   width: 300px;
-  padding: 20px;
+  padding-top: 20px;
+}
+
+.product_details {
+  width: 500px;
+}
+
+.product_container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 50px;
+}
+
+.new_review select {
+  width: 150px;
 }

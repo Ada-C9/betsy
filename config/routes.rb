@@ -15,15 +15,8 @@ get '/auth/github', as: 'github_login'
     resources :products, only: [:index, :new, :create]
   end
 
-<<<<<<< HEAD
-  resources :products, only: [:index, :show] do
-    resources :reviews, only: [:index, :new, :create]
-  end
-=======
   resources :products, only: [:index, :show, :edit, :update,] do
    resources :reviews, only: [:index, :new, :create]
  end
->>>>>>> acdb61965626427183367b86d2d1384c4872449f
-
 
 end

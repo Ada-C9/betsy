@@ -1,40 +1,37 @@
-<h3>Product Details</h3>
+<h3><%= @product.name %></h3>
 
-<section class="product_details">
-  <h3><%= @product.name %></h3>
-  <%= display_image(@product.photo_url) %>
-  <p>Price: <%= @product.price %></p>
-  <p>Description: <%= @product.description %></p>
-  <p>Stock: <%= @product.stock %></p>
-  <% if @product.stock > 0 %>
+<div class="product_container">
+  <section class="product_details">
+    <%= display_image(@product.photo_url) %>
+    <p><%= @product.description %></p>
+    <p>Price: $<%= @product.price %></p>
+    <p><%= @product.stock %> in stock</p>
+    <% if @product.stock > 0 %>
     <%= link_to "Add to Cart", products_path, method: :post, class: "button" %>
-  <% else %>
+    <% else %>
     <p class="alert button">Out of Stock</p>
-  <% end %>
-</section>
+    <% end %>
+  </section>
 
+  <div class="review">
+    <section class="new_review">
+      <h4>Write a Review</h4>
+      <%= form_for @review, url: @action do |f| %>
+      <%= f.select :rating, (1..5).to_a, :prompt => 'Select a rating'%>
 
-<%
-=begin %>
-<section class="new_review">
-  <h4>Write a Review</h4>
-  <%= form_for @review do |f| %>
-    <%= f.label :rating %>
-    <%= f.select :rating, (1..5).to_a %>
+      <%= f.label :comment %>
+      <%= f.text_area :content %>
 
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+      <%= f.submit "Sumbit", class: "button" %>
+      <% end %>
+    </section>
 
-    <%= f.submit "Sumbit", class: "button" %>
-  <% end %>
-</section>
-<%
-=end %>
-
-<section class="product_reviews">
-  <h4>Reviews</h4>
-  <% @product.reviews.each do |review| %>
-    <p>Rating: <%= review.rating %></p>
-    <p><%= review.content %></p>
-  <% end %>
-</section>
+    <section class="existing_reviews">
+      <h4>Reviews</h4>
+      <% @product.reviews.each do |review| %>
+      <p>Rating: <%= review.rating %></p>
+      <p><%= review.content %></p>
+      <% end %>
+    </section>
+  </div>
+</div>

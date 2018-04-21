@@ -41,7 +41,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by(id: params[:id])
-    # @review = Review.new
+    @review = Review.new
+    @action = product_reviews_path(params[:id])
   end
 
   def edit
