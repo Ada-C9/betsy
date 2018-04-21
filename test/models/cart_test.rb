@@ -1,9 +1,55 @@
 require "test_helper"
 
 describe Cart do
-  let(:cart) { Cart.new }
+  describe 'validations' do
+    it 'can be created without any fields' do
+      cart = Cart.new
 
-  it "must be valid" do
-    value(cart).must_be :valid?
+      result = cart.valid?
+
+      result.must_equal true
+    end
+  end
+
+  describe 'relations' do
+    before do
+      @cart = Cart.create!
+    end
+
+    it 'connects to cartitems and cartitem_ids' do
+      cartitem = Cartitem.create!(product: Product.first, cart: @cart, quantity: 2)
+
+      @cart.cartitems.must_include cartitem
+      @cart.cartitem_ids.must_include cartitem.id
+    end
+
+    it 'connects to products and product_ids through cartitems' do
+      product = Product.create!(name: 'key lime pie', price: 399, merchant: Merchant.first)
+      cartitem = Cartitem.create!(product: product, cart: @cart, quantity: 2)
+
+      @cart.products.must_include product
+      @cart.product_ids.must_include product.id
+    end
+
+    it 'connects to order and order_id' do
+      cart = carts(:cart_one)
+      cart.order.must_equal orders(:order_one)
+    end
+  end
+
+  describe "subtotal" do
+    it "calculates subtotal for all items in the cart" do
+      cart1 = Cart.first
+      result = cart1.subtotal
+      result.must_equal 17.16
+    end
+  end
+
+  describe "subtotal" do
+    it "calculates subtotal for all items in the cart" do
+      cart1 = Cart.first
+      result = cart1.subtotal
+      result.must_equal 17.16
+    end
   end
 end

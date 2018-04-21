@@ -32,13 +32,17 @@ describe Category do
 
   describe 'relations' do
     it 'has many products' do
-      category = categories(:cake)
-      product = Product.create!(
-        name: 'key lime pie',
-        price: 3.99)
+      category = Category.first
+      product_one = Product.first
+      product_two = Product.last
 
-      category.products.must_include product
-      category.product_ids.must_include product.id
+      category.products << product_one
+      category.products << product_two
+
+      category.products.must_include product_one
+      category.products.must_include product_two
+      category.product_ids.must_include product_one.id
+      category.product_ids.must_include product_two.id
     end
   end
 end
