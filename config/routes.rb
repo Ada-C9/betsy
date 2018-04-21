@@ -15,19 +15,12 @@ get '/auth/github', as: 'github_login'
   end
 
   resources :users, only: [:index, :show] do
-    resources :products, except: [:destroy]
+    resources :products, only: [:index, :new, :create]
   end
 
-<<<<<<< HEAD
-  resources :products, only: [:index, :show, :update]
-
-  resources :products do
-    resources :reviews, only: [:index,:new,:create]
-=======
-  resources :products, only: [:index, :show] do
-    resources :reviews, only: [:index, :new, :create]
->>>>>>> 1504eecfa8b01e4394aedad9d216da1a0cb29ddb
-  end
+  resources :products, only: [:index, :show, :edit, :update,] do
+   resources :reviews, only: [:index, :new, :create]
+ end
 
 
 

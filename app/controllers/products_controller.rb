@@ -1,11 +1,23 @@
 class ProductsController < ApplicationController
 
+  # before_action :find_user
+
   def index
-    @products = Product.all
+    if params[:category_id]
+      category = Category.find_by(id: params[:category_id])
+      @products = user.products
+    elsif params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      @products = user.products
+    else
+      @products = Product.all
+    end
   end
 
   def new
     @product = Product.new
+    @product.user = User.find(params[:user_id])
+    @action = user_products_path(params[:user_id])
   end
 
   def create
@@ -25,14 +37,18 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by(id: params[:id])
-    @review = Review.new
+    # @review = Review.new
   end
 
   def edit
+    @product = Product.find_by(id: params[:id])
+    @product.user = User.find(params[:user_id])
+    @action = user_products_path(params[:user_id])
   end
 
   def update
     @product = Product.new(product_params)
+    @product.user = User.find(params[:user_id])
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} has been successfully updated!"
@@ -45,7 +61,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  private
+private
 
   def product_params
     params.require(:product).permit(:name, :is_active, :description, :price, :photo_url, :stock, :user_id)
