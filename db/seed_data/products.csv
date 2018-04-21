@@ -3,7 +3,7 @@ id,merchant_id,name,price,description,stock,image,visible
 1,2,Carolines Angelical Key Lime Pie,2099,All ingredients are fair trade products,5,http://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/200212-r-xl-tangy-key-lime-pie.jpg?itok=x65bW9tP,true
 2,4,Brendas dreamed Strawberry Cheesecake,3350,Classic baked cheesecake with fresh strawberries in an almond murbe pastry base -- Allergies: nuts; eggs; flour; dairy,7,http://www.cbc.ca/inthekitchen/assets_c/2012/12/StrawberryCheescake1-thumb-596x350-252247.jpg,true
 3,3,Angelicas Granny Carrot Cake,1500,Secret family recipe coming all the way from mexico -- Allergies: nuts; eggs; flour. DAIRY FREE OPTION,9,https://food.fnr.sndimg.com/content/dam/images/food/fullset/2014/3/3/1/FNK_Easter-Carrot-Cake-with-Cream-Cheese-Frosting_s4x3.jpg.rend.hgtvcom.616.462.suffix/1393906711447.jpeg,true
-4,5,Latinxs Favorite Tres Leches,1800,Heavenly moist plain cake with evaporated milk; condensed milk and cream covered with italian meringue,4,https://www.browneyedbaker.com/wp-content/uploads/2016/05/tres-leches-cake-37-600-600x454.jpg,true
+4,5,Latinxs and Majas Favorite Tres Leches,1800,Heavenly moist plain cake with evaporated milk; condensed milk and cream covered with italian meringue,4,https://www.browneyedbaker.com/wp-content/uploads/2016/05/tres-leches-cake-37-600-600x454.jpg,true
 5,1,Il Tiramisu di Maria,2100,Ladie finger biscuits with italian mascarpone and coldbrew,6,https://i.pinimg.com/736x/aa/6d/c4/aa6dc4714fabb248f8350c0cc075355f--laduree-paris-food-plating.jpg,true
 6,2,Kieras Sweet Potato Pie,2050,Sweet Potatoes made ...,8,https://www.cscassets.com/recipes/wide_cknew/wide_27102.jpg,true
 7,4,Discover Luxis Asian Cake,3099,Angel cake covered with whipped cream and fruits,1,http://www.rgbstock.com/cache1vOIb4/users/c/co/coolhewitt23/300/opbWx9e.jpg,true
@@ -26,3 +26,5 @@ id,merchant_id,name,price,description,stock,image,visible
 24,,Jamilas New Generation Yogurt Pie,1500,The perfect yogurt pie. Made with local farm products,6,https://images-gmi-pmc.edge-generalmills.com/3e38492d-1ec4-4cba-8903-758c7eb10a4c.jpg,true
 25,,The Perfect Chocolate Truffles for Emilce (12),2050,The most exclusive belgian chocolate turned into a truffle,23,https://tse3.mm.bing.net/th?id=OIP.vgf5LoQURg0bpATtNQnvawHaF6&pid=15.1&P=0&w=190&h=153,true
 26,,Kari´s French Fruit Tart,3099,Made with murbe pastry, filled with tahitian vanilla creme patissier and toped with your choise of fruit,7,https://tse2.mm.bing.net/th?id=OIP.QbENAABkPIiiXzPaLJbCCAHaE9&pid=15.1&P=0&w=246&h=166,true
+27,Brandy´s Creme Renversee au Caramel,1800,The perfect and classic french flan. ALLERGIES: EGGS.,5,http://www.femmezine.fr/files/images/article/82/4f1936a66cc82-304-large.jpg.true
+28,Sam´s Dream Pop Tarts (5),700,Assorted vanilla, chocolate, and red velvet cake pops,23,http://static.wixstatic.com/media/06b7c5_4e862ade619949a29f25bd27c03dd36c.jpg_srz_1467_634_85_22_0.50_1.20_0.00_jpg_srz,true

@@ -1,0 +1,26 @@
+<%= form_for @order do |t|%>
+<%= t.label :email %>
+<%= t.text_field :email%>
+
+<%= t.label :name_on_card%>
+<%= t.text_field :name_on_card%>
+
+<%= t.label :creditcard%>
+<%= t.integer_field :creditcard%>
+
+<%= t.label :expiration_date%>
+<%= t.date_field :expiration_date%>
+
+<%= t.label :cvv%>
+<%= t.integer_field :cvv%>
+
+<%= t.label :mail_address%>
+<%= t.text_field :mail_address%>
+
+<%= t.label :billing_address%>
+<%= t.text_field :billing_address%>
+
+<%= t.label :zipcode%>
+<%= t.integer_field :zipcode%>
+
+<%= t.submit "Place Order"%>
