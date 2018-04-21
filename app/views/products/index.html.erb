@@ -3,10 +3,14 @@
 <p>Categories filter to be implemented</p>
 <p>Merchants filter to be implemented</p>
 
-<% @products.each do |product| %>
-  <h3><%= product.name %></h3>
-  <%= display_image(product.photo_url) %>
-  <p>Price: <%= product.price %></p>
-  <p>Description: <%= product.description %></p>
-  <p>Stock: <%= product.stock %></p>
-<% end %>
+<ul class="product_list">
+  <% @products.each do |product| %>
+  <li>
+    <h4><%= product.name %></h4>
+    <%= display_image(product.photo_url) %>
+    <p>Price: $<%= product.price %></p>
+    <p><%= product.description %></p>
+    <p><%= product.stock %> in stock</p>
+  </li>
+  <% end %>
+</ul>
