@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   before_action :find_cart
   def show
+    @products = Product.all
   end
 
   # Empty the cart
@@ -18,6 +19,6 @@ class CartsController < ApplicationController
   private
   def find_cart
     @cart = Cart.find_by(id: params[:id])
-    render_404 unless @cart
+    head :not_found unless @cart
   end
 end
