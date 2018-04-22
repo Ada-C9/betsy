@@ -5,8 +5,8 @@ class Category < ApplicationRecord
 
   private
   def capitalize_name
-    if !self.name.nil?
-      self.name = self.name.capitalize
+    if !name.nil?
+      self.name = name.capitalize
     end
   end
 end
