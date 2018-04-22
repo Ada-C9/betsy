@@ -6,6 +6,7 @@
 
   <%= favicon_link_tag asset_path('cake.png'), :rel => 'icon', :type =>  'image/png' %>
   <title>Ali-Bon-Bon</title>
+  <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
 
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -15,14 +16,14 @@
 <body>
   <header>
     <section class="image header">
-      <h2 class="columns large-9 small-12">
+      <h2>
         <%= link_to "Ali-Bon-Bon", root_path %>
         <small>Who Can Say No To Dessert?</small>
       </h2>
     </section>
     <!-- FOUNDATION STYLING FOR DROP DOWN MENUS -->
     <div id="nav bar">
-      <h3 class= "menu toggle"><i class= "fa fa-bars"></i></h3>
+      <h3 class= "menu toggle"></h3>
       <nav>
         <div>
           <ul class="menu toggle" data-dropdown-menu>
@@ -38,7 +39,7 @@
                 </li>
               </ul>
             </li>
-            <div class= "button-group float-right">
+            <div class= "button-group">
               <a class= "hollow button">Sign Up</a>
               <a class= "hollow button">Log In</a>
               <a class= "hollow button">My Cart</a>

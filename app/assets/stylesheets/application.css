@@ -17,3 +17,10 @@
 *= require foundation_and_overrides
 
 */
+body {
+  font-family: 'Berkshire Swash';font-size: 22px;
+}
+h2 {
+  font-family: 'Berkshire Swash';font-size: 75px;
+}
+  
