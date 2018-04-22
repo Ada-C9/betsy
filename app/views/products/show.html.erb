@@ -1,7 +1,7 @@
 <h3><%= @product.name %></h3>
 
-<div class="product_container">
-  <section class="product_details">
+<div class="product-container">
+  <section class="product-details">
     <% if @product.photo_url.length > 0 %>
       <%= link_to image_tag(@product.photo_url, alt: @product.name), product_path(@product.id) %>
     <% else %>
@@ -11,7 +11,7 @@
     <p><%= @product.description %></p>
     <p>Price: $<%= price_in_dollar(@product.price) %></p>
     <% if @product.stock > 0 %>
-      <p><span class="color_text"><%= @product.stock %></span> in stock</p>
+      <p><span class="color-text"><%= @product.stock %></span> in stock</p>
       <%= link_to "Add to Cart", products_path, method: :post, class: "button" %>
     <% else %>
       <p class="alert button">Out of Stock</p>
@@ -19,7 +19,7 @@
   </section>
 
   <div class="review">
-    <section class="new_review">
+    <section class="new-review">
       <h4>Write a Review</h4>
       <%= form_for @review, url: @action do |f| %>
       <%= f.select :rating, (1..5).to_a, :prompt => 'Select a rating'%>
@@ -31,7 +31,7 @@
       <% end %>
     </section>
 
-    <section class="existing_reviews">
+    <section class="existing-reviews">
       <h4>Reviews</h4>
       <% @product.reviews.each do |review| %>
       <p>Rating: <%= review.rating %></p>
