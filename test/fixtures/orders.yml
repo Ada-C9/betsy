@@ -8,7 +8,7 @@ order_1:
   zip: 11111
   name_cc: name_cc_1
   credit_card: 1234123412341111
-  expiry: 1/2018
+  expiry: 2018-12-31
   ccv: 111
   billing_zip: 11111
 order_2:
@@ -21,7 +21,7 @@ order_2:
   zip: 22222
   name_cc: name_cc_2
   credit_card: 1234123412342222
-  expiry: 2/2018
+  expiry: 2018-12-31
   ccv: 222
   billing_zip: 22222
 order_3:
@@ -34,7 +34,7 @@ order_3:
   zip: 33333
   name_cc: name_cc_3
   credit_card: 1234123412343333
-  expiry: 3/2018
+  expiry: 2018-12-31
   ccv: 333
   billing_zip: 33333
 order_4:
@@ -47,7 +47,7 @@ order_4:
   zip: 44444
   name_cc: name_cc_4
   credit_card: 1234123412344444
-  expiry: 4/2018
+  expiry: 2018-12-31
   ccv: 444
   billing_zip: 44444
 order_5:
@@ -60,6 +60,6 @@ order_5:
   zip: 55555
   name_cc: name_cc_5
   credit_card: 1234123412345555
-  expiry: 5/2018
+  expiry: 2018-12-31
   ccv: 555
   billing_zip: 55555
