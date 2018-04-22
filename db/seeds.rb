@@ -43,14 +43,15 @@ CSV.foreach(ORDER_FILE, :headers => true) do |row|
   order.state = row['state']
   order.zip = row['zip']
   order.name_cc = row['name_cc']
-  order.expiry = row['expiry']
   order.credit_card = row['credit_card']
+  order.expiry = row['expiry']
   order.ccv = row['ccv']
   order.billing_zip = row['billing_zip']
   puts "Created order: #{order.inspect}"
   successful = order.save
   if !successful
     order_failures << order
+    print order.errors.messages
   end
 end
 
