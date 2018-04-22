@@ -19,8 +19,8 @@
   </section>
 
   <div class="review">
+    <h4>Write a Review</h4>
     <section class="new-review">
-      <h4>Write a Review</h4>
       <%= form_for @review, url: @action do |f| %>
       <%= f.select :rating, (1..5).to_a, :prompt => 'Select a rating'%>
 
@@ -31,12 +31,16 @@
       <% end %>
     </section>
 
+    <h4>Reviews</h4>
+    <% @product.reviews.each do |review| %>
     <section class="existing-reviews">
-      <h4>Reviews</h4>
-      <% @product.reviews.each do |review| %>
-      <p>Rating: <%= review.rating %></p>
+      <p>
+        <% review.rating.times do |i| %>
+          ⭐️
+        <% end %>
+      </p>
       <p><%= review.content %></p>
-      <% end %>
     </section>
+    <% end %>
   </div>
 </div>

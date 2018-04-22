@@ -26,10 +26,11 @@ font-family: 'Dosis', sans-serif; */
 /********** global **********/
 body, h1, h2, h3, h4, h5, p {
   font-family: 'Dosis', sans-serif;
+  color: #1A1F22;
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .button {
@@ -74,12 +75,15 @@ ul {
 }
 
 h3 {
+  margin-top: 1rem;
   margin-bottom: 1rem;
   font-weight: bold;
 }
 
 h4 {
   font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .color-text {
@@ -96,6 +100,11 @@ table .button {
   margin: 0;
 }
 
+label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #c17317;
+}
 
 /********** header **********/
 .page-header {
@@ -145,6 +154,10 @@ nav > :last-child {
   padding-top: 20px;
 }
 
+.product-info {
+  margin-bottom: 30px;
+}
+
 .product-details {
   min-width: 400px;
 }
@@ -153,6 +166,10 @@ nav > :last-child {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 50px;
+}
+
+.new-review {
+  margin-bottom: 30px;
 }
 
 .new-review select {
@@ -173,9 +190,4 @@ nav > :last-child {
 .form {
   margin: 0 150px;
   /* text-align: left; */
-}
-
-label {
-  font-size: 1.2rem;
-  font-weight: 500;
 }
