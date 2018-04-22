@@ -12,7 +12,7 @@ order_1:
   ccv: 111
   billing_zip: 11111
 order_2:
-  status: pending
+  status: complete
   name: name_2
   email: customer_2@test.com
   street_address: street_address_2
