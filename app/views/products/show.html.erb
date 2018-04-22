@@ -5,11 +5,11 @@
     <%= display_image(@product.photo_url) %>
     <p><%= @product.description %></p>
     <p>Price: $<%= @product.price %></p>
-    <p><%= @product.stock %> in stock</p>
     <% if @product.stock > 0 %>
-    <%= link_to "Add to Cart", products_path, method: :post, class: "button" %>
+      <p><span class="color_text"><%= @product.stock %></span> in stock</p>
+      <%= link_to "Add to Cart", products_path, method: :post, class: "button" %>
     <% else %>
-    <p class="alert button">Out of Stock</p>
+      <p class="alert button">Out of Stock</p>
     <% end %>
   </section>
 

@@ -15,15 +15,14 @@
   <body>
 
     <header class="page-header row">
-      <h2>Puppsy(link to be implemented)</h2>
+      <h1>Puppsy</h1>
       <nav>
-        <p>Buttons to be implemented</p>
-        <%# link_to "Home", root_path, class: "button" %>
-        <%# link_to "Cart", cart_path, class: "button" %>
+        <span class="button">Home</span>
+        <span class="button">Cart</span>
         <% if session[:user_id] %>
-          <%= link_to "Log out", logout_path, method: :delete, class: "button"  %>
+          <%= link_to "Log out", logout_path, method: :delete, class: "button float right"  %>
         <% else %>
-          <%= link_to "Login with Github", "/auth/github", class: "button" %>
+          <%= link_to "Login with Github", "/auth/github", class: "button float right" %>
         <% end %>
       </nav>
     </header>

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     user_id = params[:user][:id]
     if user_id
-      redirect_to category_products_path(user_id)
+      redirect_to user_products_path(user_id)
     end
   end
 

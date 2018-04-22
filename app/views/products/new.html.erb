@@ -1,6 +1,7 @@
 <h3>Create a New Product</h3>
 
-<%= form_for @product, url: @action do |f| %>
+<div class="form">
+  <%= form_for @product, url: @action do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -19,5 +20,6 @@
   <%= f.label :stock %>
   <%= f.text_field :stock %>
 
- <%= f.submit "Save", class: "button" %>
-<% end %>
+  <%= f.submit "Save", class: "button" %>
+  <% end %>
+</div>

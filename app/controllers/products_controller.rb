@@ -6,11 +6,13 @@ class ProductsController < ApplicationController
     @category = Category.new
     @user = User.new
     if params[:category_id]
-      category = Category.find_by(id: params[:category_id])
-      @products = category.products
+      @current_category = Category.find_by(id: params[:category_id])
+      @products = @current_category.products
+      @current_user = nil
     elsif params[:user_id]
-      user = User.find_by(id: params[:user_id])
-      @products = user.products
+      @current_user = User.find_by(id: params[:user_id])
+      @products = @current_user.products
+      @current_category = nil
     else
       @products = Product.all
     end
@@ -38,7 +40,6 @@ class ProductsController < ApplicationController
       flash[:messages] = @product.errors.messages
       render :new, status: :bad_request
     end
-    redirect_to
   end
 
   def show
