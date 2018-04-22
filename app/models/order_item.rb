@@ -6,14 +6,14 @@ class OrderItem < ApplicationRecord
   validate :check_quantity, if: :contains_product?
 
   def check_product_is_active
-    if !self.product.is_active
+    if !product.is_active
       errors.add(:is_active,"product is no longer available")
     end
   end
 
   def check_quantity
-    if self.quantity.to_i > self.product.stock
-      errors.add(:stock, "only #{self.product.stock} items available")
+    if quantity.to_i > product.stock
+      errors.add(:stock, "only #{product.stock} items available")
     end
   end
 
@@ -23,7 +23,7 @@ class OrderItem < ApplicationRecord
 
   private
   def contains_product?
-    !self.product.nil?
+    !product.nil?
   end
 
 end
