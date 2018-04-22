@@ -7,25 +7,22 @@ describe OrderItem do
 
   describe "relations" do
     it "has an order" do
-      item = order_items(:order_item_1)
-      item.must_respond_to :order
-      item.order.must_be_kind_of Order
-      item.order.must_equal orders(:order_1)
+      oi.must_respond_to :order
+      oi.order.must_be_kind_of Order
+      oi.order.must_equal orders(:order_1)
     end
     it "has a product" do
-      item = order_items(:order_item_1)
-      item.must_respond_to :product
-      item.product.must_be_kind_of Product
-      item.product.must_equal products(:product_1)
+      oi.must_respond_to :product
+      oi.product.must_be_kind_of Product
+      oi.product.must_equal products(:product_1)
     end
 
     it "changes in order_id and product_id reflects in order and product" do
-      item = order_items(:order_item_1)
-      item.order_id = orders(:order_2).id
-      item.order.must_equal orders(:order_2)
+      oi.order_id = orders(:order_2).id
+      oi.order.must_equal orders(:order_2)
 
-      item.product_id = products(:product_2).id
-      item.product.must_equal products(:product_2)
+      oi.product_id = products(:product_2).id
+      oi.product.must_equal products(:product_2)
     end
   end
 
