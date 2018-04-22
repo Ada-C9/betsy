@@ -1,7 +1,6 @@
 <h3>Checkout</h3>
-
-<%= form_for @order do |f| %>
-
+<div class="form">
+  <%= form_for @order do |f| %>
   <h4>Shipping Information</h4>
 
   <%= f.label :name %>
@@ -40,4 +39,5 @@
   <%= f.text_field :billing_zip %>
 
   <%= f.submit "Place Order", class: "button" %>
-<% end %>
+  <% end %>
+</div>

@@ -3,12 +3,16 @@ class ProductsController < ApplicationController
   # before_action :find_user
 
   def index
+    @category = Category.new
+    @user = User.new
     if params[:category_id]
-      category = Category.find_by(id: params[:category_id])
-      @products = user.products
+      @current_category = Category.find_by(id: params[:category_id])
+      @products = @current_category.products
+      @current_user = nil
     elsif params[:user_id]
-      user = User.find_by(id: params[:user_id])
-      @products = user.products
+      @current_user = User.find_by(id: params[:user_id])
+      @products = @current_user.products
+      @current_category = nil
     else
       @products = Product.all
     end
@@ -23,6 +27,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = User.find(params[:user_id])
+#     if params[:user_id]
+#       #want this to be a session id - to connect with a cart possibly?
+# end
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} has been successfully created!"
@@ -30,14 +37,15 @@ class ProductsController < ApplicationController
     else
       flash[:status] = :failure
       flash[:result_text] = "Could not create this product."
-      flash[:messages] = @work.errors.messages
+      flash[:messages] = @product.errors.messages
       render :new, status: :bad_request
     end
   end
 
   def show
     @product = Product.find_by(id: params[:id])
-    # @review = Review.new
+    @review = Review.new
+    @action = product_reviews_path(params[:id])
   end
 
   def edit
@@ -63,6 +71,6 @@ class ProductsController < ApplicationController
 private
 
   def product_params
-    params.require(:product).permit(:name, :is_active, :description, :price, :photo_url, :stock, :user_id)
+    params.require(:product).permit(:name, :is_active, :description, :price, :photo_url, :stock, :user_id, :category_ids => [])
   end
 end

@@ -1,5 +1,45 @@
-<h3>Products</h3>
+<h3>List of Products</h3>
+<% if @current_category %>
+  <h4>Category: <%= @current_category.name %></h4>
+<% end %>
+<% if @current_user %>
+  <h4>Seller: <%= @current_user.username %></h4>
+<% end %>
 
-<p>List of products with images/linksto be added</p>
-<p>Categories dropdown menu to be implemented</p>
-<p>Merchants dropdown menu to be implemented</p>
+<div class="filter">
+  <%= form_for @category do |f| %>
+    <%= f.select :id, Category.all.map { |category| [category.name, category.id] },  :prompt => 'Select a category' %>
+    <%= f.submit "Sumbit", class: "button" %>
+  <% end %>
+
+  <%= form_for @user do |f| %>
+    <%= f.select :id, User.all.map { |user| [user.username, user.id] },  :prompt => 'Select a seller' %>
+    <%= f.submit "Sumbit", class: "button" %>
+  <% end %>
+</div>
+
+<ul class="product-list">
+  <% @products.each do |product| %>
+  <li class="product-info">
+    <h4><%= product.name %></h4>
+    <% if product.photo_url.length > 0 %>
+      <%= link_to image_tag(product.photo_url, alt: product.name), product_path(product.id) %>
+    <% else %>
+      <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(product.id) %>
+    <% end %>
+    <p><strong>Price:</strong> $<%= price_in_dollar(product.price) %></p>
+    <p>
+      <% product.average_rating.to_i.times do |i| %>
+        ⭐️
+      <% end %>
+    </p>
+    <p><%= product.description %></p>
+    <% if product.stock > 0 %>
+      <p><span class="color-text"><%= product.stock %></span> in stock</p>
+      <%= link_to "Add to Cart", products_path, method: :post, class: "button" %>
+    <% else %>
+      <p class="alert button">Out of Stock</p>
+    <% end %>
+  </li>
+  <% end %>
+</ul>

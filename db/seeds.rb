@@ -155,48 +155,37 @@ puts "#{order_item_failures.length} order_item failed to save"
 p order_item_failures
 puts
 
-# OP_FILE = Rails.root.join('db','seed-data', 'products_categories_joins.csv')
-# puts "Loading raw order_item data from #{OP_FILE}"
-#
-# product_category_failures = []
-# CSV.foreach(OP_FILE, :headers => true) do |row|
-#   product_category = ProductCategory.new
-#   product_category.product_id = row['product_id']
-#   product_category.category_id = row['category_id']
-#   puts "Created product_category: #{product_category.inspect}"
-#   successful = product_category.save
-#   if !successful
-#     product_category_failures << product_category
-#   end
-# end
-#
-# puts "Added #{ProductCategory.count} product_category records"
-# puts "#{product_category_failures.length} product_category failed to save"
-# p product_category_failures
-# puts
-#
-c=Category.find(1); p = Product.find(1);  p.categories << c
-c=Category.find(2); p = Product.find(1);  p.categories << c
-c=Category.find(1); p = Product.find(2);  p.categories << c
-c=Category.find(2); p = Product.find(2);  p.categories << c
-c=Category.find(1); p = Product.find(3);  p.categories << c
-c=Category.find(2); p = Product.find(3);  p.categories << c
-c=Category.find(2); p = Product.find(4);  p.categories << c
-c=Category.find(4); p = Product.find(4);  p.categories << c
-c=Category.find(4); p = Product.find(5);  p.categories << c
-c=Category.find(7); p = Product.find(6);  p.categories << c
-c=Category.find(2); p = Product.find(7);  p.categories << c
-c=Category.find(9); p = Product.find(8);  p.categories << c
-c=Category.find(7); p = Product.find(9);  p.categories << c
-c=Category.find(7); p = Product.find(10);  p.categories << c
-c=Category.find(9); p = Product.find(11);  p.categories << c
-c=Category.find(9); p = Product.find(12);  p.categories << c
-c=Category.find(4); p = Product.find(13);  p.categories << c
-c=Category.find(7); p = Product.find(14);  p.categories << c
-c=Category.find(1); p = Product.find(15);  p.categories << c
-c=Category.find(4); p = Product.find(16);  p.categories << c
-c=Category.find(9); p = Product.find(17);  p.categories << c
+OP_FILE = Rails.root.join('db','seed-data', 'categories_products.csv')
+puts "Loading raw order_item data from #{OP_FILE}"
 
+category_product_failures = []
+CSV.foreach(OP_FILE, :headers => true) do |row|
+  prd = Product.find(row['product_id'])
+  cat = Category.find(row['category_id'])
+  prd.categories << cat
+end
+
+# c=Category.find(1); p = Product.find(1);  p.categories << c
+# c=Category.find(2); p = Product.find(1);  p.categories << c
+# c=Category.find(1); p = Product.find(2);  p.categories << c
+# c=Category.find(2); p = Product.find(2);  p.categories << c
+# c=Category.find(1); p = Product.find(3);  p.categories << c
+# c=Category.find(2); p = Product.find(3);  p.categories << c
+# c=Category.find(2); p = Product.find(4);  p.categories << c
+# c=Category.find(4); p = Product.find(4);  p.categories << c
+# c=Category.find(4); p = Product.find(5);  p.categories << c
+# c=Category.find(7); p = Product.find(6);  p.categories << c
+# c=Category.find(2); p = Product.find(7);  p.categories << c
+# c=Category.find(9); p = Product.find(8);  p.categories << c
+# c=Category.find(7); p = Product.find(9);  p.categories << c
+# c=Category.find(7); p = Product.find(10);  p.categories << c
+# c=Category.find(9); p = Product.find(11);  p.categories << c
+# c=Category.find(9); p = Product.find(12);  p.categories << c
+# c=Category.find(4); p = Product.find(13);  p.categories << c
+# c=Category.find(7); p = Product.find(14);  p.categories << c
+# c=Category.find(1); p = Product.find(15);  p.categories << c
+# c=Category.find(4); p = Product.find(16);  p.categories << c
+# c=Category.find(9); p = Product.find(17);  p.categories << c
 
 puts "Manually resetting PK sequence on each table"
 ActiveRecord::Base.connection.tables.each do |t|

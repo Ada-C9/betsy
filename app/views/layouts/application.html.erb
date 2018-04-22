@@ -4,37 +4,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title>Puppsy</title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.png' %>
   </head>
 
   <body>
-  <%
-=begin %>
-    <header class="page-header row">
-  <%
-=begin %>
 
-  <h2><%= link_to "Puppsy", root_path %></h2>
+    <header class="page-header row">
       <nav>
-        <%= link_to "Home", root_path, class: "button" %>
-        <%= link_to "Cart", cart_path, class: "button" %>
-        <% if @find_user.nil? %>
-          <%= link_to "Log In", login_form_path, class: "button" %>
+        <h1>🐶 Puppsy </h1>
+        <span class="button">Home</span>
+        <%= link_to "All Products", products_path, class: "button"  %>
+        <span class="button">Cart</span>
+        <% if session[:user_id] %>
+          <%= link_to "Log out", logout_path, method: :delete, class: "button"  %>
         <% else %>
-          <%= link_to "Log Out", logout_path, method: :delete, class: "button" %>
+          <%= link_to "Login with Github", "/auth/github", class: "button" %>
         <% end %>
       </nav>
     </header>
-<<<<<<< HEAD
-    <%
-=======
-  <%
->>>>>>> 72323e816d329b7e739cd00f7802b3cd7878f847
-=end %>
 
     <main class="main-container row">
       <%= yield %>

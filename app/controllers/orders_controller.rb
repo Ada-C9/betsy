@@ -8,11 +8,23 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.create(order_params)
+    @order = Order.new(order_params)
+    @order.save
+    if @order
+      flash[:success] = "Your order has been made - congratulations!"
+      redirect_to order_confirmation_path(@order.id)
+    else
+      flash[:error] = "Something has gone wrong in your orders processing."
+      render :new
+    end
+  end
+
+  def confirmation
+    @order = Order.find_by(id: params[:id])
   end
 
   def show
-      @order = Order.find_by(id: params[:id])
+    @order = Order.find_by(id: params[:id])
   end
 
   def edit
