@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body small {
   color: slategrey;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .page-header {
@@ -11,4 +13,19 @@ body small {
   background-repeat: no-repeat;
   border-bottom: 60px rgb(207, 77, 88);
   margin-bottom: 60px;
+}
+
+.orbit {
+  width: 50%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  margin-left: auto;
+  margin-right: auto;
+}
+body {
+background-image: url(desserts.jpg);
 }

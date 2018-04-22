@@ -13,38 +13,42 @@
 </head>
 
 <body>
-  <header class="page-header row">
-    <h2 class="columns large-9 small-12">
-      <%= link_to "Ali-Bon-Bon", root_path %>
-      <small>Who Can Say No To Dessert?</small>
-    </h2>
+  <header>
+    <section class="image header">
+      <h2 class="columns large-9 small-12">
+        <%= link_to "Ali-Bon-Bon", root_path %>
+        <small>Who Can Say No To Dessert?</small>
+      </h2>
+    </section>
     <!-- FOUNDATION STYLING FOR DROP DOWN MENUS -->
-    <nav>
-      <span>
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li>
-            <a class="dropdown-1">Browse</a>
-            <ul class="menu">
-              <li><a href="/products">All Products</a></li>
-              <li>
-                <a href="">All Products By Category</a>
-              </li>
-              <li>
-                <a href="">All Products By Baker</a>
-              </li>
-            </ul>
-          </li>
-          <div class= "button-group float-right">
-            <a class= "hollow button">Sign Up</a>
-            <a class= "hollow button">Log In</a>
-            <a class= "hollow button">My Cart</a>
-          </div>
-        </ul>
-      </span>
-    </nav>
-  </header>
+    <div id="nav bar">
+      <h3 class= "menu toggle"><i class= "fa fa-bars"></i></h3>
+      <nav>
+        <div>
+          <ul class="menu toggle" data-dropdown-menu>
+            <li>
+              <a class="dropdown-1">Browse</a>
+              <ul class="menu">
+                <li><a href="/products">All Products</a></li>
+                <li>
+                  <a href="">All Products By Category</a>
+                </li>
+                <li>
+                  <a href="">All Products By Baker</a>
+                </li>
+              </ul>
+            </li>
+            <div class= "button-group float-right">
+              <a class= "hollow button">Sign Up</a>
+              <a class= "hollow button">Log In</a>
+              <a class= "hollow button">My Cart</a>
+            </div>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-  <%= yield %>
+    <%= yield %>
 
-</body>
-</html>
+  </body>
+  </html>
