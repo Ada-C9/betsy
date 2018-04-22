@@ -1,6 +1,6 @@
 <h3>Order Confirmation</h3>
 <p>Order number: <%= @order.id %></p>
-<p>Total price: <%# @order.total_price %></p>
+<p>Total price: $<%# @order.total_price %></p>
 <p>Date placed: <%= @order.updated_at %></p>
 <p>Current status: <%= @order.status %></p>
 
@@ -17,7 +17,7 @@
     <tr>
       <td><%= link_to order_item.product.name, product_path(order_item.product) %></td>
       <td><%= order_item.quantity %></td>
-      <td><%# order_item.subtotal %></td>
+      <td>$<%= order_item.subtotal %></td>
     </tr>
     <% end %>
   </tbody>

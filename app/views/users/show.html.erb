@@ -18,10 +18,10 @@
     <% @user.products.each do |product| %>
     <tr>
       <td><%= link_to product.name, product_path(product) %></td>
-      <td>$<%= product.price %></td>
+      <td>$<%= price_in_dollar(product.price) %></td>
       <td><%= product.stock %></td>
-      <td>Update(to be linked)</td>
-      <td>Retire(to be linked, if clicked, hide product)</td>
+      <td><span class="button">Update</span></td>
+      <td><span class="button">Retire</span></td>
     </tr>
     <% end %>
   </tbody>
@@ -43,16 +43,16 @@
     <% @user.products.each do |product| %>
       <% product.order_items.each do |order_item| %>
         <tr>
-          <td><%= order_item.order.id %>(to be linked)</td>
+          <td><%= link_to order_item.order.id, order_path(order_item.product.id) %></td>
           <td><%= order_item.order.status %></td>
           <td><%= link_to order_item.product.name, product_path(order_item.product.id) %></td>
           <td><%= order_item.quantity %></td>
-          <td>$<%= order_item.product.price * order_item.quantity %>(replaced with model method)</td>
+          <td>$<%= order_item.subtotal %></td>
           <td>
             <% if order_item.is_shipped %>
               <span>Shipped</span>
             <% else %>
-              <span class="button">Mark Shipped</span>(to be linked)
+              <span class="button">Mark Shipped</span>
             <% end %>
           </td>
         </tr>

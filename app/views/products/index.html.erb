@@ -23,11 +23,11 @@
   <li class="product_info">
     <h4><%= product.name %></h4>
     <% if product.photo_url.length > 0 %>
-      <%= link_to image_tag(product.photo_url, alt: product.photo_url), product_path(product.id) %>
+      <%= link_to image_tag(product.photo_url, alt: product.name), product_path(product.id) %>
     <% else %>
       <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(product.id) %>
     <% end %>
-    <p>Price: $<%= product.price %></p>
+    <p>Price: $<%= price_in_dollar(product.price) %></p>
     <p><%= product.description %></p>
     <% if product.stock > 0 %>
       <p><span class="color_text"><%= product.stock %></span> in stock</p>
