@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  <%= favicon_link_tag asset_path('cake.png'), :rel => 'icon', :type =>  'image/png' %>
+  <title>Ali-Bon-Bon</title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
 
-  <body>
+<body>
+  <header class="page-header row">
+    <h2 class="columns large-9 small-12">
+      <%= link_to "Ali-Bon-Bon", root_path %>
+      <small>Who Can Say No To Dessert?</small>
+    </h2>
+    <!-- FOUNDATION STYLING FOR DROP DOWN MENUS -->
+    <nav>
+      <span>
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li>
+            <a class="dropdown-1">Browse</a>
+            <ul class="menu">
+              <li><a href="/products">All Products</a></li>
+              <li>
+                <a href="">All Products By Category</a>
+              </li>
+              <li>
+                <a href="">All Products By Baker</a>
+              </li>
+            </ul>
+          </li>
+          <div class= "button-group float-right">
+            <a class= "hollow button">Sign Up</a>
+            <a class= "hollow button">Log In</a>
+            <a class= "hollow button">My Cart</a>
+          </div>
+        </ul>
+      </span>
+    </nav>
+  </header>
 
-    <%= yield %>
+  <%= yield %>
 
-  </body>
+</body>
 </html>
