@@ -41,11 +41,12 @@
           </ul>
           <div class="user-nav columns large-3 small-12 float-right">
             <a class= "hollow button">My Cart</a>
-            <% if @login_user %>
-            <%= link_to "Logged in as #{@login_user.username}", user_path(@login_user), class: "button" %>
-            <%= link_to "Log Out", logout_path, method: :post, class: "hollow button" %>
+
+            <% if session[:merchant_id] %>
+            <%= link_to "Log Out", logout_path, method: :delete, class: "hollow button" %>
+            <%= link_to "Logged in as #{Merchant.find(session[:merchant_id]).username}", merchant_path(session[:merchant_id]), class: "button" %>
             <% else %>
-            <%= link_to "Log In", "/auth/github", class: "hollow button" %>
+            <%= link_to "Log In", "/auth/github", class: "warning button" %>
             <% end %>
           </div>
         </div>
