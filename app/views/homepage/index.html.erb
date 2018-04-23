@@ -51,11 +51,9 @@
   <section class="popular">
     <h3>Popular</h3>
     <ul>
-      <li>#1 product</li>
-      <li>#2 product</li>
-      <li>#3 product</li>
-      <li>#4 product</li>
-      <li>#5 product</li>
+      <% @popular_products.each do |popular_products| %>
+        <%= link_to image_tag(popular_products.photo_url, alt: popular_products.name), product_path(popular_products.id) %>
+      <% end %>
     </ul>
   </section>
 
