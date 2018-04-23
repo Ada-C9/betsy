@@ -1,5 +1,5 @@
 <h1>Carousel: To be customized</h1>
-<!-- <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
   <div class="orbit-wrapper">
     <div class="orbit-controls">
       <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
@@ -38,7 +38,7 @@
     <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
     <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
   </nav>
-</div> -->
+</div>
 
 <section class="list-container">
 
@@ -56,33 +56,27 @@
   <section class="outfits">
     <h3>Outfits</h3>
     <ul>
-      <li>outfit 1</li>
-      <li>outfit 2</li>
-      <li>outfit 3</li>
-      <li>outfit 4</li>
-      <li>outfit 5</li>
+      <% @outfits.each do |outfit| %>
+        <%= link_to image_tag(outfit.photo_url, alt: outfit.name), product_path(outfit.id) %>
+      <% end %>
     </ul>
   </section>
 
   <section class="toys">
     <h3>Toys</h3>
     <ul>
-      <li>toy 1</li>
-      <li>toy 2</li>
-      <li>toy 3</li>
-      <li>toy 4</li>
-      <li>toy 5</li>
+      <% @toys.each do |toy| %>
+        <%= link_to image_tag(toy.photo_url, alt: toy.name), product_path(toy.id) %>
+      <% end %>
     </ul>
   </section>
 
   <section class="categories">
     <h4>Categories</h4>
     <ul>
-      <li>category 1</li>
-      <li>category 2</li>
-      <li>category 3</li>
-      <li>category 4</li>
-      <li>category 5</li>
+      <% @categories.each do |category| %>
+        <li><%= link_to category.name, category_products_path(category.id) %></li>
+      <% end %>
     </ul>
   </section>
 
