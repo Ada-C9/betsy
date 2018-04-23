@@ -68,6 +68,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def set_status
+    @product = Product.find_by(id: params[:id])
+    @product.toggle_is_active
+    @product.save
+    redirect_back fallback_location: user_path(@product.user)
+  end
+
 private
 
   def product_params
