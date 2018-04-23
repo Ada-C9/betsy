@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(product_id: params[:product_id], rating: params[:rating], comment: params[:comment])
+    @review = Review.new(product_id: params[:review][:product_id], rating: params[:review][:rating], comment: params[:review][:comment])
     if @review.save
       flash[:status] = :success
       flash[:result_text] = "Successfully created a review"
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
   end
 
   private
-  def review_params
-    return params.require([:review][:rating], [:review][:product_id]).permit([:review][:comment])
-  end
+  # def review_params
+  #   return params.require([:review][:rating], [:review][:product_id]).permit([:review][:comment])
+  # end
 end
