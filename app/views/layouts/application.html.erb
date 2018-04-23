@@ -44,7 +44,11 @@
         <div class= "top-bar-right">
           <ul class= "menu">
             <li>
-              <a>My Cart</a>
+              <% if session[:cart_id] %>
+                <%= link_to "My Cart", cart_path(session[:cart_id]) %>
+              <% else %>
+                <a class= "hollow button">My Cart</a>
+              <% end %>
             </li>
             <li>
               <% if @login_user %>
@@ -59,6 +63,17 @@
       </div>
     </nav>
   </header>
+
+  <div class="user-nav columns large-3 small-12 float-right">
+    <a class= "hollow button">My Cart</a>
+    <% if @login_user %>
+    <%= link_to "Logged in as #{@login_user.username}", user_path(@login_user), class: "button" %>
+    <%= link_to "Log Out", logout_path, method: :post, class: "hollow button" %>
+    <% else %>
+    <%= link_to "Log In", "/auth/github", class: "hollow button" %>
+    <% end %>
+  </div>
+
   <main>
 
     <%= yield %>
