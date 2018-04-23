@@ -39,7 +39,11 @@
               </ul>
             </li>
             <div class= "button-group">
-              <%= link_to_unless session[:cart_id].nil?, "My Cart", cart_path(session[:cart_id]), class: "hollow button" %>
+              <% if session[:cart_id] %>
+                <%= link_to "My Cart", cart_path(session[:cart_id], class: "hollow button") %>
+              <% else %>
+                <a class= "hollow button">My Cart</a>
+              <% end %>
               <a class= "hollow button">Sign Up</a>
               <a class= "hollow button">Log In</a>
             </div>

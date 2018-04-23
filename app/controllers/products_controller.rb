@@ -13,5 +13,6 @@ class ProductsController < ApplicationController
     head :not_found unless @product
 
     @cartitem = Cartitem.new
+    @review = Review.new
   end
 end
