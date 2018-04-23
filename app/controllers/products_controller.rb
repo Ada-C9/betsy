@@ -70,19 +70,21 @@ class ProductsController < ApplicationController
 
   def add_to_cart
     if session[:cart_order_id].nil? #If there is no cart yet
-      @order = Order.new_cart
+      @order = Order.create status: "pending"
+      session[:cart_order_id] = @order.id
       if @order.save
         flash[:status] = :success
         flash[:result_text] = "Welcome to the Puppsy shopping experience!"
-        # redirect_to: Cart
       else
         flash[:status] = :failure
+        raise
         flash[:result_text] = "There is a problem with initializing shopping cart."
         flash[:mssages] = @order.errors.messages
         #some redirect
       end
-    elsif @order = Order.find(session[:cart_order_id]
+    elsif @order = Order.find(session[:cart_order_id])
       flash[:status] = :success
+      raise
       #some redirect
     else
       flash[:status] = :failure
@@ -98,18 +100,16 @@ class ProductsController < ApplicationController
       flash[:messages] = @product.errors.messages
       render :index, status: :bad_request
     end
-    @order_item = OrderItem.new
-    @order_item.product = @product.id
-    @order_item.order = @order.id
+    @order_item = OrderItem.create product_id: @product.id, order_id: @order.id, quantity: 1, is_shipped: "false"
     if @order_item.save
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} has been successfully added to your cart!"
       redirect_to product_path(@product.id)
     else
       flash[:status] = :failure
-      flash[:result_text] = "Could not create this product."
+      flash[:result_text] = "Could not add this product to your cart."
       flash[:messages] = @product.errors.messages
-      render :new, status: :bad_request
+      #render :new, status: :bad_request
     end
   end
 

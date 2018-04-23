@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   end
 
   def self.new_cart
+    raise
     @order = Order.create
+    raise
     session[:cart_order_id] = @order.id
   end
 
