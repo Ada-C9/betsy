@@ -32,7 +32,7 @@
     </section>
 
     <h4>Reviews</h4>
-    <% @product.reviews.each do |review| %>
+    <% @product.reviews.reverse.each do |review| %>
     <section class="existing-reviews">
       <p>
         <% review.rating.times do |i| %>

@@ -20,11 +20,14 @@
         <span class="button">Home</span>
         <%= link_to "All Products", products_path, class: "button"  %>
         <span class="button">Cart</span>
-        <% if session[:user_id] %>
+        <div class="float-right">
+          <% if session[:user_id] %>
+          <span class="button">Account Page</span>
           <%= link_to "Log out", logout_path, method: :delete, class: "button"  %>
-        <% else %>
+          <% else %>
           <%= link_to "Login with Github", "/auth/github", class: "button" %>
-        <% end %>
+          <% end %>
+        </div>
       </nav>
     </header>
 
