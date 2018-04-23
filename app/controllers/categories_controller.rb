@@ -10,4 +10,3 @@ class CategoriesController < ApplicationController
     end
   end
 end
-# TODO: TESTING FOR THIS CONTROLLER
