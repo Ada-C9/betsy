@@ -6,12 +6,14 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.cart_id = session[:cart_id]
+
     if @order.save
 
       flash[:status] = :success
       flash[:result_text] = "Your order has been placed !"
       flash[:order_number] = "Order number: #{@order.id}"
-      session[:id] = nil
+      session[:cart_id] = nil
       redirect_to order_path(@order)
     else
 
