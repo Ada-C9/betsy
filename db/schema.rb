@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420184759) do
+ActiveRecord::Schema.define(version: 20180423191848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20180420184759) do
     t.string "email"
     t.string "creditcard"
     t.string "name_on_card"
-    t.date "expiration_date"
     t.string "cvv"
     t.string "mail_address"
     t.string "billing_address"
@@ -64,6 +63,8 @@ ActiveRecord::Schema.define(version: 20180420184759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "cart_id"
+    t.date "expiration_month"
+    t.date "expiration_year"
     t.index ["cart_id"], name: "index_orders_on_cart_id"
   end
 
