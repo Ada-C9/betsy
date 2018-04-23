@@ -21,7 +21,16 @@
       <td>$<%= price_in_dollar(product.price) %></td>
       <td><%= product.stock %></td>
       <td><%= link_to "Update", edit_product_path(product.id), class: "button" %></td>
-      <td><span class="button">Retire</span></td>
+      <td>
+        <% if product.is_active %>
+          <!-- <span class="button">Retire</span> -->
+          <%= link_to "Retire", product_set_status_path(product.id), method: :put, class: "button" %>
+        <% else %>
+          <!-- <span class="button">Reactivate</span> -->
+          <%= link_to "Reactivate", product_set_status_path(product.id), method: :put, class: "button" %>
+        <% end %>
+      </td>
+
     </tr>
     <% end %>
   </tbody>
