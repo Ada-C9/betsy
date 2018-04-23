@@ -1,9 +1,11 @@
 class CartsController < ApplicationController
+
   before_action :find_cart, only: [:show]
 
   # may not need this eventually
   def create
     @cart = Cart.new
+
 
     if @cart.save
       flash[:status] = :success

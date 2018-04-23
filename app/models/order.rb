@@ -18,7 +18,7 @@ class Order < ApplicationRecord
     tax = cart.subtotal * tax_value
    return tax
   end
-
+#Sorry it is all double but need to dry it
   def total
     tax_value = 0.09
     cart = Cart.find(id: self.cart_id)
