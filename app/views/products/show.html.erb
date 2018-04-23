@@ -1,8 +1,18 @@
 
-<h2>Details for Product <%= @product.name %></h2>
+<h2><%= @product.name %></h2>
+<p>Seller: <%= @product.merchant.username %></p>
+<p>Description: <%= @product.description %></p>
 <p>Price: <%= display_dollars(@product.price) %></p>
-<p>Seller <%= @product.merchant.username %></p>
-<p>Details: <%= @product.description %></p>
+
+<%= form_for @cartitem do |f|%>
+  <%= f.hidden_field :product_id, :value => @product.id %>
+
+  <%= f.label :quantity %>
+  <%= f.number_field(:quantity, in: 1..@product.stock) %>
+
+  <%= f.submit("Add to cart") %>
+<% end %>
+
 <p>
   Take a Look:
   <div class= "image-container">
@@ -11,7 +21,21 @@
 </p>
 
 <p>Average Rating: <%= @product.average_rating %></p>
-<%= link_to "Write a review", new_product_review_path(@product) %>
+
+<h3>Write a Review</h3>
+<%= form_for @review do |f| %>
+
+  <%= f.hidden_field :product_id, :value => @product.id %>
+
+  <%= f.label :rating %>
+  <%= f.number_field :rating %>
+
+  <%= f.label :comment %>
+  <%= f.text_field :comment %>
+
+  <%= f.submit class: "hollow button" %>
+<% end %>
+
 <h4>Reviews:</h4>
 <% @product.reviews.each do |review| %>
   <p>Review created at <%= review.created_at %></p>

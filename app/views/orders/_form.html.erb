@@ -3,20 +3,25 @@
 
 <%= form_for @order do |t|%>
 
+  <%= t.label :name %>
+  <%= t.text_field :name %>
+
   <%= t.label :email %>
   <%= t.email_field :email%>
 
   <%= t.label :name_on_card%>
   <%= t.text_field :name_on_card%>
 
-  <%= t.label :creditcard%>
+  <%= t.label :creditcard, maxlength: 16 %>
   <%= t.number_field :creditcard%>
 
-  <%= t.label :expiration_date%>
-  <%= select_month(Date.today, use_month_numbers: true)%>
-  <%= select_year(Date.today, start_year: 2018, end_year: 2030)%>
+  <%= t.label :expiration_month%>
+  <%= t.date_select :expiration_month, :discard_day => true, :discard_year => true, :use_month_numbers => true %>
 
-  <%= t.label :cvv%>
+  <%= t.label :expiration_year%>
+  <%= t.date_select :expiration_year, :discard_day => true, :discard_month => true, :start_year => Date.today.year, :end_year => (Date.today.year+10) %>
+
+  <%= t.label :cvv, maxlength: 4 %>
   <%= t.number_field :cvv%>
 
   <%= t.label :mail_address%>
@@ -27,6 +32,8 @@
 
   <%= t.label :zipcode%>
   <%= t.number_field :zipcode%>
+
+  <%= t.hidden_field :status, :value => "completed" %>
 
   <%= t.submit "Place Order", class: "button"%>
 <%end%>
