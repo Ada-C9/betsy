@@ -1,6 +1,5 @@
 class CartController < ApplicationController
 
-
   def new
     if session[:cart_order_id].nil? #If there is no cart yet
         @order = Order.create status: "pending"
@@ -19,11 +18,39 @@ class CartController < ApplicationController
     redirect_to cart_path
   end
 
-  def create
+  def access_cart
+    if @order = Order.find(id: session[:cart_order_id])
+      @cart = @order
+    else
+      @cart = Cart.create
+    end
   end
 
+  def show
+    @cart = Order.find(session[:cart_order_id])
+    render :cart
+  end
+
+  def create
+    @cart = Order.new status: "pending"
+    session[:cart_order_id] = @order.id
+    if @cart.save
+      flash[:status] = :success
+      flash[:result_text] = "Welcome to the Puppsy shopping experience!"
+    else
+      flash[:status] = :failure
+      raise
+      flash[:result_text] = "We weren't able to create your shopping cart."
+      flash[:mssages] = @order.errors.messages
+      #some redirect, status: :bad_request
+    end
+  end
+
+  def add_to_cart_X
+    access_cart
 
 
+  end
 
   def add_to_cart
     if session[:cart_order_id].nil? #If there is no cart yet
