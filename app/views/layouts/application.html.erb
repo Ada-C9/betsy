@@ -26,20 +26,21 @@
       <nav>
         <div class= "top-bar">
           <div class= "top-bar-left">
-          <ul class="menu toggle" data-dropdown-menu>
-            <li>
-              <a class="dropdown-1">Browse</a>
-              <ul class="menu">
-                <li><a href="/products">All Products</a></li>
-                <li>
-                  <a href="/categories">All Products By Category</a>
-                </li>
-                <li>
-                  <a href="/merchants">All Products By Baker</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+            <ul class="menu toggle" data-dropdown-menu>
+              <li>
+                <a class="dropdown-1">Browse</a>
+                <ul class="menu">
+                  <li><a href="/products">All Products</a></li>
+                  <li>
+                    <a href="/categories">All Products By Category</a>
+                  </li>
+                  <li>
+                    <a href="/merchants">All Products By Baker</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
 
           <div class="user-nav columns large-3 small-12 float-right">
 
@@ -57,45 +58,25 @@
             <% end %>
 
           </div>
-
         </div>
-        <!-- <div class= "top-bar-right">
-          <ul class= "menu">
-            <li>
-              <% if session[:cart_id] %>
-                <%= link_to "My Cart", cart_path(session[:cart_id]) %>
-              <% else %>
-                <a class= "hollow button">My Cart</a>
-              <% end %>
-            </li>
-            <li>
-              <% if @login_user %>
-              <%= link_to "Logged in as #{@login_user.username}", user_path(@login_user), class: "float-right" %>
-              <%= link_to "Log Out", logout_path, method: :post, class: "hollow button" %>
-              <% else %>
-              <%= link_to "Log In", "/auth/github", class: "float-right" %>
-              <% end %>
-            </li>
-          </ul>
-        </div> -->
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
 
   <% if flash[:result_text] or flash[:messages] %>
   <section class="status <%= flash[:status] %>">
     <h3><%= flash[:status] == :failure ? "A problem occurred: " : "" %><%= flash[:result_text] %></h3>
     <% if flash[:messages] %>
-      <ul>
-        <% flash[:messages].each do |name, problems| %>
-          <% problems.each do |problem| %>
-            <li><%= name %>: <%= problem %></li>
-          <% end %>
-        <% end %>
-      </ul>
+    <ul>
+      <% flash[:messages].each do |name, problems| %>
+      <% problems.each do |problem| %>
+      <li><%= name %>: <%= problem %></li>
+      <% end %>
+      <% end %>
+    </ul>
     <% end %>
   </section>
-<% end %>
+  <% end %>
 
   <main>
 
