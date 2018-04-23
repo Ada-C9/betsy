@@ -1,66 +1,186 @@
 {
   "MiniTest": {
     "coverage": {
-<<<<<<< HEAD
-      "/Users/carolinenardi/ada/week_10/betsy/app/helpers/application_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/helpers/cartitems_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/helpers/cartitems_helper.rb": [
         1,
         null
       ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/helpers/carts_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/helpers/carts_helper.rb": [
         1,
         null
       ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/helpers/categories_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/helpers/categories_helper.rb": [
         1,
         null
       ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/helpers/products_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/helpers/orders_helper.rb": [
         1,
         null
       ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/helpers/reviews_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/helpers/products_helper.rb": [
         1,
         null
       ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/helpers/sessions_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/helpers/reviews_helper.rb": [
         1,
         null
       ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/models/cart.rb": [
-=======
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/helpers/application_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/helpers/sessions_helper.rb": [
         1,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/helpers/cartitems_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/controllers/cartitems_controller.rb": [
         1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        3,
+        null,
+        3,
+        null,
+        null,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/helpers/carts_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/controllers/application_controller.rb": [
         1,
+        1,
+        null,
+        null,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/helpers/categories_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/controllers/carts_controller.rb": [
         1,
+        1,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        2,
+        2,
+        null,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/helpers/products_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/controllers/categories_controller.rb": [
         1,
+        1,
+        2,
+        null,
+        null,
+        1,
+        2,
+        2,
+        1,
+        null,
+        null,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/helpers/reviews_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/controllers/orders_controller.rb": [
         1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/helpers/sessions_helper.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/controllers/products_controller.rb": [
         1,
+        null,
+        1,
+        null,
+        1,
+        2,
+        null,
+        null,
+        null,
+        null,
+        1,
+        2,
+        2,
+        1,
+        null,
+        null,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/reviews_controller.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/controllers/reviews_controller.rb": [
         1,
         1,
         2,
@@ -97,70 +217,60 @@
         null,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/application_controller.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/controllers/sessions_controller.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        2,
+        null,
+        2,
+        1,
         1,
         1,
         null,
         1,
+        1,
         null,
+        2,
+        null,
+        null,
+        0,
+        null,
+        null,
+        2,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
         0,
         null,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/models/review.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/models/review.rb": [
         1,
         1,
         null,
         1,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/models/application_record.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/models/product.rb": [
->>>>>>> products_reviews_categories
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/models/product.rb": [
         1,
         1,
         1,
         1,
-<<<<<<< HEAD
-        null
-      ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/models/application_record.rb": [
-        1,
-=======
         null,
         1,
         null,
         1,
-        1,
-        null,
-        null
-      ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/models/category.rb": [
->>>>>>> products_reviews_categories
-        1,
-        null
-      ],
-<<<<<<< HEAD
-      "/Users/carolinenardi/ada/week_10/betsy/app/models/cartitem.rb": [
-        1,
-        1,
-=======
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/models/order.rb": [
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
->>>>>>> products_reviews_categories
         1,
         null,
         1,
@@ -168,39 +278,61 @@
         null,
         null
       ],
-<<<<<<< HEAD
-      "/Users/carolinenardi/ada/week_10/betsy/app/models/category.rb": [
-=======
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/models/cartitem.rb": [
-        1,
->>>>>>> products_reviews_categories
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/models/category.rb": [
         1,
         1,
         null,
         1,
         null
       ],
-<<<<<<< HEAD
-      "/Users/carolinenardi/ada/week_10/betsy/app/models/merchant.rb": [
-=======
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/models/merchant.rb": [
->>>>>>> products_reviews_categories
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/models/order.rb": [
         1,
         1,
         null,
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/models/cartitem.rb": [
+        1,
+        1,
+        1,
+        null,
         1,
         null,
         1,
         0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         0,
-        0,
+        null,
+        null,
+        null
+      ],
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/models/merchant.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
         null,
         0,
         null,
@@ -208,289 +340,45 @@
         null,
         null
       ],
-<<<<<<< HEAD
-      "/Users/carolinenardi/ada/week_10/betsy/app/models/order.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/models/cart.rb": [
+        1,
+        1,
         1,
         1,
         null,
         1,
-=======
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/models/cart.rb": [
->>>>>>> products_reviews_categories
-        1,
-        1,
-        1,
-        null
-      ],
-<<<<<<< HEAD
-      "/Users/carolinenardi/ada/week_10/betsy/app/models/product.rb": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-=======
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/mailers/application_mailer.rb": [
         0,
         0,
-        0,
-        0
-      ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/jobs/application_job.rb": [
-        0,
-        0
-      ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/cartitems_controller.rb": [
-        0,
-        0,
->>>>>>> products_reviews_categories
-        null,
         0,
         null,
-<<<<<<< HEAD
-        1,
+        null,
         0,
         null,
         null
       ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/models/review.rb": [
-        1,
-        1,
-=======
-        0,
-        0,
-        0,
-        0,
-        0,
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/mailers/application_mailer.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/carts_controller.rb": [
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/jobs/application_job.rb": [
         0,
-        0,
-        0,
-        0,
->>>>>>> products_reviews_categories
-        null,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
+        0
+      ],
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/channels/application_cable/connection.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/categories_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null
-      ],
-<<<<<<< HEAD
-      "/Users/carolinenardi/ada/week_10/betsy/app/channels/application_cable/channel.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/channels/application_cable/connection.rb": [
-=======
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/products_controller.rb": [
-        0,
-        null,
-        0,
-        null,
-        0,
-        0,
-        null,
-        null,
-        0,
-        null,
-        0,
-        0,
-        0,
->>>>>>> products_reviews_categories
-        0,
-        0,
-        0,
-        0
-      ],
-<<<<<<< HEAD
-      "/Users/carolinenardi/ada/week_10/betsy/app/controllers/application_controller.rb": [
-        0,
-        0,
-        null,
-        0,
-        null,
-        0,
-        0,
-        0
-      ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/controllers/cartitems_controller.rb": [
-        0,
-        0,
-        null,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/controllers/carts_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/controllers/categories_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/controllers/products_controller.rb": [
-        0,
-        0,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/controllers/reviews_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/controllers/sessions_controller.rb": [
-=======
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/sessions_controller.rb": [
->>>>>>> products_reviews_categories
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-<<<<<<< HEAD
-      "/Users/carolinenardi/ada/week_10/betsy/app/jobs/application_job.rb": [
-        0,
-        0
-      ],
-      "/Users/carolinenardi/ada/week_10/betsy/app/mailers/application_mailer.rb": [
-=======
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/channels/application_cable/connection.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/channels/application_cable/channel.rb": [
->>>>>>> products_reviews_categories
+      "/Users/winifredirarrazavaloehninger/Ada/classwork/alibonbon/betsy/app/channels/application_cable/channel.rb": [
         0,
         0,
         0,
         0
       ]
     },
-<<<<<<< HEAD
-    "timestamp": 1524335187
-=======
-    "timestamp": 1524445149
->>>>>>> products_reviews_categories
+    "timestamp": 1524455528
   }
 }

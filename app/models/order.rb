@@ -12,4 +12,19 @@ class Order < ApplicationRecord
   validates :status, presence: true
   validates :zipcode, presence: true
 
+  def order_tax
+    tax_value = 0.09
+    cart = Cart.find(id: self.cart_id)
+    tax = cart.subtotal * tax_value
+   return tax
+  end
+
+  def total
+    tax_value = 0.09
+    cart = Cart.find(id: self.cart_id)
+    total = (cart.subtotal * tax_value) + cart.subtotal
+   return total
+
+  end
+
 end

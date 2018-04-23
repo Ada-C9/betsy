@@ -4,15 +4,6 @@ class CartsController < ApplicationController
     @cart = Cart.new
   end
 
-  def update_create_cart
-    if session[:cart_id]
-      @cart = Cart.find_by(id: session[:cart_id])
-    else
-      @cart = Cart.new
-      session[:cart_id] = @cart.id
-    end
-  end
-
 
   def show
   end
