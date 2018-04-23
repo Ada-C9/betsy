@@ -21,7 +21,7 @@
   </tbody>
 </table>
 
-<% if @order.status == "paid" %>
+<% if @order.can_cancel? %>
   <span class="button">Cancel</span>
 <% end %>
 
