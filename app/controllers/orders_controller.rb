@@ -56,6 +56,12 @@ class OrdersController < ApplicationController
      end
   end
 
+  def cancel
+    @order = Order.find_by(id: params[:id])
+    @order.update(status: "cancelled")
+    redirect_back fallback_location: order_confirmation_path(@order)
+  end
+
   def destroy
     @order = Order.find_by(id: params[:id])
       if @order

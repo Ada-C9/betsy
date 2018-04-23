@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy", as: "logout"
 
   get 'orders/:id/confirmation', to: 'orders#confirmation', as: 'order_confirmation'
+  put 'orders/:id/cancel', to: 'orders#cancel', as: 'order_cancel'
   resources :orders
   resources :sessions, except: [:destroy]
   resources :order_items, only: [:update]

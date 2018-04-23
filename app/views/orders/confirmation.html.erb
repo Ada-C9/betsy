@@ -22,7 +22,8 @@
 </table>
 
 <% if @order.can_cancel? %>
-  <span class="button">Cancel</span>
+  <!-- <span class="button">Cancel</span> -->
+  <%= link_to "Cancel", order_cancel_path(@order.id), method: :put, class: "button" %>
 <% end %>
 
 <h4>Order Items</h4>
