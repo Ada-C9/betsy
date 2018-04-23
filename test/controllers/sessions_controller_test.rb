@@ -32,7 +32,6 @@ describe SessionsController do
     end
 
     it "does not log in with insufficient data and redirect to root path" do
-      skip
       merchant = Merchant.new(
         provider: "github",
         uid: 505,
@@ -45,9 +44,38 @@ describe SessionsController do
 
       login(merchant)
 
+      flash[:status].must_equal :failure
       Merchant.count.must_equal old_merchant_count
       must_redirect_to root_path
     end
 
+    it "does not log in if no auth hash" do
+      merchant = Merchant.new(
+        provider: "github",
+        email: "dada@test.org",
+        username: "whatever"
+      )
+
+      old_merchant_count = Merchant.count
+
+      login(merchant)
+
+      flash[:error].must_equal "Could not log in"
+      Merchant.count.must_equal old_merchant_count
+      must_redirect_to root_path
+    end
   end
+
+  describe "logout" do
+    it "logs out a login merchant" do
+      merchant = Merchant.first
+      login(merchant)
+
+      delete logout_path
+
+      session[:merchant_id].must_equal nil 
+    end
+  end
+
+
 end

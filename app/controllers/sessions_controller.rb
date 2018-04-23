@@ -7,8 +7,13 @@ class SessionsController < ApplicationController
 
       if @merchant.nil?
         @merchant = Merchant.build_from_github(auth_hash)
-        flash[:status] = :success
-        flash[:result_text] = "#{@merchant.username} successfully logged in as a new merchant"
+        if @merchant.id
+          flash[:status] = :success
+          flash[:result_text] = "#{@merchant.username} successfully logged in as a new merchant"
+        else
+          flash[:status] = :failure
+          flash[:result_text] = @merchant.errors.messages
+        end
       else
         flash[:status] = :success
         flash[:result_text] = "#{@merchant.username} successfully logged in as existing merchant"
