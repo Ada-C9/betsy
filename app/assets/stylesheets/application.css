@@ -27,3 +27,13 @@ h2 {
 .button-group {
   float: right;
 }
+header {
+  border-top-style:double;
+  border-bottom-style:double;
+  padding-top:5px;
+  padding-bottom:5px;
+  border-top-color:#7cbfcf;
+  border-bottom-color:#7cbfcf;
+  border-top-width:20px;
+  border-bottom-width:20px;
+}

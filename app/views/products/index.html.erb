@@ -25,20 +25,16 @@
       <td>
         <%= link_to product.name, product_path(product) %>
       </td>
-      <!-- TODO: NEEDS LINK FROM MERCHANT NAME TO MERCHANT -->
+      <!-- TODO: NEEDS LINK FROM MERCHANT NAME TO MERCHANT: Check w/Wenji -->
       <td>
         <%= link_to product.merchant.username, merchant_path(product) %>
       </td>
       <td>
-        <!-- FIXME: CHECK IF THIS IS VIABLE -->
+        <!-- TODO: Need a link to successfully created ids: Check w/Caroline and Wini -->
         <%= link_to Review.where(product_id: product.id).count %>
       </td>
-      <!-- TODO: PUT IN SOMETHING HERE FOR REVIEWS? -->
     </tr>
     <% end %>
   </tbody>
 </table>
 <%= will_paginate @products %>
-
-<!-- TODO: ADD NAVIGATION BUTTONS ? -->
-<!-- NOTE: VIEW NOT IN COMPLETE FORMATTING, TEMPORARY STATE -->
