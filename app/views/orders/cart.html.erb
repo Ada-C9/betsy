@@ -73,3 +73,10 @@
     <%# link_to "Empty Cart", order_path(@order.id), :data => {:confirm => 'Are you sure?'}, method: :delete, class: "button" %>
   <% end %>
 </section>
+
+<%
+=begin %>
+<%= button_to "Cancel Order", {:action =>"destroy", :controller => "cart" }, method: :delete, class: "button" %>
+<%
+=end
+%>

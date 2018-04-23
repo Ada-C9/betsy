@@ -7,7 +7,7 @@ class CartController < ApplicationController
 
   def access_cart
     if Order.find_by(id: session[:cart_order_id]).nil?
-      @cart = create
+      @cart = create_cart
     else
       @cart = Order.find(session[:cart_order_id])
     end
@@ -27,7 +27,7 @@ class CartController < ApplicationController
       flash[:status] = :failure
       flash[:result_text] = "Not enough inventory on-hand to complete your request."
     end
-    redirect_to cart_path
+    render "orders/cart"
   end
 
   def update
