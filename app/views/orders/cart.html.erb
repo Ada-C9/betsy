@@ -2,7 +2,7 @@
 
 <section class="order-items">
   <ul>
-    <% @order.order_items.each do |order_item| %>
+    <% @cart.order_items.each do |order_item| %>
       <li>
         <div class="product-photo">
           <% if order_item.product.photo_url.length > 0 %>
@@ -30,7 +30,7 @@
 </section>
 
 <section class="checkout-form">
-  <%= form_for @order do |f| %>
+  <%= form_for @cart do |f| %>
     <h4>Shipping Information</h4>
 
     <%= f.label :name %>

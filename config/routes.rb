@@ -4,13 +4,13 @@ Rails.application.routes.draw do
 
   get '/auth/github', as: 'github_login'
 
-  get '/cart', to: 'cart#show', as: "cart"
+  get '/cart', to: 'cart#access_cart', as: "cart"
 
 
 
   delete "/logout", to: "sessions#destroy", as: "logout"
 
-  post '/products/:id/add_to_cart', to: 'products#add_to_cart', as: 'add_to_cart'
+  post '/products/:id/add_to_cart', to: 'cart#add_to_cart', as: 'add_to_cart'
 
   get 'orders/:id/confirmation', to: 'orders#confirmation', as: 'order_confirmation'
 
