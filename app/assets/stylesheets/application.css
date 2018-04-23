@@ -18,6 +18,7 @@
 
 */
 body {
+  color: black;
   height: 100%;
   background-image: url("desserts.jpg");
 
@@ -33,20 +34,24 @@ body {
 body {
   font-family: 'Berkshire Swash';font-size: 22px;
 }
-h2 {
+
+h2.image-header {
   font-family: 'Berkshire Swash';font-size: 75px;
   text-align: center;
+  background-color: #c55df7
 }
 .button-group {
   float: right;
 }
 header {
+  color: black;
+  background-color: #3adb765c;
   border-top-style:double;
   border-bottom-style:double;
   padding-top:5px;
   padding-bottom:5px;
-  border-top-color:#7cbfcf;
-  border-bottom-color:#7cbfcf;
+  border-top-color:inherit;
+  border-bottom-color:inherit;
   border-top-width:20px;
   border-bottom-width:20px;
 }

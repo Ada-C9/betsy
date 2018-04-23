@@ -1,11 +1,6 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-// body small {
-//   color: slategrey;
-//   margin-left: auto;
-//   margin-right: auto;
-// }
 
 header {
   max-width: 100%;
@@ -15,10 +10,11 @@ header {
   margin-bottom: 60px;
   margin-left: auto;
   margin-right: auto;
-  color: rgb(232, 204, 13);
+  color: black;
 }
-header.small{
 
+h2 {
+  font-family: 'Berkshire Swash';font-size: 45px;
 }
 
 .orbit {
@@ -51,8 +47,8 @@ em.current {
   border-radius: 5px;
 }
 .product_pic {
-    border: 1px solid rgba(138, 84, 164, 0.59); /* Gray border */
-    border-radius: 4px;  /* Rounded border */
-    padding: 5px; /* Some padding */
-    width: 150px; /* Set a small width */
+  border: 1px solid rgba(138, 84, 164, 0.59); /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
 }
