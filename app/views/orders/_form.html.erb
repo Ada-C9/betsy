@@ -1,0 +1,37 @@
+<section class="order-form">
+<div class="order-form">
+  <%= form_for @order do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :name_on_card, "Name on Credit Card" %>
+    <%= f.text_field :name_on_card %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+
+    <%= f.label :street_address %>
+    <%= f.text_field :street_address %>
+
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+
+    <%= f.label :zip %>
+    <%= f.number_field :zip %>
+
+    <%= f.label :cc_num, "Credit Card Number" %>
+    <%= f.number_field :cc_numb %>
+
+    <%= f.label :cc_expiration, "Expiration Date" %>
+    <%= f.date_select :cc_expiration %>
+
+    <%= f.label :cvv, "Credit Card CCV" %>
+    <%= f.number_field :cvv %>
+
+    <%= f.submit "Complete Payment", class: "button" %>
+  <% end %>
+  </div>
+</section>
