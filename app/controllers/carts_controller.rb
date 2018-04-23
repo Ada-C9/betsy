@@ -1,9 +1,5 @@
 class CartsController < ApplicationController
   before_action :find_cart
-  def new
-    @cart = Cart.new
-  end
-
 
   def show
   end
