@@ -5,8 +5,9 @@ class Cartitem < ApplicationRecord
   validates :quantity, presence: true, numericality: {only_integer: true, greater_than: 0}
 
   def subtotal
-    unit_price = (self.product.price.to_f / 100)
-    return (unit_price * self.quantity).round(2)
+    unit_price = self.product.price
+    subtotal = unit_price * self.quantity
+    return subtotal
   end
 
 end

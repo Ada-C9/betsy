@@ -5,12 +5,11 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find_by(id: params[:id])
-    if @review == nil
-      head :not_found unless @review
-    end
+    head :not_found unless @review
   end
 
   def new
+    @product = Product.find_by(id: params[:product_id])
     @review = Review.new
   end
 
@@ -18,11 +17,11 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     if @review.save
       flash[:status] = :success
-      flash[:result_text] = "Successfully created #{@review.singularize} #{@review.id}"
-      redirect_to reviews_path(@review)
+      flash[:result_text] = "Successfully created a review"
+      redirect_to product_path(@review.product_id)
     else
       flash[:status] = :failure
-      flash[:result_text] = "Could not create #{@review.singularize}"
+      flash[:result_text] = "Could not create a review"
       flash[:messages] = @review.errors.messages
       render :new, status: :bad_request
     end
@@ -30,6 +29,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:rating).permit(:comment)
+    return params.require( :review => [:rating]).permit( :review => [:comment] )
   end
 end

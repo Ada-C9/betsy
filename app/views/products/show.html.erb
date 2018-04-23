@@ -1,9 +1,7 @@
-<h2>What's In The Oven:</h2>
-<p>
-  Name: <%= @product.name %>
-</p>
-<p>Price: $<%= (@product.price / 100.00) %></p>
-<p>Seller: <%= @product.merchant.username %></p>
+
+<h2>Details for Product <%= @product.name %></h2>
+<p>Price: <%= display_dollars(@product.price) %></p>
+<p>Seller <%= @product.merchant.username %></p>
 <p>Details: <%= @product.description %></p>
 <p>
   Take a Look:
@@ -11,6 +9,15 @@
     <%= image_tag(@product.image, alt: "bonbon-image", class: "bonbon-img") %>
   </div>
 </p>
-<!-- FIXME: Have an instructor show me how to fix the image spacing-->
+
+<p>Average Rating: <%= @product.average_rating %></p>
+<%= link_to "Write a review", new_product_review_path(@product) %>
+<h4>Reviews:</h4>
+<% @product.reviews.each do |review| %>
+  <p>Review created at <%= review.created_at %></p>
+  <p><%= review.comment %></p>
+  <p>Rating: <%= review.rating %></p>
+<% end %>
+<!-- FIXME: TEMPORARY STYLE, WILL FIX -->
 <!-- TODO: STYLE THE SHIT OUT OF THIS. -->
 <!-- TODO: ADD A "ADD TO CART" BUTTON AT BOTTOM OF PAGE -->
