@@ -27,12 +27,12 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by(id: params[:id])
-    render_404 unless @order
+    head :not_found unless @order
   end
 
   private
   def order_params
-    params.require(:order).permit(:email, :creditcard, :name_on_card, :expiration_date, :cvv, :mail_address, :billing_address, :zipcode, :status)
+    params.require(:order).permit(:name, :email, :creditcard, :name_on_card, :expiration_month, :expiration_year, :cvv, :mail_address, :billing_address, :zipcode, :status)
   end
 
 end

@@ -12,7 +12,7 @@
   <%= t.label :creditcard%>
   <%= t.number_field :creditcard%>
 
-  <%= t.label :expiration_date%>
+  <%= t.label :expiration_month%>
   <%= select_month(Date.today, use_month_numbers: true)%>
   <%= select_year(Date.today, start_year: 2018, end_year: 2030)%>
 
