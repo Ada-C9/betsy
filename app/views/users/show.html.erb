@@ -20,7 +20,7 @@
       <td><%= link_to product.name, product_path(product) %></td>
       <td>$<%= price_in_dollar(product.price) %></td>
       <td><%= product.stock %></td>
-      <td><span class="button">Update</span></td>
+      <td><%= link_to "Update", edit_product_path(product.id), class: "button" %></td>
       <td><span class="button">Retire</span></td>
     </tr>
     <% end %>
@@ -52,7 +52,7 @@
             <% if order_item.is_shipped %>
               <span>Shipped</span>
             <% else %>
-              <span class="button">Mark Shipped</span>
+              <%= link_to "Mark Shipped", order_item_path(order_item.id), method: :patch, class: "button" %>
             <% end %>
           </td>
         </tr>
