@@ -196,3 +196,8 @@ nav .float-right {
   margin: 0 150px;
   /* text-align: left; */
 }
+
+/********** footer **********/
+.fureign-keys {
+  height: 30px;
+}
