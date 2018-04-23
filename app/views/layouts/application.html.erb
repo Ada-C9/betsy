@@ -17,12 +17,11 @@
   <header>
     <section class="image header">
       <h2>
-        <%= link_to "Ali-Bon-Bon", root_path %>
-        <small>Who Can Say No To Dessert?</small>
+        <%= link_to "Ali-Bon-Bon : Treat Yo Self!", root_path %>
       </h2>
     </section>
     <!-- FOUNDATION STYLING FOR DROP DOWN MENUS -->
-    <div id="nav bar">
+    <div id="nav-bar center">
       <h3 class= "menu toggle"></h3>
       <nav>
         <div>
@@ -32,7 +31,7 @@
               <ul class="menu">
                 <li><a href="/products">All Products</a></li>
                 <li>
-                  <a href="">All Products By Category</a>
+                  <a href="/">All Products By Category</a>
                 </li>
                 <li>
                   <a href="">All Products By Baker</a>
@@ -40,16 +39,19 @@
               </ul>
             </li>
             <div class= "button-group">
+              <a class= "hollow button">My Cart</a>
               <a class= "hollow button">Sign Up</a>
               <a class= "hollow button">Log In</a>
-              <a class= "hollow button">My Cart</a>
             </div>
-          </ul>
-        </nav>
-      </div>
-    </header>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
 
     <%= yield %>
+  </main>
 
-  </body>
-  </html>
+</body>
+</html>

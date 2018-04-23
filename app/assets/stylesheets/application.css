@@ -22,5 +22,8 @@ body {
 }
 h2 {
   font-family: 'Berkshire Swash';font-size: 75px;
+  text-align: center;
 }
-  
+.button-group {
+  float: right;
+}
