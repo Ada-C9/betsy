@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   root 'products#homepage'
   get "/auth/:provider/callback", to: "sessions#login", as: "auth_callback"
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resources :reviews, only: [:index, :show, :new, :create]
+  end
   resources :merchants
   resources :orders
   resources :categories, only: [:index, :show]
   resources :carts
   resources :cartitems
   resources :reviews, only: [:index, :show, :new, :create]
+
 
 end

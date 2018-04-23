@@ -3,5 +3,14 @@
 <p>Seller <%= @product.merchant.username %></p>
 <p>Description: <%= @product.description %></p>
 <p>Take a Look: <%= @product.image %></p>
+
+<p>Average Rating: <%= @product.average_rating %></p>
+<%= link_to "Write a review", new_product_review_path(@product) %>
+<h4>Reviews:</h4>
+<% @product.reviews.each do |review| %>
+  <p>Review created at <%= review.created_at %></p>
+  <p><%= review.comment %></p>
+  <p>Rating: <%= review.rating %></p>
+<% end %>
 <!-- FIXME: TEMPORARY STYLE, WILL FIX -->
 <!-- TODO: STYLE THE SHIT OUT OF THIS. -->
