@@ -1,44 +1,40 @@
-<h3>Delicious Products</h3>
-<section class= "treats-table">
-  <table>
-    <thead>
-      <tr>
-        <th>
-          Name
-        </th>
-        <th>
-          Category
-        </th>
-        <th>
-          Sold By:
-        </th>
-        <th>
-          Reviews
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @products.each do |product| %>
-        <tr>
-          <td class= "product_pic">
-            <!-- <img src="url" --> IMAGE HERE
-          </td>
-          <td>
-            <%= link_to product.name, product_path(product) %>
-          </td>
-          <!-- TODO: NEEDS LINK FROM MERCHANT NAME TO MERCHANT -->
-          <td>
-            <%= link_to product.merchant.username, merchant_path(product) %>
-          </td>
-          <td>
-            <!-- FIXME: CHECK IF THIS IS VIABLE -->
-            <%= link_to Review.where(product_id: product.id).count %>
-          </td>
-          <!-- TODO: PUT IN SOMETHING HERE FOR REVIEWS? -->
-        </tr>
-        <% end %>
-    </tbody>
-  </table>
-  <!-- TODO: ADD NAVIGATION BUTTONS ? -->
-</section>
-<!-- NOTE: VIEW NOT IN COMPLETE FORMATTING, TEMPORARY STATE -->
+<h2>Delicious Products</h2>
+<table class= "treats-table">
+  <thead>
+    <tr>
+      <th>
+        Ooooo
+      </th>
+      <th>
+        Name:
+      </th>
+      <th>
+        Sold By:
+      </th>
+      <th>
+        Reviews:
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+    <tr>
+      <td>
+        <%= image_tag(product.image, alt: "bonbon-image", class: "product_pic") %>
+      </td>
+      <td>
+        <%= link_to product.name, product_path(product) %>
+      </td>
+      <!-- TODO: NEEDS LINK FROM MERCHANT NAME TO MERCHANT: Check w/Wenji -->
+      <td>
+        <%= link_to product.merchant.username, merchant_path(product) %>
+      </td>
+      <td>
+        <!-- TODO: Need a link to successfully created ids: Check w/Caroline and Wini -->
+        <%= link_to Review.where(product_id: product.id).count %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @products %>

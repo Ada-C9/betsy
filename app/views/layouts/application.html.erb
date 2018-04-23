@@ -21,7 +21,7 @@
       </h2>
     </section>
     <!-- FOUNDATION STYLING FOR DROP DOWN MENUS -->
-    <div id="nav-bar center">
+    <div id="nav-bar float-left">
       <h3 class= "menu toggle"></h3>
       <nav>
         <div>
@@ -38,20 +38,23 @@
                 </li>
               </ul>
             </li>
-            <div class= "button-group">
-              <a class= "hollow button">My Cart</a>
-              <a class= "hollow button">Sign Up</a>
-              <a class= "hollow button">Log In</a>
-            </div>
+          </ul>
+          <div class="user-nav columns large-3 small-12 float-right">
+            <a class= "hollow button">My Cart</a>
+            <% if @login_user %>
+            <%= link_to "Logged in as #{@login_user.username}", user_path(@login_user), class: "button" %>
+            <%= link_to "Log Out", logout_path, method: :post, class: "hollow button" %>
+            <% else %>
+            <%= link_to "Log In", "/auth/github", class: "hollow button" %>
+            <% end %>
           </div>
-        </ul>
+        </div>
       </nav>
-    </div>
-  </header>
-  <main>
+    </header>
+    <main>
 
-    <%= yield %>
-  </main>
+      <%= yield %>
+    </main>
 
-</body>
-</html>
+  </body>
+  </html>
