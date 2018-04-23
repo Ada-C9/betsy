@@ -6,7 +6,7 @@
 
   <% @category.products.each do |pro| %>
   <section class="detail-pro">
-    <%= image_tag(pro.image, alt: "middle-pro") %>
+    <%= image_tag(pro.image, alt: "middle-pro", class: "product-cat-img") %>
     <ul>
       <li><%= pro.name %></li>
       <li>Price: <%= pro.price %></li>

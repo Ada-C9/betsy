@@ -42,7 +42,14 @@
   justify-content: space-between;
 }
 
-.detail-pro .middle-pro {
-  width: 400px;
-  height: 320px;
+.detail-pro .product-cat-img {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  float: left;
+  width:  400px;
+  height: 400px;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
 }
