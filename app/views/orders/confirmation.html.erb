@@ -3,6 +3,10 @@
 <p>Total price: $<%= @order.total_cost %></p>
 <p>Date placed: <%= @order.updated_at %></p>
 <p>Current status: <%= @order.status %></p>
+<% if @order.status == "paid" %>
+  <span class="button">Cancel</span>
+<% end %>
+
 
 <table>
   <thead>

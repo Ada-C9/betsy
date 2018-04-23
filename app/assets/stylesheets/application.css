@@ -136,10 +136,9 @@ nav .button {
   height: 50px;
 }
 
-nav > :last-child {
+nav .float-right {
   margin-left: auto;
 }
-
 
 /********** product **********/
 .product-list {
