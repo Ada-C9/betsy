@@ -1,4 +1,10 @@
 <h3>List of Products</h3>
+<section class="search-box">
+  <%= form_tag(products_path, method: :get) do %>
+  <%= text_field_tag :term, nil, placeholder: "🔍" %>
+  <%= submit_tag 'Search', class: "button" %>
+  <% end %>
+</section>
 <% if @current_category %>
   <h4>Category: <%= @current_category.name %></h4>
 <% end %>
