@@ -19,4 +19,10 @@ class Merchant < ApplicationRecord
     end
   end
 
+  def show_four
+    if self.products.count > 4
+      return self.products.first(4)
+    end
+    return self.products
+  end
 end

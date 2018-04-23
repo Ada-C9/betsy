@@ -1,3 +1,48 @@
 // Place all the styles related to the Categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.all-categories {
+  margin: 30px 50px;
+  padding: 20px 50px;
+}
+
+.cate-display {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cate-display > li {
+  margin: 10px 40px;
+}
+
+.small-pro {
+  width: 250px;
+  height: 200px;
+}
+
+.small-pro:hover {
+  border-radius: 30%;
+}
+
+.all-categories h2 {
+  text-align: left;
+}
+
+.all-categories .pro-name {
+  width: 250px;
+  height: 120px;
+  text-align: center;
+}
+
+.show-category .detail-pro {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-pro .middle-pro {
+  width: 400px;
+  height: 320px;
+}

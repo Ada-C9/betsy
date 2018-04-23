@@ -24,7 +24,6 @@ puts "Added #{Merchant.count} merchant records"
 puts "#{merchant_failures.length} merchants failed to save"
 
 
-
 PRODUCT_FILE = Rails.root.join('db', 'seed_data', 'products.csv')
 puts "Loading raw product data from #{PRODUCT_FILE}"
 
@@ -52,7 +51,6 @@ puts "Added #{Product.count} product records"
 puts "#{product_failures.length} products failed to save"
 
 
-
 CATEGORY_FILE = Rails.root.join('db', 'seed_data', 'categories.csv')
 puts "Loading raw category data from #{CATEGORY_FILE}"
 
@@ -61,6 +59,9 @@ CSV.foreach(CATEGORY_FILE, :headers => true) do |row|
   category = Category.new
   category.id = row['id']
   category.name = row['name']
+
+  category.products += Product.all.sample(4)
+
 
   successful = category.save
   if !successful
@@ -73,6 +74,7 @@ end
 
 puts "Added #{Category.count} category records"
 puts "#{category_failures.length} categories failed to save"
+
 
 
 # Since we set the primary key (the ID) manually on each of the

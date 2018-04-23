@@ -1,0 +1,35 @@
+
+.all-merchants {
+  margin: 30px 50px;
+  padding: 20px 50px;
+}
+
+.merchant-display {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 80px;
+}
+
+.merchant-display > li {
+  margin: 10px 40px;
+}
+
+.middle-pro {
+  width: 250px;
+  height: 200px;
+}
+
+.middle-pro:hover {
+  border-radius: 30%;
+}
+
+.all-merchants h2 {
+  text-align: left;
+}
+
+.all-merchants .pro-name {
+  width: 250px;
+  height: 120px;
+  text-align: center;
+}

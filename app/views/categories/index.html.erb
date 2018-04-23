@@ -1,1 +1,18 @@
-<h3>Test Text</h3>
+<section class="all-categories">
+  <% @categories.each do |cate| %>
+  <h2>
+    <%= link_to cate.name, category_path(cate) %>
+  </h2>
+  <ul class="cate-display">
+    <li>
+    </li>
+    <% cate.products.each do |pro| %>
+    <li>
+      <h3 class="pro-name"><%= link_to pro.name, product_path(pro) %></h3>
+      <%= image_tag pro.image, alt: "bonbon-image", class: "small-pro" %>
+    </li>
+    <% end %>
+  </ul>
+
+  <% end %>
+</section>
