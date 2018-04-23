@@ -28,5 +28,18 @@ header.small{
   margin-right: auto;
 }
 body {
-background-image: url(desserts.jpg);
+  background-image: url(desserts.jpg);
+}
+.bonbon-img {
+  width: 900px;
+  height: 650px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
