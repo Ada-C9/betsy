@@ -41,6 +41,29 @@
         1,
         null,
         null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        2,
+        null,
         null
       ],
       "/Users/analisasutherland/Documents/Ada_Developers_Academy/Apr_2018/Week_4/betsy/app/controllers/application_controller.rb": [
@@ -271,6 +294,6 @@
         0
       ]
     },
-    "timestamp": 1524354849
+    "timestamp": 1524445149
   }
 }

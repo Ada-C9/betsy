@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :carts
   resources :cartitems
-  resources :reviews, only: [:index, :show]
+  resources :reviews, only: [:index, :show, :new, :create]
 
 end
