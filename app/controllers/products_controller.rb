@@ -9,8 +9,9 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by(id: params[:id])
-    if @product == nil
-      head :not_found unless @product
-    end
+    head :not_found unless @product
+
+    @cartitem = Cartitem.new
+    @review = Review.new
   end
 end
