@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :create]
   end
 
+  put 'products/:id/status', to: 'products#set_status', as: 'product_set_status'
   resources :products, only: [:index, :show, :edit, :update,] do
    resources :reviews, only: [:index, :new, :create]
  end

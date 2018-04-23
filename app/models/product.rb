@@ -11,4 +11,8 @@ class Product < ApplicationRecord
     (reviews.average(:rating) || 0).round(1)
   end
 
+  def toggle_is_active
+    self.is_active = !is_active
+  end
+
 end

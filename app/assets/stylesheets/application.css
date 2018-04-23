@@ -140,6 +140,12 @@ nav .float-right {
   margin-left: auto;
 }
 
+/********** homepage **********/
+.list-container {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr;
+}
+
 /********** product **********/
 .product-list {
   display: flex;

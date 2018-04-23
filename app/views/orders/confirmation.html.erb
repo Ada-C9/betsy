@@ -1,17 +1,36 @@
 <h3>Order Confirmation</h3>
-<p>Order number: <%= @order.id %></p>
-<p>Total price: $<%= @order.total_cost %></p>
-<p>Date placed: <%= @order.updated_at %></p>
-<p>Current status: <%= @order.status %></p>
-<% if @order.status == "paid" %>
-  <span class="button">Cancel</span>
-<% end %>
-
 
 <table>
   <thead>
     <tr>
-      <th>Order Items</th>
+      <th>Order number</th>
+      <th>Total price</th>
+      <th>Date placed</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @order.id %></td>
+      <td>$<%= @order.total_cost %></td>
+      <td><%= pretty_date(@order.updated_at) %></td>
+      <td>
+        <%= @order.status %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% if @order.status == "paid" %>
+  <span class="button">Cancel</span>
+<% end %>
+
+<h4>Order Items</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
       <th>Quantity</th>
       <th>Subtotal</th>
     </tr>

@@ -124,5 +124,14 @@ describe Product do
       it "computes average rating as 0 when no reviews" do
         product.average_rating.must_equal 0
       end
+
+      it "toggle_is_active" do
+        p = Product.new
+        p.toggle_is_active
+        p.is_active.must_equal false
+
+        p.toggle_is_active
+        p.is_active.must_equal true
+      end
     end
   end
