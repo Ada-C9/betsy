@@ -1,7 +1,16 @@
-<h2>Details for Product <%= @product.name %></h2>
+<h2>What's In The Oven:</h2>
+<p>
+  Name: <%= @product.name %>
+</p>
 <p>Price: $<%= (@product.price / 100.00) %></p>
-<p>Seller <%= @product.merchant.username %></p>
-<p>Description: <%= @product.description %></p>
-<p>Take a Look: <%= @product.image %></p>
-<!-- FIXME: TEMPORARY STYLE, WILL FIX -->
+<p>Seller: <%= @product.merchant.username %></p>
+<p>Details: <%= @product.description %></p>
+<p>
+  Take a Look:
+  <div class= "image-container">
+    <%= image_tag(@product.image, alt: "bonbon-image", class: "bonbon-img") %>
+  </div>
+</p>
+<!-- FIXME: Have an instructor show me how to fix the image spacing-->
 <!-- TODO: STYLE THE SHIT OUT OF THIS. -->
+<!-- TODO: ADD A "ADD TO CART" BUTTON AT BOTTOM OF PAGE -->
