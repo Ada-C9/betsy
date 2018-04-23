@@ -28,10 +28,11 @@
           </td>
           <!-- TODO: NEEDS LINK FROM MERCHANT NAME TO MERCHANT -->
           <td>
-            <%= product.merchant.username %>
+            <%= link_to product.merchant.username, merchant_path(product) %>
           </td>
           <td>
-            <%= product.stock %>
+            <!-- FIXME: CHECK IF THIS IS VIABLE -->
+            <%= link_to Review.where(product_id: product.id).count %>
           </td>
           <!-- TODO: PUT IN SOMETHING HERE FOR REVIEWS? -->
         </tr>
