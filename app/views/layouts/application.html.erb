@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="body-wrapper">
+      <header>
+        <nav>
+          <ul>
+            <% if @user %>
+            <li> Welcome <%= @user.username %>
+              <%= link_to "logout", logout_path, method: :delete %>
+            </li>
+            <% else %>
+            <li> You are shopping as guest #<%= @cached_guest_user.id %>
+              <%= link_to "login with GitHub", github_login_path %>
+              <% end %>
+            </ul>
+          </nav>
+
+          <nav class="category-nav">
+            <ul class="vertical medium-horizontal menu align-center">
+              <% @categories.each do |category| %>
+              <li>
+                <%= link_to category.name, category_path(category.id) %>
+              </li>
+              <% end %>
+            </ul>
+          </nav>
+        </header>
+        <section class="flash">
+          <% flash.each do |name, message| %>
+          <section class="callout <%= name %>">
+            <% if name == "alert" %>
+            <ul>
+              <% flash[:alert].each do |field, message| %>
+              <li>
+                <strong> <%= field.capitalize %> </strong> <%= message %>
+              </li>
+              <% end %>
+            </ul>
+            <% else %>
+            <p>
+              <%= message %>
+            </p>
+            <% end %>
+          </section>
+          <% end %>
+        </section>
+
+        <main>
+          <%= yield %>
+        </main>
+      </div>
+    </body>
+</html>

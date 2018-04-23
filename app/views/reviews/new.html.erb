@@ -1,0 +1,13 @@
+    <h2>Write a review!</h2>
+
+
+        <%= form_for :review, :url => {:action => "create", :id => @product} do |f| %>
+
+          <%= f.label :text_review %>
+          <%= f.text_area :text_review %>
+
+          <%= f.label :rating %>
+          <%= f.select :rating, options_for_select(1.. 5) %>
+
+        <p class="review-button">  <%= f.submit class: "button" %></p>
+        <% end %>

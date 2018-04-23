@@ -1,0 +1,16 @@
+@import "base/normalize.scss";
+@import "base/_settings.scss";
+@import "base/foundation_and_overrides.scss";
+@import "styles/categories.scss";
+@import "styles/orders.scss";
+@import "styles/products.scss";
+@import "styles/sessions.scss";
+@import "styles/users.scss";
+
+* {
+  font-family: 'Merriweather', serif;
+}
+
+.body-wrapper {
+  padding: 2%;
+}

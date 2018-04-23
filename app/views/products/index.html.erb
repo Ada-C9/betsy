@@ -1,0 +1,13 @@
+<h1>Welcome To Petsy</h1>
+<h3>The Site for Animal Adoption by Ada People for Pets (APP)</h3>
+
+<ul>
+  <% @products.each do |product| %>
+  <li class="card-divider">
+    <%= link_to product.name, product_path(product.id) %>
+  </li>
+  <li>
+    <%= link_to image_tag(product.image_url), product_path(product.id), :alt => "#{product.name} image", :title => "#{product.name}" %>
+  </li>
+  <% end %>
+</ul>
