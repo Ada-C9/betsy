@@ -4,7 +4,8 @@ class Order < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   validates :creditcard, presence: true, length: {is: 16}
-  validates :expiration_date, presence: true
+  validates :expiration_month, presence: true
+  validates :expiration_year, presence: true
   validates :name_on_card, presence: true
   validates :cvv, presence: true, length: {minimum: 3, maximum: 4}
   validates :mail_address, presence: true

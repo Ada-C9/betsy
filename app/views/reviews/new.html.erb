@@ -1,5 +1,8 @@
 <h3>Create a Review</h3>
 <%= form_for @review do |f| %>
+
+  <%= f.hidden_field, :value => @product.id %>
+  
   <%= f.label :rating %>
   <%= f.number_field :rating, in: 1..5 %>
 
