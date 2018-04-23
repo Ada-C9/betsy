@@ -184,6 +184,11 @@ nav .float-right {
   width: 150px;
 }
 
+.filter-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .filter {
   display: grid;
   grid-template-columns: 150px 150px;
@@ -193,6 +198,15 @@ nav .float-right {
 
 .filter .button {
   display: none;
+}
+
+.search-container {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.search-box, .search-button {
+  display: inline-block;
 }
 
 .form {
