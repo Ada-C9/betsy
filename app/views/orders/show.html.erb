@@ -1,9 +1,26 @@
 <h3>Order Details</h3>
 
-<h5>Order Number: <%= @order.id %></h5>
-<h5>Status: <%= @order.status %></h5>
+<table>
+  <thead>
+    <tr>
+      <th>Order number</th>
+      <th>Total price</th>
+      <th>Date placed</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @order.id %></td>
+      <td>$<%= @order.total_cost %></td>
+      <td><%= pretty_date(@order.updated_at) %></td>
+      <td><%= @order.status %></td>
+    </tr>
+  </tbody>
+</table>
 
 <h4>Customer Information</h4>
+
 <table>
   <thead>
     <tr>
