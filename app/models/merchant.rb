@@ -11,11 +11,8 @@ class Merchant < ApplicationRecord
       uid: auth_hash[:uid],
       provider: auth_hash[:provider]
     )
-
     if merchant.save
-      return merchant
-    else
-      raise ArgumentError.new
+      return merchants
     end
   end
 
