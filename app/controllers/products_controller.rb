@@ -3,10 +3,9 @@ class ProductsController < ApplicationController
   def homepage;end
 
   def index
-    @products = Product.all
-
-    # TODO: ADD AS MANY CATEGORY FILTERS AS WINI DEVELOPS
+    @products = Product.all.paginate(:page => params[:page], :per_page => 5)
   end
+  # TODO: ADD AS MANY CATEGORY FILTERS AS WINI DEVELOPS
 
   def show
     @product = Product.find_by(id: params[:id])
