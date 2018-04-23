@@ -1,1 +1,10 @@
-<h3>Temporary Holding, Caroline will implement</h3>
+<h3>Create a Review</h3>
+<%= form_for @review do |f| %>
+  <%= f.label :rating %>
+  <%= f.number_field :rating, in: 1..5 %>
+
+  <%= f.label :comment %>
+  <%= f.text_field :comment %>
+
+  <%= f.submit class: "hollow button" %>
+<% end %>

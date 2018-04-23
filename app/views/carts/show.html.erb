@@ -1,1 +1,57 @@
-<% link_to "Proceed to checkout", new_order_path(@cart.id)
+<h3>My Cart</h3>
+
+<p>Your cart includes <%= @cart.total_items %> delicious items.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Delicious Baked Goodness</th>
+      <th>Quantity</th>
+      <th></th>
+      <th>Unit Price</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart.cartitems.each do |item| %>
+      <tr>
+        <td><%= link_to "#{item.product.name}", product_path(item.product_id) %></td>
+        <td>
+          <%= form_for item do |f| %>
+            <%= f.number_field(:quantity, in: 1..item.product.stock) %>
+            <%= f.submit("Update Quantity") %>
+          <% end %>
+        </td>
+        <td><%= link_to("Remove this item", cartitem_path(item), method: :delete, data: { confirm: "Are you sure you want to delete #{item.product.name} from your cart?" }) %></td>
+        <td><%= display_dollars(item.product.price) %></td>
+        <td><%= display_dollars(item.subtotal) %></td>
+      </tr>
+    <% end %>
+    <tr></tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Subtotal:</td>
+      <td><%= display_dollars(@cart.subtotal) %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Tax:</td>
+      <td><%= display_dollars(@cart.tax) %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Total:</td>
+      <td><%= display_dollars(@cart.total_cost) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "Continue Shopping", products_path, class: "hollow button" %>
+<%= link_to "Delete Cart", cart_path(@cart), method: :delete, data: { confirm: "Are you sure you want to delete your entire cart?" }, class: "hollow button" %>
+<%= link_to "Proceed to Checkout", new_order_path(@cart), class: "hollow button" %>
