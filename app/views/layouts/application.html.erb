@@ -1,19 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  <%= favicon_link_tag asset_path('cake.png'), :rel => 'icon', :type =>  'image/png' %>
+  <title>Ali-Bon-Bon</title>
+  <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
 
-  <body>
+<body>
+  <header>
+    <section class="image header">
+      <h2>
+        <%= link_to "Ali-Bon-Bon : Treat Yo Self!", root_path %>
+      </h2>
+    </section>
+    <!-- FOUNDATION STYLING FOR DROP DOWN MENUS -->
+    <div id="nav-bar center">
+      <h3 class= "menu toggle"></h3>
+      <nav>
+        <div>
+          <ul class="menu toggle" data-dropdown-menu>
+            <li>
+              <a class="dropdown-1">Browse</a>
+              <ul class="menu">
+                <li><a href="/products">All Products</a></li>
+                <li>
+                  <a href="/">All Products By Category</a>
+                </li>
+                <li>
+                  <a href="">All Products By Baker</a>
+                </li>
+              </ul>
+            </li>
+            <div class= "button-group">
+              <a class= "hollow button">My Cart</a>
+              <a class= "hollow button">Sign Up</a>
+              <a class= "hollow button">Log In</a>
+            </div>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
 
     <%= yield %>
+  </main>
 
-  </body>
+</body>
 </html>

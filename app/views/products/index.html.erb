@@ -1,0 +1,43 @@
+<h3>Delicious Products</h3>
+<section class= "treats-table">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Category
+        </th>
+        <th>
+          Sold By:
+        </th>
+        <th>
+          Reviews
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td class= "product_pic">
+            <!-- <img src="url" --> IMAGE HERE
+          </td>
+          <td>
+            <%= link_to product.name, product_path(product) %>
+          </td>
+          <!-- TODO: NEEDS LINK FROM MERCHANT NAME TO MERCHANT -->
+          <td>
+            <%= product.merchant.username %>
+          </td>
+          <td>
+            <%= product.stock %>
+          </td>
+          <!-- TODO: PUT IN SOMETHING HERE FOR REVIEWS? -->
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+  <!-- TODO: ADD NAVIGATION BUTTONS ? -->
+</section>
+<!-- NOTE: VIEW NOT IN COMPLETE FORMATTING, TEMPORARY STATE -->

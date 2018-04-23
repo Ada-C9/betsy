@@ -1,3 +1,32 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// body small {
+//   color: slategrey;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+
+header {
+  max-width: 100%;
+  background: rgba(138, 84, 164, 0.59);
+  background-repeat: no-repeat;
+  border-bottom: 60px black;
+  margin-bottom: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(232, 204, 13);
+}
+header.small{
+
+}
+
+.orbit {
+  width: 50%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+body {
+background-image: url(desserts.jpg);
+}
