@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   get '/auth/github', as: 'github_login'
 
-  get '/cart', to: 'orders#display_cart', as: "cart"
+  get '/cart', to: 'cart#show', as: "cart"
+
+
 
   delete "/logout", to: "sessions#destroy", as: "logout"
 
