@@ -15,4 +15,12 @@ class Product < ApplicationRecord
     self.is_active = !is_active
   end
 
+  def self.top_sellers(count = 5)
+    sorted_products = self.all.sort_by { |p|
+      p.order_items.map { |i| i.quantity }.sum
+    }.reverse!
+    actual_count = [count, sorted_products.count].min
+    return sorted_products[0...actual_count]
+  end
+
 end

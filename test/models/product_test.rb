@@ -110,7 +110,6 @@ describe Product do
       }
     end
 
-
     it "must be valid" do
       p.valid?.must_equal true
     end
@@ -133,5 +132,18 @@ describe Product do
         p.toggle_is_active
         p.is_active.must_equal true
       end
+
+      it "gives top sellers" do
+        Product.top_sellers.must_be_instance_of Array
+        Product.top_sellers.count.must_equal 5
+        Product.top_sellers.must_equal [products(:product_10), products(:product_9), products(:product_8), products(:product_7), products(:product_6)]
+      end
+
+      it "gives top sellers by count" do
+        Product.top_sellers(3).must_be_instance_of Array
+        Product.top_sellers(3).count.must_equal 3
+        Product.top_sellers(3).must_equal [products(:product_10), products(:product_9), products(:product_8)]
+      end
+
     end
   end
