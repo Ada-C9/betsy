@@ -84,7 +84,6 @@ class ProductsController < ApplicationController
       end
     elsif @order = Order.find(session[:cart_order_id])
       flash[:status] = :success
-      raise
       #some redirect
     else
       flash[:status] = :failure
@@ -104,7 +103,7 @@ class ProductsController < ApplicationController
     if @order_item.save
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} has been successfully added to your cart!"
-      redirect_to product_path(@product.id)
+      redirect_to cart_path
     else
       flash[:status] = :failure
       flash[:result_text] = "Could not add this product to your cart."

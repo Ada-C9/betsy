@@ -12,13 +12,8 @@
       <p>Price: $<%= price_in_dollar(@product.price) %></p>
       <% if @product.stock > 0 %>
       <p><span class="color-text"><%= @product.stock %></span> in stock</p>
-<<<<<<< HEAD
       <%= button_to "Add to Cart", {:action =>"add_to_cart", id: @product.id }, method: :post, class: "button" %>
     <% else %>
-=======
-      <%= link_to "Add to Cart", products_path, method: :post, class: "button" %>
-      <% else %>
->>>>>>> 343723a7febad73d632f1be99a369c69e288af5d
       <p class="alert button">Out of Stock</p>
       <% end %>
     </section>
