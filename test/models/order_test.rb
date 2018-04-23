@@ -2,8 +2,8 @@ require "test_helper"
 
 describe Order do
   let(:order) { Order.new }
-  let(:o) { orders(:order_2) }
-  let(:o1) { orders(:order_1) }
+  let(:o) { orders(:order_2) }#status complete
+  let(:o1) { orders(:order_1) }#staus pending
 
   describe "relations" do
     it "has a list of orderitems" do
@@ -201,6 +201,10 @@ describe Order do
       o1.credit_card_last_digits.must_equal "1111"
     end
 
-  end
+    it "can cancel" do
+      o1.status = "paid"
+      o1.can_cancel?.must_equal true
+    end
 
+  end
 end
