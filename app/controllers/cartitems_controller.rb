@@ -7,8 +7,8 @@ class CartitemsController < ApplicationController
 
   def create
     if session[:cart_id]
-      cart = Cart.find_by(id: session[:cart_id])
-      @cartitem = Cartitem.new(cart_id: session[:cart_id])
+      @cart = Cart.find_by(id: session[:cart_id])
+      @cartitem = Cartitem.new(cart_id: session[:cart_id], product_id: params[:product_id])
       if @cartitem.save
         flash[:status] = :success
         flash[:result_text] = "This product has been added to your shopping cart"
