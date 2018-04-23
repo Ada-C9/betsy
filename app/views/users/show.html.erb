@@ -41,7 +41,15 @@
   <thead>
     <tr>
       <th>Order Number</th>
-      <th>Status(filter to be implemented)</th>
+      <th>
+        Status
+        <section class="search-box">
+          <%= form_tag(user_path(@user), method: :get) do %>
+          <%= select_tag :term, "<option>pending</option><option>paid</option><option>complete</option>".html_safe, include_blank: true %>
+          <%= submit_tag "Submit", class: "button" %>
+          <% end %>
+        </section>
+      </th>
       <th>Order Items</th>
       <th>Quantity</th>
       <th>Subtotal</th>
@@ -81,8 +89,8 @@
   </thead>
   <tbody>
     <tr>
-      <td>$<%= @user.total_revenue %></td>
-      <td><%= @user.num_orders %></td>
+      <td>$<%= @revenue %></td>
+      <td><%= @num_orders %></td>
     </tr>
   </tbody>
 </table>
