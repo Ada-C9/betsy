@@ -1,0 +1,74 @@
+<h3>Cart</h3>
+
+<section class="order-items">
+  <ul>
+    <% @order.order_items.each do |order_item| %>
+      <li>
+        <div class="product-photo">
+          <% if order_item.product.photo_url.length > 0 %>
+            <%= link_to image_tag(@product.photo_url, alt: @product.name), product_path(@product.id) %>
+          <% else %>
+            <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(@product.id) %>
+          <% end %>
+        </div>
+        <div class="product-description">
+          <p><%= order_item.product.name %></p>
+          <p><%= order_item.product.description %></p>
+        </div>
+        <div class="quantity-selection">
+          Placeholder for quantity dropdown menu
+          <%# form_for order_item do |f| %>
+          <%# f.select :quantity, (0..order_item.product.stock).to_a, value: order_item.quantity %>
+          <%# f.submit "Update", class: "button" %>
+          <%# end %>
+        </div>
+        <p>$<%= price_in_dollar(@order_item.subtotal) %></p>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="checkout-form">
+  <%= form_for @order do |f| %>
+    <h4>Shipping Information</h4>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :street_address %>
+    <%= f.text_field :street_address %>
+
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+
+    <%= f.label :zip_code %>
+    <%= f.text_field :zip %>
+
+    <h4>Billing Information</h4>
+
+    <%= f.label :name_on_card %>
+    <%= f.text_field :name_cc %>
+
+    <%= f.label :card_number %>
+    <%= f.text_field :credit_card %>
+
+    <%= f.label :expiration_date %>
+    <%= f.date_field :expiry, "data-provide" => 'datepicker' %>
+
+    <%= f.label :security_code %>
+    <%= f.text_field :ccv %>
+
+    <%= f.label :billing_zip_code %>
+    <%= f.text_field :billing_zip %>
+
+    <%= f.submit "Place Order", class: "button" %>
+    <%= f.submit "Empty Cart", class: "button" %>
+    <%# link_to "Empty Cart", order_path(@order.id), :data => {:confirm => 'Are you sure?'}, method: :delete, class: "button" %>
+  <% end %>
+</section>
