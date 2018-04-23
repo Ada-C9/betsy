@@ -68,7 +68,52 @@ class ProductsController < ApplicationController
     end
   end
 
-private
+  def add_to_cart
+    if session[:cart_order_id].nil? #If there is no cart yet
+      @order = Order.new_cart
+      if @order.save
+        flash[:status] = :success
+        flash[:result_text] = "Welcome to the Puppsy shopping experience!"
+        # redirect_to: Cart
+      else
+        flash[:status] = :failure
+        flash[:result_text] = "There is a problem with initializing shopping cart."
+        flash[:mssages] = @order.errors.messages
+        #some redirect
+      end
+    elsif @order = Order.find(session[:cart_order_id]
+      flash[:status] = :success
+      #some redirect
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "We couldn't find your shopping cart."
+      flash[:mssages] = @order.errors.messages
+      #some redirect, status: :bad_request
+    end
+    if @product = Product.find(params[:id]) #There's a product to add
+      flash[:status] = :success
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "You have chosen an unrecognized product."
+      flash[:messages] = @product.errors.messages
+      render :index, status: :bad_request
+    end
+    @order_item = OrderItem.new
+    @order_item.product = @product.id
+    @order_item.order = @order.id
+    if @order_item.save
+      flash[:status] = :success
+      flash[:result_text] = "#{@product.name} has been successfully added to your cart!"
+      redirect_to product_path(@product.id)
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Could not create this product."
+      flash[:messages] = @product.errors.messages
+      render :new, status: :bad_request
+    end
+  end
+
+  private
 
   def product_params
     params.require(:product).permit(:name, :is_active, :description, :price, :photo_url, :stock, :user_id, :category_ids => [])
