@@ -11,7 +11,6 @@ order_one:
   email: grace@somethingcool.com
   creditcard: 1234123412341234
   name_on_card: Grace Hopper
-  expiration_date: 2020-02-1
   cvv: 123
   mail_address: 345 Main Street
   billing_address: 345 Main Street
@@ -24,7 +23,6 @@ order_two:
   email: ada@somethingcool.com
   creditcard: 1234123412341234
   name_on_card: Ada Lovelace
-  expiration_date: 2022-02-1
   cvv: 123
   mail_address: 123 Main Street
   billing_address: 123 Main Street
