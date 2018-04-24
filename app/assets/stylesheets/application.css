@@ -341,4 +341,39 @@ label {
     margin: 0.5rem auto;
   }
 
+  /* .transpose tr { display: inline-block }
+  .transpose th, .transpose td { display: inline-block; } */
+
+  /* table, td, th {
+  border: 1px solid red;
+  } */
+
+  table.transpose {
+    background-color: none;
+    width: 390px;
+    font-size: 19px;
+    border: 1px solid #f1f1f1;
+  }
+
+  .transpose thead {
+    float: left;
+    height: 380px;
+    border: none;
+  }
+
+
+  .transpose thead th {
+    display: block;
+  }
+
+  .transpose tbody {
+    float: right;
+    height: 380px;
+    border: none;
+  }
+
+  .transpose tbody td {
+    display: block;
+  }
+
 }
