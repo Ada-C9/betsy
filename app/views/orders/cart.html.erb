@@ -16,7 +16,13 @@
           <p><%= order_item.product.description %></p>
         </div>
         <div class="quantity-selection">
-          <p>Current Quantity: <%= order_item.quantity %></p>
+          <p>
+          <%= form_for order_item do |f| %>
+          <%= f.label :"Amount Ordered" %>
+          <%= f.text_field :quantity %>
+          <%=f.submit %>
+            <%end%>
+          </p>
           Placeholder for quantity dropdown menu
           <%# form_for order_item do |f| %>
           <%# f.select :quantity, (0..order_item.product.stock).to_a, value: order_item.quantity %>
@@ -73,6 +79,15 @@
     <%# link_to "Empty Cart", order_path(@order.id), :data => {:confirm => 'Are you sure?'}, method: :delete, class: "button" %>
   <% end %>
 </section>
+
+
+
+    <%# link_to "Empty Cart", order_path(@order.id), :data => {:confirm => 'Are you sure?'}, method: :delete, class: "button" %>
+
+</section>
+
+
+
 
 <%
 =begin %>

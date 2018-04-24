@@ -1,25 +1,24 @@
 class CartController < ApplicationController
 
-  # def show
-  #   @cart = Order.find(session[:cart_order_id])
-  #   render :cart
-  # end
-
+#user clicks on button - if DNE ( create cart show 0 objects or show all objects)
   def access_cart
-    if Order.find_by(id: session[:cart_order_id]).nil?
+    @cart = Order.find_by(id: session[:cart_order_id])
+    if @cart.nil?
       @cart = create_cart
-    else
-      @cart = Order.find(session[:cart_order_id])
+      session[:cart_order_id] = @cart.id
+   else
+     render "orders/cart"
     end
-    render "orders/cart"
   end
 
   def add_to_cart
     if session[:cart_order_id].nil?
       @cart = create_cart
+      session[:cart_order_id] = @cart.id
     else
       @cart = Order.find_by(id: session[:cart_order_id])
     end
+
     @product = Product.find(params[:id])
     if @product.stock > 0
       @order_item = OrderItem.create product_id: @product.id, order_id: @cart.id, quantity: 1, is_shipped: "false"
@@ -38,8 +37,8 @@ class CartController < ApplicationController
     @cart.order_items.each do |order_item|
       order_item.destroy
     end
-    session[:cart_order_id] = nil
-    @cart.destroy
+    # session[:cart_order_id] = nil
+    # @cart.destroy
   end
 
   private
@@ -52,11 +51,11 @@ class CartController < ApplicationController
       flash[:result_text] = "Welcome to the Puppsy shopping experience!"
     else
       flash[:status] = :failure
-      raise
       flash[:result_text] = "We weren't able to create your shopping cart."
       flash[:mssages] = @cart.errors.messages
       #some redirect, status: :bad_request
     end
+
     return @cart
   end
 
