@@ -14,8 +14,7 @@ class ProductsController < ApplicationController
       @products = @current_user.products
       @current_category = nil
     elsif params[:term]
-      @products = Product.where('name LIKE ?', "%#{params[:term]}%")
-      # raise
+      @products = Product.search(params[:term])
     else
       @products = Product.all
     end
