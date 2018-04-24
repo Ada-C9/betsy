@@ -38,8 +38,8 @@ class CartController < ApplicationController
     @cart.order_items.each do |order_item|
       order_item.destroy
     end
-    session[:cart_order_id] = nil
-    @cart.destroy
+    # session[:cart_order_id] = nil
+    # @cart.destroy
   end
 
   private

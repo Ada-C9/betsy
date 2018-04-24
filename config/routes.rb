@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/cart', to: 'cart#access_cart', as: "cart"
 
-  # delete '/cart/delete', to:'cart#destroy', as: "cart_destroy"
+  delete '/cart/delete', to:'cart#destroy', as: "cart_destroy"
 
 
 
