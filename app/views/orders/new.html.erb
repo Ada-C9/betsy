@@ -1,2 +1,15 @@
-<h3>Your order details</h3>
-<%= render partial: "form" %>
+<h3>Order Review</h3>
+<% Cart.find(session[:cart_id]).cartitems.each do |item| %>
+<ul>
+  <li><%= link_to "#{item.product.name}", product_path(item.product_id) %></li>
+  <li><%= item.quantity %></li>
+  <li><%= display_dollars(item.product.price) %></li>
+  <li><%= display_dollars(item.subtotal) %></li>
+</ul>
+<% end %>
+
+<%= link_to "Edit shopping cart", cart_path(session[:cart_id]), class: "hollow button"%>
+<%= form_for @order do |t|%>
+<%= t.hidden_field :status, value: "pending" %>
+<%= t.submit "Proceed to payment", class: "hollow button" %>
+<%end%>

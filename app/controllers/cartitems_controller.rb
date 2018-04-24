@@ -6,8 +6,8 @@ class CartitemsController < ApplicationController
   end
 
   def create
-    if session[:cart_id]
-      @cart = Cart.find_by(id: session[:cart_id])
+    @cart = Cart.find_by(id: session[:cart_id])
+    if @cart
       @cartitem = Cartitem.new(cart_id: session[:cart_id], product_id: params[:cartitem][:product_id], quantity: params[:cartitem][:quantity])
       if @cartitem.save
         flash[:status] = :success
@@ -16,6 +16,7 @@ class CartitemsController < ApplicationController
       else
         flash[:failure] = :failure
         flash[:result_text] = "It was not possible to add this product to the cart"
+        flash[:messages] = @cartitem.errors.messages
         redirect_back(fallback_location: products_path)
       end
     else
