@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
 
   def confirmation
     @order = Order.find_by(id: params[:id])
+    not_found_check(@order)
   end
 
   def show
