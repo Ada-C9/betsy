@@ -10,7 +10,7 @@
     <tr>
       <th>Name</th>
       <th>Price</th>
-      <th>Stock</th>
+      <th class="hidden">Stock</th>
       <th>Update</th>
       <th>Retire</th>
     </tr>
@@ -20,7 +20,7 @@
     <tr>
       <td><%= link_to product.name, product_path(product) %></td>
       <td>$<%= price_in_dollar(product.price) %></td>
-      <td><%= product.stock %></td>
+      <td class="hidden"><%= product.stock %></td>
       <td><%= link_to "Update", edit_product_path(product.id), class: "button" %></td>
       <td>
         <% if product.is_active %>
@@ -41,7 +41,7 @@
 <table>
   <thead>
     <tr>
-      <th>Order Number</th>
+      <th>Order #</th>
       <th>
         <section class="status-container">
           <%= form_tag(user_path(@user), method: :get) do %>
@@ -55,8 +55,8 @@
         </section>
       </th>
       <th>Order Items</th>
-      <th>Quantity</th>
-      <th>Subtotal</th>
+      <th class="hidden">Quantity</th>
+      <th class="hidden">Subtotal</th>
       <th>Shipping Status</th>
     </tr>
   </thead>
@@ -68,8 +68,8 @@
             <td><%= link_to order.id, order_path(order.id) %></td>
             <td><%= order.status %></td>
             <td><%= link_to order_item.product.name, product_path(order_item.product.id) %></td>
-            <td><%= order_item.quantity %></td>
-            <td>$<%= order_item.subtotal %></td>
+            <td class="hidden"><%= order_item.quantity %></td>
+            <td class="hidden">$<%= order_item.subtotal %></td>
             <td>
               <% if order_item.order.status == "pending" || order_item.order.status == "cancelled" %>
                 <span>N/A</span>

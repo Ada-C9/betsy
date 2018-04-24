@@ -306,8 +306,12 @@ label {
     margin: 0;
   }
 
-  .search-container, .filter-container, .status-container {
+  .search-container, .filter-container {
     width: 300px;
+  }
+
+  .status-container {
+    width: 100px;
   }
 
   .filter .button {
@@ -321,6 +325,10 @@ label {
   }
 
   .categories {
+    display: none;
+  }
+
+  .hidden {
     display: none;
   }
 }
