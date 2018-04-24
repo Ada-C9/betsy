@@ -1,0 +1,13 @@
+<section>
+
+
+<% @cart.cartitems.each do |item| %>
+<ul>
+  <li><%= link_to "#{item.product.name}", product_path(item.product_id) %></li>
+  <li><%= item.quantity %></li>
+  <li><%= display_dollars(item.product.price) %></li>
+  <li><%= display_dollars(item.subtotal) %></li>
+</ul>
+<% end %>
+
+</section>
