@@ -15,11 +15,26 @@ class ProductsController < ApplicationController
   # TODO: ADD AS MANY CATEGORY FILTERS AS WINI DEVELOPS
 
   def new
-    @product = Product.new(merchant_id: params[:merchant_id])
+    if params[:merchant_id]
+      @product = Product.new(merchant_id: params[:merchant_id])
+    else
+      flash[:message] = "You must log in to add a product"
+    end
   end
 
   def create
-    @product = Product.new()
+    @product = Product.new(product_params)
+
+    if @product.save
+      flash[:status] = :success
+      flash[:result_text] = "Product added successfully"
+      redirect_to product_path(@product)
+    else
+      flash.now[:status] = :failure
+      flash.now[:result_text] = "Failed to add new product"
+      flash.now[:messages] = @product.errors.messages
+      render :new, status: :bad_request
+    end
   end
 
   def show
@@ -40,7 +55,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    return params.require(:product).permit(:name, :price, :description, :imgae, :stock, :visible, category_ids: [])
+    return params.require(:product).permit(:name, :price, :merchant_id, :description, :image, :stock, :visible, category_ids: [])
   end
 
   def find_product

@@ -4,9 +4,11 @@
     <%= page_title %>
   </h3>
 
-  <%= form_for @product do |f| %>
+  <%= form_for @product, url: "/merchants/:merchant_id/products" do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name%>
+
+ <%= f.hidden_field :merchant_id %>
 
   <div>
     <%= f.label :categories %>
@@ -21,6 +23,11 @@
 
   <%= f.label :stock %>
   <%= f.number_field :stock %>
+
+  <%= f.hidden_field :merchant_id %>
+
+  <%= f.label :image %>
+  <%= f.text_field :image %>
 
   <%= f.label :visible %>
   <%= f.text_field :visible %>
