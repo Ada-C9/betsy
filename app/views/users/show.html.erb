@@ -21,7 +21,13 @@
       <td><%= link_to product.name, product_path(product) %></td>
       <td>$<%= price_in_dollar(product.price) %></td>
       <td class="hidden"><%= product.stock %></td>
-      <td><%= link_to "Update", edit_product_path(product.id), class: "button" %></td>
+      <td>
+        <% if product.is_active %>
+          <%= link_to "Update", edit_product_path(product.id), class: "button" %>
+        <% else %>
+          <span class="button disabled">Update</span>
+        <% end %>          
+      </td>
       <td>
         <% if product.is_active %>
           <!-- <span class="button">Retire</span> -->
