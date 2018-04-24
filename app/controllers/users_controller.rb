@@ -19,9 +19,12 @@ class UsersController < ApplicationController
 
     if params[:term]
       @term = params[:term]
-      @revenue = @user.total_revenue_by_status(params[:term])
-      @num_orders = @user.num_orders_by_status(params[:term])
+      @orders = @user.list_orders_by_status(@term)
+      # raise
+      @revenue = @user.total_revenue_by_status(@term)
+      @num_orders = @user.num_orders_by_status(@term)
     else
+      @orders = @user.list_all_orders
       @revenue = @user.total_revenue
       @num_orders = @user.num_orders
     end
