@@ -5,10 +5,14 @@ Rails.application.routes.draw do
   get '/auth/github', as: 'github_login'
 
   # get '/cart', to: 'order#', as: "empty_cart"
+
+
   # Access_cart only worked as a GET method.
   get '/cart', to: 'cart#access_cart', as: "cart"
 
   patch '/cart/:id', to: 'cart#update'
+
+  delete '/cart/:id/remove_single_item', to:'cart#remove_single_item', as: "remove_single_item"
 
   delete '/cart/delete', to:'cart#destroy', as: "cart_destroy"
 
