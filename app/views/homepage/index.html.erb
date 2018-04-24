@@ -1,0 +1,74 @@
+<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+  <div class="orbit-wrapper">
+    <ul class="orbit-container">
+      <li class="is-active orbit-slide">
+        <%= image_tag "dog-1.jpg", alt: "Dog-1" %>
+        <figcaption class="orbit-caption">Some introduction for this cute puppy.</figcaption>
+      </li>
+      <li class="orbit-slide">
+        <%= image_tag "dog-2.jpg", alt: "Dog-2" %>
+        <figcaption class="orbit-caption">Some introduction for this cute puppy.</figcaption>
+      </li>
+      <li class="orbit-slide">
+        <%= image_tag "dog-3.jpg", alt: "Dog-3" %>
+        <figcaption class="orbit-caption">Some introduction for this cute puppy.</figcaption>
+      </li>
+      <li class="orbit-slide">
+        <%= image_tag "dog-4.jpg", alt: "Dog-4" %>
+        <figcaption class="orbit-caption">Some introduction for this cute puppy.</figcaption>
+      </li>
+      <li class="orbit-slide">
+        <%= image_tag "dog-5.jpg", alt: "Dog-5" %>
+        <figcaption class="orbit-caption">Some introduction for this cute puppy.</figcaption>
+      </li>
+    </ul>
+  </div>
+  <nav class="orbit-bullets">
+    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+    <button data-slide="4"><span class="show-for-sr">Fourth slide details.</span></button>
+  </nav>
+</div>
+
+<section class="list-container">
+  <div class="product-lists">
+    <section class="popular">
+      <h3>Popular</h3>
+      <ul>
+        <% @popular_products.each do |popular_products| %>
+        <%= link_to image_tag(popular_products.photo_url, alt: popular_products.name), product_path(popular_products.id) %>
+        <% end %>
+      </ul>
+    </section>
+
+    <section class="outfits">
+      <h3>Outfits</h3>
+      <ul>
+        <% @outfits.each do |outfit| %>
+        <%= link_to image_tag(outfit.photo_url, alt: outfit.name), product_path(outfit.id) %>
+        <% end %>
+      </ul>
+    </section>
+
+    <section class="toys">
+      <h3>Toys</h3>
+      <ul>
+        <% @toys.each do |toy| %>
+        <%= link_to image_tag(toy.photo_url, alt: toy.name), product_path(toy.id) %>
+        <% end %>
+      </ul>
+    </section>
+  </div>
+
+  <section class="categories">
+    <h4>Categories</h4>
+    <ul>
+      <% @categories.each do |category| %>
+        <li><%= link_to category.name, category_products_path(category.id) %></li>
+      <% end %>
+    </ul>
+  </section>
+
+</section>

@@ -28,6 +28,10 @@ class Order < ApplicationRecord
     credit_card[-4..-1]
   end
 
+  def can_cancel?
+    status == "paid" && !order_items.any? { |i| i.is_shipped }
+  end
+
   private
 
   def in_cart?

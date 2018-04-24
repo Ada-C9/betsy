@@ -6,16 +6,28 @@
   <h4>Seller: <%= @current_user.username %></h4>
 <% end %>
 
-<div class="filter">
-  <%= form_for @category do |f| %>
+<div class="filter-box">
+  <section class="search-container">
+    <%= form_tag(products_path, method: :get) do %>
+    <div class="search-box">
+      <%= text_field_tag :term, nil, placeholder: "🔍" %>
+    </div>
+    <div class="search-button">
+      <%= submit_tag 'Search', class: "button" %>
+    </div>
+    <% end %>
+  </section>
+  <div class="filter">
+    <%= form_for @category do |f| %>
     <%= f.select :id, Category.all.map { |category| [category.name, category.id] },  :prompt => 'Select a category' %>
     <%= f.submit "Sumbit", class: "button" %>
-  <% end %>
+    <% end %>
 
-  <%= form_for @user do |f| %>
+    <%= form_for @user do |f| %>
     <%= f.select :id, User.all.map { |user| [user.username, user.id] },  :prompt => 'Select a seller' %>
     <%= f.submit "Sumbit", class: "button" %>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <ul class="product-list">

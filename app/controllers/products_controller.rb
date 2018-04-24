@@ -13,6 +13,9 @@ class ProductsController < ApplicationController
       @current_user = User.find_by(id: params[:user_id])
       @products = @current_user.products
       @current_category = nil
+    elsif params[:term]
+      @products = Product.where('name LIKE ?', "%#{params[:term]}%")
+      # raise
     else
       @products = Product.all
     end
@@ -133,6 +136,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :is_active, :description, :price, :photo_url, :stock, :user_id, :category_ids => [])
+    params.require(:product).permit(:name, :is_active, :description, :price, :photo_url, :stock, :user_id, :term, :category_ids => [] )
   end
 end
