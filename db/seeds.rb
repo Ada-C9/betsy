@@ -32,9 +32,6 @@ CSV.foreach(CATEGORY_FILE, :headers => true) do |row|
   category.id = row['id']
   category.name = row['name']
 
-  category.products += Product.all.sample(4)
-
-
   successful = category.save
   if !successful
     category_failures << category
@@ -65,7 +62,7 @@ CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
   successful = product.save
   if !successful
     product_failures << product
-    puts "Failed to save product: #{product.inspect}"
+    puts "===========================================================Failed to save product: #{product.inspect}==============="
   else
     puts "Created product: #{product.inspect}"
   end

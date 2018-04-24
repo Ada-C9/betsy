@@ -16,5 +16,13 @@
 
   <h2>All my products</h2>
   <%= link_to "Add a new product", new_merchant_product_path(@merchant) %>
+  <ol>
+    <% @merchant.products.each do |pro| %>
+    <li>
+      <%= link_to pro.name, product_path(pro) %>
+    </li>
+    <% end %>
+  </ol>
+
   <h2>Orders</h2>
 </section>
