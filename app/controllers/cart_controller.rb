@@ -6,9 +6,8 @@ class CartController < ApplicationController
     if @cart.nil?
       @cart = create_cart
       session[:cart_order_id] = @cart.id
-   else
-     render "orders/cart"
     end
+    render "orders/cart"
   end
 
   def add_to_cart
@@ -37,6 +36,7 @@ class CartController < ApplicationController
     @cart.order_items.each do |order_item|
       order_item.destroy
     end
+    render :empty_cart
     # session[:cart_order_id] = nil
     # @cart.destroy
   end

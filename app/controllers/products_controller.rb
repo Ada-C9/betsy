@@ -103,7 +103,7 @@ class ProductsController < ApplicationController
     @order.order_items.each do |order_item|
       if order_item.product.id == @product.id
         order_item.quantity += 1
-        order_item.save
+        order_item.sav
         duplicate = true
         flash[:status] = :success
         flash[:result_text] = "#{@product.name} has been successfully added to your cart!"

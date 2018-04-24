@@ -13,10 +13,12 @@ class OrderItemsController < ApplicationController
 
 
   def update
-      @order_item = OrderItem.find_by(id: params[:id])
-      if @order_item
-        @order_item.quantity = params[:order_item][:quantity]
-      end
+    @order_item = OrderItem.find_by(id: params[:id])
+    if @order_item
+      @order_item.quantity = params[:order_item][:quantity]
+      @order_item.save
+    end
+    redirect_to cart_path
   end
 
 

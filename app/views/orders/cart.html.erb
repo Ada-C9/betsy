@@ -75,20 +75,15 @@
     <%= f.text_field :billing_zip %>
 
     <%= f.submit "Place Order", class: "button" %>
-    <%= f.submit "Empty Cart", class: "button" %>
+
     <%# link_to "Empty Cart", order_path(@order.id), :data => {:confirm => 'Are you sure?'}, method: :delete, class: "button" %>
+  <% end %>
+
+  <% if @cart.order_items.count > 0 %>
+    <%= button_to "Empty Cart", {:action =>"destroy", :controller => "cart" }, :data => {:confirm => 'Are you sure?'}, method: :delete, class: "button" %>
   <% end %>
 </section>
 
 
 
     <%# link_to "Empty Cart", order_path(@order.id), :data => {:confirm => 'Are you sure?'}, method: :delete, class: "button" %>
-
-</section>
-
-
-
-
-<%
-=begin %>
-<%= button_to "Cancel Order", {:action =>"destroy", :controller => "cart" }, method: :delete, class: "button" %>

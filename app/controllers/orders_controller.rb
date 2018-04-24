@@ -23,11 +23,6 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id: params[:id])
   end
 
-  def display_cart
-    @order = Order.find(session[:cart_order_id])
-    render :cart
-  end
-
   def show
     @order = Order.find_by(id: params[:id])
   end
