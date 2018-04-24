@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :merchants do
     resources :products, only: [:index, :new, :create, :edit, :update]
   end
-  
+
   resources :products, only: [:index, :show]
 
 
@@ -27,5 +27,11 @@ Rails.application.routes.draw do
   resources :cartitems
   resources :reviews, only: [:new, :create]
 
+  root 'products#homepage'
 
+  get "/auth/:provider/callback", to: "sessions#login", as: "auth_callback"
+
+  delete "/logout", to: "sessions#logout", as: "logout"
+
+  patch "/carts/:id/empty_cart", to: "carts#empty_cart", as: "empty_cart"
 end
