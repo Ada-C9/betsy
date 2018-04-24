@@ -108,7 +108,7 @@ describe Product do
     end
   end
 
-  describe 'average_rating' do
+  describe 'average_rating method' do
     it 'returns the average of all the ratings on a product' do
       product = products(:cheesecake)
 
@@ -125,6 +125,35 @@ describe Product do
       product = products(:bonbon)
 
       product.average_rating.must_equal 3
+    end
+  end
+
+  describe 'available? method' do
+    it 'returns true if the requested quantity is less than the inventory' do
+      product = products(:cheesecake)
+      product.stock.must_equal 6
+
+      result = product.available?(5)
+
+      result.must_equal true
+    end
+
+    it 'returns true if the requested quantity is equal to the inventory' do
+      product = products(:bonbon)
+      product.stock.must_equal 10
+
+      result = product.available?(10)
+
+      result.must_equal true
+    end
+
+    it 'returns false if the requested quantity is greater than the inventory' do
+      product = products(:macaron)
+      product.stock.must_equal 19
+
+      result = product.available?(20)
+
+      result.must_equal false
     end
   end
 end

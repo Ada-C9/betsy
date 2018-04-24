@@ -37,19 +37,63 @@ describe Cart do
     end
   end
 
-  describe "subtotal" do
+  describe "subtotal method" do
     it "calculates subtotal for all items in the cart" do
-      cart1 = Cart.first
-      result = cart1.subtotal
-      result.must_equal 17.16
+      cart = carts(:cart_one)
+      result = cart.subtotal
+      result.must_equal 2314
+    end
+
+    it "returns 0 if there are no items in the cart" do
+      cart = Cart.first
+      cart.cartitems.destroy_all
+      cart.cartitems.count.must_equal 0
+      cart.subtotal.must_equal 0
     end
   end
 
-  describe "subtotal" do
-    it "calculates subtotal for all items in the cart" do
-      cart1 = Cart.first
-      result = cart1.subtotal
-      result.must_equal 17.16
+  describe "total_items method" do
+    it "calculates the total items in the cart" do
+      cart = carts(:cart_one)
+      result = cart.total_items
+      result.must_equal 6
+    end
+
+    it "returns 0 if there are no items in the cart" do
+      cart = Cart.first
+      cart.cartitems.destroy_all
+      result = cart.total_items
+      result.must_equal 0
+    end
+  end
+
+  describe "tax method" do
+    it "calculates the tax for items in a cart" do
+      cart = carts(:cart_one)
+      result = cart.tax
+      result.must_equal 231.4
+    end
+
+    it "returns 0 if there are no items in the cart" do
+      cart = Cart.first
+      cart.cartitems.destroy_all
+      result = cart.tax
+      result.must_equal 0
+    end
+  end
+
+  describe "total_cost method" do
+    it "calculates the total cost for items in a cart" do
+      cart = carts(:cart_one)
+      result = cart.total_cost
+      result.must_equal 2545.4
+    end
+
+    it "returns 0 if there are no items in the cart" do
+      cart = Cart.first
+      cart.cartitems.destroy_all
+      result = cart.total_cost
+      result.must_equal 0
     end
   end
 end

@@ -85,5 +85,3 @@ ActiveRecord::Base.connection.tables.each do |t|
 end
 
 puts "done"
-
-# TODO: COMB AND CORRECT CSV PRODUCT FILE, AND THEN RESET DATABASE.

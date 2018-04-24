@@ -5,14 +5,16 @@ class ProductsController < ApplicationController
   def homepage;end
 
   def index
+
+
     if params[:merchant_id]
       @merchant = Merchant.find(params[:merchant_id])
       @products = @merchant.products
     else
-      @products = Product.all.paginate(:page => params[:page], :per_page => 5)
+      @products = Product.where(visible: true).paginate(:page => params[:page], :per_page => 5)
     end
+
   end
-  # TODO: ADD AS MANY CATEGORY FILTERS AS WINI DEVELOPS
 
   def new
     if params[:merchant_id]
@@ -62,4 +64,5 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     head :not_found unless @product
   end
+
 end

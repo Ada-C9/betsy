@@ -10,6 +10,8 @@ order_one:
   name: Grace Hopper
   email: grace@somethingcool.com
   creditcard: 1234123412341234
+  expiration_month: 2020-04-16
+  expiration_year: 2020-04-16
   name_on_card: Grace Hopper
   cvv: 123
   mail_address: 345 Main Street
@@ -22,6 +24,8 @@ order_two:
   name: Ada Lovelace
   email: ada@somethingcool.com
   creditcard: 1234123412341234
+  expiration_month: 2020-04-16
+  expiration_year: 2020-04-16
   name_on_card: Ada Lovelace
   cvv: 123
   mail_address: 123 Main Street

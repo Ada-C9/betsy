@@ -1,45 +1,57 @@
-
 <h2><%= @product.name %></h2>
-<p>Seller: <%= @product.merchant.username %></p>
-<p>Description: <%= @product.description %></p>
-<p>Price: <%= display_dollars(@product.price) %></p>
-<p>Stock: <%= @product.stock %></p>
-<%= form_for @cartitem do |f|%>
-<%= f.hidden_field :product_id, :value => @product.id %>
 
-<%= f.label :quantity %>
-<%= f.number_field(:quantity, in: 1..@product.stock, value: 1) %>
-<%= f.submit("Add to cart") %>
-<% end %>
+<section class="product-show-page">
 
-<p>
-  Take a Look:
   <div class= "image-container">
-    <%= image_tag(@product.image, alt: "bonbon-image", class: "bonbon-img") %>
+    <div class="actual-image">
+      <%= image_tag(@product.image, alt: "bonbon-image", class: "bonbon-img") %>
+    </div>
   </div>
-</p>
 
-<p>Average Rating: <%= stars @product.average_rating %></p>
+  <div class= "product-info-container">
+    <p>Seller: <span class="plain-font"><%= @product.merchant.username %></span></p>
+    <p>Description: <span class="plain-font"><%= @product.description %></span></p>
+    <p>Price: $<span class="plain-font"><%= display_dollars(@product.price) %></span></p>
+    <p>Stock: <span class="plain-font"><%= @product.stock %></span></p>
+    <%= form_for @cartitem do |f|%>
+    <%= f.hidden_field :product_id, :value => @product.id %>
 
-<h3>Write a Review</h3>
-<%= form_for @review do |f| %>
+    <%= f.label :quantity %>
+    <%= f.number_field(:quantity, in: 1..@product.stock, value: 1) %>
+    <%= f.submit("Add to cart") %>
+    <% end %>
+  </div>
 
-<%= f.hidden_field :product_id, :value => @product.id %>
+  <div class="rating-form-container">
+    <h2>Write a Review</h2>
+    <%= form_for @review do |f| %>
 
-<%= f.label :rating %>
-<%= f.number_field :rating %>
+    <%= f.hidden_field :product_id, :value => @product.id %>
 
-<%= f.label :comment %>
-<%= f.text_field :comment %>
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
 
-<%= f.submit class: "hollow button" %>
-<% end %>
+    <%= f.label :comment %>
+    <%= f.text_field :comment %>
 
-<h4>Reviews:</h4>
-<% @product.reviews.each do |review| %>
-<p>Review created at <%= review.created_at %></p>
-<p><%= review.comment %></p>
-<p>Rating: <%= stars(review.rating) %></p>
-<% end %>
-<!-- FIXME: TEMPORARY STYLE, WILL FIX -->
-<!-- TODO: DISPLAY STOCK ON SHOW PAGE FOR PRODUCT, CAROLINE NEEDS THIS -->
+    <%= f.submit class: "hollow button" %>
+    <% end %>
+  </div>
+</section>
+
+<section class="all-ratings-box">
+  <div class="all-reviews-container">
+    <h4>Reviews:</h4>
+    <p>Average Rating: <%= stars @product.average_rating %></p>
+    <% @product.reviews.each do |review| %>
+    <p>Review created at <%= review.created_at %></p>
+    <p><%= review.comment %></p>
+    <p>Rating: <%= stars(review.rating) %></p>
+    <% end %>
+  </div>
+</section>
+
+
+
+
+<!-- FIXME: Further styling required, due to addition of Reviews Form -->

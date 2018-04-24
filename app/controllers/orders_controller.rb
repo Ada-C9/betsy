@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :find_order, except: [:root, :index, :new, :create]
+  before_action :find_order, only: [:update, :edit]
+  before_action :find_cart_by_order, only: [:update]
+  before_action :find_cart_by_session, only: [:new]
 
   def new
     @order = Order.new
@@ -12,8 +14,7 @@ class OrdersController < ApplicationController
     if @order.save
 
       flash[:status] = :success
-      flash[:result_text] = "Your order has been placed !"
-      flash[:order_number] = "Order number: #{@order.id}"
+
       redirect_to edit_order_path(@order)
     else
 
@@ -25,12 +26,28 @@ class OrdersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @order = Order.find_by(id: params[:id])
+    @cart = Cart.find_by(id: @order.cart_id)
+  end
+
+  def edit; end
 
   def update
     @order.update_attributes(order_params)
 
     if @order.save
+
+      @cart.cartitems.each do |cartitem|
+        product = Product.find(cartitem.product_id)
+        product.stock = product.new_stock(cartitem.quantity)
+        product.visible = false if product.stock == 0
+        unless product.save
+          flash.now[:status] = :failure
+          flash.now[:result_text] = "Our #{product.name} is out of stock, please update your cart!"
+          redirect_to cart_path(@cart)
+        end
+      end
 
       flash[:status] = :success
       flash[:result_text] = "Your order has been placed !"
@@ -56,7 +73,16 @@ class OrdersController < ApplicationController
   def find_order
     @order = Order.find_by(id: params[:id])
     head :not_found unless @order
-
   end
 
+  def find_cart_by_order
+    order = Order.find_by(id: params[:id])
+    @cart = Cart.find_by(id: order.cart_id)
+    head :not_found unless @cart
+  end
+
+  def find_cart_by_session
+    @cart = Cart.find_by(id: session[:cart_id])
+    head :not_found unless @cart
+  end
 end

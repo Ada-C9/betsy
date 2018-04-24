@@ -17,10 +17,13 @@
 *= require foundation_and_overrides
 
 */
+
+a {
+  color: black;
+}
 body {
   color: black;
   height: 100%;
-  background-image: url("desserts.jpg");
 
   /* Full height */
   height: 100%;
@@ -34,12 +37,18 @@ body {
 body {
   font-family: 'Berkshire Swash';font-size: 22px;
 }
-
-h2.image-header {
+.image-header a {
   font-family: 'Berkshire Swash';font-size: 75px;
   text-align: center;
-  background-color: #c55df7
+  background-color: rgb(192, 242, 205);
 }
+.image-header a {
+  color: black;
+}
+ul.menu.toggle {
+  background-color: rgb(192, 242, 205);
+}
+
 .button-group {
   float: right;
 }
@@ -56,6 +65,11 @@ header {
   border-bottom-width:20px;
 }
 
-body {
-  margin: 2rem 10rem;
+a.float-right {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div.top-bar {
+  background-color: rgb(192, 242, 205);
 }

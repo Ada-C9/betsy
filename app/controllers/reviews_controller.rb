@@ -1,12 +1,14 @@
 class ReviewsController < ApplicationController
-  def index
-    @reviews = Review.all
-  end
 
-  def show
-    @review = Review.find_by(id: params[:id])
-    head :not_found unless @review
-  end
+  # I'm fairly certain we don't need these
+  # def index
+  #   @reviews = Review.all
+  # end
+  #
+  # def show
+  #   @review = Review.find_by(id: params[:id])
+  #   head :not_found unless @review
+  # end
 
   def new
     @product = Product.find_by(id: params[:product_id])
@@ -14,21 +16,21 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(product_id: params[:review][:product_id], rating: params[:review][:rating], comment: params[:review][:comment])
+    @review = Review.new(review_params)
     if @review.save
       flash[:status] = :success
       flash[:result_text] = "Successfully created a review"
-      redirect_to products_path
+      redirect_to product_path(@review.product_id)
     else
       flash[:status] = :failure
       flash[:result_text] = "Could not create a review"
       flash[:messages] = @review.errors.messages
-      redirect_back(fallback_location: products_path)
+      redirect_back fallback_location: products_path, status: :bad_request
     end
   end
 
   private
-  # def review_params
-  #   return params.require([:review][:rating], [:review][:product_id]).permit([:review][:comment])
-  # end
+  def review_params
+    return params.require(:review).permit(:rating, :comment, :product_id)
+  end
 end

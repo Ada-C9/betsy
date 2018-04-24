@@ -50,7 +50,7 @@ describe Cartitem do
       result = @cartitem.valid?
 
       result.must_equal false
-    end      
+    end
   end
 
   describe 'relations' do
@@ -67,19 +67,11 @@ describe Cartitem do
     end
   end
 
-  describe "subtotal" do
-    it "calculates the subtotal for cartitem" do
-      cartitem1 = Cartitem.first
-      result = cartitem1.subtotal
-      result.must_equal 13.16
-    end
-  end
-
-  describe "subtotal" do
-    it "calculates the subtotal for cartitem" do
-      cartitem1 = Cartitem.first
-      result = cartitem1.subtotal
-      result.must_equal 13.16
+  describe "subtotal method" do
+    it "calculates the subtotal for a cartitem" do
+      cartitem = cartitems(:item_two)
+      result = cartitem.subtotal
+      result.must_equal 998
     end
   end
 end
