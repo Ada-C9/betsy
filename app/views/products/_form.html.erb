@@ -1,0 +1,31 @@
+<section class="new-product-form">
+  <h3>
+    <% page_title ||= "Create a New Product"%>
+    <%= page_title %>
+  </h3>
+
+  <%= form_for @product do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name%>
+
+  <div>
+    <%= f.label :categories %>
+    <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :name) %>
+  </div>
+
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :stock %>
+  <%= f.number_field :stock %>
+
+  <%= f.label :visible %>
+  <%= f.text_field :visible %>
+
+  <%= f.submit class: "button" %>
+
+  <% end %>
+</section>
