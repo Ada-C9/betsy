@@ -10,7 +10,7 @@ class CartController < ApplicationController
       session[:cart_order_id] = @cart.id
     end
 
-    @action = order_path(@cart.id)
+    @action = update_cart_info_path
 
     render "orders/cart"
 
@@ -38,6 +38,37 @@ class CartController < ApplicationController
     end
     desired_quantity = 1
     redirect_to cart_path
+  end
+
+  def update_cart
+    raise
+    @cart = Order.find_by(id: session[:cart_order_id])
+      if @cart
+        raise
+       # @order.status = params[:order][:status]
+       @cart.name = params[:name]
+       @cart.email = params[:email]
+       @cart.street_address = params[:street_address]
+       @cart.city = params[:city]
+       @cart.state = params[:state]
+       @cart.zip = params[:zip]
+       @cart.name_cc = params[:name_cc]
+       @cart.credit_card = params[:credit_card]
+       @cart.expiry = params[:expiry]
+       @cart.ccv= params[:ccv]
+       @cart.billing_zip = params[:billing_zip]
+       if @cart.save
+         # redirect_to order_path(@order.id)
+         flash[:status] = :success
+         flash[:result_text] = "Your order information has been successfully updated!"
+         redirect_to cart_path
+       else
+         flash[:status] = :failure
+         flash[:result_text] = "We were unable to update your order information."
+         flash[:messages] = @cart.errors.messages
+         redirect_to cart_path
+       end
+     end
   end
 
   def update_to_paid
@@ -82,7 +113,7 @@ class CartController < ApplicationController
     else
       flash[:status] = :failure
       flash[:result_text] = "We weren't able to create your shopping cart."
-      flash[:mssages] = @cart.errors.messages
+      flash[:messages] = @cart.errors.messages
       #some redirect, status: :bad_request
     end
     return @cart
