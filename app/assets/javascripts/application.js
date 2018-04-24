@@ -17,4 +17,6 @@
 //= require turbolinks
 //= require_tree .
 
+//= require rails.validations
+
 $(function(){ $(document).foundation(); });

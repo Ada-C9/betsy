@@ -7,14 +7,14 @@
     <title>Puppsy</title>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true, 'rails.validations' => true %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.png' %>
   </head>
 
   <body>
 
-    <header class="page-header row">
+    <header class="page-header">
       <nav>
          <h1>🐶 Puppsy </h1>
          <div class="nav-button">

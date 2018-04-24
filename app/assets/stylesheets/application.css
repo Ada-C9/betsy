@@ -109,6 +109,16 @@ label {
   color: #c17317;
 }
 
+/********** validation **********/
+.field_with_errors input {
+  margin-bottom: 0;
+}
+
+.message {
+  color: red;
+  margin: 3px auto;
+}
+
 /********** header **********/
 .page-header {
   width: 100%;
@@ -131,7 +141,7 @@ label {
   text-align: left;
   margin: 10px 30px 10px 30px;
   color: #c17317;
-  width: 180px;
+  width: 200px;
 }
 
 .nav-button {
@@ -194,12 +204,18 @@ label {
 
 .product-details {
   min-width: 400px;
+  padding: 0 30px;
 }
 
 .product-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 50px;
+}
+
+
+.review {
+  padding: 0 30px;
 }
 
 .new-review {
@@ -210,7 +226,7 @@ label {
   width: 150px;
 }
 
-.filter-box {
+.boxes {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 90%;
@@ -228,20 +244,19 @@ label {
   display: none;
 }
 
-.search-container, .status-container {
+.search-container, .filter-container, .status-container {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
   width: 250px;
 }
 
-.search-box, .search-button, .status-box, .status-button {
+.search-box, .search-button, .status-box, .status-button, .filter-box, .filter-button {
   display: inline-block;
 }
 
 .form {
   margin: 0 150px;
-  /* text-align: left; */
 }
 
 /********** footer **********/
@@ -252,16 +267,11 @@ label {
 /********** small screen **********/
 @media screen and (max-width: 1050px) {
   .page-header nav {
-    height: 260px;
+    min-height: 260px;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
   }
-
-  /* .nav-button {
-    margin-top: 20px;
-    margin-right: 5px;
-  } */
 
   .float-right {
     margin-left: 0;
@@ -270,4 +280,100 @@ label {
     flex-flow: row nowrap;
     margin: 0px;
   }
+
+  .page-header h1 {
+    font-size: 50px;
+    line-height: 1.4;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .page-header nav, .nav-button, .float-right, .boxes, .filter, .product-container {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .page-header h1 {
+    font-size: 50px;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .form {
+    margin: 0;
+  }
+
+  .search-container, .filter-container {
+    width: 300px;
+  }
+
+  .status-container {
+    width: 100px;
+  }
+
+  .filter .button {
+    display: block;
+  }
+
+  .list-container {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+  }
+
+  .categories {
+    display: none;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .main-container {
+    padding: 0.5rem 0.5rem;
+  }
+
+  h3, h4 {
+    font-size: 25px;
+    margin: 0.5rem auto;
+  }
+
+  /* .transpose tr { display: inline-block }
+  .transpose th, .transpose td { display: inline-block; } */
+
+  /* table, td, th {
+  border: 1px solid red;
+  } */
+
+  table.transpose {
+    background-color: none;
+    width: 390px;
+    font-size: 19px;
+    border: 1px solid #f1f1f1;
+  }
+
+  .transpose thead {
+    float: left;
+    height: 380px;
+    border: none;
+  }
+
+
+  .transpose thead th {
+    display: block;
+  }
+
+  .transpose tbody {
+    float: right;
+    height: 380px;
+    border: none;
+  }
+
+  .transpose tbody td {
+    display: block;
+  }
+
 }
