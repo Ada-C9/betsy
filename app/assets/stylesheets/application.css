@@ -55,3 +55,7 @@ header {
   border-top-width:20px;
   border-bottom-width:20px;
 }
+
+body .main {
+  margin: 2rem 10rem;
+}
