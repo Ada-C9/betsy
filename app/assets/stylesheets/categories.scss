@@ -37,19 +37,19 @@
   text-align: center;
 }
 
-.show-category .detail-pro {
-  display: flex;
-  justify-content: space-between;
+.show-category .grid-container {
+  display: grid;
+  grid-gap: 50px;
+  margin-right: 10%;
+  margin-left: 10%;
 }
-
-.detail-pro .product-cat-img {
-  display: flex;
-  justify-content: space-around;
-  position: relative;
-  float: left;
+.grid-container .product-cat-img {
+  display: grid;
+  align-items: center;
   width:  400px;
   height: 400px;
-  background-position: 50% 50%;
-  background-repeat:   no-repeat;
-  background-size:     cover;
+}
+h2 {
+  display: flex;
+  justify-content: center;
 }

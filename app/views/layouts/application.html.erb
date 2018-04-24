@@ -45,16 +45,16 @@
           <div class="user-nav columns large-3 small-12 float-right">
 
             <% if session[:cart_id] %>
-            <%= link_to "My Cart", cart_path(session[:cart_id], class: "hollow button") %>
+            <%= link_to "My Cart", cart_path(session[:cart_id]), class: "float-right" %>
             <% else %>
-            <a class= "hollow button">My Cart</a>
+            <span class= "float-right">My Cart</span>
             <% end %>
 
             <% if session[:merchant_id] %>
             <%= link_to "Log Out", logout_path, method: :delete, class: "hollow button" %>
             <%= link_to "Logged in as #{Merchant.find(session[:merchant_id]).username}", merchant_path(session[:merchant_id]), class: "button" %>
             <% else %>
-            <%= link_to "Log In", "/auth/github", class: "warning button" %>
+            <%= link_to "Log In", "/auth/github", class: "float-right" %>
             <% end %>
 
           </div>

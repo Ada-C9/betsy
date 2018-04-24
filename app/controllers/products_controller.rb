@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
     end
 
   end
-  # TODO: ADD AS MANY CATEGORY FILTERS AS WINI DEVELOPS
 
   def new
     if params[:merchant_id]
