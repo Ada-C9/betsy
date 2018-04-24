@@ -28,7 +28,7 @@
     <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
     <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
     <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-    <button data-slide="4"><span class="show-for-sr">Fourth slide details.</span></button>
+    <button data-slide="4"><span class="show-for-sr">Fifth slide details.</span></button>
   </nav>
 </div>
 
@@ -46,7 +46,7 @@
     </section>
 
     <section class="outfits">
-      <h3>Outfits</h3>
+      <h3>Outfit</h3>
       <ul>
         <% @outfits.each do |outfit| %>
           <% if outfit.is_active %>
@@ -56,12 +56,12 @@
       </ul>
     </section>
 
-    <section class="toys">
-      <h3>Toys</h3>
+    <section class="foods">
+      <h3>Food</h3>
       <ul>
-        <% @toys.each do |toy| %>
-          <% if toy.is_active %>
-            <%= link_to image_tag(toy.photo_url, alt: toy.name), product_path(toy.id) %>
+        <% @foods.each do |food| %>
+          <% if food.is_active %>
+            <%= link_to image_tag(food.photo_url, alt: food.name), product_path(food.id) %>
           <% end %>
         <% end %>
       </ul>

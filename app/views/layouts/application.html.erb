@@ -18,10 +18,19 @@
       <nav>
 
         <h1>🐶 Puppsy </h1>
+<<<<<<< HEAD
         <%= link_to "Home", root_path, class: "button"  %>
         <%= link_to "All Products", products_path, class: "button"  %>
         <%= link_to "Cart", cart_path, class: "button"  %>
         <div class="float-right">
+=======
+        <div class="nav-button">
+          <%= link_to "Home", root_path, class: "button"  %>
+          <%= link_to "All Products", products_path, class: "button"  %>
+          <span class="button">Cart</span>
+        </div>
+        <div class="float-right nav-button">
+>>>>>>> a3ad0417e06667e3e239c7070b1c7fc1d9a1cee6
           <% if session[:user_id] %>
           <span class="button">Account Page</span>
           <%= link_to "Log out", logout_path, method: :delete, class: "button"  %>
