@@ -5,13 +5,13 @@ describe MerchantsController do
   describe "index" do
     it "succeeds when there are merchants" do
       Merchant.count.must_be :>, 0
+
       get merchants_path
       must_respond_with :success
     end
 
     it "succeeds when there are no merchants" do
-      #cant't do delete all because the foreign key reation
-      skip
+      Product.destroy_all      
       Merchant.destroy_all
       get merchants_path
       must_respond_with :success
@@ -20,7 +20,6 @@ describe MerchantsController do
 
   describe "show" do
     it "succeeds for an extant merchant ID" do
-      skip
       merchant1 = Merchant.first
       get merchant_path(merchant1)
       must_respond_with :success
