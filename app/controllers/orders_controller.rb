@@ -34,8 +34,7 @@ class OrdersController < ApplicationController
 
   def update
   @order = Order.find_by(id: params[:id])
-  not_found_check(@order)
-      if @order
+    if @order
          @order.status = params[:status]
          @order.name = params[:name]
          @order.email = params[:email]
@@ -48,13 +47,13 @@ class OrdersController < ApplicationController
          @order.expiry = params[:expiry]
          @order.ccv= params[:ccv]
          @order.billing_zip = params[:billing_zip]
-       if @order.save
-         redirect_to order_path(@order.id)
-         flash[:success] = "#{@order.name} has been updated"
-       else
-         render :new
-         flash[:error] = "#{@order.name} update has failed"
-       end
+         if @order.save
+           redirect_to order_path(@order.id)
+           flash[:success] = "#{@order.name} has been updated"
+         else
+           render :new, status: :not_found
+           flash[:error] = "#{@order.name} update has failed"
+         end
      end
   end
 
