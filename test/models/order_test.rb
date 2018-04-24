@@ -165,7 +165,7 @@ describe Order do
 
   describe "order_tax method" do
     it "calculates the tax for items in an order" do
-      order = carts(:order_one)
+      order = orders(:order_one)
       result = order.order_tax
       result.must_equal 208.26
     end
@@ -181,7 +181,7 @@ describe Order do
 
   describe "total_cost method" do
     it "calculates the total cost for items in an order" do
-      order = carts(:order_one)
+      order = orders(:order_one)
       result = order.total
       result.must_equal 2522.26
     end
