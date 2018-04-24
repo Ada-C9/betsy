@@ -20,7 +20,7 @@
   </div>
 </p>
 
-<p>Average Rating: <%= @product.average_rating %></p>
+<p>Average Rating: <%= stars @product.average_rating %></p>
 
 <h3>Write a Review</h3>
 <%= form_for @review do |f| %>
@@ -40,7 +40,7 @@
 <% @product.reviews.each do |review| %>
   <p>Review created at <%= review.created_at %></p>
   <p><%= review.comment %></p>
-  <p>Rating: <%= review.rating %></p>
+  <p>Rating: <%= stars(review.rating) %></p>
 <% end %>
 <!-- FIXME: TEMPORARY STYLE, WILL FIX -->
 <!-- TODO: DISPLAY STOCK ON SHOW PAGE FOR PRODUCT, CAROLINE NEEDS THIS -->
