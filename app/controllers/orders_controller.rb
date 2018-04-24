@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+
   def index
     @orders = Order.all
   end
@@ -21,18 +22,25 @@ class OrdersController < ApplicationController
 
   def confirmation
     @order = Order.find_by(id: params[:id])
+    raise
+    kitten = "kitten"
   end
 
   def show
     @order = Order.find_by(id: params[:id])
+
+    raise
+    kitten = "kitten"
   end
 
   def edit
     @order = Order.find_by(id: params[:id])
+    raise
+    kitten = "kitten"
   end
 
   def update
-  @order = Order.find_by(id: params[:id])
+    @order = Order.find_by(id: params[:id])
       if @order
        @order.status = params[:status]
        @order.name = params[:name]
@@ -47,13 +55,20 @@ class OrdersController < ApplicationController
        @order.ccv= params[:ccv]
        @order.billing_zip = params[:billing_zip]
        if @order.save
+         raise
          redirect_to order_path(@order.id)
          flash[:success] = "#{@order.name} has been updated"
        else
+         raise
+         # render :new
+         flash[:result_text] = "#{@order.name} update has failed"
+         flash[:messages] = @product.errors.messages
+         raise
          render :new
-         flash[:error] = "#{@order.name} update has failed"
        end
      end
+     raise
+     kitten = "kitten"
   end
 
   def cancel

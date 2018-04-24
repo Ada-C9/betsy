@@ -40,7 +40,7 @@
 </section>
 
 <section class="checkout-form">
-  <%= form_for @cart do |f| %>
+  <%= form_for @cart, url:  @action do |f| %>
     <h4>Shipping Information</h4>
 
     <%= f.label :name %>
@@ -86,7 +86,7 @@
   <% if @cart.order_items.count > 0 %>
     <%= button_to "Empty Cart", {:action =>"destroy", :controller => "cart" }, :data => {:confirm => 'Are you sure?'}, method: :delete, class: "button" %>
 
-    <%= button_to "PAY AND SUBMIT ORDER", {:action =>"update_to_paid", :controller => "cart" }, method: :patch, class: "button" %>
+    <%= button_to "PAY AND PLACE ORDER", {:action =>"update_to_paid", :controller => "cart" }, method: :patch, class: "button" %>
 
   <% end %>
 

@@ -1,13 +1,19 @@
 class CartController < ApplicationController
 
 #user clicks on button - if DNE ( create cart show 0 objects or show all objects)
+
   def access_cart
+
     @cart = Order.find_by(id: session[:cart_order_id])
     if @cart.nil?
       @cart = create_cart
       session[:cart_order_id] = @cart.id
     end
+
+    @action = order_path(@cart.id)
+
     render "orders/cart"
+
   end
 
   def add_to_cart
