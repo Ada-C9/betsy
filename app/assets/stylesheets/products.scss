@@ -12,30 +12,31 @@ header {
   margin-right: auto;
   color: black;
 }
-
 h2 {
   font-family: 'Berkshire Swash';font-size: 45px;
 }
-
 .orbit {
   width: 50%;
   height: 50%;
   margin-left: auto;
   margin-right: auto;
 }
-
 .bonbon-img {
   width: 900px;
   height: 650px;
   display: block;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  border: 10px double black;
 }
 .image-container {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding-bottom: 100px;
+  padding-top: 100px;
 }
 .pagination {
   display: flex;
@@ -47,8 +48,56 @@ em.current {
   border-radius: 5px;
 }
 .product_pic {
-  border: 1px solid rgba(138, 84, 164, 0.59); /* Gray border */
+  border: 1px solid black;
   border-radius: 4px;  /* Rounded border */
   padding: 5px; /* Some padding */
   width: 150px; /* Set a small width */
+}
+
+
+section.product-show-page {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  padding: 10px 10px 40px 10px;
+}
+div.product-info-container {
+  width: 600px;
+  height: 390;
+  margin: auto;
+  border: 10px double black;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+  float: left;
+}
+div.rating-form-container {
+  width: 600px;
+  height: 390px;
+  margin: auto;
+  border: 10px double black;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+  float: left;
+}
+
+
+section.all-ratings-box {
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+  padding: 20px 20px 20px 20px;
+}
+div.all-reviews-container {
+  width: 400px;
+  margin: auto;
+  border: 10px double black;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+  float: left;
+}
+.plain-font {
+  font-family: sans-serif;
 }
