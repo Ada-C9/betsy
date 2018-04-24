@@ -1,12 +1,12 @@
 <h3>Order Review</h3>
-<% Cart.find(session[:cart_id]).cartitems.each do |item| %>
-<ul>
-  <li><%= link_to "#{item.product.name}", product_path(item.product_id) %></li>
-  <li><%= item.quantity %></li>
-  <li><%= display_dollars(item.product.price) %></li>
-  <li><%= display_dollars(item.subtotal) %></li>
-</ul>
-<% end %>
+
+<%= render partial: "order_items_review" %>
+
+
+<h4>Subtotal: $<%= display_dollars(@cart.subtotal)%></h4>
+<h4>Tax: $<%= display_dollars(@cart.tax)%></h4>
+<h3>Total: $<%= display_dollars(@cart.total_cost)%></h3>
+
 
 <%= link_to "Edit shopping cart", cart_path(session[:cart_id]), class: "hollow button"%>
 <%= form_for @order do |t|%>

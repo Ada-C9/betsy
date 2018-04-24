@@ -22,4 +22,9 @@ class Product < ApplicationRecord
     average_rating = total / self.reviews.count
     return average_rating
   end
+
+  def new_stock(items_bought)
+    new_total = self.stock - items_bought
+    return new_total
+  end
 end
