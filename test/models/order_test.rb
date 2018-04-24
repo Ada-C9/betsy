@@ -8,7 +8,8 @@ describe Order do
         name: 'Drew',
         email: 'drew@somthingcool.com',
         creditcard: '1234123412341234',
-        expiration_date: Date.parse('8/10/18'),
+        expiration_month: Date.parse('8/10/18'),
+        expiration_year: Date.parse('8/10/18'),
         name_on_card: 'Drew Crisanti',
         cvv: '123',
         mail_address: '123 Main Street, Small Town, USA',
@@ -55,8 +56,16 @@ describe Order do
       result.must_equal false
     end
 
-    it 'is invalid when expiration date is missing' do
-      @order.expiration_date = nil
+    it 'is invalid when expiration month is missing' do
+      @order.expiration_month = nil
+
+      result = @order.valid?
+
+      result.must_equal false
+    end
+
+    it 'is invalid when expiration year is missing' do
+      @order.expiration_year = nil
 
       result = @order.valid?
 
@@ -140,7 +149,8 @@ describe Order do
         name: 'Drew',
         email: 'drew@somthingcool.com',
         creditcard: '1234123412341234',
-        expiration_date: Date.parse('8/10/18'),
+        expiration_month: Date.parse('8/10/18'),
+        expiration_year: Date.parse('8/10/18'),
         name_on_card: 'Drew Crisanti',
         cvv: '123',
         mail_address: '123 Main Street, Small Town, USA',
