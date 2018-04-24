@@ -13,20 +13,23 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    render_404 unless @user
-    @user_products = @user.products
-    # Model method for getting the relevant orders is needed
-
-    if params[:term]
-      @term = params[:term]
-      @orders = @user.list_orders_by_status(@term)
-      # raise
-      @revenue = @user.total_revenue_by_status(@term)
-      @num_orders = @user.num_orders_by_status(@term)
+    if @user.nil?
+      render_404
     else
-      @orders = @user.list_all_orders
-      @revenue = @user.total_revenue
-      @num_orders = @user.num_orders
+      @user_products = @user.products
+      # Model method for getting the relevant orders is needed
+
+      if params[:term]
+        @term = params[:term]
+        @orders = @user.list_orders_by_status(@term)
+        # raise
+        @revenue = @user.total_revenue_by_status(@term)
+        @num_orders = @user.num_orders_by_status(@term)
+      else
+        @orders = @user.list_all_orders
+        @revenue = @user.total_revenue
+        @num_orders = @user.num_orders
+      end
     end
   end
 
