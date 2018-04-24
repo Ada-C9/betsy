@@ -1,5 +1,6 @@
 class OrderItemsController < ApplicationController
 
+
   def new
     @order_item = OrderItem.new
   end
@@ -10,13 +11,13 @@ class OrderItemsController < ApplicationController
     @order_item.product = Product.find(params[:product_id])
   end
 
+
   def update
-    @order_item = OrderItem.find_by(id: params[:id])
-
-    @order_item.update(id: params[:id], is_shipped: true)
-    redirect_to user_path(@order_item.product.user.id)
+      @order_item = OrderItem.find_by(id: params[:id])
+      if @order_item
+        @order_item.quantity = params[:order_item][:quantity]
+      end
   end
-
 
 
   private
