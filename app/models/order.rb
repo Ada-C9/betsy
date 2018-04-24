@@ -15,23 +15,19 @@ class Order < ApplicationRecord
 
 
   def is_pending
-    return true if self.status == "pending"
+    return self.status == "pending"
   end
 
-
+  TAXRATE = 0.10
   def order_tax
-    tax_value = 0.09
-    cart = Cart.find(id: self.cart_id)
-    tax = cart.subtotal * tax_value
+    cart = Cart.find(self.cart_id)
+    tax = cart.subtotal * TAXRATE
    return tax
   end
 #Sorry it is all double but need to dry it
   def total
-    tax_value = 0.09
-    cart = Cart.find(id: self.cart_id)
-    total = (cart.subtotal * tax_value) + cart.subtotal
+    cart = Cart.find(self.cart_id)
+    total = (cart.subtotal * TAXRATE) + cart.subtotal
    return total
-
   end
-
 end
