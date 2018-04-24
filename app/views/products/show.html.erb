@@ -2,7 +2,7 @@
 <h2><%= @product.name %></h2>
 <p>Seller: <%= @product.merchant.username %></p>
 <p>Description: <%= @product.description %></p>
-<p>Price: <%= display_dollars(@product.price) %></p>
+<p>Price: $<%= display_dollars(@product.price) %></p>
 <p>Stock: <%= @product.stock %></p>
 <%= form_for @cartitem do |f|%>
 <%= f.hidden_field :product_id, :value => @product.id %>

@@ -6,11 +6,11 @@
 
   <% @category.products.each do |pro| %>
   <section class="detail-pro">
-    <%= image_tag(pro.image, alt: "middle-pro", class: "product-cat-img") %>
+    <%= link_to image_tag(pro.image, alt: "middle-pro", class: "product-cat-img"), product_path(pro) %>
     <ul>
-      <li><%= pro.name %></li>
-      <li>Price: <%= pro.price %></li>
-      <li>Seller: <%= pro.merchant.username %></li>
+      <li><%= link_to pro.name, product_path(pro) %></li>
+      <li>Price: $<%= display_dollars(pro.price) %></li>
+      <li>Seller: <%= link_to pro.merchant.username, merchant_path(pro.merchant)%></li>
       <li>Details: <%= pro.description %></li>
     </ul>
   </section>
