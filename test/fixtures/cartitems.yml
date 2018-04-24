@@ -9,16 +9,13 @@ item_one:
   cart: cart_one
   product: bonbon
   quantity: 4
-  cart: cart_one
 
 item_two:
   cart: cart_one
   product: cheesecake
   quantity: 2
-  cart: cart_two
 
 item_three:
   cart: cart_two
   product: macaron
   quantity: 1
-  cart: cart_one
