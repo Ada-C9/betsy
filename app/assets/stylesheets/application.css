@@ -58,6 +58,9 @@ p {
   padding: 1rem 2rem;
   text-align: center;
   min-height: 50rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 footer {
@@ -143,7 +146,28 @@ nav .float-right {
 /********** homepage **********/
 .list-container {
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 1fr;
+  grid-template-columns: auto 120px;
+}
+
+.product-lists {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.product-lists section {
+  width: 350px;
+}
+
+/********** orbit **********/
+.orbit {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.orbit-container img {
+  margin-bottom: 0px;
 }
 
 /********** product **********/
@@ -187,6 +211,8 @@ nav .float-right {
 .filter-box {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 90%;
+  align-items: center;
 }
 
 .filter {

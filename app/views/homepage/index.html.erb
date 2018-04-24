@@ -1,40 +1,25 @@
-<h1>Carousel: To be customized</h1>
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
   <div class="orbit-wrapper">
-    <div class="orbit-controls">
-      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-      <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-    </div>
     <ul class="orbit-container">
       <li class="is-active orbit-slide">
-        <figure class="orbit-figure">
-          <%= image_tag "dog-1.jpg", alt: "Dog-1" %>
-          <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
-        </figure>
+        <%= image_tag "dog-1.jpg", alt: "Dog-1" %>
+        <figcaption class="orbit-caption">Some introduction for this cute puppy.</figcaption>
       </li>
       <li class="orbit-slide">
-        <figure class="orbit-figure">
-          <%= image_tag "dog-2.jpg", alt: "Dog-2" %>
-          <figcaption class="orbit-caption">Lets Rocket!</figcaption>
-        </figure>
+        <%= image_tag "dog-2.jpg", alt: "Dog-2" %>
+        <figcaption class="orbit-caption">Some introduction for this cute puppy.</figcaption>
       </li>
       <li class="orbit-slide">
-        <figure class="orbit-figure">
-          <%= image_tag "dog-3.jpg", alt: "Dog-3" %>
-          <figcaption class="orbit-caption">Encapsulating</figcaption>
-        </figure>
+        <%= image_tag "dog-3.jpg", alt: "Dog-3" %>
+        <figcaption class="orbit-caption">Some introduction for this cute puppy.</figcaption>
       </li>
       <li class="orbit-slide">
-        <figure class="orbit-figure">
-          <%= image_tag "dog-4.jpg", alt: "Dog-4" %>
-          <figcaption class="orbit-caption">Outta This World</figcaption>
-        </figure>
+        <%= image_tag "dog-4.jpg", alt: "Dog-4" %>
+        <figcaption class="orbit-caption">Some introduction for this cute puppy.</figcaption>
       </li>
       <li class="orbit-slide">
-        <figure class="orbit-figure">
-          <%= image_tag "dog-5.jpg", alt: "Dog-5" %>
-          <figcaption class="orbit-caption">Outta This World</figcaption>
-        </figure>
+        <%= image_tag "dog-5.jpg", alt: "Dog-5" %>
+        <figcaption class="orbit-caption">Some introduction for this cute puppy.</figcaption>
       </li>
     </ul>
   </div>
@@ -43,37 +28,39 @@
     <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
     <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
     <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+    <button data-slide="4"><span class="show-for-sr">Fourth slide details.</span></button>
   </nav>
 </div>
 
 <section class="list-container">
-
-  <section class="popular">
-    <h3>Popular</h3>
-    <ul>
-      <% @popular_products.each do |popular_products| %>
+  <div class="product-lists">
+    <section class="popular">
+      <h3>Popular</h3>
+      <ul>
+        <% @popular_products.each do |popular_products| %>
         <%= link_to image_tag(popular_products.photo_url, alt: popular_products.name), product_path(popular_products.id) %>
-      <% end %>
-    </ul>
-  </section>
+        <% end %>
+      </ul>
+    </section>
 
-  <section class="outfits">
-    <h3>Outfits</h3>
-    <ul>
-      <% @outfits.each do |outfit| %>
+    <section class="outfits">
+      <h3>Outfits</h3>
+      <ul>
+        <% @outfits.each do |outfit| %>
         <%= link_to image_tag(outfit.photo_url, alt: outfit.name), product_path(outfit.id) %>
-      <% end %>
-    </ul>
-  </section>
+        <% end %>
+      </ul>
+    </section>
 
-  <section class="toys">
-    <h3>Toys</h3>
-    <ul>
-      <% @toys.each do |toy| %>
+    <section class="toys">
+      <h3>Toys</h3>
+      <ul>
+        <% @toys.each do |toy| %>
         <%= link_to image_tag(toy.photo_url, alt: toy.name), product_path(toy.id) %>
-      <% end %>
-    </ul>
-  </section>
+        <% end %>
+      </ul>
+    </section>
+  </div>
 
   <section class="categories">
     <h4>Categories</h4>
