@@ -22,5 +22,12 @@ class Product < ApplicationRecord
     actual_count = [count, sorted_products.count].min
     return sorted_products[0...actual_count]
   end
-
+  
+  def self.search(term)
+    if term
+      where('name LIKE ?', "%#{term}%").order('id DESC')
+    else
+      all
+    end
+  end
 end

@@ -145,5 +145,14 @@ describe Product do
         Product.top_sellers(3).must_equal [products(:product_10), products(:product_9), products(:product_8)]
       end
 
+      it "search products" do
+        p = Product.search("product_1")
+        p.count.must_equal 2
+        p = Product.search("product_2")
+        p.count.must_equal 1
+        p = Product.search("dog")
+        p.must_equal []
+      end
+
     end
   end

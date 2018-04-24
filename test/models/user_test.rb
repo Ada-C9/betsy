@@ -123,5 +123,19 @@ describe User do
       u.total_revenue_by_status("pending").must_equal 0.01
       u.total_revenue_by_status("complete").must_equal 0
     end
+
+    it "lists order by status" do
+      u.list_orders_by_status("pending").must_be_instance_of Array
+      u.list_orders_by_status("pending").must_include orders(:order_1)
+      u.list_orders_by_status("pending").count.must_equal 1
+      user.list_orders_by_status("pending").must_equal []
+    end
+
+    it "lists all orders" do
+      u.list_all_orders.must_be_instance_of Array
+      u.list_all_orders.must_include orders(:order_1)
+      u.list_all_orders.count.must_equal 1
+      user.list_all_orders.must_equal []
+    end
   end
 end
