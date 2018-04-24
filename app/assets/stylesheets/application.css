@@ -204,12 +204,18 @@ label {
 
 .product-details {
   min-width: 400px;
+  padding: 0 30px;
 }
 
 .product-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 50px;
+}
+
+
+.review {
+  padding: 0 30px;
 }
 
 .new-review {
@@ -284,7 +290,7 @@ label {
 }
 
 @media only screen and (max-width: 600px) {
-  .page-header nav, .nav-button, .float-right {
+  .page-header nav, .nav-button, .float-right, .filter-box, .filter, .product-container {
     display: flex;
     flex-flow: column nowrap;
     margin-left: 0;
@@ -295,5 +301,9 @@ label {
     font-size: 50px;
     line-height: 1.4;
     text-align: center;
+  }
+
+  .form {
+    margin: 0;
   }
 }
