@@ -5,8 +5,6 @@ class CartsController < ApplicationController
   # may not need this eventually
   def create
     @cart = Cart.new
-
-
     if @cart.save
       flash[:status] = :success
       flash[:result_text] = "Successfully created cart"

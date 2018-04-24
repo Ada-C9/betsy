@@ -9,7 +9,8 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: {only_integer: true, greater_than: 0}
 
   def available?(new_quantity)
-    return if self.stock > new_quantity
+    stock = self.stock
+    return true if stock >= new_quantity
   end
 
   def average_rating
@@ -31,4 +32,10 @@ class Product < ApplicationRecord
     end
     return category_hash
   end
+
+
+    def new_stock(items_bought)
+      new_total = self.stock - items_bought
+      return new_total
+    end
 end

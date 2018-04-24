@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   def homepage;end
 
   def index
-    @products = Product.all.paginate(:page => params[:page], :per_page => 5)
+    @products = Product.where(visible: true).paginate(:page => params[:page], :per_page => 5)
   end
   # TODO: ADD AS MANY CATEGORY FILTERS AS WINI DEVELOPS
 
@@ -14,4 +14,5 @@ class ProductsController < ApplicationController
     @cartitem = Cartitem.new
     @review = Review.new
   end
+
 end
