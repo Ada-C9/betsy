@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
       flash[:status] = :failure
       flash[:result_text] = "Could not create a review"
       flash[:messages] = @review.errors.messages
-      redirect_back(fallback_location: products_path)
+      redirect_back fallback_location: products_path, status: :bad_request
     end
   end
 
