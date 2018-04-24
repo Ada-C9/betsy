@@ -2,14 +2,14 @@ require "test_helper"
 
 describe ReviewsController do
   describe 'index' do
-    it 'can succeed with all categories' do
+    it 'can succeed with reviews present' do
       Review.count.must_be :>, 0
 
       get reviews_path
       must_respond_with :success
     end
 
-    it 'can succeed with no categories' do
+    it 'can succeed with no reviews' do
       Review.destroy_all
 
       get reviews_path
