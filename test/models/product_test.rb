@@ -70,6 +70,15 @@ describe Product do
       @product.cartitem_ids.must_include cartitem.id
     end
 
+    it 'prevents destroying product if there exsists a cartitem' do
+      product = products(:cheesecake)
+
+      product.destroy.must_equal false
+
+      product.persisted?.must_equal true
+    end
+
+
     it 'connects to review and review_id' do
       review = Review.create!(product: @product, rating: 5)
 
