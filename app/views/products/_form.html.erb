@@ -13,6 +13,7 @@
   <div>
     <%= f.label :categories %>
     <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :name) %>
+    <%= link_to "Create a new category", new_merchant_category_path %>
   </div>
 
   <%= f.label :price %>
@@ -24,13 +25,12 @@
   <%= f.label :stock %>
   <%= f.number_field :stock %>
 
-  <%= f.hidden_field :merchant_id %>
+  <%= f.hidden_field :merchant_id, :value => params[:merchant_id] %>
 
   <%= f.label :image %>
   <%= f.text_field :image %>
 
-  <%= f.label :visible %>
-  <%= f.text_field :visible %>
+  <%= f.hidden_field :visible, :value => true %>
 
   <%= f.submit class: "button" %>
 
