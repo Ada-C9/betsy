@@ -49,6 +49,9 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     @review = Review.new
     @action = product_reviews_path(params[:id])
+    if @product.nil?
+      render_404
+    end
   end
 
   def edit
