@@ -1,7 +1,7 @@
 <h3>Create a New Product</h3>
 
 <div class="form">
-  <%= form_for @product, url: @action do |f| %>
+  <%= form_for @product, url: @action, validate: true do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 

@@ -1,6 +1,6 @@
 <h3>Checkout</h3>
 <div class="form">
-  <%= form_for @order do |f| %>
+  <%= form_for @order, validate: true do |f| %>
   <h4>Shipping Information</h4>
 
   <%= f.label :name %>
