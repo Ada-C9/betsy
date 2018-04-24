@@ -17,15 +17,21 @@ class CartController < ApplicationController
     else
       @cart = Order.find_by(id: session[:cart_order_id])
     end
-
     @product = Product.find(params[:id])
-    if @product.stock > 0
-      @order_item = OrderItem.create product_id: @product.id, order_id: @cart.id, quantity: 1, is_shipped: "false"
-    else
+    desired_quantity = total_quantity_requested
+    if desired_quantity > @product.stock
       flash[:status] = :failure
       flash[:result_text] = "Not enough inventory on-hand to complete your request."
+    else
+      if @target_item = @cart.order_items.find_by(product_id: params[:id])
+        @target_item.quantity = desired_quantity
+        @target_item.save
+      else
+        @order_item = OrderItem.create product_id: @product.id, order_id: @cart.id, quantity: desired_quantity, is_shipped: "false"
+      end
     end
-    render "orders/cart"
+    desired_quantity = 1
+    redirect_to cart_path
   end
 
   def update
@@ -37,8 +43,6 @@ class CartController < ApplicationController
       order_item.destroy
     end
     render :empty_cart
-    # session[:cart_order_id] = nil
-    # @cart.destroy
   end
 
   def remove_single_item
@@ -64,13 +68,17 @@ class CartController < ApplicationController
     return @cart
   end
 
+  def total_quantity_requested
+    @product = Product.find(params[:id])
+    end_quantity = 1
+    @cart.order_items.each do |order_item|
+      if order_item.product_id == @product.id
+        end_quantity += order_item.quantity
+      end
+    end
+    return end_quantity
+  end
 end
-
-
-
-
-
-
 
 
 def add_to_cart

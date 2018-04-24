@@ -20,7 +20,7 @@
           <%= form_for order_item do |f| %>
           <%= f.label :"Amount Ordered" %>
           <%= f.text_field :quantity %>
-          <%=f.submit %>
+          <%=f.submit "Update Quantity", class: "button"%>
             <%end%>
           </p>
 
@@ -32,7 +32,7 @@
         </div>
         <p>$<%= price_in_dollar(order_item.subtotal) %></p>
         <div>
-          <%= button_to "Remove Item", {:action =>"remove_single_item", :controller => "cart", id: order_item.id }, :data => {:confirm => 'Are you sure?'}, method: :delete, class: "button" %>
+          <%= button_to "Remove Item", {:action =>"remove_single_item", :controller => "cart", id: order_item.id }, method: :delete, class: "button" %>
         </div>
       </li>
     <% end %>
