@@ -5,28 +5,26 @@
 # below each fixture, per the syntax in the comments below
 #
 
-# order_one:
-#   cart: cart_one
-#   name: Grace Hopper
-#   email: grace@somethingcool.com
-#   creditcard: 1234123412341234
-#   name_on_card: Grace Hopper
-#   expiration_date: 2020-02-1
-#   cvv: 123
-#   mail_address: 345 Main Street
-#   billing_address: 345 Main Street
-#   zipcode: 54321
-#   status: completed
-#
-# order_two:
-#   cart: cart_two
-#   name: Ada Lovelace
-#   email: ada@somethingcool.com
-#   creditcard: 1234123412341234
-#   name_on_card: Ada Lovelace
-#   expiration_date: 2022-02-1
-#   cvv: 123
-#   mail_address: 123 Main Street
-#   billing_address: 123 Main Street
-#   zipcode: 11111
-#   status: pending
+order_one:
+  cart: cart_one
+  name: Grace Hopper
+  email: grace@somethingcool.com
+  creditcard: 1234123412341234
+  name_on_card: Grace Hopper
+  cvv: 123
+  mail_address: 345 Main Street
+  billing_address: 345 Main Street
+  zipcode: 54321
+  status: completed
+
+order_two:
+  cart: cart_two
+  name: Ada Lovelace
+  email: ada@somethingcool.com
+  creditcard: 1234123412341234
+  name_on_card: Ada Lovelace
+  cvv: 123
+  mail_address: 123 Main Street
+  billing_address: 123 Main Street
+  zipcode: 11111
+  status: pending

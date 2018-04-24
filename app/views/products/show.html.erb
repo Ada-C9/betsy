@@ -3,14 +3,13 @@
 <p>Seller: <%= @product.merchant.username %></p>
 <p>Description: <%= @product.description %></p>
 <p>Price: <%= display_dollars(@product.price) %></p>
-
+<p>Stock: <%= @product.stock %></p>
 <%= form_for @cartitem do |f|%>
-  <%= f.hidden_field :product_id, :value => @product.id %>
+<%= f.hidden_field :product_id, :value => @product.id %>
 
-  <%= f.label :quantity %>
-  <%= f.number_field(:quantity, in: 1..@product.stock) %>
-
-  <%= f.submit("Add to cart") %>
+<%= f.label :quantity %>
+<%= f.number_field(:quantity, in: 1..@product.stock) %>
+<%= f.submit("Add to cart") %>
 <% end %>
 
 <p>
@@ -20,28 +19,27 @@
   </div>
 </p>
 
-<p>Average Rating: <%= @product.average_rating %></p>
+<p>Average Rating: <%= stars @product.average_rating %></p>
 
 <h3>Write a Review</h3>
 <%= form_for @review do |f| %>
 
-  <%= f.hidden_field :product_id, :value => @product.id %>
+<%= f.hidden_field :product_id, :value => @product.id %>
 
-  <%= f.label :rating %>
-  <%= f.number_field :rating %>
+<%= f.label :rating %>
+<%= f.number_field :rating %>
 
-  <%= f.label :comment %>
-  <%= f.text_field :comment %>
+<%= f.label :comment %>
+<%= f.text_field :comment %>
 
-  <%= f.submit class: "hollow button" %>
+<%= f.submit class: "hollow button" %>
 <% end %>
 
 <h4>Reviews:</h4>
 <% @product.reviews.each do |review| %>
-  <p>Review created at <%= review.created_at %></p>
-  <p><%= review.comment %></p>
-  <p>Rating: <%= review.rating %></p>
+<p>Review created at <%= review.created_at %></p>
+<p><%= review.comment %></p>
+<p>Rating: <%= stars(review.rating) %></p>
 <% end %>
 <!-- FIXME: TEMPORARY STYLE, WILL FIX -->
-<!-- TODO: STYLE THE SHIT OUT OF THIS. -->
-<!-- TODO: ADD A "ADD TO CART" BUTTON AT BOTTOM OF PAGE -->
+<!-- TODO: DISPLAY STOCK ON SHOW PAGE FOR PRODUCT, CAROLINE NEEDS THIS -->

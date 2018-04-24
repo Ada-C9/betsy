@@ -12,7 +12,7 @@
         Sold By:
       </th>
       <th>
-        Reviews:
+        Average Rating:
       </th>
     </tr>
   </thead>
@@ -25,13 +25,11 @@
       <td>
         <%= link_to product.name, product_path(product) %>
       </td>
-      <!-- TODO: NEEDS LINK FROM MERCHANT NAME TO MERCHANT: Check w/Wenji -->
       <td>
         <%= link_to product.merchant.username, merchant_path(product) %>
       </td>
       <td>
-        <!-- TODO: Need a link to successfully created ids: Check w/Caroline and Wini -->
-        <%= link_to Review.where(product_id: product.id).count %>
+        <%= stars(product.average_rating) %>
       </td>
     </tr>
     <% end %>

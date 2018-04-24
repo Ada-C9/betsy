@@ -36,7 +36,6 @@ describe ReviewsController do
       must_respond_with :success
     end
   end
-  # FIXME: CODE IS NOT WORKING HERE, SOME PARAMETER IS COMING UP EMPTY. NEED ANOTHER SET OF EYES
   describe 'create' do
     it 'can add a valid review' do
       review_data = {

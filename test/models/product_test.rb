@@ -70,6 +70,15 @@ describe Product do
       @product.cartitem_ids.must_include cartitem.id
     end
 
+    it 'prevents destroying product if there exsists a cartitem' do
+      product = products(:cheesecake)
+
+      product.destroy.must_equal false
+
+      product.persisted?.must_equal true
+    end
+
+
     it 'connects to review and review_id' do
       review = Review.create!(product: @product, rating: 5)
 
@@ -94,8 +103,28 @@ describe Product do
     it 'can set the merchant' do
       product = Product.new(name: 'tasty treat', price: 199)
       product.merchant = merchants(:analisa)
-      
+
       product.merchant_id.must_equal merchants(:analisa).id
+    end
+  end
+
+  describe 'average_rating' do
+    it 'returns the average of all the ratings on a product' do
+      product = products(:cheesecake)
+
+      product.average_rating.must_equal 3
+    end
+
+    it 'returns nil when there are no reviews' do
+      product = products(:macaron)
+
+      product.average_rating.must_be_nil
+    end
+
+    it 'returns the value when there is only one review of the one review' do
+      product = products(:bonbon)
+
+      product.average_rating.must_equal 3
     end
   end
 end
