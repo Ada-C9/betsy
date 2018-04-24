@@ -57,35 +57,32 @@ class CartController < ApplicationController
        # redirect_to order_path(@order.id)
        flash[:status] = :success
        flash[:result_text] = "Your order information has been successfully updated!"
-       raise
        redirect_to cart_path
      else
        flash[:status] = :failure
        flash[:result_text] = "We were unable to update your order information."
        flash[:messages] = @cart.errors.messages
-       raise
        redirect_to cart_path
      end
     end
   end
 
-  # def update_to_paid
-  #   raise
-  #   @cart = Order.find_by(id: session[:cart_order_id])
-  #   @cart.status = "paid"
-  #   if !@cart.save
-  #     flash[:status] = :failure
-  #     flash[:result_text] = "We weren't able to process your order. Please double-check the form."
-  #     flash[:messages] = @cart.errors.messages
-  #     redirect_to cart_path
-  #   else
-  #     flash[:status] = :success
-  #     flash[:result_text] = "Your order has been submitted!"
-  #     @order = Order.find_by(id: session[:cart_order_id])
-  #     session[:cart_order_id] = nil
-  #     render "orders/confirmation"
-  #   end
-  # end
+  def update_to_paid
+    @cart = Order.find_by(id: session[:cart_order_id])
+    @cart.status = "paid"
+    if !@cart.save
+      flash[:status] = :failure
+      flash[:result_text] = "We weren't able to process your order. Please double-check the form."
+      flash[:messages] = @cart.errors.messages
+      redirect_to cart_path
+    else
+      flash[:status] = :success
+      flash[:result_text] = "Your order has been submitted!"
+      @order = Order.find_by(id: session[:cart_order_id])
+      session[:cart_order_id] = nil
+      render "orders/confirmation"
+    end
+  end
 
   def destroy
     @cart = Order.find_by(id: session[:cart_order_id])

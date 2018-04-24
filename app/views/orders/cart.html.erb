@@ -86,7 +86,7 @@
 
     <%= button_to "Empty Cart", {:action =>"destroy", :controller => "cart" }, :data => {:confirm => 'Are you sure you want to delete all your items?'}, method: :delete, class: "button" %>
 
-
+    <%= button_to "PAY AND PLACE ORDER", {:action =>"update_to_paid", :controller => "cart" }, method: :patch, class: "button" %>
 
   <% end %>
 
