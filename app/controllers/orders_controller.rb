@@ -59,21 +59,26 @@ class OrdersController < ApplicationController
 
   def cancel
     @order = Order.find_by(id: params[:id])
-    not_found_check(@order)
-    @order.update(status: "cancelled")
-    redirect_back fallback_location: order_confirmation_path(@order)
-
+    if @order.nil?
+      render_404
+    else
+      @order.update(status: "cancelled")
+      redirect_back fallback_location: order_confirmation_path(@order)
+    end
   end
 
   def destroy
     @order = Order.find_by(id: params[:id])
-    not_found_check(@order)
+    if @order.nil?
+      render_404
+    else
       if @order
         @order.order_items.each do |item|
           item.destroy
         end
         @order.destroy
       end
+    end
   end
 
   private

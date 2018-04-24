@@ -5,16 +5,9 @@ class ApplicationController < ActionController::Base
     render file: "#{Rails.root}/public/404", status: :not_found
   end
 
-  #does this render method stop the execution of a method and render a new view page? Do i need to make a view page named 404?
-
-
-  # def render_404_message
-  #       raise ActionController::RoutingError.new('Not Found')
-  # end
-
   def not_found_check(object)
       if object.nil?
-        render_404_page
+        render_404
       end
   end
 
