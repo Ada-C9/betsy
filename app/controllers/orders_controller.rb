@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :find_order, except: [:index, :new, :create]
-  before_action :find_cart, only: [:update]
+  before_action :find_order, only: [:update, :edit]
+  before_action :find_cart_by_order, only: [:update]
+  before_action :find_cart_by_session, only: [:new]
 
   def new
     @order = Order.new
-    @cart = Cart.find(session[:cart_id])
   end
 
   def create
@@ -30,6 +30,8 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id: params[:id])
     @cart = Cart.find_by(id: @order.cart_id)
   end
+
+  def edit; end
 
   def update
     @order.update_attributes(order_params)
@@ -73,9 +75,14 @@ class OrdersController < ApplicationController
     head :not_found unless @order
   end
 
-  def find_cart
+  def find_cart_by_order
     order = Order.find_by(id: params[:id])
     @cart = Cart.find_by(id: order.cart_id)
+    head :not_found unless @cart
+  end
+
+  def find_cart_by_session
+    @cart = Cart.find_by(id: session[:cart_id])
     head :not_found unless @cart
   end
 end
