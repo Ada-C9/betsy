@@ -45,4 +45,73 @@ describe Category do
       category.product_ids.must_include product_two.id
     end
   end
+
+  describe 'show_four' do
+    it 'shows first four products of the category' do
+      category = Category.first
+      product1 = {
+        name: 'product1',
+        price: 233,
+        merchant: Merchant.first
+      }
+      product2 = {
+        name: 'product2',
+        price: 233,
+        merchant: Merchant.first
+      }
+      product3 = {
+        name: 'product3',
+        price: 233,
+        merchant: Merchant.first
+      }
+      product4 = {
+        name: 'product4',
+        price: 233,
+        merchant: Merchant.first
+      }
+      product5 = {
+        name: 'product5',
+        price: 233,
+        merchant: Merchant.first
+      }
+      new_products = [product1, product2, product3, product4, product5]
+      new_products.each do |pro|
+        category.products << Product.create(pro)
+      end
+
+      result = category.show_four
+      result.count.must_equal 4
+      result.wont_include product5
+    end
+
+    it "returns all products if there is four or less than four products in the category" do
+      category = Category.first
+      product1 = {
+        name: 'product1',
+        price: 233,
+        merchant: Merchant.first
+      }
+      product2 = {
+        name: 'product2',
+        price: 233,
+        merchant: Merchant.first
+      }
+      product3 = {
+        name: 'product3',
+        price: 233,
+        merchant: Merchant.first
+      }
+
+      new_products = [product1, product2, product3]
+      new_products.each do |pro|
+        category.products << Product.create(pro)
+      end
+
+      result = category.show_four
+
+      result.count.must_equal 3
+      result[0].name.must_equal product1[:name]
+      result[0].price.must_equal product1[:price]
+    end
+  end
 end

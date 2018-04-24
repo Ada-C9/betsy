@@ -11,9 +11,8 @@ class Merchant < ApplicationRecord
       uid: auth_hash[:uid],
       provider: auth_hash[:provider]
     )
-    if merchant.save
-      return merchants
-    end
+    merchant.save
+    return merchant
   end
 
   def show_four

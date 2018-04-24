@@ -10,15 +10,18 @@ cheesecake:
   name: cheesecake
   price: 499
   stock: 6
+  image: "https://images.pexels.com/photos/219293/pexels-photo-219293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
 
 bonbon:
   merchant: wini
   name: bonbon
   price: 329
   stock: 10
+  image: "https://images.pexels.com/photos/219293/pexels-photo-219293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
 
 macaron:
   merchant: wini
   name: macaron
   price: 400
   stock: 19
+  image: "https://images.pexels.com/photos/219293/pexels-photo-219293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
