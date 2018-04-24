@@ -1,19 +1,30 @@
 require "test_helper"
 
 describe CategoriesController do
-  it "should get index" do
-    get categories_index_url
-    value(response).must_be :success?
+
+  describe "index" do
+    it "should run successfully" do
+      get categories_path
+      must_respond_with :success
+    end
   end
 
-  it "should get new" do
-    get categories_new_url
-    value(response).must_be :success?
+  describe "new" do
+    it "should run successfully" do
+      get new_category_path
+      must_respond_with :success
+    end
   end
 
-  it "should get create" do
-    get categories_create_url
-    value(response).must_be :success?
+  describe "create" do
+    it "should create category" do
+      category_data = {
+        category: { name: "Test category" }
+      }
+      proc {
+        post categories_path, params: category_data
+      }.must_change 'Category.count', 1
+    end
   end
 
 end
