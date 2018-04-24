@@ -21,7 +21,7 @@
     <div class="review">
       <h4>Write a Review</h4>
       <section class="new-review">
-        <%= form_for @review, url: @action do |f| %>
+        <%= form_for @review, url: @action, validate: true do |f| %>
         <%= f.select :rating, (1..5).to_a, :prompt => 'Select a rating'%>
 
         <%= f.label :comment %>

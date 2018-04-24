@@ -76,3 +76,5 @@ end
 
 gem "omniauth"
 gem "omniauth-github"
+
+gem 'client_side_validations'

@@ -109,6 +109,16 @@ label {
   color: #c17317;
 }
 
+/********** validation **********/
+.field_with_errors input {
+  margin-bottom: 0;
+}
+
+.message {
+  color: red;
+  margin: 3px auto;
+}
+
 /********** header **********/
 .page-header {
   width: 100%;
