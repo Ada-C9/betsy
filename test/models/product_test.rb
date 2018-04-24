@@ -94,8 +94,28 @@ describe Product do
     it 'can set the merchant' do
       product = Product.new(name: 'tasty treat', price: 199)
       product.merchant = merchants(:analisa)
-      
+
       product.merchant_id.must_equal merchants(:analisa).id
+    end
+  end
+
+  describe 'average_rating' do
+    it 'returns the average of all the ratings on a product' do
+      product = products(:cheesecake)
+
+      product.average_rating.must_equal 3
+    end
+
+    it 'returns nil when there are no reviews' do
+      product = products(:macaron)
+
+      product.average_rating.must_be_nil
+    end
+
+    it 'returns the value when there is only one review of the one review' do
+      product = products(:bonbon)
+
+      product.average_rating.must_equal 3
     end
   end
 end
