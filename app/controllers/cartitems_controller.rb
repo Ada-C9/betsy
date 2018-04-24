@@ -61,7 +61,7 @@ class CartitemsController < ApplicationController
   def destroy
     @cartitem.destroy
     flash[:status] = :success
-    flash[:result_text] = "Successfully removed item #{@cartitem.product.name} from cart"
+    flash[:result_text] = "Successfully removed #{@cartitem.product.name} from cart"
     redirect_to cart_path(@cartitem.cart_id)
   end
 

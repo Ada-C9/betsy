@@ -1,24 +1,22 @@
 class CartsController < ApplicationController
 
-  before_action :find_cart, only: [:show]
-
-  # may not need this eventually
-  # def create
-  #   @cart = Cart.new
-  #
-  #   if @cart.save
-  #     flash[:status] = :success
-  #     flash[:result_text] = "Successfully created cart"
-  #     redirect_to carts_path(@cart)
-  #   else
-  #     flash[:status] = :failure
-  #     flash[:result_text] = "Could not create cart"
-  #     flash[:messages] = @cart.errors.messages
-  #     redirect_back(fallback_location: root_path)
-  #   end
-  # end
+  before_action :find_cart, only: [:show, :empty_cart]
 
   def show; end
+
+  def empty_cart
+    @cart.cartitems.destroy_all
+
+    if @cart.total_items == 0
+      flash[:success]
+      flash[:result_text] = "Your cart has been emptied"
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Could not empty your cart"
+      flash[:messages] = @cart.errors.messages
+    end
+    redirect_back(fallback_location: cart_path(@cart))
+  end
 
   private
   def find_cart
