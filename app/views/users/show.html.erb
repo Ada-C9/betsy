@@ -1,7 +1,8 @@
 <h3>User Account Page</h3>
-
-<%= link_to "Add Categories", new_category_path, class: "button" %>
-<%= link_to "Add Products", new_user_product_path(@user.id), class: "button" %>
+<div class="add-buttons">
+  <%= link_to "Add Categories", new_category_path, class: "button" %>
+  <%= link_to "Add Products", new_user_product_path(@user.id), class: "button" %>
+</div>
 
 <h4>List of Products</h4>
 <table>
@@ -45,7 +46,7 @@
         <section class="status-container">
           <%= form_tag(user_path(@user), method: :get) do %>
           <div class="status-box">
-            <%= select_tag :term, "<option>pending</option><option>paid</option><option>complete</option>".html_safe, :prompt => 'Select a status' %>
+            <%= select_tag :term, "<option>pending</option><option>paid</option><option>complete</option><option>cancelled</option>".html_safe, :prompt => 'Select a status' %>
           </div>
           <div class="status-button">
             <%= submit_tag "Submit", class: "button" %>
@@ -70,7 +71,9 @@
             <td><%= order_item.quantity %></td>
             <td>$<%= order_item.subtotal %></td>
             <td>
-              <% if order_item.is_shipped %>
+              <% if order_item.order.status == "pending" || order_item.order.status == "cancelled" %>
+                <span>N/A</span>
+              <% elsif order_item.is_shipped %>
                 <span>Shipped</span>
               <% else %>
                 <%= link_to "Mark Shipped", order_item_path(order_item.id), method: :patch, class: "button" %>
@@ -88,14 +91,14 @@
 <table>
   <thead>
     <tr>
-      <th>Total Revenue</th>
       <th>Number of Orders</th>
+      <th>Total Revenue</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>$<%= @revenue %></td>
       <td><%= @num_orders %></td>
+      <td>$<%= @revenue %></td>
     </tr>
   </tbody>
 </table>
