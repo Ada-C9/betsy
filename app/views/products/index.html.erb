@@ -20,7 +20,7 @@
     <% @products.each do |product| %>
     <tr>
       <td>
-        <%= image_tag(product.image, alt: "bonbon-image", class: "product_pic") %>
+        <%= link_to image_tag(product.image, alt: "bonbon-image", class: "product_pic"), product_path(product) %>
       </td>
       <td>
         <%= link_to product.name, product_path(product) %>
