@@ -1,30 +1,30 @@
-id,merchant_id,name,price,description,stock,image,visible
+id,merchant_id,name,price,description,stock,image,visible,category
 
-1,2,Carolines Angelical Key Lime Pie,2099,All ingredients are fair trade products,5,http://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/200212-r-xl-tangy-key-lime-pie.jpg?itok=x65bW9tP,true
-2,4,Brendas dreamed Strawberry Cheesecake,3350,Classic baked cheesecake with fresh strawberries in an almond murbe pastry base -- Allergies: nuts; eggs; flour; dairy,7,http://www.cbc.ca/inthekitchen/assets_c/2012/12/StrawberryCheescake1-thumb-596x350-252247.jpg,true
-3,3,Angelicas Granny Carrot Cake,1500,Secret family recipe coming all the way from mexico -- Allergies: nuts; eggs; flour. DAIRY FREE OPTION,9,https://food.fnr.sndimg.com/content/dam/images/food/fullset/2014/3/3/1/FNK_Easter-Carrot-Cake-with-Cream-Cheese-Frosting_s4x3.jpg.rend.hgtvcom.616.462.suffix/1393906711447.jpeg,true
-4,5,Latinxs and Majas Favorite Tres Leches,1800,Heavenly moist plain cake with evaporated milk; condensed milk and cream covered with italian meringue,4,https://www.browneyedbaker.com/wp-content/uploads/2016/05/tres-leches-cake-37-600-600x454.jpg,true
-5,1,Il Tiramisu di Maria,2100,Ladie finger biscuits with italian mascarpone and coldbrew,6,https://i.pinimg.com/736x/aa/6d/c4/aa6dc4714fabb248f8350c0cc075355f--laduree-paris-food-plating.jpg,true
-6,2,Kieras Sweet Potato Pie,2050,Sweet Potatoes made ...,8,https://www.cscassets.com/recipes/wide_cknew/wide_27102.jpg,true
-7,4,Discover Luxis Asian Cake,3099,Angel cake covered with whipped cream and fruits,1,http://www.rgbstock.com/cache1vOIb4/users/c/co/coolhewitt23/300/opbWx9e.jpg,true
-8,2,Ana Lisas Price winner Lemon Tart,2500, LOW SUGAR lemon Tart,8,https://i.ytimg.com/vi/E55gHIOXZEU/maxresdefault.jpg,true
-9,3,Pain au Chocolat,400,Each pack comes with 4,40,https://timedotcom.files.wordpress.com/2017/05/quanthem.jpg?quality=85,true
-10,4,Tors Homemade Macaroons,1599,The most famous macaroons. Almond based biscuit; flour free; filled with a explotion of flavour. Each box comes with 6,36,http://wallaceyolicia.files.wordpress.com/2014/02/sweet-macaron-laduree.jpg,true
-11,2,Diklas Challah,1000,Kosher homemade bread. GLUTEN FREE OPTION,15,https://static01.nyt.com/images/2015/11/19/dining/19COOKING-CHALLAHLOAF2/19COOKING-CHALLAHLOAF2-superJumbo.jpg,true
-12,5,Argentinian Quince Facturas,525,Quince and creme patissier filled puff pastries. ALLERGIES: DAIRY; EGGS; WHEAT.,30,http://upload.wikimedia.org/wikipedia/commons/7/7c/Factura_membrillo.jpg,true
-13,5,Alfajores,2500,Milk caramel filled cornflour pastry. ALLERGIES: DAIRY.,44,http://www.chowstatic.com/assets/2014/09/28373_alfajores_3000.jpg,true
-14,2,Bake at home Apple Gallete,1200,Crisp crust filled with apples. ALLERGIES: DAIRY; WHEAT.,10,http://shaunasever.com/wpshauna/wp-content/uploads/image-import/_gv2ZOLiWKJg/S-dMoUD7o7I/AAAAAAAACcA/1T3YJB_11es/s1600/DSC08561.JPG,true
-15,4,Cara´s specialty: Frozen bananas and cacao,699,Simplest frozen bananas covered with brazilian cacao.,15,https://www.wickedspatula.com/wp-content/uploads/2015/06/Banana-Popsicles_-2.jpg,true
-16,4,Anne´s Deligth Orange Pushpops (8),1000,Natural orange juice sorbet,15,https://heatherchristo.com/wp-content/uploads/2014/05/Mango-Vanilla-Honey-Push-up-Pops.jpg,true
-17,1,Dan´s Spoonable Brownies (6),1550,Very moist and gooey brownie; perfect to eat with a spoon and ice cream.,20,http://myblessedlife.net/wp-content/uploads/2010/09/brownie.jpg,true
-18,2,Angela´s Cream Puff (6),1050,Choux pastry filled with Tahitian Vanilla cream patissier,5,http://1.bp.blogspot.com/-_gBCPKY2EKA/TwbZt4WxbUI/AAAAAAAAA-U/Yr53Pn9vXyk/s1600/Pai+Shu+Cream+Puffs+by+Little+Japan+Mama1.jpg,true
-19,5,Always Creme Brulle (broil at home),2000,The perfect Creme Brulee made with Tahitian vanilla and the most perfect caramel after 5 min in high broil,10,http://3.bp.blogspot.com/_hxA4j4yxueY/TJ67MEnS2qI/AAAAAAAAMzQ/ZTveppP2938/s1600/Creme+Brulee+027.JPG,true
-20,2,Hannah`s Guilty Zebra Cake,500,,50,http://agentnerdy.files.wordpress.com/2010/10/tumblr_l1g17ysynh1qa5q3co1_500_large.jpg?w=400&h=266,true
-21,3,Ari´s Most Famous Sea Salt Caramel Bon-Bon (12),2500,Dark Belgian chocolate filled with sea salt caramel.,40,https://pixel.nymag.com/imgs/daily/grub/2015/01/23/stick-with-me/stick-with-me24.o.jpg/a_560x375.w710.h473.jpg,true
-22,4,Cats Freakin´Awesome Raspery Sorbet (1pt),850,Handpick raspberries from a local farm made into a creamed textured sorbet. Allergies: EGGS.,30,https://tse3.mm.bing.net/th?id=OIP.3nvoJWpXC1I44GQr7FoPKgHaHa&pid=15.1&P=0&w=300&h=300,true
-23,1,Karina´s Gansito Cupcakes (6),1200,Vanilla cake filled with cream and strawberry jam convered with chocolate.,34,https://i.pinimg.com/originals/45/26/91/452691d75a9991ede4ab30c6b5c81097.jpg,true
-24,,Jamilas New Generation Yogurt Pie,1500,The perfect yogurt pie. Made with local farm products,6,https://images-gmi-pmc.edge-generalmills.com/3e38492d-1ec4-4cba-8903-758c7eb10a4c.jpg,true
-25,,The Perfect Chocolate Truffles for Emilce (12),2050,The most exclusive belgian chocolate turned into a truffle,23,https://tse3.mm.bing.net/th?id=OIP.vgf5LoQURg0bpATtNQnvawHaF6&pid=15.1&P=0&w=190&h=153,true
-26,,Kari´s French Fruit Tart,3099,Made with murbe pastry, filled with tahitian vanilla creme patissier and toped with your choise of fruit,7,https://tse2.mm.bing.net/th?id=OIP.QbENAABkPIiiXzPaLJbCCAHaE9&pid=15.1&P=0&w=246&h=166,true
-27,Brandy´s Creme Renversee au Caramel,1800,The perfect and classic french flan. ALLERGIES: EGGS.,5,http://www.femmezine.fr/files/images/article/82/4f1936a66cc82-304-large.jpg.true
-28,Sam´s Dream Pop Tarts (5),700,Assorted vanilla, chocolate, and red velvet cake pops,23,http://static.wixstatic.com/media/06b7c5_4e862ade619949a29f25bd27c03dd36c.jpg_srz_1467_634_85_22_0.50_1.20_0.00_jpg_srz,true
+1,2,Caroline's Angelic Key Lime Pie,2099,All ingredients are fair trade products,5,http://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/200212-r-xl-tangy-key-lime-pie.jpg?itok=x65bW9tP,true,1
+2,4,Brenda's Dreamy Strawberry Cheesecake,3350,Classic baked cheesecake with fresh strawberries in an almond murbe pastry base -- Allergies: nuts; eggs; flour; dairy,7,http://www.cbc.ca/inthekitchen/assets_c/2012/12/StrawberryCheescake1-thumb-596x350-252247.jpg,true,13
+3,3,Angelica's Granny Carrot Cake,1500,Secret family recipe coming all the way from Mexico -- Allergies: nuts; eggs; flour. DAIRY FREE OPTION,9,https://food.fnr.sndimg.com/content/dam/images/food/fullset/2014/3/3/1/FNK_Easter-Carrot-Cake-with-Cream-Cheese-Frosting_s4x3.jpg.rend.hgtvcom.616.462.suffix/1393906711447.jpeg,true,13
+4,5,Latinxs' and Maja's Favorite Tres Leches,1800,Heavenly moist cake with evaporated milk; condensed milk and cream covered with Italian meringue,4,https://www.browneyedbaker.com/wp-content/uploads/2016/05/tres-leches-cake-37-600-600x454.jpg,true,3
+5,1,Il Tiramisu di Maria,2100,Lady finger biscuits with Italian mascarpone and coldbrew,6,https://i.pinimg.com/736x/aa/6d/c4/aa6dc4714fabb248f8350c0cc075355f--laduree-paris-food-plating.jpg,true,13
+6,2,Kiera's Sweet Potato Pie,2050,Sweet Potatoes made ...,8,https://www.cscassets.com/recipes/wide_cknew/wide_27102.jpg,true,11
+7,4,Luxi's Asian Cake,3099,Angel cake covered with whipped cream and fruits,1,http://www.rgbstock.com/cache1vOIb4/users/c/co/coolhewitt23/300/opbWx9e.jpg,true,8
+8,2,Ana Lisa's Prize Winning Lemon Tart,2500, LOW SUGAR lemon Tart,8,https://i.ytimg.com/vi/E55gHIOXZEU/maxresdefault.jpg,true,1
+9,3,Pain au Chocolat,400,Each pack comes with 4,40,https://timedotcom.files.wordpress.com/2017/05/quanthem.jpg?quality=85,true,2
+10,4,Tor's Homemade Macaroons,1599,The most famous macaroons. Almond based biscuit; flour free; filled with a explotion of flavour. Each box comes with 6,36,http://wallaceyolicia.files.wordpress.com/2014/02/sweet-macaron-laduree.jpg,true,4
+11,2,Dikla's Challah,1000,Kosher homemade bread. GLUTEN FREE OPTION,15,https://static01.nyt.com/images/2015/11/19/dining/19COOKING-CHALLAHLOAF2/19COOKING-CHALLAHLOAF2-superJumbo.jpg,true,10
+12,5,Argentinian Quince Facturas,525,Quince and creme patissier filled puff pastries. ALLERGIES: DAIRY; EGGS; WHEAT.,30,http://upload.wikimedia.org/wikipedia/commons/7/7c/Factura_membrillo.jpg,true,9
+13,5,Alfajores,2500,Milk caramel filled cornflour pastry. ALLERGIES: DAIRY.,44,http://www.chowstatic.com/assets/2014/09/28373_alfajores_3000.jpg,true,9
+14,2,Bake At Home Apple Gallete,1200,Crisp crust filled with apples. ALLERGIES: DAIRY; WHEAT.,10,http://shaunasever.com/wpshauna/wp-content/uploads/image-import/_gv2ZOLiWKJg/S-dMoUD7o7I/AAAAAAAACcA/1T3YJB_11es/s1600/DSC08561.JPG,true,11
+15,4,Cara´s specialty: Frozen bananas and cacao,699,Simplest frozen bananas covered with brazilian cacao.,15,https://www.wickedspatula.com/wp-content/uploads/2015/06/Banana-Popsicles_-2.jpg,true,6
+16,4,Anne´s Delightful Orange Pushpops (8),1000,Natural orange juice sorbet,15,https://heatherchristo.com/wp-content/uploads/2014/05/Mango-Vanilla-Honey-Push-up-Pops.jpg,true,1
+17,1,Dan´s Spoonable Brownies (6),1550,Very moist and gooey brownie; perfect to eat with a spoon and ice cream.,20,http://myblessedlife.net/wp-content/uploads/2010/09/brownie.jpg,true,2
+18,2,Angela´s Cream Puff,1050,Choux pastry filled with Tahitian Vanilla cream patissier,5,http://1.bp.blogspot.com/-_gBCPKY2EKA/TwbZt4WxbUI/AAAAAAAAA-U/Yr53Pn9vXyk/s1600/Pai+Shu+Cream+Puffs+by+Little+Japan+Mama1.jpg,true,3
+19,5,Always Creme Brulle (broil at home),2000,The perfect Creme Brulee made with Tahitian vanilla and the most perfect caramel after 5 min in high broil,10,http://3.bp.blogspot.com/_hxA4j4yxueY/TJ67MEnS2qI/AAAAAAAAMzQ/ZTveppP2938/s1600/Creme+Brulee+027.JPG,true,3
+20,2,Hannah`s Guilty Pleasure Zebra Cake,500,,50,http://agentnerdy.files.wordpress.com/2010/10/tumblr_l1g17ysynh1qa5q3co1_500_large.jpg?w=400&h=266,true,3
+21,3,Ari´s Famous Sea Salt Caramel Bon-Bons,2500,Dark Belgian chocolate filled with sea salt caramel.,40,https://pixel.nymag.com/imgs/daily/grub/2015/01/23/stick-with-me/stick-with-me24.o.jpg/a_560x375.w710.h473.jpg,true,2
+22,4,Kat's Freakin´Awesome Raspery Sorbet,850,Handpick raspberries from a local farm made into a creamed textured sorbet. Allergies: EGGS.,30,https://tse3.mm.bing.net/th?id=OIP.3nvoJWpXC1I44GQr7FoPKgHaHa&pid=15.1&P=0&w=300&h=300,true,5
+23,1,Karina´s Gansito Cupcakes,1200,Vanilla cake filled with cream and strawberry jam convered with chocolate.,34,https://i.pinimg.com/originals/45/26/91/452691d75a9991ede4ab30c6b5c81097.jpg,true,9
+24,2,Jamila's New Generation Yogurt Pie,1500,The perfect yogurt pie. Made with local farm fresh products,6,https://images-gmi-pmc.edge-generalmills.com/3e38492d-1ec4-4cba-8903-758c7eb10a4c.jpg,true,11
+25,2,The Perfect Chocolate Truffles For Emilce,2050,The richest Belgian chocolate turned into a truffle,23,https://tse3.mm.bing.net/th?id=OIP.vgf5LoQURg0bpATtNQnvawHaF6&pid=15.1&P=0&w=190&h=153,true,2
+26,1,Kari´s French Fruit Tart,3099,Made with murbe pastry filled with Tahitian vanilla creme patissier and toped with your choice of fruit,7,https://tse2.mm.bing.net/th?id=OIP.QbENAABkPIiiXzPaLJbCCAHaE9&pid=15.1&P=0&w=246&h=166,true,11
+27,1,Brandy´s Creme Renversee au Caramel,1800,The perfect and classic french flan. ALLERGIES: EGGS.,5,http://www.femmezine.fr/files/images/article/82/4f1936a66cc82-304-large.jpg.true,3
+28,3,Sam´s Assorted Cake Pops,700,"Assorted vanilla, chocolate, and red velvet cake pops",23,http://static.wixstatic.com/media/06b7c5_4e862ade619949a29f25bd27c03dd36c.jpg_srz_1467_634_85_22_0.50_1.20_0.00_jpg_srz,true,7
