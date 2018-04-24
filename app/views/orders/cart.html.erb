@@ -78,13 +78,16 @@
     <%= f.label :billing_zip_code %>
     <%= f.text_field :billing_zip %>
 
-    <%= f.submit "Place Order", class: "button" %>
+    <%= f.submit "Submit Shipping and Billing Info", class: "button" %>
 
     <%# link_to "Empty Cart", order_path(@order.id), :data => {:confirm => 'Are you sure?'}, method: :delete, class: "button" %>
   <% end %>
 
   <% if @cart.order_items.count > 0 %>
     <%= button_to "Empty Cart", {:action =>"destroy", :controller => "cart" }, :data => {:confirm => 'Are you sure?'}, method: :delete, class: "button" %>
+
+    <%= button_to "PAY AND SUBMIT ORDER", {:action =>"update_to_paid", :controller => "cart" }, method: :patch, class: "button" %>
+
   <% end %>
 
 </section>

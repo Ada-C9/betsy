@@ -1,33 +1,30 @@
 Rails.application.routes.draw do
 
   root 'homepage#index'
+
   get '/homepage', to:'homepage#index', as:'homepage'
+
   get '/auth/:provider/callback', as: 'auth_callback', to: 'sessions#create'
 
   get '/auth/github', as: 'github_login'
 
-  # get '/cart', to: 'order#', as: "empty_cart"
-
-  # Access_cart only worked as a GET method.
-
+  delete "/logout", to: "sessions#destroy", as: "logout"
 
   get '/cart', to: 'cart#access_cart', as: "cart"
 
   patch '/cart/:id', to: 'cart#update'
 
+  patch '/cart', to: 'cart#update_to_paid', as: "place_order"
+
   delete '/cart/:id/remove_single_item', to:'cart#remove_single_item', as: "remove_single_item"
 
   delete '/cart/delete', to:'cart#destroy', as: "cart_destroy"
 
-
-
-  delete "/logout", to: "sessions#destroy", as: "logout"
-
   post '/products/:id/add_to_cart', to: 'cart#add_to_cart', as: 'add_to_cart'
 
   get 'orders/:id/confirmation', to: 'orders#confirmation', as: 'order_confirmation'
-  put 'orders/:id/cancel', to: 'orders#cancel', as: 'order_cancel'
 
+  put 'orders/:id/cancel', to: 'orders#cancel', as: 'order_cancel'
 
   resources :orders
   resources :sessions, except: [:destroy]
