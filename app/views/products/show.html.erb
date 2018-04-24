@@ -2,51 +2,53 @@
 
 <section class="product-show-page">
 
-<div class= "image-container">
-  <%= image_tag(@product.image, alt: "bonbon-image", class: "bonbon-img") %>
-</div>
+  <div class= "image-container">
+    <div class="actual-image">
+      <%= image_tag(@product.image, alt: "bonbon-image", class: "bonbon-img") %>
+    </div>
+  </div>
 
-<div class= "product-info-container">
-  <p>Seller: <span class="plain-font"><%= @product.merchant.username %></span></p>
-  <p>Description: <span class="plain-font"><%= @product.description %></span></p>
-  <p>Price: $<span class="plain-font"><%= display_dollars(@product.price) %></span></p>
-  <p>Stock: <span class="plain-font"><%= @product.stock %></span></p>
-  <%= form_for @cartitem do |f|%>
-  <%= f.hidden_field :product_id, :value => @product.id %>
+  <div class= "product-info-container">
+    <p>Seller: <span class="plain-font"><%= @product.merchant.username %></span></p>
+    <p>Description: <span class="plain-font"><%= @product.description %></span></p>
+    <p>Price: $<span class="plain-font"><%= display_dollars(@product.price) %></span></p>
+    <p>Stock: <span class="plain-font"><%= @product.stock %></span></p>
+    <%= form_for @cartitem do |f|%>
+    <%= f.hidden_field :product_id, :value => @product.id %>
 
-  <%= f.label :quantity %>
-  <%= f.number_field(:quantity, in: 1..@product.stock, value: 1) %>
-  <%= f.submit("Add to cart") %>
-  <% end %>
-</div>
+    <%= f.label :quantity %>
+    <%= f.number_field(:quantity, in: 1..@product.stock, value: 1) %>
+    <%= f.submit("Add to cart") %>
+    <% end %>
+  </div>
 
-<div class="rating-form-container">
-  <h2>Write a Review</h2>
-  <%= form_for @review do |f| %>
+  <div class="rating-form-container">
+    <h2>Write a Review</h2>
+    <%= form_for @review do |f| %>
 
-  <%= f.hidden_field :product_id, :value => @product.id %>
+    <%= f.hidden_field :product_id, :value => @product.id %>
 
-  <%= f.label :rating %>
-  <%= f.number_field :rating %>
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
 
-  <%= f.label :comment %>
-  <%= f.text_field :comment %>
+    <%= f.label :comment %>
+    <%= f.text_field :comment %>
 
-  <%= f.submit class: "hollow button" %>
-  <% end %>
-</div>
+    <%= f.submit class: "hollow button" %>
+    <% end %>
+  </div>
 </section>
 
 <section class="all-ratings-box">
-<div class="all-reviews-container">
-  <h4>Reviews:</h4>
-  <p>Average Rating: <%= stars @product.average_rating %></p>
-  <% @product.reviews.each do |review| %>
-  <p>Review created at <%= review.created_at %></p>
-  <p><%= review.comment %></p>
-  <p>Rating: <%= stars(review.rating) %></p>
-  <% end %>
-</div>
+  <div class="all-reviews-container">
+    <h4>Reviews:</h4>
+    <p>Average Rating: <%= stars @product.average_rating %></p>
+    <% @product.reviews.each do |review| %>
+    <p>Review created at <%= review.created_at %></p>
+    <p><%= review.comment %></p>
+    <p>Rating: <%= stars(review.rating) %></p>
+    <% end %>
+  </div>
 </section>
 
 
