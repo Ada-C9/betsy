@@ -3,16 +3,15 @@ class CartController < ApplicationController
 #user clicks on button - if DNE ( create cart show 0 objects or show all objects)
 
   def access_cart
-
+    @action = update_cart_info_path
     @cart = Order.find_by(id: session[:cart_order_id])
     if @cart.nil?
-      @cart = create_cart
-      session[:cart_order_id] = @cart.id
+      # @cart = create_cart
+      # session[:cart_order_id] = @cart.id
+      render :empty_cart
+    else
+      render "orders/cart"
     end
-
-    @action = update_cart_info_path
-
-    render "orders/cart"
 
   end
 
@@ -40,53 +39,53 @@ class CartController < ApplicationController
     redirect_to cart_path
   end
 
-  def update_cart
-    raise
+  def update_cart_info
     @cart = Order.find_by(id: session[:cart_order_id])
-      if @cart
-        raise
-       # @order.status = params[:order][:status]
-       @cart.name = params[:name]
-       @cart.email = params[:email]
-       @cart.street_address = params[:street_address]
-       @cart.city = params[:city]
-       @cart.state = params[:state]
-       @cart.zip = params[:zip]
-       @cart.name_cc = params[:name_cc]
-       @cart.credit_card = params[:credit_card]
-       @cart.expiry = params[:expiry]
-       @cart.ccv= params[:ccv]
-       @cart.billing_zip = params[:billing_zip]
-       if @cart.save
-         # redirect_to order_path(@order.id)
-         flash[:status] = :success
-         flash[:result_text] = "Your order information has been successfully updated!"
-         redirect_to cart_path
-       else
-         flash[:status] = :failure
-         flash[:result_text] = "We were unable to update your order information."
-         flash[:messages] = @cart.errors.messages
-         redirect_to cart_path
-       end
+    if @cart
+     @cart.name = params[:order][:name]
+     @cart.email = params[:order][:email]
+     @cart.street_address = params[:order][:street_address]
+     @cart.city = params[:order][:city]
+     @cart.state = params[:order][:state]
+     @cart.zip = params[:order][:zip]
+     @cart.name_cc = params[:order][:name_cc]
+     @cart.credit_card = params[:order][:credit_card]
+     @cart.expiry = params[:order][:expiry]
+     @cart.ccv= params[:order][:ccv]
+     @cart.billing_zip = params[:order][:billing_zip]
+     if @cart.save
+       # redirect_to order_path(@order.id)
+       flash[:status] = :success
+       flash[:result_text] = "Your order information has been successfully updated!"
+       raise
+       redirect_to cart_path
+     else
+       flash[:status] = :failure
+       flash[:result_text] = "We were unable to update your order information."
+       flash[:messages] = @cart.errors.messages
+       raise
+       redirect_to cart_path
      end
-  end
-
-  def update_to_paid
-    @cart = Order.find_by(id: session[:cart_order_id])
-    @cart.status = "paid"
-    if !@cart.save
-      flash[:status] = :failure
-      flash[:result_text] = "We weren't able to process your order. Please double-check the form."
-      flash[:mssages] = @cart.errors.messages
-      redirect_to cart_path
-    else
-      flash[:status] = :success
-      flash[:result_text] = "Your order has been submitted!"
-      @order = Order.find_by(id: session[:cart_order_id])
-      session[:cart_order_id] = nil
-      render "orders/confirmation"
     end
   end
+
+  # def update_to_paid
+  #   raise
+  #   @cart = Order.find_by(id: session[:cart_order_id])
+  #   @cart.status = "paid"
+  #   if !@cart.save
+  #     flash[:status] = :failure
+  #     flash[:result_text] = "We weren't able to process your order. Please double-check the form."
+  #     flash[:messages] = @cart.errors.messages
+  #     redirect_to cart_path
+  #   else
+  #     flash[:status] = :success
+  #     flash[:result_text] = "Your order has been submitted!"
+  #     @order = Order.find_by(id: session[:cart_order_id])
+  #     session[:cart_order_id] = nil
+  #     render "orders/confirmation"
+  #   end
+  # end
 
   def destroy
     @cart = Order.find_by(id: session[:cart_order_id])

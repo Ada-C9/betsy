@@ -10,11 +10,11 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#destroy", as: "logout"
 
-  put '/cart', to: 'cart#update_cart_info', as: "update_cart_info"
+  # patch '/cart/place_order', to: 'cart#update_to_paid', as: 'update_to_paid'
 
   get '/cart', to: 'cart#access_cart', as: "cart"
 
-  patch '/cart', to: 'cart#update_to_paid', as: "place_order"
+  patch '/cart', to: 'cart#update_cart_info', as: "update_cart_info"
 
   delete '/cart/:id/remove_single_item', to:'cart#remove_single_item', as: "remove_single_item"
 
