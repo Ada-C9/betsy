@@ -162,4 +162,36 @@ describe Order do
       order.cart_id.must_equal carts(:cart_two).id
     end
   end
+
+  describe "order_tax method" do
+    it "calculates the tax for items in an order" do
+      order = carts(:order_one)
+      result = order.order_tax
+      result.must_equal 208.26
+    end
+
+    it "returns 0 if there are no items in the order" do
+      order = Order.first
+      order_items = Cartitem.where(cart_id: order.cart_id)
+      order_items.destroy_all
+      result = order.order_tax
+      result.must_equal 0
+    end
+  end
+
+  describe "total_cost method" do
+    it "calculates the total cost for items in an order" do
+      order = carts(:order_one)
+      result = order.total
+      result.must_equal 2522.26
+    end
+
+    it "returns 0 if there are no items in the order" do
+      order = Order.first
+      order_items = Cartitem.where(cart_id: order.cart_id)
+      order_items.destroy_all
+      result = order.total
+      result.must_equal 0
+    end
+  end
 end
