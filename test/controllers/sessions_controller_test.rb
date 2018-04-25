@@ -25,7 +25,7 @@ describe SessionsController do
       User.count.must_equal start_count
 
     end
-    
+
     it "creates an account for a new user and redirects to the root route" do
 
       start_count = User.count
@@ -36,14 +36,16 @@ describe SessionsController do
 
       get auth_callback_path(:github)
 
-      must_respond_with :success
+      session_id = session[:user_id]
+
+      # binding.pry
+
+      flash[:result_text].must_equal "Successful first login!"
       user.username.must_equal "drywall_bob"
       User.count.must_equal start_count + 1
       must_redirect_to root_path
 
-      session_id = session[:user_id]
 
-      binding.pry
 
       user.id.must_equal User.last.id
 

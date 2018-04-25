@@ -1,3 +1,5 @@
+require 'pry'
+
 class SessionsController < ApplicationController
 
   def new
@@ -10,16 +12,20 @@ class SessionsController < ApplicationController
       @user = User.find_by(uid: auth_hash[:uid], provider: 'github')
       if @user.nil?
         @user = User.build_from_github(auth_hash)
+        binding.pry
         @user.update_image(request.env["omniauth.auth"]["info"]["image"])
+        binding.pry
         successful_save = @user.save
         if successful_save
           flash[:status] = :success
-          flash[:result_text] = "Logged in successfully"
+          flash[:result_text] = "Successful first login!"
+          binding.pry
           redirect_to root_path
         else
           flash[:status] = :failure
           flash[:result_text] = "An error occurred during User creation."
           flash[:messages] = @user.errors.messages
+          binding.pry
           redirect_to root_path
         end
       else
