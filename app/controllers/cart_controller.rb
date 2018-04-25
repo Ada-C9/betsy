@@ -53,7 +53,7 @@ class CartController < ApplicationController
       @cart.zip = params[:order][:zip]
       @cart.name_cc = params[:order][:name_cc]
       @cart.credit_card = params[:order][:credit_card]
-      @cart.expiry = params[:order][:expiry]
+      @cart.expiry = Date.new params[:order]["expiry(1i)"].to_i, params[:order]["expiry(2i)"].to_i, params[:order]["expiry(3i)"].to_i
       @cart.ccv= params[:order][:ccv]
       @cart.billing_zip = params[:order][:billing_zip]
       if @cart.save

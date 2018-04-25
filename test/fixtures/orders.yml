@@ -25,7 +25,7 @@ order_2:
   ccv: 222
   billing_zip: 22222
 order_3:
-  status: pending
+  status: paid
   name: name_3
   email: customer_3@test.com
   street_address: street_address_3
