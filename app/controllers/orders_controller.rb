@@ -74,7 +74,7 @@ class OrdersController < ApplicationController
           @orders << order unless @orders.include?(order)
         end
       end
-    end 
+    end
 
 
     # else
@@ -82,6 +82,10 @@ class OrdersController < ApplicationController
     #   flash[:result_text] = "You must login to be able to see your orders."
     #   redirect_back(fallback_location: root_path)
     # end
+  end
+
+  def my_order
+    @order 
   end
 
   private

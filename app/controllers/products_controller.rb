@@ -44,6 +44,8 @@ class ProductsController < ApplicationController
 
   def update
     @product.assign_attributes(product_params)
+    @product.merchant_id = session[:merchant_id]
+    
     if @product.save
       redirect_to product_path(@product)
     else

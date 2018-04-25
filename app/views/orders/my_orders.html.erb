@@ -29,13 +29,13 @@
         <%=  order.created_at %>
       </td>
       <td>
-        <%= revenue %>
+         Revenue
       </td>
       <td>
         <% form_for order do |f| %>
         <%= f.label :status %>
-        <%= f.select :status, options_for_select([[:paid], [:completed], [:cancelled]]) %>
-        <%= f.submit "Change status" %>
+
+        <%= f.select :status, [["Option1","paid"],["Option2","complete"]], {}, {:onChange=>"handler();"} %>
         <%end%>
       </td>
     </tr>
