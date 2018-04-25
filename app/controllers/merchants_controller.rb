@@ -12,7 +12,4 @@ class MerchantsController < ApplicationController
     @merchant = Merchant.find_by(id: params[:merchant_id])
   end
 
-  def orders
-    
-  end
 end
