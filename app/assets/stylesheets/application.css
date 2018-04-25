@@ -76,11 +76,12 @@ div.top-bar {
 
 body .button {
   background-color: rgb(192, 242, 205);
-  color: black;
+  color: rgb(64, 34, 2);
+  border: 2px solid rgb(64, 34, 2);
 }
 
 body .button:hover {
-  background-color: rgb(64, 62, 30);
+  background-color: rgb(64, 34, 2);
   color: rgb(192, 242, 205);
 }
 
