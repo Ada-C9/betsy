@@ -59,6 +59,19 @@ label {
 }
 
 /********** message **********/
+.callout {
+  border: none;
+  text-align: center;
+}
+
+.callout .success {
+  color: green;
+}
+
+.callout .error, .callout .alert {
+  color: red;
+}
+
 .field_with_errors input {
   margin-bottom: 0;
 }
@@ -109,7 +122,6 @@ thead th, thead td, tfoot th, tfoot td {
 /********** header **********/
 .page-header {
   width: 100%;
-  margin-bottom: 10px;
   padding: 25px 20px 20px 20px;
   background: #1A1F22;
   color: white;
