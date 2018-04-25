@@ -57,12 +57,12 @@ class ProductsController < ApplicationController
       if @product.visible == true
         @product.update(visible: false)
         flash[:status] = :success
-        flash[:result_text] = "successfully retire #{@product.name}"
+        flash[:result_text] = "Successfully retire #{@product.name}"
       elsif
         @product.visible == false && @product.stock != 0
         @product.update(visible: true)
         flash[:status] = :success
-        flash[:result_text] = "successfully unretire #{@product.name}"
+        flash[:result_text] = "Successfully unretire #{@product.name}"
       else
         flash[:status] = :failure
         flash[:result_text] = "#{@product.name} has already retired."
