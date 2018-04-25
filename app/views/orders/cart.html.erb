@@ -11,7 +11,6 @@
         <% end %>
       </div>
       <div class="order-item-info">
-        <!-- <p><%= order_item.product.name %></p> -->
         <p><%= order_item.product.description %></p>
         <div class="quantity-container">
           <%= form_for order_item do |f| %>
@@ -23,8 +22,10 @@
           </div>
           <% end %>
         </div>
-        <p><strong>Subtotal:</strong> $<%= price_in_dollar(order_item.subtotal) %></p>
-        <%= button_to "Remove", {:action =>"remove_single_item", :controller => "cart", id: order_item.id }, method: :delete, class: "button" %>
+        <div class="subtotal-remove-container">
+          <p><strong>Subtotal:</strong> $<%= price_in_dollar(order_item.subtotal) %></p>
+          <%= button_to "Remove", {:action =>"remove_single_item", :controller => "cart", id: order_item.id }, method: :delete, class: "button" %>          
+        </div>
       </div>
     </li>
     <% end %>

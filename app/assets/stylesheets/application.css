@@ -279,7 +279,9 @@ footer {
   display: grid;
   grid-template-columns: 3fr 4fr;
   padding-right: 30px;
-  min-width: 600px;
+  width: 600px;
+  margin-top: 20px;
+  align-items: center;
 }
 
 .order-item-photo img {
@@ -288,6 +290,14 @@ footer {
 
 .quantity-box {
   width: 80px;
+}
+
+.subtotal-remove-container {
+  width: 300px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .checkout-container {
@@ -328,6 +338,17 @@ footer {
   .page-header h1 {
     font-size: 50px;
   }
+
+  /********** cart **********/
+  .cart {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .order-items li {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 300px;
+  }
 }
 
 /*--------- mobile-design ---------*/
@@ -366,6 +387,17 @@ footer {
 
   .filter .button {
     display: block;
+  }
+
+  /********** cart **********/
+  .cart, .checkout-form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  .checkout-container {
+    padding-left: 0px;
   }
 
   /********** account-page **********/
