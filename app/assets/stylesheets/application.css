@@ -151,13 +151,13 @@ thead th, thead td, tfoot th, tfoot td {
 }
 
 /********** boxes **********/
-.search-container, .filter-container, .status-container {
+.search-container, .filter-container, .status-container, .quantity-container {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
 }
 
-.search-box, .search-button, .status-box, .status-button, .filter-box, .filter-button {
+.search-box, .search-button, .status-box, .status-button, .filter-box, .filter-button, .quantity-box, .quantity-button {
   display: inline-block;
 }
 
@@ -260,8 +260,33 @@ footer {
 /*--------- cart ---------*/
 .cart {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 100px;
+}
+
+.order-items li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.quantity-box {
+  width: 80px;
+}
+
+.checkout-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+}
+
+.shipping-info, .billing-info {
+  width: 300px;
+}
+
+.cart-button {
+  margin-top: 20px;
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 /*--------- account ---------*/
