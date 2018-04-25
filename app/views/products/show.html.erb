@@ -49,7 +49,7 @@
 
     <p><span class= "review-comment">"<%= review.comment %>"</span></p>
     <p>Rating: <%= stars(review.rating) %></p>
-    <p>Reviewed On: <%= review.created_at.strftime("%B %d, %Y") %></p>
+    <p>Reviewed On: <%= display_date_time(review.created_at) %></p>
   </div>
     <% end %>
   </div>
