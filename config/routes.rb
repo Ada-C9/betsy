@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   end
 
   resources :orders
-  get "/orders/my_orders", to: "orders#my_orders", as: "my_orders"
-  get "/orders/my_orders/:id", to: "orders#my_order", as: "my_order"
+  get "/my_orders", to: "orders#my_orders", as: "my_orders"
+  get "/my_orders/:id", to: "orders#my_order", as: "my_order"
 
   resources :categories, only: [:index, :edit, :show]
   resources :carts, only: [:show]
