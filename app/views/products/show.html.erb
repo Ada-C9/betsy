@@ -44,7 +44,7 @@
     <h4>Reviews:</h4>
     <p>Average Rating: <%= stars @product.average_rating %></p>
     <% @product.reviews.each do |review| %>
-    <p>Review created at <%= review.created_at %></p>
+    <p>Review created at <%= display_date_time(review.created_at) %></p>
     <p><%= review.comment %></p>
     <p>Rating: <%= stars(review.rating) %></p>
     <% end %>

@@ -13,6 +13,6 @@ class MerchantsController < ApplicationController
   end
 
   def orders
-    
+
   end
 end

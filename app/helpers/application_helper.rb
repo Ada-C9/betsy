@@ -3,4 +3,8 @@ module ApplicationHelper
     dollars = cents / 100.0
     return '%.2f' % dollars
   end
+
+  def display_date_time(input)
+    return input.strftime("%m/%d/%Y at %I:%M%p")
+  end
 end
