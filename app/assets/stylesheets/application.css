@@ -259,6 +259,11 @@ label {
   margin: 0 150px;
 }
 
+.cart {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 /********** footer **********/
 .fureign-keys {
   height: 30px;
