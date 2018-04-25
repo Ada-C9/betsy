@@ -28,6 +28,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.price = params[:product][:price].to_i * 100
     @product.user = User.find(params[:user_id])
 #     if params[:user_id]
 #       #want this to be a session id - to connect with a cart possibly?
