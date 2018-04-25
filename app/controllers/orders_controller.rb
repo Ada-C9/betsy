@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :find_order, only: [:update, :edit]
-  before_action :find_cart_by_order, only: [:update]
   before_action :find_cart_by_session, only: [:new]
+  before_action :find_cart_by_order, only: [:update]
+
 
   def new
     @order = Order.new
@@ -74,7 +75,7 @@ class OrdersController < ApplicationController
           @orders << order unless @orders.include?(order)
         end
       end
-    end 
+    end
 
 
     # else
@@ -82,6 +83,10 @@ class OrdersController < ApplicationController
     #   flash[:result_text] = "You must login to be able to see your orders."
     #   redirect_back(fallback_location: root_path)
     # end
+  end
+
+  def my_order
+    @order 
   end
 
   private

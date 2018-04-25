@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   patch "/products/retire/:id", to: "products#retire", as: "retire"
   get "/merchants/:merchant_id/display-products", to: "merchants#display", as: "display"
-  resources :products, only: [:index, :edit, :show, :new, :create]
+  resources :products, only: [:index, :edit, :show, :new, :create, :update]
   resources :products, only: [:index, :show]
 
   resources :merchants do
