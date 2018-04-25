@@ -4,8 +4,6 @@
     <%= link_to cate.name, category_path(cate) %>
   </h2>
   <ul class="cate-display">
-    <li>
-    </li>
     <% cate.show_four.each do |pro| %>
     <li>
       <h3 class="pro-name"><%= link_to pro.name, product_path(pro) %></h3>
