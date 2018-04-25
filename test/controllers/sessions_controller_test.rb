@@ -28,51 +28,45 @@ describe SessionsController do
 
     it "creates an account for a new user and redirects to the root route" do
 
+      # Arrange
+
+      start_count = User.count
+      user = User.new(provider: "github", uid: 40420, username: "drywall_bob", email: "bob@drywall.com")
+      initial_user_id = user.id
+      initial_user_id.must_be_nil
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
+
+
+      # Act
+      get auth_callback_path(:github)
+      new_user = User.find_by(username: "drywall_bob")
+
+      # Assess
+      flash[:result_text].must_equal "Successful first login!"
+      User.count.must_equal start_count + 1
+      User.last.must_equal new_user
+      session[:user_id].must_equal new_user.id
+      initial_user_id.wont_equal new_user.id
+      must_redirect_to root_path
+
+    end
+
+    it "redirects to the login route if given invalid user data" do
+
       start_count = User.count
 
-      user = User.new(provider: "github", uid: 40420, username: "drywall_bob", email: "bob@drywall.com")
+      user = User.new(provider: "github", uid: 40420, username: "", email: "!!!!!!!!")
 
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
 
       get auth_callback_path(:github)
 
-      session_id = session[:user_id]
-
-      # binding.pry
-
-      flash[:result_text].must_equal "Successful first login!"
-      user.username.must_equal "drywall_bob"
-      User.count.must_equal start_count + 1
-
-
-      binding.pry
-
-      user.id.must_equal User.last.id
-
-      session[:user_id].must_equal user.id
-
+      flash[:status] = :failure
       must_redirect_to root_path
-      kitten = "kitten"
-
+      session[:user_id].must_be_nil
+      User.count.must_equal start_count
 
     end
-    #
-    # it "redirects to the login route if given invalid user data" do
-    #
-    #   start_count = User.count
-    #
-    #   user = User.new(provider: "github", uid: 40420, username: "", email: "!!!!!!!!")
-    #
-    #   OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
-    #
-    #   get auth_callback_path(:github)
-    #
-    #   flash[:status] = :failure
-    #   must_redirect_to root_path
-    #   session[:user_id].must_be_nil
-    #   User.count.must_equal start_count
-    #
-    # end
   end
 
   describe "index" do

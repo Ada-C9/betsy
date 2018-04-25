@@ -21,14 +21,12 @@ class SessionsController < ApplicationController
           flash[:status] = :failure
           flash[:result_text] = "An error occurred during User creation."
           flash[:messages] = @user.errors.messages
-          # redirect_to root_path
         end
       else
         flash[:status] = :success
         flash[:result_text] = "Logged in successfully"
         @user.update_image(request.env["omniauth.auth"]["info"]["image"])
         @user.save
-        redirect_to root_path
       end
       session[:user_id] = @user.id
       session_test = session[:user_id]
@@ -36,8 +34,8 @@ class SessionsController < ApplicationController
       flash[:status] = :failure
       flash[:result_text] = "Logging in through Github not successful"
       flash[:messages] = @user.errors.messages
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   def index
