@@ -2,14 +2,14 @@ require "test_helper"
 
 describe ProductsController do
   describe 'index' do
-    it 'can succeed with all categories' do
+    it 'can succeed with all products' do
       Product.count.must_be :>, 0
 
       get products_path
       must_respond_with :success
     end
 
-    it 'can succeed with no categories' do
+    it 'can succeed with no products' do
       Product.destroy_all
 
       get products_path
@@ -18,7 +18,7 @@ describe ProductsController do
   end
 
   describe 'show' do
-    it "can find an exsisting category" do
+    it "can find an exsisting product" do
       get product_path(Product.first)
       must_respond_with :success
     end
@@ -31,3 +31,5 @@ describe ProductsController do
     end
   end
 end
+# TODO: Tests for the following methods: new, create, edit, update. product_params, find_products
+#FIXME: TESTS: Case 1) -finding a product ---> post exsists, and can be found when user is not logged in: will respond with success

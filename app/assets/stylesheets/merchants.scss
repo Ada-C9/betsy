@@ -1,8 +1,5 @@
 
-.all-merchants {
-  margin: 30px 50px;
-  padding: 20px 50px;
-}
+
 
 .merchant-display {
   list-style-type: none;
@@ -32,4 +29,16 @@
   width: 250px;
   height: 120px;
   text-align: center;
+}
+
+.show-merchant > ul {
+  list-style-type: none;
+}
+
+.show-merchant {
+  padding: 20px 20px;
+}
+
+.edit-product, .display-products, .create-category {
+  padding: 30px 50px;
 }

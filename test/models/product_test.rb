@@ -156,4 +156,6 @@ describe Product do
       result.must_equal false
     end
   end
+
+  #TODO: Tests for def new_stock
 end

@@ -74,6 +74,21 @@ div.top-bar {
   background-color: rgb(192, 242, 205);
 }
 
+body .button {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+  border: 2px solid rgb(64, 34, 2);
+}
+
+body .button:hover {
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+}
+
+body {
+  margin: auto 100px;
+}
+
 main {
   color: rgb(64, 34, 2);
   border: 10px double rgb(64, 34, 2);
@@ -88,4 +103,9 @@ img.orbit-image {
 
 .top-bar li {
   background-color: rgb(192, 242, 205);
+}
+
+a.dropdown-1:hover {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
 }

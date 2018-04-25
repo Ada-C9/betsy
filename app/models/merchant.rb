@@ -6,7 +6,7 @@ class Merchant < ApplicationRecord
 
   def self.build_from_github(auth_hash)
     merchant = Merchant.new(
-      username: auth_hash[:info][:name],
+      username: auth_hash[:info][:nickname],
       email: auth_hash[:info][:email],
       uid: auth_hash[:uid],
       provider: auth_hash[:provider]
@@ -16,9 +16,27 @@ class Merchant < ApplicationRecord
   end
 
   def show_four
-    if self.products.count > 4
-      return self.products.first(4)
+    if self.visible_products.count > 4
+      return self.visible_products.first(4)
     end
-    return self.products
+    return self.visible_products
+  end
+
+  def visible_products
+    return self.products.reject{ |pro| pro.visible == false }
+  end
+
+  def invisible_products
+    return self.products.reject{ |pro| pro.visible == true}
+  end
+
+# TODO: calculate revenue based status
+  def get_total_revenue
+
+  end
+
+# TODO: calculate order numbers based on status
+  def get_order_numbers
+
   end
 end

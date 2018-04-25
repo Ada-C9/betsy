@@ -13,7 +13,7 @@
   <div>
     <%= f.label :categories %>
     <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :name) %>
-    <%= link_to "Create a new category", new_merchant_category_path %>
+    <%= link_to "Create a new category", new_merchant_category_path(session[:merchant_id]), class: "button" %>
   </div>
 
   <%= f.label :price %>

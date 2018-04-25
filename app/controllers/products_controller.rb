@@ -1,19 +1,15 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_product, only: [:show, :edit, :update, :retire, :destroy]
 
-  # TODO: BUILD OUT HOMEPAGE VIEW FOR WHOLE SITE
   def homepage;end
 
   def index
-
-
     if params[:merchant_id]
       @merchant = Merchant.find(params[:merchant_id])
       @products = @merchant.products
     else
       @products = Product.where(visible: true).paginate(:page => params[:page], :per_page => 5)
     end
-
   end
 
   def new
@@ -55,6 +51,32 @@ class ProductsController < ApplicationController
     end
   end
 
+  def retire
+    if session[:merchant_id]
+      if @product.visible == true
+        @product.update(visible: false)
+        flash[:status] = :success
+        flash[:result_text] = "Successfully retire #{@product.name}"
+      elsif
+        @product.visible == false && @product.stock != 0
+        @product.update(visible: true)
+        flash[:status] = :success
+        flash[:result_text] = "Successfully unretire #{@product.name}"
+      else
+        flash[:status] = :failure
+        flash[:result_text] = "#{@product.name} has already retired."
+      end
+    else
+      flash[:status] = :failure
+      if @product.visible == true
+        flash[:result_text] = "Failed to retire #{@product.name}"
+      else
+        flash[:result_text] = "Failed to unretire #{@product.name}"
+      end
+    end
+    redirect_back fallback_location: merchant_path(Merchant.find(session[:merchant_id]))
+  end
+
   private
   def product_params
     return params.require(:product).permit(:name, :price, :merchant_id, :description, :image, :stock, :visible, category_ids: [])
@@ -66,3 +88,5 @@ class ProductsController < ApplicationController
   end
 
 end
+# REVIEW: Adding in image shadows in orbital
+# TODO: Tests for the following methods: new, create, edit, update. product_params, find_products

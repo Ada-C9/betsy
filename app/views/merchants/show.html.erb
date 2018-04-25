@@ -9,20 +9,14 @@
     <li>
       Email: <%= @merchant.email %>
     </li>
-    <li>
-      All orders: <%=  %>
-    </li>
   </ul>
 
-  <h2>All my products</h2>
-  <%= link_to "Add a new product", new_merchant_product_path(@merchant) %>
-  <ol>
-    <% @merchant.products.each do |pro| %>
-    <li>
-      <%= link_to pro.name, product_path(pro) %>
-    </li>
-    <% end %>
-  </ol>
+  <%= link_to "View all my products", display_path(@merchant), class: "button" %>
 
-  <h2>Orders</h2>
+  <%= link_to "View all orders", orders_path(@merchant), class: "button" %>
+
+  <h3>Total revunue </h3>
+
+  <h3>Total orders</h3>
+
 </section>
