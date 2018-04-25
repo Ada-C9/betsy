@@ -42,13 +42,20 @@ class Merchant < ApplicationRecord
     Order.joins(:cart).where(carts: {id: self.my_carts.ids})
   end
 
-  def get_total_revenue
+  def my_total_revenue
     total_revenue = 0
     my_cartitems.each do |item|
-      subtotal = item.product.price * item.quantity
-      total_revenue += subtotal
+      revenue = item.product.price * item.quantity
+      total_revenue += revenue
     end
     return total_revenue
+  end
+
+
+
+  STATUS = %w(pending paid completed cancelled)
+  def revenue_by_status
+
   end
 
 # TODO: calculate order numbers based on status
