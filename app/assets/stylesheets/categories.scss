@@ -6,9 +6,10 @@
 .cate-display {
   list-style-type: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
 }
-
+// TODO: Correct image alignment
 .cate-display > li {
   margin: 10px 40px;
 }

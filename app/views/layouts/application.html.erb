@@ -13,7 +13,7 @@
   <%= csrf_meta_tags %>
 </head>
 <div id="bg">
-  <img src="mint chocolate chip cupcakes.jpg" alt="">
+  <img src="" alt="">
 </div>
 
 <body>
@@ -30,7 +30,8 @@
         <div class= "top-bar">
           <div class= "top-bar-left">
             <ul class="menu toggle" data-dropdown-menu>
-              <li>
+              <!-- FIXME: Look up in Foundation, to remove blue box -->
+              <li class= "go-away-blue-box">
                 <a class="dropdown-1">Browse</a>
                 <ul class="menu">
                   <li><a href="/products">All Products</a></li>
@@ -54,8 +55,8 @@
             <% end %>
 
             <% if session[:merchant_id] %>
-            <%= link_to "Log Out", logout_path, method: :delete, class: "hollow button" %>
-            <%= link_to "Logged in as #{Merchant.find(session[:merchant_id]).username}", merchant_path(session[:merchant_id]), class: "button" %>
+            <%= link_to "Log Out", logout_path, method: :delete, class: "float-right" %>
+            <%= link_to "Logged in as #{Merchant.find(session[:merchant_id]).username}", merchant_path(session[:merchant_id]), class: "float-right" %>
             <% else %>
             <%= link_to "Log In", "/auth/github", class: "float-right" %>
             <% end %>
