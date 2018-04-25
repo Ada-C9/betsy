@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   # resources :products, only: [:index, :show]
 
   resources :merchants do
-    resources :products, only: [:index, :new, :create, :edit, :update]
+    resources :products, only: [ :new, :create, :edit, :update]
   end
 
   patch "/products/retire/:id", to: "products#retire", as: "retire"
-
-  resources :products, only: [:index, :show, :new, :create]
+  get "/merchants/:merchant_id/display-products", to: "merchants#display", as: "display"
+  get "/merchants/:merchant_id/display-orders", to: "merchants#orders", as: "orders"
+  resources :products, only: [:index, :edit, :show, :new, :create]
   resources :products, only: [:index, :show]
 
   resources :merchants do
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders
-  resources :categories, only: [:index, :show]
+  resources :categories, only: [:index, :edit, :show]
   resources :carts, only: [:show]
   resources :cartitems
   resources :reviews, only: [:new, :create]
