@@ -43,13 +43,16 @@ describe SessionsController do
       flash[:result_text].must_equal "Successful first login!"
       user.username.must_equal "drywall_bob"
       User.count.must_equal start_count + 1
-      must_redirect_to root_path
 
 
+      binding.pry
 
       user.id.must_equal User.last.id
 
       session[:user_id].must_equal user.id
+
+      must_redirect_to root_path
+      kitten = "kitten"
 
 
     end
