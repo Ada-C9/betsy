@@ -39,4 +39,13 @@ class Merchant < ApplicationRecord
   def get_order_numbers
 
   end
+
+  def my_products
+    Product.where(merchant_id: self.id)
+  end
+
+  def my_cart_items
+    Cartitem.joins(:my_products)
+    Cartitem.joins(:product).where(products: { merchant_id: self.id })
+  end
 end
