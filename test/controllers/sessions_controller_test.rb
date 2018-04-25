@@ -61,11 +61,11 @@ describe SessionsController do
 
     end
 
-    it "redirects to the login route if given invalid user data" do
+    it "does not log in, and provides appropriate failure messages, if given data that Github cannot use for a login" do
 
       #Arrange
       start_count = User.count
-      user = User.new(provider: "github", uid: 40420, username: "", email: "!!!!!!!!")
+      user = User.new(provider: "github", uid: "", username: "", email: "")
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
 
       #Act
@@ -78,6 +78,57 @@ describe SessionsController do
       bogus_user.must_be_nil
       session[:user_id].must_be_nil
       User.count.must_equal start_count
+      must_redirect_to root_path
+
+    end
+
+    it "does not log in, and provides appropriate failure messages, if given data that Github cannot use for a login" do
+
+      #Arrange
+      start_count = User.count
+      user = User.new(provider: "github", uid: "", username: "", email: "")
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
+
+      #Act
+      get auth_callback_path(:github)
+      bogus_user = User.find_by(username: "drywall_bob")
+      session_id_accessible = session[:user_id]
+
+      #Assert
+      flash[:status].must_equal :failure
+      bogus_user.must_be_nil
+      session[:user_id].must_be_nil
+      User.count.must_equal start_count
+      must_redirect_to root_path
+
+    end
+
+    it "if given data that Github can use, but that our database will reject:  does not log in, does not add to the database, provides appropriate failure messages, and redirects to root path" do
+
+      #Arrange
+      start_count = User.count
+      user = User.new(provider: "github", uid: 33333334, username: "username_3", email: "goopface@goopersunited.com")
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
+
+      #Act
+      get auth_callback_path(:github)
+      duplicate_user = User.find_by(email: "goopface@goopersunited.com")
+      session_id_accessible = session[:user_id]
+
+      #Assert
+
+      ### Does Not Log In:
+      session[:user_id].must_be_nil
+
+      ### Does Not Add to the Database:
+      duplicate_user.must_be_nil
+      User.count.must_equal start_count
+
+      ### Provides appropriate failure messages:
+      flash[:status].must_equal :failure
+      flash[:result_text].must_equal "An error occurred during User creation."
+
+      ### Redirects to root_path
       must_redirect_to root_path
 
     end
