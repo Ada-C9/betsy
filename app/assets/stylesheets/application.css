@@ -261,32 +261,37 @@ footer {
 .cart {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 100px;
 }
 
 .order-items li {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 4fr;
+  padding-right: 30px;
+  min-width: 600px;
+}
+
+.order-item-photo img {
+  height: 200px;
 }
 
 .quantity-box {
   width: 80px;
 }
 
+.checkout-container {
+  padding-left: 30px;
+  border-left: 1px solid #f1f1f1;
+  width: 600px;
+}
+
 .checkout-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 50px;
+  margin-bottom: 10px;
 }
 
 .shipping-info, .billing-info {
-  width: 300px;
-}
-
-.cart-button {
-  margin-top: 20px;
-  display: flex;
-  flex-flow: row nowrap;
+  width: 250px;
 }
 
 /*--------- account ---------*/

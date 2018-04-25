@@ -23,7 +23,7 @@
           </div>
           <% end %>
         </div>
-        <p>Subtotal: $<%= price_in_dollar(order_item.subtotal) %></p>
+        <p><strong>Subtotal:</strong> $<%= price_in_dollar(order_item.subtotal) %></p>
         <%= button_to "Remove", {:action =>"remove_single_item", :controller => "cart", id: order_item.id }, method: :delete, class: "button" %>
       </div>
     </li>
@@ -79,8 +79,8 @@
 
     <div class="cart-button">
       <%= f.submit "Submit Shipping and Billing Info", class: "button" %>
-    <% end %>
-    <% if @cart.order_items.count > 0 %>
+      <% end %>
+      <% if @cart.order_items.count > 0 %>
       <%= button_to "Empty Cart", {:action =>"destroy", :controller => "cart" }, :data => {:confirm => 'Are you sure you want to delete all your items?'}, method: :delete, class: "button" %>
       <%= button_to "PAY AND PLACE ORDER", {:action =>"update_to_paid", :controller => "cart" }, method: :patch, class: "button" %>
     </div>
