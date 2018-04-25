@@ -13,10 +13,13 @@ class ReviewsController < ApplicationController
     @review.save
     if @review
       redirect_to product_path(params[:product_id])
-      flash[:success] = "Your comment was saved"
+      flash[:status] = :success
+      flash[:result_text] = "Your comment was saved"
     else
       render :new
-      flash[:error] = "Comment was not saved"
+      flash[:status] = :failure
+      flash[:result_text] = "Your comment was saved"
+      flash[:messages] = @review.errors.messages
     end
 
   end

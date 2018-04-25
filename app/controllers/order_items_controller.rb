@@ -16,14 +16,17 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.find_by(id: params[:id])
     if @order_item
       @order_item.quantity = params[:order_item][:quantity]
-      @order_item.save
+      if @order_item.save
+        flash[:status] = :success
+        flash[:result_text] = "Quantity updated!"
+      else
+        flash[:status] = :failure
+        flash[:result_text] = "Could not add the desired quantity of this item to the cart."
+        flash[:messages] = @order_item.errors.messages
+      end
     end
     redirect_to cart_path
   end
-
-  def destroy
-  end 
-
 
   private
 

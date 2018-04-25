@@ -12,31 +12,27 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.save
     if @order
-      flash[:success] = "Your order has been made - congratulations!"
+      flash[:status] = :success
+      flash[:result_text] = "Your order has been made - congratulations!"
       redirect_to order_confirmation_path(@order.id)
     else
-      flash[:error] = "Something has gone wrong in your orders processing."
+      flash[:status] = :failure
+      flash[:result_text] = "Something has gone wrong in your orders processing."
       render :new
+      flash[:messages] = @order.errors.messages
     end
   end
 
   def confirmation
     @order = Order.find_by(id: params[:id])
-    raise
-    kitten = "kitten"
   end
 
   def show
     @order = Order.find_by(id: params[:id])
-
-    raise
-    kitten = "kitten"
   end
 
   def edit
     @order = Order.find_by(id: params[:id])
-    raise
-    kitten = "kitten"
   end
 
   def update
@@ -55,20 +51,17 @@ class OrdersController < ApplicationController
        @order.ccv= params[:ccv]
        @order.billing_zip = params[:billing_zip]
        if @order.save
-         raise
          redirect_to order_path(@order.id)
-         flash[:success] = "#{@order.name} has been updated"
+         flash[:status] = :success
+         flash[:result_text] = "#{@order.name} has been updated"
+         redirect_to order_path
        else
-         raise
-         # render :new
+         flash[:status] = :success
          flash[:result_text] = "#{@order.name} update has failed"
-         flash[:messages] = @product.errors.messages
-         raise
-         render :new
+         flash[:messages] = @order.errors.messages
+         redirect_to order_path
        end
      end
-     raise
-     kitten = "kitten"
   end
 
   def cancel
@@ -88,8 +81,9 @@ class OrdersController < ApplicationController
   end
 
   private
+  
   def order_params
-   params.require(:order).permit(:status,:name,:email,:street_address,:city,:state,:zip,:name_cc,:credit_card,:expiry,:ccv,:billing_zip)
+    params.require(:order).permit(:status,:name,:email,:street_address,:city,:state,:zip,:name_cc,:credit_card,:expiry,:ccv,:billing_zip)
   end
 
 end

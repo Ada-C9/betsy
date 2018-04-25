@@ -1,18 +1,14 @@
 class CartController < ApplicationController
 
-#user clicks on button - if DNE ( create cart show 0 objects or show all objects)
-
   def access_cart
     @action = update_cart_info_path
+
     @cart = Order.find_by(id: session[:cart_order_id])
     if @cart.nil?
-      # @cart = create_cart
-      # session[:cart_order_id] = @cart.id
       render :empty_cart
     else
       render "orders/cart"
     end
-
   end
 
   def add_to_cart
@@ -23,10 +19,16 @@ class CartController < ApplicationController
       @cart = Order.find_by(id: session[:cart_order_id])
     end
     @product = Product.find(params[:id])
+    if @product.nil?
+      flash[:status] = :failure
+      flash[:result_text] = "That product could not be added to your cart"
+      flash[:messages] = @product.errors.messages
+    end
     desired_quantity = total_quantity_requested
     if desired_quantity > @product.stock
       flash[:status] = :failure
       flash[:result_text] = "Not enough inventory on-hand to complete your request."
+      flash[:messages] = @product.errors.messages
     else
       if @target_item = @cart.order_items.find_by(product_id: params[:id])
         @target_item.quantity = desired_quantity
@@ -34,36 +36,37 @@ class CartController < ApplicationController
       else
         @order_item = OrderItem.create product_id: @product.id, order_id: @cart.id, quantity: desired_quantity, is_shipped: "false"
       end
+      flash[:status] = :success
+      flash[:result_text] = "Item added to your cart!"
     end
-    desired_quantity = 1
     redirect_to cart_path
   end
 
   def update_cart_info
     @cart = Order.find_by(id: session[:cart_order_id])
     if @cart
-     @cart.name = params[:order][:name]
-     @cart.email = params[:order][:email]
-     @cart.street_address = params[:order][:street_address]
-     @cart.city = params[:order][:city]
-     @cart.state = params[:order][:state]
-     @cart.zip = params[:order][:zip]
-     @cart.name_cc = params[:order][:name_cc]
-     @cart.credit_card = params[:order][:credit_card]
-     @cart.expiry = params[:order][:expiry]
-     @cart.ccv= params[:order][:ccv]
-     @cart.billing_zip = params[:order][:billing_zip]
-     if @cart.save
-       # redirect_to order_path(@order.id)
-       flash[:status] = :success
-       flash[:result_text] = "Your order information has been successfully updated!"
-       redirect_to cart_path
-     else
-       flash[:status] = :failure
-       flash[:result_text] = "We were unable to update your order information."
-       flash[:messages] = @cart.errors.messages
-       redirect_to cart_path
-     end
+      @cart.name = params[:order][:name]
+      @cart.email = params[:order][:email]
+      @cart.street_address = params[:order][:street_address]
+      @cart.city = params[:order][:city]
+      @cart.state = params[:order][:state]
+      @cart.zip = params[:order][:zip]
+      @cart.name_cc = params[:order][:name_cc]
+      @cart.credit_card = params[:order][:credit_card]
+      @cart.expiry = params[:order][:expiry]
+      @cart.ccv= params[:order][:ccv]
+      @cart.billing_zip = params[:order][:billing_zip]
+      if @cart.save
+        # redirect_to order_path(@order.id)
+        flash[:status] = :success
+        flash[:result_text] = "Your order information has been successfully updated!"
+        redirect_to cart_path
+      else
+        flash[:status] = :failure
+        flash[:result_text] = "We were unable to update your order information."
+        flash[:messages] = @cart.errors.messages
+        redirect_to cart_path
+      end
     end
   end
 
@@ -86,6 +89,11 @@ class CartController < ApplicationController
 
   def destroy
     @cart = Order.find_by(id: session[:cart_order_id])
+    if @cart.nil?
+      flash[:status] = :failure
+      flash[:result_text] = "Unable to remove the items from your cart."
+      flash[:errors] = @cart.errors.messages
+    end
     @cart.order_items.each do |order_item|
       order_item.destroy
     end
@@ -110,7 +118,6 @@ class CartController < ApplicationController
       flash[:status] = :failure
       flash[:result_text] = "We weren't able to create your shopping cart."
       flash[:messages] = @cart.errors.messages
-      #some redirect, status: :bad_request
     end
     return @cart
   end
@@ -179,25 +186,6 @@ end
 #       flash[:status] = :success
 #       flash[:result_text] = "#{@product.name} has been successfully added to your cart!"
 #     end
-#   end
-#   redirect_to cart_path
-# end
-
-
-# def new
-#   if session[:cart_order_id].nil? #If there is no cart yet
-#       @order = Order.create status: "pending"
-#       session[:cart_order_id] = @order.id
-#       if @order.save
-#         flash[:status] = :success
-#         flash[:result_text] = "Welcome to the Puppsy shopping experience!"
-#       else
-#         flash[:status] = :failure
-#         raise
-#         flash[:result_text] = "We weren't able to create your shopping cart."
-#         flash[:mssages] = @order.errors.messages
-#         #some redirect, status: :bad_request
-#       end
 #   end
 #   redirect_to cart_path
 # end

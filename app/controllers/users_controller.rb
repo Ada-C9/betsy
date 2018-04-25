@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     user_id = params[:user][:id]
     if user_id
       redirect_to user_products_path(user_id)
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Could not create a new user ID."
+      flash[:messages] = @user.errors.messages
     end
   end
 
