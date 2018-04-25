@@ -68,7 +68,6 @@ require 'pry'
         }}.must_change 'Order.count', 0
 
         must_respond_with :bad_request
-        # must_redirect_to order_path(orders(:order).id)
     end
 
     it 'Will render the current show page for invalid data and return HTTP status code:400 from the server' do
@@ -150,7 +149,7 @@ end
       }.must_change 'Order.count', 0
 
       must_respond_with :redirect
-      # must_redirect_to order_path(orders(:order_2).id)
+      must_redirect_to order_path(orders(:order_2).id)
     end
 
     it 'will render 404 page for request to update an order that does not exist' do

@@ -1,7 +1,4 @@
 class ProductsController < ApplicationController
-
-  # before_action :find_user
-
   def index
     @category = Category.new
     @user = User.new
@@ -15,10 +12,12 @@ class ProductsController < ApplicationController
       @current_category = nil
     elsif params[:term]
       @products = Product.where('name LIKE ?', "%#{params[:term]}%")
-      # raise
+
     else
       @products = Product.all
     end
+
+    @products = Product.all
   end
 
   def new
@@ -30,9 +29,6 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = User.find(params[:user_id])
-#     if params[:user_id]
-#       #want this to be a session id - to connect with a cart possibly?
-# end
     if @product.save
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} has been successfully created!"

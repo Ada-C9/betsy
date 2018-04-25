@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
         redirect_to product_path(params[:product_id])
         flash[:success] = "Your comment was saved"
       else
-        render 'products/show'
+        render "products/show",status: :bad_request
         flash[:error] = "Comment was not saved"
       end
   end
