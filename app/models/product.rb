@@ -27,4 +27,5 @@ class Product < ApplicationRecord
     new_total = self.stock - items_bought
     return new_total
   end
+
 end

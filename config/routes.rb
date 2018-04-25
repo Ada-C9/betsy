@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :create, :edit, :update]
   end
 
+  patch "/products/retire/:id", to: "products#retire", as: "retire"
+
   resources :products, only: [:index, :show, :new, :create]
   resources :products, only: [:index, :show]
 

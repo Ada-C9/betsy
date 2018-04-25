@@ -1,19 +1,16 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_product, only: [:show, :edit, :update, :retire, :destroy]
 
   # TODO: BUILD OUT HOMEPAGE VIEW FOR WHOLE SITE
   def homepage;end
 
   def index
-
-
     if params[:merchant_id]
       @merchant = Merchant.find(params[:merchant_id])
       @products = @merchant.products
     else
       @products = Product.where(visible: true).paginate(:page => params[:page], :per_page => 5)
     end
-
   end
 
   def new
@@ -53,6 +50,27 @@ class ProductsController < ApplicationController
     else
       render :edit, status: :bad_request
     end
+  end
+
+  def retire
+    if session[:merchant_id]
+      if @product.visible == true
+        @product.update(visible: false)
+        flash[:status] = :success
+        flash[:result_text] = "successfully retire #{@product.name}"
+      else
+        flash[:status] = :failure
+        flash[:result_text] = "#{@product.name} has already retired."
+      end
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Failed to retire #{@product.name}"
+    end
+    redirect_to merchant_path(Merchant.find(session["merchant_id"]))
+  end
+
+  def unretire
+
   end
 
   private

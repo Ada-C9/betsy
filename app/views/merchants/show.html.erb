@@ -15,14 +15,53 @@
   </ul>
 
   <h2>All my products</h2>
-  <%= link_to "Add a new product", new_merchant_product_path(@merchant) %>
-  <ol>
-    <% @merchant.products.each do |pro| %>
-    <li>
-      <%= link_to pro.name, product_path(pro) %>
-    </li>
-    <% end %>
-  </ol>
+  <%= link_to "Add a new product", new_merchant_product_path(@merchant), class: "button float-right" %>
+
+  <table class="products-table">
+    <thead>
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Stock
+        </th>
+        <th>
+          Retire
+        </th>
+        <th>
+          Edit
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @merchant.products.each do |pro| %>
+      <tr>
+        <th>
+          <%= pro.id %>
+        </th>
+        <td>
+          <%= link_to pro.name, product_path(pro) %>
+        </td>
+        <td>
+          <%= pro.stock %>
+        </td>
+        <td>
+          <%= link_to "Retire", retire_path(pro), method: :patch, class: "button" %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_merchant_product_path(pro) %>
+        </td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+
 
   <h2>Orders</h2>
 </section>
