@@ -73,9 +73,7 @@ describe SessionsController do
 
       delete logout_path
 
-      session[:merchant_id].must_equal nil 
+      session[:merchant_id].must_equal nil
     end
   end
-
-
 end
