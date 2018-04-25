@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :find_order, only: [:update, :edit]
-  before_action :find_cart_by_order, only: [:update]
   before_action :find_cart_by_session, only: [:new]
+  before_action :find_cart_by_order, only: [:update]
+
 
   def new
     @order = Order.new
