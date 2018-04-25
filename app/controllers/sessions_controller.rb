@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     flash[:status] = :success
     flash[:result_text] = "Successfully logged out"
-    redirect_to products_path
+    redirect_to root_path
   end
 
 end

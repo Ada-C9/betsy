@@ -79,6 +79,30 @@ describe SessionsController do
   end
 
   describe "destroy" do
+
+    it "logs out a logged-in user" do
+
+      # Arrange
+      user_2 = users(:user_2)
+      login(user_2)
+
+
+      ###Validate arrangement
+      user_2_id = User.find_by(username: "username_2").id
+      session[:user_id].must_equal user_2_id
+
+      #Act
+      delete logout_path
+
+      #Assert
+      session[:user_id].must_be_nil
+      flash[:status].must_equal :success
+      flash[:result_text].must_equal "Successfully logged out"
+      must_redirect_to root_path
+
+
+    end
+
   end
 
 end
