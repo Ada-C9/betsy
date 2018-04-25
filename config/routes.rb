@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get "/merchants/:merchant_id/display-products", to: "merchants#display", as: "display"
   resources :products, only: [:index, :edit, :show, :new, :create, :update]
   resources :products, only: [:index, :show]
+  #resources :products do
+    #resources :reviews, only: [:create, :new]
+  #end
 
   resources :merchants do
     resources :categories, only: [:index, :new, :create, :show]
@@ -18,6 +21,7 @@ Rails.application.routes.draw do
   resources :orders
   get "/my_orders", to: "orders#my_orders", as: "my_orders"
   get "/my_orders/:id", to: "orders#my_order", as: "my_order"
+
 
   resources :categories, only: [:index, :edit, :show]
   resources :carts, only: [:show]

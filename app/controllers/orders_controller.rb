@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :find_order, only: [:update, :edit]
+
+  before_action :find_order, only: [:update, :edit, :my_order]
+
   before_action :find_cart_by_session, only: [:new]
   before_action :find_cart_by_order, only: [:update]
 
@@ -85,9 +87,7 @@ class OrdersController < ApplicationController
     # end
   end
 
-  def my_order
-    @order 
-  end
+  def my_order; end
 
   private
   def order_params

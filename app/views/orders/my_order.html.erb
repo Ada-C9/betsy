@@ -1,0 +1,10 @@
+<section>
+<ul>
+  <li>Name: <%=@order.name%></li>
+  <li>Email: <%=@order.email%></li>
+  <li>Mailing address: <%=@order.mail_address%></li>
+  <li>Credit Card: <%=@order.creditcard.to_s.last(4)%></li>
+  <li>Credit Card Expiration Date: <%=@order.expiration_month.strftime("%m")%>, <%=@order.expiration_year.strftime("%Y")%></li>
+
+</ul>
+</section>

@@ -50,7 +50,6 @@
 
             <% if session[:cart_id] %>
             <%= link_to "My Cart", cart_path(session[:cart_id]), class: "float-right" %>
-    
             <% end %>
 
             <% if session[:merchant_id] %>
