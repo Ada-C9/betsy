@@ -2,8 +2,8 @@ require "test_helper"
 
 describe Order do
   let(:order) { Order.new }
-  let(:o) { orders(:order_2) }#status complete
-  let(:o1) { orders(:order_1) }#staus pending
+  let(:o) { orders(:order_2) } #status complete
+  let(:o1) { orders(:order_1) } #staus pending
 
   describe "relations" do
     it "has a list of orderitems" do
@@ -177,6 +177,12 @@ describe Order do
         o.billing_zip = element
         o.valid?.must_equal false
       }
+    end
+
+    it "validates credit card expiry cannot be in the past" do
+      o.expiry = Date.parse("2017-12-31")
+      o.valid?.must_equal false
+      o.errors.messages.must_include :expiry
     end
 
     it "has no validation when items are in cart mean status pending" do
