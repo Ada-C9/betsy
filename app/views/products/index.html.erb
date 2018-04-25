@@ -50,7 +50,7 @@
         <li class="product-info">
           <h4><%= product.name %></h4>
           <% if product.photo_url.length > 0 %>
-            <%= link_to image_tag(product.photo_url, alt: product.name), product_path(product.id) %>
+            <%= link_to image_tag('favicon.png', alt: product.name), product_path(product.id) %>
           <% else %>
             <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(product.id) %>
           <% end %>

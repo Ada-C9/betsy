@@ -59,6 +59,19 @@ label {
 }
 
 /********** message **********/
+.callout {
+  border: none;
+  text-align: center;
+}
+
+.callout .success {
+  color: green;
+}
+
+.callout .error, .callout .alert {
+  color: red;
+}
+
 .field_with_errors input {
   margin-bottom: 0;
 }
@@ -109,7 +122,6 @@ thead th, thead td, tfoot th, tfoot td {
 /********** header **********/
 .page-header {
   width: 100%;
-  margin-bottom: 10px;
   padding: 25px 20px 20px 20px;
   background: #1A1F22;
   color: white;
@@ -151,13 +163,13 @@ thead th, thead td, tfoot th, tfoot td {
 }
 
 /********** boxes **********/
-.search-container, .filter-container, .status-container {
+.search-container, .filter-container, .status-container, .quantity-container {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
 }
 
-.search-box, .search-button, .status-box, .status-button, .filter-box, .filter-button {
+.search-box, .search-button, .status-box, .status-button, .filter-box, .filter-button, .quantity-box, .quantity-button {
   display: inline-block;
 }
 
@@ -260,8 +272,38 @@ footer {
 /*--------- cart ---------*/
 .cart {
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-gap: 100px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.order-items li {
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  padding-right: 30px;
+  min-width: 600px;
+}
+
+.order-item-photo img {
+  height: 200px;
+}
+
+.quantity-box {
+  width: 80px;
+}
+
+.checkout-container {
+  padding-left: 30px;
+  border-left: 1px solid #f1f1f1;
+  width: 600px;
+}
+
+.checkout-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 10px;
+}
+
+.shipping-info, .billing-info {
+  width: 250px;
 }
 
 /*--------- account ---------*/
