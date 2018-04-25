@@ -11,19 +11,25 @@ class SessionsController < ApplicationController
         @user = User.build_from_github(auth_hash)
         successful_save = @user.save
         if successful_save
-          flash[:success] = "Logged in successfully"
+          flash[:status] = :success
+          flash[:result_text] = "Logged in successfully"
           redirect_to products_path
         else
-          flash[:error] = "An error occurred during User creation"
+          flash[:status] = :failure
+          flash[:result_text] = "An error occurred during User creation."
+          flash[:messages] = @user.errors.messages
           redirect_to products_path
         end
       else
-        flash[:success] = "Logged in successfully"
+        flash[:status] = :success
+        flash[:result_text] = "Logged in successfully"
         redirect_to products_path
       end
       session[:user_id] = @user.id
     else
-      flash[:error] = "Logging in through Github not successful"
+      flash[:status] = :failure
+      flash[:result_text] = "Logging in through Github not successful"
+      flash[:messages] = @user.errors.messages
       redirect_to products_path
     end
   end
@@ -34,8 +40,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    flash[:succes] = "Successfully logged out"
-
+    flash[:status] = :success
+    flash[:result_text] = "Successfully logged out"
     redirect_to products_path
   end
 
