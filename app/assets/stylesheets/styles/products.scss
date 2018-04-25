@@ -1,0 +1,103 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.homepage-cards h4,
+.homepage-cards p {
+  font-family: 'Indie Flower', cursive;
+}
+
+.homepage-card-image {
+  text-align: center;
+}
+
+.homepage-subtitle {
+  padding-bottom: 10px;
+}
+
+.site-title,
+.site-nav {
+  display: inline-block;
+}
+
+.site-title{
+  float: left;
+}
+
+.site-nav {
+  text-align: right;
+  vertical-align: top;
+  float: right;
+}
+
+#show-page-content {
+  max-height: 75vh;
+  overflow: scroll;
+}
+
+.medium-image, .product-info  {
+  display: inline-block;
+  margin: 0px auto;
+  max-height: 45vh;
+  padding: 10px;
+}
+
+// .medium-image, {
+//   padding-top: 10px;
+// }
+
+// .show-product-view {
+//   text-align: center;
+// }
+.product-info .button {
+  margin: 0px auto;
+  width: 100%;
+}
+
+.product-info {
+  vertical-align: top;
+  // background-color: rgba(255,255,255,0.2);
+}
+
+.show-product-review, .show-product-view {
+  margin: 0px auto;
+  text-align: center;
+  max-width: 60vw;
+  background-color: rgba(255,255,255,0.8);
+}
+
+.show-product-view {
+  min-height: 40vh;
+  margin-top: 3vh;
+}
+
+.show-product-view ul {
+  text-align: left;
+}
+#show-review, #product-details {
+  display: block;
+  margin: 0px auto 5px auto;
+}
+
+#show-review {
+  text-align:left;
+  background-color: white;
+  padding-left: 10px;
+  max-height: 15vh;
+}
+
+#show-review li, #product-details li {
+  color: black;
+}
+
+#reviews {
+  max-height: 30vh;
+  overflow: scroll;
+}
+
+#product-details {
+  max-height: 40vh;
+  text-align:left;
+  background-color: transparent;
+  max-height: 20vh;
+}

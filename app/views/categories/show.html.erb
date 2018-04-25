@@ -1,0 +1,19 @@
+<h1><%= @category.name.titleize %> Pets</h1>
+
+<div class="grid-container">
+  <div class="grid-x grid-padding-x small-up-2 medium-up-3 large-up-4">
+    <% @products.each do |product| %>
+    <section class="cell">
+      <section class="card homepage-cards">
+        <p class="homepage-card-image">
+          <%= link_to image_tag(product.image_url), product_path(product.id), :alt => "#{product.name} image", :title => "#{product.name}" %>
+        </p>
+        <h4 class="card-divider"><%= link_to product.name, product_path(product.id) %></h4>
+        <p class="card-section">
+          <%= link_to product.description, product_path(product.id) %>
+        </p>
+      </section>
+    </section>
+    <% end %>
+  </div>
+</div>

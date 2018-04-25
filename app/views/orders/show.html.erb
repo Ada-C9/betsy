@@ -1,0 +1,15 @@
+<h1>Order Confirmation</h1>
+
+  <% @processed_order.order_items.each do |item| %>
+    <% product = Product.find(item.product_id) %>
+    <h3> <%= link_to product.name, product_path(product.id) %> </h3>
+   <ul>
+     <li> Price per pet: $<%= product.price %> </li>
+     <li> Quantity: <%= item.quantity %></li>
+     <li> Subtotal: $<%= item.get_subtotal %></li>
+   </ul>
+  <% end %>
+
+<h3> Order Total: $<%= @processed_order.get_total %> </h3>
+
+<h3> Order Status: <%= @processed_order.status %> </h3>
