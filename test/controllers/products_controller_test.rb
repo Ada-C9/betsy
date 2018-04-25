@@ -31,3 +31,4 @@ describe ProductsController do
     end
   end
 end
+# TODO: Tests for the following methods: new, create, edit, update. product_params, find_products

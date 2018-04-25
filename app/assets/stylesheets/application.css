@@ -89,3 +89,8 @@ img.orbit-image {
 .top-bar li {
   background-color: rgb(192, 242, 205);
 }
+
+a.dropdown-1:hover {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+}

@@ -1,12 +1,9 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
-  # TODO: BUILD OUT HOMEPAGE VIEW FOR WHOLE SITE
   def homepage;end
 
   def index
-
-
     if params[:merchant_id]
       @merchant = Merchant.find(params[:merchant_id])
       @products = @merchant.products
@@ -66,3 +63,5 @@ class ProductsController < ApplicationController
   end
 
 end
+# REVIEW: Adding in image shadows in orbital
+# TODO: Tests for the following methods: new, create, edit, update. product_params, find_products
