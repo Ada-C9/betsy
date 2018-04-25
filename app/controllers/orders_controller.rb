@@ -65,6 +65,25 @@ class OrdersController < ApplicationController
 
   end
 
+  def my_orders
+    # if @login_merchant
+    @orders = []
+     Order.all.each do |order|
+      order.cart.products.each do |product|
+        if product.merchant_id == session[:merchant_id]
+          @orders << order unless @orders.include?(order)
+        end
+      end
+    end 
+
+
+    # else
+    #   flash[:status] = :Failure
+    #   flash[:result_text] = "You must login to be able to see your orders."
+    #   redirect_back(fallback_location: root_path)
+    # end
+  end
+
   private
   def order_params
     params.require(:order).permit(:name, :email, :creditcard, :name_on_card, :expiration_month, :expiration_year, :cvv, :mail_address, :billing_address, :zipcode, :status)
@@ -85,4 +104,5 @@ class OrdersController < ApplicationController
     @cart = Cart.find_by(id: session[:cart_id])
     head :not_found unless @cart
   end
+
 end

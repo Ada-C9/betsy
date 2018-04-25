@@ -1,0 +1,46 @@
+<section class = "orders-display">
+
+
+<table class="orders-table">
+  <thead>
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        Date
+      </th>
+      <th>
+        Revenue
+      </th>
+      <th>
+        Status
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <th>
+        <%= link_to order.id, my_order_path(order) %>
+      </th>
+      <td>
+        <%=  order.created_at %>
+      </td>
+      <td>
+        <%= revenue %>
+      </td>
+      <td>
+        <% form_for order do |f| %>
+        <%= f.label :status %>
+        <%= f.select :status, options_for_select([[:paid], [:completed], [:cancelled]]) %>
+        <%= f.submit "Change status" %>
+        <%end%>
+      </td>
+    </tr>
+    <% end %>
+  </tboby>
+</table>
+
+</section>
