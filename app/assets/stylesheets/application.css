@@ -206,6 +206,10 @@ footer {
   width: 250px;
 }
 
+.search-box {
+  width: 120px;
+}
+
 .filter-container  {
   width: 150px;
 }
