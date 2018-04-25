@@ -28,8 +28,4 @@ class Product < ApplicationRecord
     return new_total
   end
 
-  def my_products(merch_id)
-    self.where(merchant_id: merch_id)
-  end
-
 end

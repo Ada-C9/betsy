@@ -30,22 +30,29 @@ class Merchant < ApplicationRecord
     return self.products.reject{ |pro| pro.visible == true}
   end
 
-# TODO: calculate revenue based status
-  def get_total_revenue
+  def my_cartitems
+    Cartitem.joins(:product).where(products: { merchant_id: self.id })
+  end
 
+  def my_carts
+    Cart.joins(:cartitems).where(cartitems: {id: self.my_cartitems.ids})
+  end
+
+  def my_orders
+    Order.joins(:cart).where(carts: {id: self.my_carts.ids})
+  end
+
+  def get_total_revenue
+    total_revenue = 0
+    my_cartitems.each do |item|
+      subtotal = item.product.price * item.quantity
+      total_revenue += subtotal
+    end
+    return total_revenue
   end
 
 # TODO: calculate order numbers based on status
   def get_order_numbers
 
-  end
-
-  def my_products
-    Product.where(merchant_id: self.id)
-  end
-
-  def my_cart_items
-    Cartitem.joins(:my_products)
-    Cartitem.joins(:product).where(products: { merchant_id: self.id })
   end
 end
