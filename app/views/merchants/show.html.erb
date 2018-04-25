@@ -9,80 +9,14 @@
     <li>
       Email: <%= @merchant.email %>
     </li>
-    <li>
-      All orders: <%=  %>
-    </li>
   </ul>
 
-  <h2>All my products</h2>
-  <%= link_to "Add a new product", new_merchant_product_path(@merchant), class: "button float-right" %>
+  <%= link_to "View all my products", display_path(@merchant), class: "button" %>
 
-  <table class="products-table">
-    <thead>
-      <tr>
-        <th>
-          ID
-        </th>
-        <th>
-          Name
-        </th>
-        <th>
-          Stock
-        </th>
-        <th>
-          Retire
-        </th>
-        <th>
-          Edit
-        </th>
-      </tr>
-    </thead>
+  <%= link_to "View all orders", orders_path(@merchant), class: "button" %>
 
-    <tbody>
-      <% @merchant.visible_products.each do |pro| %>
-      <tr>
-        <th>
-          <%= pro.id %>
-        </th>
-        <td>
-          <%= link_to pro.name, product_path(pro) %>
-        </td>
-        <td>
-          <%= pro.stock %>
-        </td>
-        <td>
-          <%= link_to "Retire", retire_path(pro), method: :patch, class: "button" %>
-        </td>
-        <td>
-          <%= link_to "Edit", edit_merchant_product_path(pro) %>
-        </td>
-      </tr>
-      <% end %>
+  <h3>Total revunue </h3>
 
-      <h2>Retired Products</h2>
+  <h3>Total orders</h3>
 
-      <% @merchant.invisible_products.each do |pro| %>
-      <tr>
-        <th>
-          <%= pro.id %>
-        </th>
-        <td>
-          <%= link_to pro.name, product_path(pro) %>
-        </td>
-        <td>
-          <%= pro.stock %>
-        </td>
-        <td>
-          <%= link_to "Retire", retire_path(pro), method: :patch, class: "button" %>
-        </td>
-        <td>
-          <%= link_to "Edit", edit_merchant_product_path(pro) %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-
-  <h2>Orders</h2>
 </section>

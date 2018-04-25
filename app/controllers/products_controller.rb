@@ -58,19 +58,24 @@ class ProductsController < ApplicationController
         @product.update(visible: false)
         flash[:status] = :success
         flash[:result_text] = "successfully retire #{@product.name}"
+      elsif
+        @product.visible == false && @product.stock != 0
+        @product.update(visible: true)
+        flash[:status] = :success
+        flash[:result_text] = "successfully unretire #{@product.name}"
       else
         flash[:status] = :failure
         flash[:result_text] = "#{@product.name} has already retired."
       end
     else
       flash[:status] = :failure
-      flash[:result_text] = "Failed to retire #{@product.name}"
+      if @product.visible == true
+        flash[:result_text] = "Failed to retire #{@product.name}"
+      else
+        flash[:result_text] = "Failed to unretire #{@product.name}"
+      end
     end
-    redirect_to merchant_path(Merchant.find(session["merchant_id"]))
-  end
-
-  def unretire
-
+    redirect_back fallback_location: merchant_path(Merchant.find(session[:merchant_id]))
   end
 
   private

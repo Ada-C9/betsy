@@ -27,6 +27,16 @@ class Merchant < ApplicationRecord
   end
 
   def invisible_products
-    return self.products.reject{ |pro| pro.visible == false}
+    return self.products.reject{ |pro| pro.visible == true}
+  end
+
+# TODO: calculate revenue based status
+  def get_total_revenue
+
+  end
+
+# TODO: calculate order numbers based on status
+  def get_order_numbers
+
   end
 end

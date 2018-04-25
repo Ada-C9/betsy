@@ -8,4 +8,11 @@ class MerchantsController < ApplicationController
     head :not_found unless @merchant
   end
 
+  def display
+    @merchant = Merchant.find_by(id: params[:merchant_id])
+  end
+
+  def orders
+    
+  end
 end
