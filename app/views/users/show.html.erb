@@ -1,7 +1,14 @@
 <h3>User Account Page</h3>
-<% if @user.image %>
-<%= image_tag @user.image %>
-<% end %>
+
+<section class="user-info">
+  <% if @user.username %>
+    <h4><%= @user.username %></h4>
+  <% end %>
+  <% if @user.image %>
+    <%= image_tag @user.image %>
+  <% end %>
+</section>
+
 <div class="add-buttons">
   <%= link_to "Add Categories", new_category_path, class: "button" %>
   <%= link_to "Add Products", new_user_product_path(@user.id), class: "button" %>
