@@ -50,8 +50,7 @@
 
             <% if session[:cart_id] %>
             <%= link_to "My Cart", cart_path(session[:cart_id]), class: "float-right" %>
-            <% else %>
-            <span class= "float-right">My Cart</span>
+
             <% end %>
 
             <% if session[:merchant_id] %>
@@ -86,5 +85,27 @@
 
     <%= yield %>
   </main>
+
+  <footer>
+    <div class= "ownership">
+      <p>
+        Created By:
+      </p>
+      <ul>
+        <li>
+          Wenji
+        </li>
+        <li>
+          Caroline
+        </li>
+        <li>
+          Wini
+        </li>
+        <li>
+          Ana Lisa
+        </li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>
