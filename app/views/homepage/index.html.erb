@@ -39,6 +39,7 @@
       <ul>
         <% @popular_products.each do |popular_product| %>
           <% if popular_product.is_active %>
+            <h4><%= popular_product.name %></h4>
             <%= link_to image_tag(popular_product.photo_url, alt: popular_product.name), product_path(popular_product.id) %>
           <% end %>
         <% end %>
@@ -50,6 +51,7 @@
       <ul>
         <% @outfits.each do |outfit| %>
           <% if outfit.is_active %>
+            <h4><%= outfit.name %></h4>
             <%= link_to image_tag(outfit.photo_url, alt: outfit.name), product_path(outfit.id) %>
           <% end %>
         <% end %>
@@ -61,6 +63,7 @@
       <ul>
         <% @foods.each do |food| %>
           <% if food.is_active %>
+            <h4><%= food.name %></h4>
             <%= link_to image_tag(food.photo_url, alt: food.name), product_path(food.id) %>
           <% end %>
         <% end %>
