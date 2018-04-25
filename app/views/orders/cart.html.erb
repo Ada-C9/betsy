@@ -1,14 +1,14 @@
 <h3>Cart</h3>
-
-<section class="order-items">
-  <ul>
-    <% @cart.order_items.each do |order_item| %>
+<div class="cart">
+  <section class="order-items">
+    <ul>
+      <% @cart.order_items.each do |order_item| %>
       <li>
         <div class="product-photo">
           <% if order_item.product.photo_url.length > 0 %>
-            <%= link_to image_tag(order_item.product.photo_url, alt: order_item.product.name), product_path(order_item.product.id) %>
+          <%= link_to image_tag(order_item.product.photo_url, alt: order_item.product.name), product_path(order_item.product.id) %>
           <% else %>
-            <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(order_item.product.id) %>
+          <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(order_item.product.id) %>
           <% end %>
         </div>
         <div class="product-description">
@@ -17,10 +17,10 @@
         </div>
         <div class="quantity-selection">
           <p>
-          <%= form_for order_item do |f| %>
-          <%= f.label :"Amount Ordered" %>
-          <%= f.text_field :quantity %>
-          <%=f.submit "Update Quantity", class: "button"%>
+            <%= form_for order_item do |f| %>
+            <%= f.label :"Amount Ordered" %>
+            <%= f.text_field :quantity %>
+            <%=f.submit "Update Quantity", class: "button"%>
             <%end%>
           </p>
 
@@ -35,12 +35,12 @@
           <%= button_to "Remove Item", {:action =>"remove_single_item", :controller => "cart", id: order_item.id }, method: :delete, class: "button" %>
         </div>
       </li>
-    <% end %>
-  </ul>
-</section>
+      <% end %>
+    </ul>
+  </section>
 
-<section class="checkout-form">
-  <%= form_for @cart, url:  @action do |f| %>
+  <section class="form checkout-form">
+    <%= form_for @cart, url:  @action, validate: true do |f| %>
     <h4>Shipping Information</h4>
 
     <%= f.label :name %>
@@ -70,7 +70,9 @@
     <%= f.text_field :credit_card %>
 
     <%= f.label :expiration_date %>
-    <%= f.date_field :expiry, "data-provide" => 'datepicker' %>
+    <%= f.date_select :expiry, {discard_day: true, start_year: Date.current.year} %>
+    <%# TODO: use code below for day/month/year picker %>
+    <%# f.date_field :expiry, "data-provide" => 'datepicker' %>
 
     <%= f.label :security_code %>
     <%= f.text_field :ccv %>
@@ -80,15 +82,16 @@
 
     <%= f.submit "Submit Shipping and Billing Info", class: "button" %>
 
-  <% end %>
+    <% end %>
 
-  <% if @cart.order_items.count > 0 %>
+    <% if @cart.order_items.count > 0 %>
 
     <%= button_to "Empty Cart", {:action =>"destroy", :controller => "cart" }, :data => {:confirm => 'Are you sure you want to delete all your items?'}, method: :delete, class: "button" %>
 
     <%= button_to "PAY AND PLACE ORDER", {:action =>"update_to_paid", :controller => "cart" }, method: :patch, class: "button" %>
 
-  <% end %>
+    <% end %>  
+</div>
 
 
 </section>

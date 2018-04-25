@@ -16,7 +16,8 @@
 
     <header class="page-header">
       <nav>
-         <h1>🐶 Puppsy </h1>
+         <!-- <h1>🐶 Puppsy </h1> -->
+         <h1>🐶 <%= link_to "Puppsy", root_path %></h1>
          <div class="nav-button">
            <%= link_to "Home", root_path, class: "button"  %>
            <%= link_to "All Products", products_path, class: "button"  %>
@@ -24,7 +25,7 @@
          </div>
          <div class="float-right nav-button">
            <% if session[:user_id] %>
-           <span class="button">Account Page</span>
+           <%= link_to "Account Page", user_path(session[:user_id]), class: "button"  %>
            <%= link_to "Log out", logout_path, method: :delete, class: "button"  %>
            <% else %>
            <%= link_to "Login with Github", "/auth/github", class: "button" %>
