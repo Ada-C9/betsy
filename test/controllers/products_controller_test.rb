@@ -1,34 +1,15 @@
 require "test_helper"
+require 'pry'
 
 describe ProductsController do
-  it "should get index" do
-    get products_index_url
-    value(response).must_be :success?
+  describe 'Index' do
+    it 'should display the index' do
+        binding.pry
+      get user_products_path(users(:user_3).id)
+
+      must_respond_with :success
+    end
   end
 
-  it "should get new" do
-    get products_new_url
-    value(response).must_be :success?
-  end
-
-  it "should get create" do
-    get products_create_url
-    value(response).must_be :success?
-  end
-
-  it "should get show" do
-    get products_show_url
-    value(response).must_be :success?
-  end
-
-  it "should get edit" do
-    get products_edit_url
-    value(response).must_be :success?
-  end
-
-  it "should get update" do
-    get products_update_url
-    value(response).must_be :success?
-  end
 
 end
