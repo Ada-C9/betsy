@@ -12,8 +12,11 @@
   <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<div id="bg">
+  <img src="mint chocolate chip cupcakes.jpg" alt="">
+</div>
 
-<body background="desserts.jpg">
+<body>
   <header>
     <section>
       <h2 class="image-header">
@@ -82,6 +85,5 @@
 
     <%= yield %>
   </main>
-
 </body>
 </html>
