@@ -4,6 +4,14 @@ require 'pry'
 describe SessionsController do
 
   describe "new" do
+
+    it "succeeds" do
+
+        get new_session_path
+        must_respond_with :success
+
+    end
+
   end
 
   describe "create" do
@@ -99,8 +107,6 @@ describe SessionsController do
       flash[:status].must_equal :success
       flash[:result_text].must_equal "Successfully logged out"
       must_redirect_to root_path
-
-
     end
 
   end
