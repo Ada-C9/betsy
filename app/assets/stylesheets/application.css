@@ -32,7 +32,6 @@ body {
   /* Full height */
   height: 100%;
   width: 100%;
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -88,10 +87,6 @@ body .button {
 body .button:hover {
   background-color: rgb(64, 34, 2);
   color: rgb(192, 242, 205);
-}
-
-body {
-  margin: auto 100px;
 }
 
 main {
