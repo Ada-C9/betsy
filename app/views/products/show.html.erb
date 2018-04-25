@@ -1,4 +1,5 @@
 <h3><%= @product.name %></h3>
+<h4>by <%= link_to @product.user.username, user_products_path(@product.user.id) %></h4>
 
 <% if @product.is_active %>
   <div class="product-container">
