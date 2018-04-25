@@ -137,11 +137,14 @@ label {
 }
 
 .page-header h1 {
+  width: 200px;
+}
+
+.page-header h1 a {
   font-family: 'Chicle', cursive;
   text-align: left;
-  margin: 10px 30px 10px 30px;
+  margin: 10px 30px 10px 0px;
   color: #c17317;
-  width: 200px;
 }
 
 .nav-button {
