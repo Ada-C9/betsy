@@ -54,13 +54,13 @@ class OrdersController < ApplicationController
          if @order.valid?
            @order.save
 
-           redirect_to order_path(1)
+           redirect_to order_path(@order.id)
               # binding.pry
            flash[:success] = "#{@order.name} has been updated"
            # binding.pry
          else
-           # render :new , status: :bad_request
-           # flash[:error] = "#{@order.name} update has failed"
+           render :show , status: :bad_request
+           flash[:error] = "#{@order.name} update has failed"
            binding.pry
          end
      end
@@ -94,18 +94,6 @@ class OrdersController < ApplicationController
   def order_params
    params.require(:order).permit(:status,:name,:email,:street_address,:city,:state,:zip,:name_cc,:credit_card,:expiry,:ccv,:billing_zip)
   end
-
-  def remove_nil_params(params)
-    update_hash = {}
-    array_of_fields = [:status,:name, :email, :street_address,:city, :state,:zip,:name_cc,:credit_card,:expiry,:ccv,:billing_zip]
-    array_of_fields.each do |field|
-      next if params[field].nil?
-      update_hash[field] = params[field]
-    end
-    return update_hash
-  end
-
-
 
 
 end
