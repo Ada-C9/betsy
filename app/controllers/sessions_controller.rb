@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       @user = User.find_by(uid: auth_hash[:uid], provider: 'github')
       if @user.nil?
         @user = User.build_from_github(auth_hash)
+        @user.update_image(request.env["omniauth.auth"]["info"]["image"])
         successful_save = @user.save
         if successful_save
           flash[:status] = :success
@@ -23,6 +24,8 @@ class SessionsController < ApplicationController
       else
         flash[:status] = :success
         flash[:result_text] = "Logged in successfully"
+        @user.update_image(request.env["omniauth.auth"]["info"]["image"])
+        @user.save
         redirect_to products_path
       end
       session[:user_id] = @user.id

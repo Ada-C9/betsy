@@ -1,4 +1,7 @@
 <h3>User Account Page</h3>
+<% if @user.image %>
+<%= image_tag @user.image %>
+<% end %>
 <div class="add-buttons">
   <%= link_to "Add Categories", new_category_path, class: "button" %>
   <%= link_to "Add Products", new_user_product_path(@user.id), class: "button" %>
@@ -26,7 +29,7 @@
           <%= link_to "Update", edit_product_path(product.id), class: "button" %>
         <% else %>
           <span class="button disabled">Update</span>
-        <% end %>          
+        <% end %>
       </td>
       <td>
         <% if product.is_active %>
