@@ -10,7 +10,7 @@ class Order < ApplicationRecord
   validates :name_cc, presence: true, unless: :in_cart?
   validates :credit_card, presence: true, length: { in: 14..19 }, unless: :in_cart?
   # TODO: cannot submit order with current validation
-  # validates :expiry, presence: true, unless: :in_cart?
+  validates :expiry, presence: true, unless: :in_cart?
   validates :ccv, presence: true, length: { in: 3..4 }, unless: :in_cart?
   validates :billing_zip, presence: true, length: { is: 5 }, unless: :in_cart?
   validate :cc_expiry_cannot_be_in_the_past, unless: :in_cart?
