@@ -21,8 +21,11 @@
   </tbody>
 </table>
 
+
+<section class = "lowerbar">
 <%= link_to "Edit shopping cart", cart_path(session[:cart_id]), class: "hollow button"%>
 <%= form_for @order do |t|%>
 <%= t.hidden_field :status, value: "pending" %>
 <%= t.submit "Proceed to payment", class: "hollow button" %>
 <%end%>
+</section>

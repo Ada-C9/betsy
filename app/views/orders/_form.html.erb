@@ -37,8 +37,9 @@
   <%= t.number_field :zipcode%>
 
   <%= t.hidden_field :status, value: "paid" %>
-
-  <%= t.submit "Place Order", class: "button"%>
+  <section class = "lowerbar">
+    <%= t.submit "Place Order", class: "button hollow"%>
+  </section>
   <%end%>
 
 </section>

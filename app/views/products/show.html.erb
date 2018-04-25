@@ -10,7 +10,7 @@
 
   <div class= "product-info-container">
     <h2>Details:</h2>
-    <p>Seller: <span class="plain-font"><%= @product.merchant.username %></span></p>
+    <p>Seller: <span class="plain-font"><%= link_to @product.merchant.username, merchant_path(@product.merchant) %></span></p>
     <p>Description: <span class="plain-font"><%= @product.description %></span></p>
     <p>Price: $<span class="plain-font"><%= display_dollars(@product.price) %></span></p>
     <p>Stock: <span class="plain-font"><%= @product.stock %></span></p>
@@ -54,8 +54,3 @@
     <% end %>
   </div>
 </section>
-
-
-
-
-<!-- FIXME: Further styling required, due to addition of Reviews Form -->

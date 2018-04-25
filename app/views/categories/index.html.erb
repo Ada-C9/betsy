@@ -4,12 +4,10 @@
     <%= link_to cate.name, category_path(cate) %>
   </h2>
   <ul class="cate-display">
-    <li>
-    </li>
     <% cate.show_four.each do |pro| %>
     <li>
       <h3 class="pro-name"><%= link_to pro.name, product_path(pro) %></h3>
-      <%= image_tag pro.image, alt: "bonbon-image", class: "small-pro" %>
+      <%= link_to image_tag(pro.image, alt: "bonbon-image", class: "small-pro"), product_path(pro) %>
     </li>
     <% end %>
   </ul>
