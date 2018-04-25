@@ -10,15 +10,15 @@ describe SessionsController do
 
     it "logs in an existing user and redirects to the root route" do
 
+      #Arrange
       start_count = User.count
-
       user = users(:user_1)
-
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
 
+      #Act
       get auth_callback_path(:github)
 
-
+      #Assert
       flash[:result_text].must_equal "Logged in successfully"
       must_redirect_to root_path
       session[:user_id].must_equal user.id
@@ -33,15 +33,17 @@ describe SessionsController do
       start_count = User.count
       user = User.new(provider: "github", uid: 40420, username: "drywall_bob", email: "bob@drywall.com")
       initial_user_id = user.id
-      initial_user_id.must_be_nil
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
 
+      ### Validating arrangement:
+      initial_user_id.must_be_nil
 
       # Act
       get auth_callback_path(:github)
       new_user = User.find_by(username: "drywall_bob")
+      session_id_accessible = session[:user_id]
 
-      # Assess
+      # Assert
       flash[:result_text].must_equal "Successful first login!"
       User.count.must_equal start_count + 1
       User.last.must_equal new_user
@@ -53,18 +55,22 @@ describe SessionsController do
 
     it "redirects to the login route if given invalid user data" do
 
+      #Arrange
       start_count = User.count
-
       user = User.new(provider: "github", uid: 40420, username: "", email: "!!!!!!!!")
-
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
 
+      #Act
       get auth_callback_path(:github)
+      bogus_user = User.find_by(username: "drywall_bob")
+      session_id_accessible = session[:user_id]
 
-      flash[:status] = :failure
-      must_redirect_to root_path
+      #Assert
+      flash[:status].must_equal :failure
+      bogus_user.must_be_nil
       session[:user_id].must_be_nil
       User.count.must_equal start_count
+      must_redirect_to root_path
 
     end
   end
