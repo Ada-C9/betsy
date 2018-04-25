@@ -24,7 +24,7 @@
         </div>
         <div class="subtotal-remove-container">
           <p><strong>Subtotal:</strong> $<%= price_in_dollar(order_item.subtotal) %></p>
-          <%= button_to "Remove", {:action =>"remove_single_item", :controller => "cart", id: order_item.id }, method: :delete, class: "button" %>          
+          <%= button_to "Remove", {:action =>"remove_single_item", :controller => "cart", id: order_item.id }, method: :delete, class: "button" %>
         </div>
       </div>
     </li>
@@ -34,6 +34,7 @@
   <section class="checkout-container">
     <%= form_for @cart, url:  @action, validate: true do |f| %>
     <div class="checkout-form">
+
       <div class="shipping-info">
         <h4>Shipping Information</h4>
 
@@ -76,16 +77,17 @@
         <%= f.label :billing_zip_code %>
         <%= f.text_field :billing_zip %>
       </div>
+
     </div>
+    <%= f.submit "Save Information", class: "button" %>
+    <% end %>
 
     <div class="cart-button">
-      <%= f.submit "Submit Shipping and Billing Info", class: "button" %>
-      <% end %>
       <% if @cart.order_items.count > 0 %>
-      <%= button_to "Empty Cart", {:action =>"destroy", :controller => "cart" }, :data => {:confirm => 'Are you sure you want to delete all your items?'}, method: :delete, class: "button" %>
-      <%= button_to "PAY AND PLACE ORDER", {:action =>"update_to_paid", :controller => "cart" }, method: :patch, class: "button" %>
+        <%= button_to "Empty Cart", {:action =>"destroy", :controller => "cart" }, :data => {:confirm => 'Are you sure you want to delete all your items?'}, method: :delete, class: "button" %>
+        <%= button_to "PLACE ORDER", {:action =>"update_to_paid", :controller => "cart" }, method: :patch, class: "button" %>
+      <% end %>
     </div>
-    <% end %>
 </div>
 
 
