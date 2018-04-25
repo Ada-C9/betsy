@@ -11,5 +11,4 @@ class MerchantsController < ApplicationController
   def display
     @merchant = Merchant.find_by(id: params[:merchant_id])
   end
-
 end
