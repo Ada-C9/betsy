@@ -17,7 +17,11 @@
 *= require foundation_and_overrides
 
 */
-
+html {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
 a {
   color: rgb(64, 34, 2);
 }
@@ -27,8 +31,7 @@ body {
 
   /* Full height */
   height: 100%;
-
-  /* Center and scale the image nicely */
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -86,10 +89,6 @@ body .button:hover {
   color: rgb(192, 242, 205);
 }
 
-body {
-  margin: auto 100px;
-}
-
 main {
   color: rgb(64, 34, 2);
   border: 10px double rgb(64, 34, 2);
@@ -109,4 +108,22 @@ img.orbit-image {
 a.dropdown-1:hover {
   background-color: rgb(192, 242, 205);
   color: rgb(64, 34, 2);
+}
+
+footer {
+  margin-top: 2em;
+  height: 15%;
+  color: rgb(64, 34, 2);
+  border: 10px double rgb(64, 34, 2);
+  background-color: rgb(192, 242, 205);
+}
+
+.ownership ul {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.ownership p {
+  padding-left: 10px;
 }
