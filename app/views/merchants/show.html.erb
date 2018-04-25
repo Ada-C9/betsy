@@ -39,7 +39,7 @@
     </thead>
 
     <tbody>
-      <% @merchant.products.each do |pro| %>
+      <% @merchant.visible_products.each do |pro| %>
       <tr>
         <th>
           <%= pro.id %>
@@ -59,6 +59,27 @@
       </tr>
       <% end %>
 
+      <h2>Retired Products</h2>
+
+      <% @merchant.invisible_products.each do |pro| %>
+      <tr>
+        <th>
+          <%= pro.id %>
+        </th>
+        <td>
+          <%= link_to pro.name, product_path(pro) %>
+        </td>
+        <td>
+          <%= pro.stock %>
+        </td>
+        <td>
+          <%= link_to "Retire", retire_path(pro), method: :patch, class: "button" %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_merchant_product_path(pro) %>
+        </td>
+      </tr>
+      <% end %>
     </tbody>
   </table>
 

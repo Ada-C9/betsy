@@ -16,9 +16,17 @@ class Merchant < ApplicationRecord
   end
 
   def show_four
-    if self.products.count > 4
-      return self.products.first(4)
+    if self.visible_products.count > 4
+      return self.visible_products.first(4)
     end
-    return self.products
+    return self.visible_products
+  end
+
+  def visible_products
+    return self.products.reject{ |pro| pro.visible == false }
+  end
+
+  def invisible_products
+    return self.products.reject{ |pro| pro.visible == false}
   end
 end
