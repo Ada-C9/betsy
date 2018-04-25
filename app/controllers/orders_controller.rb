@@ -35,25 +35,33 @@ class OrdersController < ApplicationController
 
   def update
   @order = Order.find_by(id: params[:id])
-    if @order
-         @order.status = params[:status]
-         @order.name = params[:name]
-         @order.email = params[:email]
-         @order.street_address = params[:street_address]
-         @order.city = params[:city]
-         @order.state = params[:state]
-         @order.zip = params[:zip]
-         @order.name_cc = params[:name_cc]
-         @order.credit_card = params[:credit_card]
-         @order.expiry = params[:expiry]
-         @order.ccv= params[:ccv]
-         @order.billing_zip = params[:billing_zip]
-         if @order.save
-           redirect_to order_path(@order.id)
+    if @order.nil?
+      render_404
+    else
+        @order.update_attributes(order_params)
+         # @order.status = params[:status]
+         # @order.name = params[:name]
+         # @order.email = params[:email]
+         # @order.street_address = params[:street_address]
+         # @order.city = params[:city]
+         # @order.state = params[:state]
+         # @order.zip = params[:zip]
+         # @order.name_cc = params[:name_cc]
+         # @order.credit_card = params[:credit_card]
+         # @order.expiry = params[:expiry]
+         # @order.ccv= params[:ccv]
+         # @order.billing_zip = params[:billing_zip]
+         if @order.valid?
+           @order.save
+
+           redirect_to order_path(1)
+              # binding.pry
            flash[:success] = "#{@order.name} has been updated"
+           # binding.pry
          else
-           render :new, status: :not_found
-           flash[:error] = "#{@order.name} update has failed"
+           # render :new , status: :bad_request
+           # flash[:error] = "#{@order.name} update has failed"
+           binding.pry
          end
      end
   end
@@ -86,6 +94,18 @@ class OrdersController < ApplicationController
   def order_params
    params.require(:order).permit(:status,:name,:email,:street_address,:city,:state,:zip,:name_cc,:credit_card,:expiry,:ccv,:billing_zip)
   end
+
+  def remove_nil_params(params)
+    update_hash = {}
+    array_of_fields = [:status,:name, :email, :street_address,:city, :state,:zip,:name_cc,:credit_card,:expiry,:ccv,:billing_zip]
+    array_of_fields.each do |field|
+      next if params[field].nil?
+      update_hash[field] = params[field]
+    end
+    return update_hash
+  end
+
+
 
 
 end
