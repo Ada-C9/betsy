@@ -6,7 +6,7 @@
       <li>
         <div class="product-photo">
           <% if order_item.product.photo_url.length > 0 %>
-          <%= link_to image_tag(order_item.product.photo_url, alt: order_item.product.name), product_path(order_item.product.id) %>
+          <%= link_to image_tag('favicon.png', alt: order_item.product.name), product_path(order_item.product.id) %>
           <% else %>
           <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(order_item.product.id) %>
           <% end %>
@@ -90,7 +90,7 @@
 
     <%= button_to "PAY AND PLACE ORDER", {:action =>"update_to_paid", :controller => "cart" }, method: :patch, class: "button" %>
 
-    <% end %>  
+    <% end %>
 </div>
 
 
