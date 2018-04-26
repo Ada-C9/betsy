@@ -54,7 +54,6 @@ class OrdersController < ApplicationController
            redirect_to order_path(@order.id)
            flash[:status] = :success
            flash[:result_text] = "#{@order.name} has been updated"
-           redirect_to order_path
          else
            render :show, status: :bad_request
            #check how this effects the page

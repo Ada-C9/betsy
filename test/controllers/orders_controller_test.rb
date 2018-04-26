@@ -186,7 +186,7 @@ end
     it 'will update the status of a current order to "cancelled"' do
       put order_cancel_path(   orders(:order_2).id     )
       must_respond_with :redirect
-      must_redirect_to order_confirmation_path( orders(:order_2).id)
+      must_redirect_to products_path
 
     end
     it 'will render 404 page for an order that does not exist' do
