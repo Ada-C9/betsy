@@ -97,7 +97,7 @@ class CartController < ApplicationController
     @cart.order_items.each do |order_item|
       order_item.destroy
     end
-    render :empty_cart
+    redirect_to cart_path
   end
 
   def remove_single_item
