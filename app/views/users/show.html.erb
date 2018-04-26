@@ -92,7 +92,7 @@
               <% elsif order_item.is_shipped %>
                 <span>Shipped</span>
               <% else %>
-                <%= link_to "Mark Shipped", order_item_path(order_item.id), method: :patch, class: "button" %>
+                <%= link_to "Mark Shipped", order_item_set_status_path(order_item.id), method: :put, class: "button" %>
               <% end %>
             </td>
           </tr>
