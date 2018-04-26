@@ -1,5 +1,6 @@
 class OrderItemsController < ApplicationController
   before_action :require_login
+  skip_before_action :require_login, only: [:update]
 
   def new
     @order_item = OrderItem.new
