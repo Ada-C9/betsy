@@ -1,28 +1,17 @@
 class ReviewsController < ApplicationController
-
-  # I'm fairly certain we don't need these
-  # def index
-  #   @reviews = Review.all
-  # end
-  #
-  # def show
-  #   @review = Review.find_by(id: params[:id])
-  #   head :not_found unless @review
-  # end
+  before_action :find_product, only: [:create]
 
   def new
-
     @review = Review.new
   end
 
   def create
     @review = Review.new(review_params)
-    @product = Product.find_by(id: params[:review][:product_id])
 
     if @product.merchant_id == session[:merchant_id]
-      flash[:status] = :faliure
-      flash[:result_text] = "You can not review your own product"
-      redirect_back fallback_location: products_path
+      flash[:status] = :failure
+      flash[:result_text] = "You may not review your own product"
+      redirect_to product_path(@review.product_id), status: :forbidden
     else
       if @review.save
         flash[:status] = :success
@@ -43,7 +32,7 @@ class ReviewsController < ApplicationController
   end
 
   def find_product
-    @product = Product.find_by(id: params[:product_id])
+    @product = Product.find_by(id: params[:review][:product_id])
     head :not_found unless @product
   end
 end
