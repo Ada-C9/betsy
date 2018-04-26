@@ -69,7 +69,7 @@ class OrdersController < ApplicationController
     if @order.nil?
       render_404
     else
-      @order.cancel
+      @order.status = "cancelled"
       if @order.save
         flash[:status] = :success
         flash[:result_text] = "Your order has been cancelled!"
