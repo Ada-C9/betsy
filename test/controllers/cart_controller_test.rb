@@ -278,50 +278,92 @@ describe CartController do
   #
   #
   # end
-  #
+
   describe "update_to_paid" do
 
-    it "changes the status of an order from 'pending' to 'paid' when that order's attributes are properly populated, and redirects to the confirmation page." do
+    it "changes the status of an order from 'pending' to 'paid' when that order's attributes are properly populated, removes its ID from session, and redirects to the confirmation page." do
 
       #Arrange
-
-
-
-
-
-      #Act
-
-      #Assert
-
-    end
-
-    it "will respond with failure when an order does not have all the necessary information in its attributes" do
-
-      #Arrange
-
       post add_to_cart_path(@product_1.id)
-
       cart_order = Order.find_by(id: session[:cart_order_id])
+      cart_order.wont_be_nil
 
-      ### Validate test
-      cart_order.status.must_equal "pending"
-      before_status = cart_order.status
+      patch order_path(cart_order.id), params:{
+        order: {
+          status:orders(:order_1).status,
+          name: "Hello World!",
+          email: orders(:order_1).email,
+          street_address: orders(:order_1).street_address,
+          city: orders(:order_1).city,
+          state: orders(:order_1).state,
+          zip: orders(:order_1).zip,
+          name_cc: orders(:order_1).name_cc,
+          credit_card:orders(:order_1).credit_card,
+          expiry: orders(:order_1).expiry,
+          ccv: orders(:order_1).ccv ,
+          billing_zip: orders(:order_1).billing_zip
+         }
+      }
 
-      #### New order will be missing key information
-      cart_order.name_cc.must_equal nil
-
+      our_test_order = Order.find_by(name: "Hello World!")
+      before_status = our_test_order.status
       #Act
       patch update_to_paid_path
 
-      #Assert
-      ### Will display appropriate failure message
-      flash[:result_text].must_equal "We weren't able to process your order. Please double-check the form."
 
-      ### Status will not have changed
-      after_status = cart_order.status
-      after_status.must_equal before_status
+      #Assert
+      ### status must have changed from pending to paid.
+
+      after_test_order = Order.find_by(name: "Hello World!")
+      after_test_order.status.must_equal "paid"
+      after_test_order.status.wont_equal before_status
+
+      ### appropriate flash messages must be given.
+      flash[:status].must_equal :success
+      flash[:result_text].must_equal "Your order has been submitted!"
+
+      ### The cart_order_id from Session must be changed to nil.
+      session[:cart_order_id].must_be_nil
+
 
     end
+
+    # it "will respond with failure when an order does not have all the necessary information in its attributes" do
+    #
+    #   #Arrange
+    #
+    #   post add_to_cart_path(@product_1.id)
+    #
+    #   cart_order = Order.find_by(id: session[:cart_order_id])
+    #
+    #
+    #   ### Validate test
+    #   cart_order.status.must_equal "pending"
+    #   before_status = cart_order.status
+    #
+    #   #### New order will be missing key information
+    #   cart_order.name_cc.must_equal nil
+    #
+    #   #Act
+    #   patch update_to_paid_path
+    #
+    #   #Assert
+    #   ### Will display appropriate failure message
+    #   flash[:result_text].must_equal "We weren't able to process your order. Please double-check the form."
+    #
+    #   ### Status will not have changed
+    #   after_status = cart_order.status
+    #   after_status.must_equal before_status
+    #
+    #   ### The session's cart_order_id key will still be populated with the cart_order's id.
+    #
+    #   session[:cart_order_id].must_equal cart_order.id
+    #
+    #   ### Proper redirect will happen
+    #
+    #   must_redirect_to cart_path
+    #
+    # end
   end
   #
   # describe "destroy" do
