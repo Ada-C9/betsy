@@ -72,7 +72,7 @@ class CartController < ApplicationController
 
   def update_to_paid
     @cart = Order.find_by(id: session[:cart_order_id])
-    @cart.status = "paid"
+    @cart.confirm
     if !@cart.save
       flash[:status] = :failure
       flash[:result_text] = "We weren't able to process your order. Please double-check the form."
