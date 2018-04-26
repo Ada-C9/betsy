@@ -7,7 +7,7 @@
         <li>
           <div class="order-item-photo">
             <% if order_item.product.photo_url.length > 0 %>
-            <%= link_to image_tag('favicon.png', alt: order_item.product.name), product_path(order_item.product.id) %>
+            <%= link_to image_tag(order_item.product.photo_url, alt: order_item.product.name), product_path(order_item.product.id) %>
             <% else %>
             <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(order_item.product.id) %>
             <% end %>
@@ -86,7 +86,7 @@
 
         <div class="cart-button">
           <%= button_to "Empty Cart", {:action =>"destroy", :controller => "cart" }, :data => {:confirm => 'Are you sure you want to delete all your items?'}, method: :delete, class: "button" %>
-          <% if @cart.name.length > 0 %>
+          <% if @cart.name && @cart.name.length > 0 %>
             <%= button_to "PLACE ORDER", {:action =>"update_to_paid", :controller => "cart" }, method: :patch, class: "button" %>
           <% end %>
         </div>
