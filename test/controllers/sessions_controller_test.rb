@@ -16,7 +16,7 @@ describe SessionsController do
 
   describe "create" do
 
-    it "logs in an existing user and redirects to the root route" do
+    it "logs in an existing user and redirects to the root route, without creating a new database entry" do
 
       #Arrange
       start_count = User.count
@@ -27,14 +27,20 @@ describe SessionsController do
       get auth_callback_path(:github)
 
       #Assert
+
+      ### Logs in an existing user:
       flash[:result_text].must_equal "Logged in successfully"
-      must_redirect_to root_path
       session[:user_id].must_equal user.id
+
+      ### Does not add to the database
       User.count.must_equal start_count
+
+      ### Redirects to the root path
+      must_redirect_to root_path
 
     end
 
-    it "creates an account for a new user and redirects to the root route" do
+    it "creates an account for a new user, logs th new user in, provides appropriate success messages, and redirects to the root route" do
 
       # Arrange
 
@@ -52,11 +58,19 @@ describe SessionsController do
       session_id_accessible = session[:user_id]
 
       # Assert
-      flash[:result_text].must_equal "Successful first login!"
+
+      ### Creates an account
       User.count.must_equal start_count + 1
       User.last.must_equal new_user
-      session[:user_id].must_equal new_user.id
       initial_user_id.wont_equal new_user.id
+
+      ### Logs the new user in
+      session[:user_id].must_equal new_user.id
+
+      ### Provides appropriate success messages
+      flash[:result_text].must_equal "Successful first login!"
+
+      ### Redirects to the root path
       must_redirect_to root_path
 
     end
@@ -74,19 +88,27 @@ describe SessionsController do
       session_id_accessible = session[:user_id]
 
       #Assert
-      flash[:status].must_equal :failure
-      bogus_user.must_be_nil
+
+      ### Does not log in
       session[:user_id].must_be_nil
+
+      ### Does not add to the database
+      bogus_user.must_be_nil
       User.count.must_equal start_count
+
+      ### Provides appropriate failure messages
+      flash[:status].must_equal :failure
+
+      ### Redirects to the root path
       must_redirect_to root_path
 
     end
 
-    it "does not log in, and provides appropriate failure messages, if unable to connect to the provider" do
+    it "does not log in, and provides appropriate failure messages, if unable to get a response from the provider" do
 
       #Arrange
       start_count = User.count
-      user = User.new(provider: "github",  username: "drywall_bob", email: "bob@drywall.com")
+      user = User.new(provider: "github", uid: nil, username: "drywall_bob", email: "bob@drywall.com")
 
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
 
@@ -96,12 +118,20 @@ describe SessionsController do
       session_id_accessible = session[:user_id]
 
       #Assert
-      flash[:status].must_equal :failure
-      flash[:result_text].must_equal "Logging in through Github not successful"
-      failing_user.must_be_nil
+
+      ### Does not log in
       session[:user_id].must_be_nil
 
+      ### Does not add to the database
       User.count.must_equal start_count
+      failing_user.must_be_nil
+
+
+      ### Provides appropriate failure messages
+      flash[:status].must_equal :failure
+      flash[:result_text].must_equal "Logging in through Github not successful"
+
+      ### Redirects to root path
       must_redirect_to root_path
 
     end
@@ -138,7 +168,29 @@ describe SessionsController do
   end
 
   describe "index" do
+
+    it "Can find a user by session id and assign it to an instance variable" do
+
+      #Arrange
+      user_2 = users(:user_2)
+      login(user_2)
+
+      #Act
+      get sessions_path
+
+      #Assert
+      must_respond_with :success
+
+    end
+
+    it "returns an error if no user is logged in" do
+
+      proc { get sessions_path }.must_raise StandardError
+
+    end
+
   end
+
 
   describe "destroy" do
 
