@@ -75,7 +75,6 @@ class CartController < ApplicationController
     @cart = Order.find_by(id: session[:cart_order_id])
     @cart.confirm
     if !@cart.save
-      binding.pry
       flash[:status] = :failure
       flash[:result_text] = "We weren't able to process your order. Please double-check the form."
       flash[:messages] = @cart.errors.messages
