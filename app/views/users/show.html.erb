@@ -1,11 +1,11 @@
 <h3>User Account Page</h3>
 
 <section class="user-info">
+  <% if @user.image %>
+  <%= image_tag @user.image %>
+  <% end %>
   <% if @user.username %>
     <h4><%= @user.username %></h4>
-  <% end %>
-  <% if @user.image %>
-    <%= image_tag @user.image %>
   <% end %>
 </section>
 
