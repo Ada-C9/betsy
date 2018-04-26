@@ -64,6 +64,19 @@ describe CartController do
 
     it "If a cart does not already exist, creates a new instance of Order and assigns its ID to the proper key in session" do
 
+      #Arrange
+      before_count = Order.count
+
+      #Act
+      post add_to_cart_path(@product_2.id) #Note-- does not matter what this product is for purposes of the test-- we just need it to activate the route.
+
+      #Assert
+      validating_id = Order.find_by(id: session[:cart_order_id]).id
+      validating_id.must_equal Order.last.id
+
+      after_count = Order.count
+      (after_count - before_count).must_equal 1
+
     end
 
     it "If a cart already exists, finds an instance of Order according to the key in session" do
