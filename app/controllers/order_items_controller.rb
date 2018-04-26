@@ -26,7 +26,8 @@ class OrderItemsController < ApplicationController
         flash[:result_text] = "Could not add the desired quantity of this item to the cart."
         flash[:messages] = @order_item.errors.messages
       end
-    redirect_to cart_path
+      redirect_to cart_path
+    end
   end
 
   def set_status
