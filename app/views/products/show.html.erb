@@ -8,7 +8,7 @@
         <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(@product.id) %>
       <% else %>
       <%= @product.photo_url %>
-    <!-- <%#= link_to image_tag(@product.photo_url, alt: @product.name), product_path(@product.id) %> -->
+        <%= link_to image_tag(@product.photo_url, alt: @product.name), product_path(@product.id) %>
       <% end %>
       <p><%= @product.description %></p>
       <p>Price: $<%= price_in_dollar(@product.price) %></p>
