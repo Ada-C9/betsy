@@ -65,12 +65,12 @@ describe SessionsController do
 
       #Arrange
       start_count = User.count
-      user = User.new(provider: "github", uid: "", username: "", email: "")
+      user = User.new(provider: "github", uid: "", username: "Ratso", email: "")
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
 
       #Act
       get auth_callback_path(:github)
-      bogus_user = User.find_by(username: "drywall_bob")
+      bogus_user = User.find_by(username: "Ratso")
       session_id_accessible = session[:user_id]
 
       #Assert
@@ -82,22 +82,25 @@ describe SessionsController do
 
     end
 
-    it "does not log in, and provides appropriate failure messages, if given data that Github cannot use for a login" do
+    it "does not log in, and provides appropriate failure messages, if unable to connect to the provider" do
 
       #Arrange
       start_count = User.count
-      user = User.new(provider: "github", uid: "", username: "", email: "")
+      user = User.new(provider: "github",  username: "drywall_bob", email: "bob@drywall.com")
+
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
 
       #Act
       get auth_callback_path(:github)
-      bogus_user = User.find_by(username: "drywall_bob")
+      failing_user = User.find_by(username: "drywall_bob")
       session_id_accessible = session[:user_id]
 
       #Assert
       flash[:status].must_equal :failure
-      bogus_user.must_be_nil
+      flash[:result_text].must_equal "Logging in through Github not successful"
+      failing_user.must_be_nil
       session[:user_id].must_be_nil
+
       User.count.must_equal start_count
       must_redirect_to root_path
 

@@ -33,7 +33,6 @@ class SessionsController < ApplicationController
     else
       flash[:status] = :failure
       flash[:result_text] = "Logging in through Github not successful"
-      flash[:messages] = @user.errors.messages
     end
     redirect_to root_path
   end
