@@ -1,3 +1,5 @@
+require 'pry'
+
 class CartController < ApplicationController
 
   def access_cart
