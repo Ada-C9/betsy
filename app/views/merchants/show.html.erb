@@ -4,7 +4,7 @@
       <%= @merchant.username %>
     </li>
     <li>
-      Joined Alibonbon since: <%= @merchant.created_at %>
+      Joined Alibonbon on: <%= display_date(@merchant.created_at) %>
     </li>
     <li>
       Email: <%= @merchant.email %>
@@ -15,8 +15,32 @@
 
   <%= link_to "View all orders", my_orders_path, class: "button" %>
 
-  <h3>Total revunue </h3>
+  <h3>My Revenue</h3>
+  <ul class="tabs" data-tabs id="example-tabs">
+    <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Total Revenue</a></li>
+    <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Revenue: Pending Orders</a></li>
+    <li class="tabs-title"><a data-tabs-target="panel3" href="#panel3">Revenue: Paid Orders</a></li>
+    <li class="tabs-title"><a data-tabs-target="panel4" href="#panel4">Revenue: Completed Orders</a></li>
+    <li class="tabs-title"><a data-tabs-target="panel5" href="#panel5">Revenue: Cancelled Orders</a></li>
+  </ul>
+  <div class="tabs-content" data-tabs-content="example-tabs">
+  <div class="tabs-panel is-active" id="panel1">
+    <p>$ <%= display_dollars(@merchant.my_total_revenue) %></p>
+  </div>
+  <div class="tabs-panel" id="panel2">
+    <p>$ <%= display_dollars(@merchant.my_revenue_by_status("pending")) %></p>
+  </div>
+  <div class="tabs-panel" id="panel3">
+    <p>$ <%= display_dollars(@merchant.my_revenue_by_status("paid")) %></p>
+  </div>
+  <div class="tabs-panel" id="panel4">
+    <p>$ <%= display_dollars(@merchant.my_revenue_by_status("completed")) %></p>
+  </div>
+  <div class="tabs-panel" id="panel5">
+    <p>$ <%= display_dollars(@merchant.my_revenue_by_status("cancelled")) %></p>
+  </div>
+</div>
 
-  <h3>Total orders</h3>
+  <h3>My Orders</h3>
 
 </section>

@@ -6,7 +6,6 @@ class MerchantsController < ApplicationController
   def show
     @merchant = Merchant.find_by(id: params[:id])
     @orders = @merchant.my_orders
-    
     head :not_found unless @merchant
   end
 
