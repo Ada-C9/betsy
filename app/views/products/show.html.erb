@@ -1,4 +1,5 @@
 <h3><%= @product.name %></h3>
+<h4>by <%= link_to @product.user.username, user_products_path(@product.user.id) %></h4>
 
 <% if @product.is_active %>
   <div class="product-container">
@@ -12,8 +13,8 @@
       <p>Price: $<%= price_in_dollar(@product.price) %></p>
       <% if @product.stock > 0 %>
       <p><span class="color-text"><%= @product.stock %></span> in stock</p>
-      <%= link_to "Add to Cart", products_path, method: :post, class: "button" %>
-      <% else %>
+      <%= button_to "Add to Cart", {:action =>"add_to_cart", :controller => "cart", id: @product.id }, method: :post, class: "button" %>
+    <% else %>
       <p class="alert button">Out of Stock</p>
       <% end %>
     </section>
@@ -21,7 +22,7 @@
     <div class="review">
       <h4>Write a Review</h4>
       <section class="new-review">
-        <%= form_for @review, url: @action do |f| %>
+        <%= form_for @review, url: @action, validate: true do |f| %>
         <%= f.select :rating, (1..5).to_a, :prompt => 'Select a rating'%>
 
         <%= f.label :comment %>

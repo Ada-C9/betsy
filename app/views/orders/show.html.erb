@@ -21,7 +21,7 @@
 
 <h4>Customer Information</h4>
 
-<table>
+<table class="transpose">
   <thead>
     <tr>
       <th>Name</th>
@@ -43,7 +43,7 @@
       <td><%= @order.state %></td>
       <td><%= @order.zip %></td>
       <td><%= @order.credit_card_last_digits %></td>
-      <td><%= @order.expiry %></td>
+      <td><%= discard_day(@order.expiry) %></td>
     </tr>
   </tbody>
 </table>

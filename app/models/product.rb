@@ -15,6 +15,10 @@ class Product < ApplicationRecord
     self.is_active = !is_active
   end
 
+  def update_stock!(new_stock)
+    self.stock = new_stock
+  end
+
   def self.top_sellers(count = 5)
     sorted_products = self.all.sort_by { |p|
       p.order_items.map { |i| i.quantity }.sum
@@ -22,12 +26,8 @@ class Product < ApplicationRecord
     actual_count = [count, sorted_products.count].min
     return sorted_products[0...actual_count]
   end
-  
+
   def self.search(term)
-    if term
-      where('name LIKE ?', "%#{term}%").order('id DESC')
-    else
-      all
-    end
+    where('lower(name) LIKE ?', "%#{term.downcase}%").order('id DESC')
   end
 end

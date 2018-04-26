@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+
   def index
     @orders = Order.all
   end
@@ -10,11 +11,14 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
-      flash[:success] = "Your order has been made - congratulations!"
+      flash[:status] = :success
+      flash[:result_text] = "Your order has been made - congratulations!"
       redirect_to order_confirmation_path(@order.id)
     else
-      flash[:error] = "Something has gone wrong in your orders processing."
-      render :new, status: :bad_request
+      flash[:status] = :failure
+      flash[:result_text] = "Something has gone wrong in your orders processing."
+      render :new
+      flash[:messages] = @order.errors.messages, status: :bad_request
     end
   end
 
@@ -41,16 +45,16 @@ class OrdersController < ApplicationController
         @order.update_attributes(order_params)
          if @order.valid?
            @order.save
-
            redirect_to order_path(@order.id)
-            
-           flash[:success] = "#{@order.name} has been updated"
-
+           flash[:status] = :success
+           flash[:result_text] = "#{@order.name} has been updated"
          else
-           render :show , status: :bad_request
-           flash[:error] = "#{@order.name} update has failed"
-
+           flash[:status] = :success
+           flash[:result_text] = "#{@order.name} update has failed"
+           flash[:messages] = @order.errors.messages
          end
+         redirect_to order_path
+    end
      end
   end
 
@@ -79,8 +83,9 @@ class OrdersController < ApplicationController
   end
 
   private
+
   def order_params
-   params.require(:order).permit(:status,:name,:email,:street_address,:city,:state,:zip,:name_cc,:credit_card,:expiry,:ccv,:billing_zip)
+    params.require(:order).permit(:status,:name,:email,:street_address,:city,:state,:zip,:name_cc,:credit_card,:expiry,:ccv,:billing_zip)
   end
 
 

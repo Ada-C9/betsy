@@ -28,7 +28,7 @@
     <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
     <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
     <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-    <button data-slide="4"><span class="show-for-sr">Fourth slide details.</span></button>
+    <button data-slide="4"><span class="show-for-sr">Fifth slide details.</span></button>
   </nav>
 </div>
 
@@ -37,26 +37,37 @@
     <section class="popular">
       <h3>Popular</h3>
       <ul>
-        <% @popular_products.each do |popular_products| %>
-        <%= link_to image_tag(popular_products.photo_url, alt: popular_products.name), product_path(popular_products.id) %>
+        <% @popular_products.each do |popular_product| %>
+          <% if popular_product.is_active %>
+            <h4><%= link_to popular_product.name, product_path(popular_product.id) %></h4>
+            <%= link_to image_tag('favicon.png', alt: popular_product.name), product_path(popular_product.id) %>
+            <%# Code used for http links %>
+            <%# display_image(popular_product.photo_url) %>
+          <% end %>
         <% end %>
       </ul>
     </section>
 
     <section class="outfits">
-      <h3>Outfits</h3>
+      <h3>Outfit</h3>
       <ul>
         <% @outfits.each do |outfit| %>
-        <%= link_to image_tag(outfit.photo_url, alt: outfit.name), product_path(outfit.id) %>
+          <% if outfit.is_active %>
+            <h4><%= link_to outfit.name, product_path(outfit.id) %></h4>
+            <%= link_to image_tag('favicon.png', alt: outfit.name), product_path(outfit.id) %>
+          <% end %>
         <% end %>
       </ul>
     </section>
 
-    <section class="toys">
-      <h3>Toys</h3>
+    <section class="foods">
+      <h3>Food</h3>
       <ul>
-        <% @toys.each do |toy| %>
-        <%= link_to image_tag(toy.photo_url, alt: toy.name), product_path(toy.id) %>
+        <% @foods.each do |food| %>
+          <% if food.is_active %>
+            <h4><%= link_to food.name, product_path(food.id) %></h4>
+            <%= link_to image_tag('favicon.png', alt: food.name), product_path(food.id) %>
+          <% end %>
         <% end %>
       </ul>
     </section>

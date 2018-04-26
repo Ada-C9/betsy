@@ -2,8 +2,9 @@ require "test_helper"
 
 describe Order do
   let(:order) { Order.new }
-  let(:o) { orders(:order_2) }#status complete
-  let(:o1) { orders(:order_1) }#staus pending
+  let(:o) { orders(:order_2) } #status complete
+  let(:o1) { orders(:order_1) } #staus pending
+  let(:o3) { orders(:order_3) } #status paid
 
   describe "relations" do
     it "has a list of orderitems" do
@@ -206,5 +207,18 @@ describe Order do
       o1.can_cancel?.must_equal true
     end
 
+    it "confirms updates status and reduces product stock" do
+      o1.confirm
+      o1.status.must_equal "paid"
+      products(:product_1).stock.must_equal 0
+    end
+
+    it "cancels updates status and increases product stock" do
+      o3.cancel
+      o3.status.must_equal "cancelled"
+      products(:product_4).stock.must_equal 8
+      products(:product_5).stock.must_equal 10
+      products(:product_6).stock.must_equal 12
+    end
   end
 end

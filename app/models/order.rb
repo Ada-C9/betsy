@@ -12,6 +12,14 @@ class Order < ApplicationRecord
   validates :expiry, presence: true, unless: :in_cart?
   validates :ccv, presence: true, length: { in: 3..4 }, unless: :in_cart?
   validates :billing_zip, presence: true, length: { is: 5 }, unless: :in_cart?
+  validate :cc_expiry_cannot_be_in_the_past, unless: :in_cart?
+
+  def cc_expiry_cannot_be_in_the_past
+    if expiry.present? && expiry < Date.today
+      errors.add(:expiry, "can't be in the past")
+    end
+  end
+
   # validate :check_atleast_one_order_item, unless: :in_cart?
 
   # def check_atleast_one_order_item
@@ -30,6 +38,16 @@ class Order < ApplicationRecord
 
   def can_cancel?
     status == "paid" && !order_items.any? { |i| i.is_shipped }
+  end
+
+  def confirm
+    self.status = "paid"
+    self.order_items.each { |item| item.product.update_attributes({:stock => item.product.stock - item.quantity}) }
+  end
+
+  def cancel
+    self.status = "cancelled"
+    self.order_items.each { |item| item.product.update_attributes({:stock => item.product.stock + item.quantity}) }
   end
 
   private

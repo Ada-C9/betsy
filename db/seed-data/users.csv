@@ -1,5 +1,5 @@
-id,username,email,uid,provider
-1,monalisa,monalisa@example.com,17690741,github
-2,choricao,choricao@example.com,14342711,github
-3,selam,selam@example.com,31666742,github
-4,lasiorhine,lasiorhine@example.com,26230098,github
+id,username,email,uid,provider,image
+1,monalisa,monalisa@example.com,17690741,github,
+2,choricao,choricao@example.com,14342711,github,
+3,selam,selam@example.com,31666742,github,
+4,lasiorhine,lasiorhine@example.com,26230098,github,

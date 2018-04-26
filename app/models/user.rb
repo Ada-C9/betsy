@@ -15,6 +15,10 @@ class User < ApplicationRecord
     )
   end
 
+  def update_image(image)
+    self.image = image
+  end
+
   def num_orders
     order_items.map { |order_item| order_item.order }.uniq.count
   end

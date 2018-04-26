@@ -13,8 +13,7 @@ class ProductsController < ApplicationController
       @products = @current_user.products
       @current_category = nil
     elsif params[:term]
-      @products = Product.where('name LIKE ?', "%#{params[:term]}%")
-
+      @products = Product.search(params[:term])
     else
       @products = Product.all
     end
@@ -30,6 +29,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.price = params[:product][:price].to_i * 100
     @product.user = User.find(params[:user_id])
     if @product.save
       flash[:status] = :success
@@ -92,7 +92,7 @@ class ProductsController < ApplicationController
     end
   end
 
-private
+  private
 
   def product_params
     params.require(:product).permit(:name, :is_active, :description, :price, :photo_url, :stock, :user_id, :term, :category_ids => [] )
