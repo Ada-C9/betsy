@@ -22,7 +22,6 @@ class UsersController < ApplicationController
     else
       @user_products = @user.products
       # Model method for getting the relevant orders is needed
-
       if params[:term]
         @term = params[:term]
         @orders = @user.list_orders_by_status(@term)
@@ -36,6 +35,8 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  private
 
   def user_params
     params.require(:user).permit(:username, :email, :uid, :provider, :term )

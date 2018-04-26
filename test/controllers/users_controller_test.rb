@@ -2,12 +2,15 @@ require "test_helper"
 
 describe UsersController do
   let(:u) { users(:user_1) }
+
+
   describe "index" do
     it "should run successfully" do
       get users_path
       must_respond_with :success
     end
   end
+
 
   describe "show" do
     it "should run successfully for valid user" do

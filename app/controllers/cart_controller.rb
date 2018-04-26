@@ -1,28 +1,30 @@
+require 'pry'
+
 class CartController < ApplicationController
 
   def access_cart
     @action = update_cart_info_path
-
     @cart = Order.find_by(id: session[:cart_order_id])
     if @cart.nil?
-      render :empty_cart
+      render :empty_cart and return
     else
       render "orders/cart"
     end
   end
 
   def add_to_cart
-    if session[:cart_order_id].nil?
-      @cart = create_cart
-      session[:cart_order_id] = @cart.id
-    else
+    if !session[:cart_order_id].nil?
       @cart = Order.find_by(id: session[:cart_order_id])
     end
-    @product = Product.find(params[:id])
+    if @cart.nil?
+      @cart = create_cart
+      session[:cart_order_id] = @cart.id
+    end
+    @product = Product.find_by(id: params[:id])
     if @product.nil?
       flash[:status] = :failure
       flash[:result_text] = "That product could not be added to your cart"
-      flash[:messages] = @product.errors.messages
+      redirect_to cart_path and return
     end
     desired_quantity = total_quantity_requested
     if desired_quantity > @product.stock
@@ -102,11 +104,22 @@ class CartController < ApplicationController
 
   def remove_single_item
     @order_item = OrderItem.find_by(id: params[:id])
-    @order_item.destroy
-    redirect_to cart_path
+    @item_name = @order_item.product.name
+    if @order_item
+      @order_item.destroy
+      flash[:status] = :success
+      flash[:result_text] = "#{@item_name} removed from your cart!"
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Unable to remove the items from your cart."
+      flash[:errors] = @cart.errors.messages
+    end
+    if !@cart.order_items.count > 0
+      render :empty_cart and return
+    end
   end
 
-  private
+private
 
   def create_cart
     @cart = Order.new status: "pending"
@@ -123,11 +136,13 @@ class CartController < ApplicationController
   end
 
   def total_quantity_requested
-    @product = Product.find(params[:id])
+    @product = Product.find_by(id: params[:id])
     total_quantity = 1
-    @cart.order_items.each do |order_item|
-      if order_item.product_id == @product.id
-        total_quantity += order_item.quantity
+    if @product && @cart && (@cart.order_items.count > 0)
+      @cart.order_items.each do |order_item|
+        if order_item.product_id == @product.id
+          total_quantity += order_item.quantity
+        end
       end
     end
     return total_quantity

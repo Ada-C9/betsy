@@ -3,7 +3,7 @@ require "test_helper"
 describe OrderItemsController do
   describe 'Update' do
     it 'should update a current valid order item' do
-  proc{
+      proc{
       patch order_item_path(order_items(:order_item_1)), params:{
             order_item:{
               quantity:order_items(:order_item_1).quantity,
@@ -14,7 +14,8 @@ describe OrderItemsController do
       }}.wont_change "OrderItem.count"
 
       must_respond_with :redirect
-      must_redirect_to user_path(order_items(:order_item_1).product.user.id)
+      # must_redirect_to user_path(order_items(:order_item_1).product.user.id)
+      must_redirect_to cart_path
 
     end
 
@@ -31,8 +32,5 @@ describe OrderItemsController do
 
       must_respond_with :not_found
     end
-
-
   end
-
 end

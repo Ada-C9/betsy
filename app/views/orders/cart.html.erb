@@ -6,10 +6,12 @@
         <% @cart.order_items.each do |order_item| %>
         <li>
           <div class="order-item-photo">
-            <% if order_item.product.photo_url.length > 0 %>
-            <%= link_to image_tag(order_item.product.photo_url, alt: order_item.product.name), product_path(order_item.product.id) %>
-            <% else %>
-            <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(order_item.product.id) %>
+            <% if order_item.product.photo_url %>
+              <% if order_item.product.photo_url.length > 0 %>
+              <%= link_to image_tag(order_item.product.photo_url, alt: order_item.product.name), product_path(order_item.product.id) %>
+              <% else %>
+              <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(order_item.product.id) %>
+              <% end %>
             <% end %>
           </div>
           <div class="order-item-info">
