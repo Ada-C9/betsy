@@ -1,0 +1,23 @@
+<table>
+  <thead class="table-head">
+    <tr>
+      <th>Product ID</th>
+      <th>Name</th>
+      <th>stock</th>
+      <th>Retire</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.each do |d| %>
+      <tr>
+        <td><%= d.id %></td>
+        <td><%= link_to d.name, product_path(d) %></td>
+        <td><%= d.stock %></td>
+        <td><%= link_to "Unretire", retire_path(d), method: :patch, class: "button" %></td>
+        <td><%= link_to "Edit", edit_product_path(d.id) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
