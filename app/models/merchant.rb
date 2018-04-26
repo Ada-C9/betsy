@@ -44,18 +44,24 @@ class Merchant < ApplicationRecord
 
   def my_total_revenue
     total_revenue = 0
-    my_cartitems.each do |item|
-      revenue = item.product.price * item.quantity
-      total_revenue += revenue
+    self.my_orders.each do |order|
+      order.cart.cartitems.where(id: self.my_cartitems).each do |item|
+        revenue = item.product.price * item.quantity
+        total_revenue += revenue
+      end
     end
     return total_revenue
   end
 
-
-
-  STATUS = %w(pending paid completed cancelled)
-  def revenue_by_status
-
+  def my_revenue_by_status(status)
+    total_revenue = 0
+    self.my_orders.where(status: status).each do |order|
+      order.cart.cartitems.where(id: self.my_cartitems).each do |item|
+        revenue = item.product.price * item.quantity
+        total_revenue += revenue
+      end
+    end
+    return total_revenue
   end
 
 # TODO: calculate order numbers based on status
