@@ -1,11 +1,4 @@
 class ReviewsController < ApplicationController
-  def index
-    @reviews = Review.all
-  end
-
-  def new
-    @review = Review.new
-  end
 
   def create
     @review = Review.new(review_params)
@@ -19,7 +12,7 @@ class ReviewsController < ApplicationController
       render :new
       flash[:status] = :failure
       flash[:result_text] = "Your comment was saved"
-      flash[:messages] = @review.errors.messages
+      flash[:messages] = @review.errors.messages , status: :bad_request
     end
 
   end

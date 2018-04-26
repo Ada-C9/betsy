@@ -8,6 +8,18 @@ describe UsersController do
       must_respond_with :success
     end
   end
+end
+describe "Show" do
+  it "should show a users page" do
+    get user_path(users(:user_1).id)
+    must_respond_with :success
+  end
+  it "should render 404 not found for show page request to a user that has not been created" do
+    # non_existant_user = 10000001
+    # get user_path(non_existant_user)
+    # must_respond_with :missing
+  end
+end
 
   describe "show" do
     it "should run successfully for valid user" do
@@ -25,6 +37,7 @@ describe UsersController do
       must_respond_with :not_found
     end
   end
+end
 
   describe "create" do
     it "should run successfully" do
