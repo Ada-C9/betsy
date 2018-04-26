@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
            flash[:result_text] = "#{@order.name} update has failed"
            flash[:messages] = @order.errors.messages
          end
-     end
+    end
   end
 
   def cancel
@@ -70,8 +70,16 @@ class OrdersController < ApplicationController
     if @order.nil?
       render_404
     else
-      @order.update(status: "cancelled")
-      redirect_back fallback_location: order_confirmation_path(@order)
+      @order.cancel
+      if @order.save
+        flash[:status] = :success
+        flash[:result_text] = "Your order has been cancelled!"
+      else
+        flash[:status] = :failure
+        flash[:result_text] = "Something has gone wrong in your orders cancellation."
+        flash[:messages] = @order.errors.messages
+      end
+      redirect_to products_path
     end
   end
 

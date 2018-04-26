@@ -15,10 +15,6 @@ class Product < ApplicationRecord
     self.is_active = !is_active
   end
 
-  def update_stock!(new_stock)
-    self.stock = new_stock
-  end
-
   def self.top_sellers(count = 5)
     sorted_products = self.all.sort_by { |p|
       p.order_items.map { |i| i.quantity }.sum
