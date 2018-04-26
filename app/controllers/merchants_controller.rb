@@ -4,9 +4,14 @@ class MerchantsController < ApplicationController
   end
 
   def show
-    @merchant = Merchant.find_by(id: params[:id])
-    @orders = @merchant.my_orders
-    head :not_found unless @merchant
+    @merchant = Merchant.find_by(id: session[:merchant_id])
+    if session[:merchant_id].to_s == params[:id]
+      @orders = @merchant.my_orders
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "You can not view other merchant's account page"
+      redirect_back fallback_location: root_path
+    end
   end
 
   def display
