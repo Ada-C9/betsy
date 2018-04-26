@@ -43,7 +43,7 @@
       </td>
       <td>$<%= display_dollars(revenue.sum)%></td>
       <td>
-        <%= form_for order do |f| %>
+        <%= form_for order, url: change_status_path(order) do |f| %>
         <%= f.label :status %>
         <%= f.select :status, options_for_select([["#{order.status}",""],"Pending", "Paid", "Completed", "Cancelled"],:disabled => ["Pending"],:prompt => ["#{order.status}"] )%>
         <%= f.submit "Change status"%>

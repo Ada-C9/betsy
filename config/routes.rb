@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :orders
   get "/my_orders", to: "orders#my_orders", as: "my_orders"
   get "/my_orders/:id", to: "orders#my_order", as: "my_order"
+  patch "/my_orders/:id/change_status" , to: "orders#change_status", as: "change_status"
 
 
   resources :categories, only: [:index, :edit, :show]

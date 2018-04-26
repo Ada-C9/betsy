@@ -81,7 +81,7 @@ class ProductsController < ApplicationController
 
   def by_name
     product_name = params[:name]
-    @products = Product.where(visible: true).where(name: product_name)
+    @products = Product.where(visible: true).where("name like ?", "%#{product_name}%")
 
     render :index
   end

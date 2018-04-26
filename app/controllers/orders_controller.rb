@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  before_action :find_order, only: [:update, :edit, :my_order]
+  before_action :find_order, only: [:update, :edit, :my_order, :change_status]
 
   before_action :find_cart_by_session, only: [:new]
   before_action :find_cart_by_order, only: [:update]
@@ -68,10 +68,31 @@ class OrdersController < ApplicationController
 
   end
 
+  def change_status
+    @order.update_attributes(order_params)
+
+    if @order.save
+
+      flash[:status] = :success
+      flash[:result_text] = "Status updated !"
+      flash[:order_number] = "Current status: #{@order.status}"
+      redirect_back fallback_location: order_path(@order)
+    else
+
+      flash.now[:status] = :failure
+      flash.now[:result_text] = "Could not update status"
+      flash.now[:messages] = @order.errors.messages
+
+      render :edit, status: :bad_request
+    end
+
+  end
+
+
   def my_orders
     # if @login_merchant
     @orders = []
-     Order.all.each do |order|
+    Order.all.each do |order|
       order.cart.products.each do |product|
         if product.merchant_id == session[:merchant_id]
           @orders << order unless @orders.include?(order)
