@@ -1,6 +1,29 @@
 require "test_helper"
 
 describe OrderItemsController do
+
+  describe 'New' do
+    it 'generates a new order item' do
+      get new_order_item_path
+      must_respond_with :success
+    end
+  end
+
+  describe 'Create' do
+    it 'creates a new order item' do
+      proc{
+      post order_item_path(order_items(:order_item_1)), params:{
+            order_item:{
+              quantity:44,
+              is_shipped:false,
+              product:"A dog",
+              order:order_items(:order_item_1).order
+            }
+      }}.must_change "OrderItem.count", 1
+    end
+  end
+
+
   describe 'Update' do
     it 'should update a current valid order item' do
       proc{

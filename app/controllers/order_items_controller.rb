@@ -2,16 +2,6 @@ class OrderItemsController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:update]
 
-  def new
-    @order_item = OrderItem.new
-  end
-
-  def create
-    @order_item = OrderItem.new(order_item_params)
-    @order_item.order = Order.find(params[:order_id])
-    @order_item.product = Product.find(params[:product_id])
-  end
-
 
   def update
     @order_item = OrderItem.find_by(id: params[:id])
