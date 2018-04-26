@@ -22,6 +22,7 @@ describe CartController do
     @product_2 = products(:product_2)
     @product_3 = products(:product_3)
     @product_4 = products(:product_4)
+    @product_5 = products(:product_5)
 
   end
 
@@ -105,6 +106,22 @@ describe CartController do
     end
 
     it "responds with 'failure' if the ID for the product desired is not in the database" do
+
+      #Arrrange
+      @bogus_product_id = 101
+      post add_to_cart_path(@product_5.id) #Note-- does not matter what this product is for purposes of the test-- we just need it to activate the route.
+
+      #Validate test
+      session[:cart_order_id].must_equal Order.last.id
+      Product.find_by(id: @bogus_product_id).must_be_nil
+
+      #Act
+      post add_to_cart_path(@bogus_product_id)
+
+      #Assert
+      flash[:result_text].must_equal "That product could not be added to your cart"
+
+      must_redirect_to cart_path
 
     end
 

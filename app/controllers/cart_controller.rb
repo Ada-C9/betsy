@@ -19,12 +19,11 @@ class CartController < ApplicationController
     else
       @cart = Order.find_by(id: session[:cart_order_id])
     end
-    @product = Product.find(params[:id])
+    @product = Product.find_by(id: params[:id])
     if @product.nil?
       flash[:status] = :failure
-      binding.pry
       flash[:result_text] = "That product could not be added to your cart"
-      flash[:messages] = @product.errors.messages
+      redirect_to cart_path and return
     end
     desired_quantity = total_quantity_requested
     if desired_quantity > @product.stock
@@ -137,11 +136,13 @@ private
   end
 
   def total_quantity_requested
-    @product = Product.find(params[:id])
+    @product = Product.find_by(id: params[:id])
     total_quantity = 1
-    @cart.order_items.each do |order_item|
-      if order_item.product_id == @product.id
-        total_quantity += order_item.quantity
+    if @product && @cart && (@cart.order_items.count > 0)
+      @cart.order_items.each do |order_item|
+        if order_item.product_id == @product.id
+          total_quantity += order_item.quantity
+        end
       end
     end
     return total_quantity
