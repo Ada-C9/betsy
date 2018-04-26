@@ -40,7 +40,7 @@
         <% @popular_products.each do |popular_product| %>
           <% if popular_product.is_active %>
             <h4><%= link_to popular_product.name, product_path(popular_product.id) %></h4>
-            <%= link_to image_tag('favicon.png', alt: popular_product.name), product_path(popular_product.id) %>
+            <%= link_to image_tag(popular_product.photo_url, alt: popular_product.name), product_path(popular_product.id) %>
             <%# Code used for http links %>
             <%# display_image(popular_product.photo_url) %>
           <% end %>
@@ -54,7 +54,7 @@
         <% @outfits.each do |outfit| %>
           <% if outfit.is_active %>
             <h4><%= link_to outfit.name, product_path(outfit.id) %></h4>
-            <%= link_to image_tag('favicon.png', alt: outfit.name), product_path(outfit.id) %>
+            <%= link_to image_tag(outfit.photo_url, alt: outfit.name), product_path(outfit.id) %>
           <% end %>
         <% end %>
       </ul>
@@ -66,7 +66,7 @@
         <% @foods.each do |food| %>
           <% if food.is_active %>
             <h4><%= link_to food.name, product_path(food.id) %></h4>
-            <%= link_to image_tag('favicon.png', alt: food.name), product_path(food.id) %>
+            <%= link_to image_tag(food.photo_url, alt: food.name), product_path(food.id) %>
           <% end %>
         <% end %>
       </ul>
