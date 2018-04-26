@@ -17,8 +17,8 @@ class OrdersController < ApplicationController
     else
       flash[:status] = :failure
       flash[:result_text] = "Something has gone wrong in your orders processing."
-      render :new
-      flash[:messages] = @order.errors.messages, status: :bad_request
+      render :new, status: :bad_request
+      flash[:messages] = @order.errors.messages
     end
   end
 
@@ -54,7 +54,6 @@ class OrdersController < ApplicationController
            flash[:messages] = @order.errors.messages
          end
          redirect_to order_path
-    end
      end
   end
 
