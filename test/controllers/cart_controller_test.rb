@@ -192,6 +192,33 @@ describe CartController do
 
     it "responds with 'failure' if there is not enough inventory on-hand to fulfil the user's 'add' request" do
 
+      #Arrange
+      post add_to_cart_path(@product_1.id)
+      cart_order = Order.find_by(id: session[:cart_order_id])
+
+      ###Validate test
+      cart_order.order_items.count.must_equal 1
+      current_product_in_cart_name = cart_order.order_items.last.product.name
+      current_product_in_cart_stock = cart_order.order_items.last.product.stock
+      current_product_in_cart_quantity = cart_order.order_items.last.quantity
+      current_product_in_cart_quantity.must_equal 1
+      current_product_in_cart_stock.must_equal 1
+
+      #Act
+      post add_to_cart_path(@product_1.id)
+
+      #Assert
+
+      ### No more order items will have been added.
+      cart_order.order_items.count.must_equal 1
+
+      ### The quantity will remain the same.
+      product_after_second_post_quantity = cart_order.order_items.last.quantity
+      (product_after_second_post_quantity - current_product_in_cart_quantity).must_equal 0
+
+      ### Appropriate error messages will be given.
+      flash[:result_text].must_equal "Not enough inventory on-hand to complete your request."
+
     end
 
   end

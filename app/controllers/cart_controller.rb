@@ -27,7 +27,6 @@ class CartController < ApplicationController
     end
     desired_quantity = total_quantity_requested
     if desired_quantity > @product.stock
-      binding.pry
       flash[:status] = :failure
       flash[:result_text] = "Not enough inventory on-hand to complete your request."
       flash[:messages] = @product.errors.messages
