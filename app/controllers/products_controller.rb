@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :require_login
+
   def index
     @category = Category.new
     @user = User.new

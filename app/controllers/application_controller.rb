@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
     render file: "/public/404.html", status: 404
   end
 
+  def require_login
+    if @user.nil?
+      flash[:status] = :failure
+      flash[:result_text] = "You must be logged in to view this section."
+      redirect_to github_login_path
+    end
+  end
+
 end
