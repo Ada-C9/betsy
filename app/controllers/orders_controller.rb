@@ -17,24 +17,30 @@ class OrdersController < ApplicationController
     else
       flash[:status] = :failure
       flash[:result_text] = "Something has gone wrong in your orders processing."
-      render :new
-      flash[:messages] = @order.errors.messages, status: :bad_request
+      render :new, status: :bad_request
+      flash[:messages] = @order.errors.messages
     end
   end
 
   def confirmation
     @order = Order.find_by(id: params[:id])
-    not_found_check(@order)
+    if @order.nil?
+      render_404
+    end
   end
 
   def show
     @order = Order.find_by(id: params[:id])
-    not_found_check(@order)
+    if @order.nil?
+      render_404
+    end
   end
 
   def edit
     @order = Order.find_by(id: params[:id])
-    not_found_check(@order)
+    if @order.nil?
+      render_404
+    end
   end
 
   def update
@@ -48,14 +54,15 @@ class OrdersController < ApplicationController
            redirect_to order_path(@order.id)
            flash[:status] = :success
            flash[:result_text] = "#{@order.name} has been updated"
+           redirect_to order_path
          else
-           flash[:status] = :success
+           render :show, status: :bad_request
+           #check how this effects the page
+           flash[:status] = :failure
            flash[:result_text] = "#{@order.name} update has failed"
            flash[:messages] = @order.errors.messages
          end
-         redirect_to order_path
     end
-     end
   end
 
   def cancel
@@ -63,8 +70,16 @@ class OrdersController < ApplicationController
     if @order.nil?
       render_404
     else
-      @order.update(status: "cancelled")
-      redirect_back fallback_location: order_confirmation_path(@order)
+      @order.cancel
+      if @order.save
+        flash[:status] = :success
+        flash[:result_text] = "Your order has been cancelled!"
+      else
+        flash[:status] = :failure
+        flash[:result_text] = "Something has gone wrong in your orders cancellation."
+        flash[:messages] = @order.errors.messages
+      end
+      redirect_to products_path
     end
   end
 
