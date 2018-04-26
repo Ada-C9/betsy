@@ -12,11 +12,12 @@ class CartController < ApplicationController
   end
 
   def add_to_cart
-    if session[:cart_order_id].nil?
+    if !session[:cart_order_id].nil?
+      @cart = Order.find_by(id: session[:cart_order_id])
+    end
+    if @cart.nil?
       @cart = create_cart
       session[:cart_order_id] = @cart.id
-    else
-      @cart = Order.find_by(id: session[:cart_order_id])
     end
     @product = Product.find(params[:id])
     if @product.nil?
