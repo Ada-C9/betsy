@@ -4,4 +4,5 @@ class Review < ApplicationRecord
   validates_inclusion_of :rating, in: (1..5)
 
 
+
 end
