@@ -279,14 +279,50 @@ describe CartController do
   #
   # end
   #
-  # describe "update_to_paid" do
-  #
-  #   it "will respond with failure when an order does not have all the necessary information in its attributes" do
-  #   end
-  #
-  #   it "changes the status of an order from 'pending' to 'paid' when that order's attributes are properly populated, and redirects to the confirmation page." do
-  #   end
-  # end
+  describe "update_to_paid" do
+
+    it "changes the status of an order from 'pending' to 'paid' when that order's attributes are properly populated, and redirects to the confirmation page." do
+
+      #Arrange
+
+
+
+
+
+      #Act
+
+      #Assert
+
+    end
+
+    it "will respond with failure when an order does not have all the necessary information in its attributes" do
+
+      #Arrange
+
+      post add_to_cart_path(@product_1.id)
+
+      cart_order = Order.find_by(id: session[:cart_order_id])
+
+      ### Validate test
+      cart_order.status.must_equal "pending"
+      before_status = cart_order.status
+
+      #### New order will be missing key information
+      cart_order.name_cc.must_equal nil
+
+      #Act
+      patch update_to_paid_path
+
+      #Assert
+      ### Will display appropriate failure message
+      flash[:result_text].must_equal "We weren't able to process your order. Please double-check the form."
+
+      ### Status will not have changed
+      after_status = cart_order.status
+      after_status.must_equal before_status
+
+    end
+  end
   #
   # describe "destroy" do
   #
