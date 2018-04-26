@@ -49,7 +49,7 @@ describe SessionsController do
       must_redirect_to root_path
     end
 
-    it "does not log in if no auth hash" do
+    it "does not log in if no uid" do
       merchant = Merchant.new(
         provider: "github",
         email: "dada@test.org",
@@ -64,6 +64,7 @@ describe SessionsController do
       Merchant.count.must_equal old_merchant_count
       must_redirect_to root_path
     end
+
   end
 
   describe "logout" do
@@ -75,5 +76,18 @@ describe SessionsController do
 
       session[:merchant_id].must_equal nil
     end
+
+    it "can not log out a merchant after the merchant logged out" do
+      merchant = Merchant.first
+      login(merchant)
+
+      delete logout_path
+      delete logout_path
+
+      must_redirect_to root_path
+      flash[:status].must_equal :failure
+      flash[:result_text].must_equal "You must login in"
+    end
   end
+
 end

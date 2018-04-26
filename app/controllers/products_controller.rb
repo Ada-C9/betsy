@@ -97,5 +97,3 @@ class ProductsController < ApplicationController
   end
 
 end
-# REVIEW: Adding in image shadows in orbital
-# TODO: Tests for the following methods: new, create, edit, update. product_params, find_products

@@ -3,68 +3,16 @@
   <h2>View all products</h2>
   <%= link_to "Add a new product", new_merchant_product_path(@merchant), class: "button float-right" %>
 
-  <table class="products-table">
-    <thead>
-      <tr>
-        <th>
-          ID
-        </th>
-        <th>
-          Name
-        </th>
-        <th>
-          Stock
-        </th>
-        <th>
-          Retire
-        </th>
-        <th>
-          Edit
-        </th>
-      </tr>
-    </thead>
+  <h4>Available Products</h4>
+  <%= render partial: "order_table", locals: {
+    data: @merchant.visible_products
+  }
+  %>
 
-    <tbody>
-      <% @merchant.visible_products.each do |pro| %>
-      <tr>
-        <th>
-          <%= pro.id %>
-        </th>
-        <td>
-          <%= link_to pro.name, product_path(pro) %>
-        </td>
-        <td>
-          <%= pro.stock %>
-        </td>
-        <td>
-          <%= link_to "Retire", retire_path(pro), method: :patch, class: "button" %>
-        </td>
-        <td>
-          <%= link_to "Edit", edit_product_path(pro.id) %>
-        </td>
-      </tr>
-      <% end %>
-
-      <% @merchant.invisible_products.each do |pro| %>
-      <tr>
-        <th>
-          <%= pro.id %>
-        </th>
-        <td>
-          <%= link_to pro.name, product_path(pro) %>
-        </td>
-        <td>
-          <%= pro.stock %>
-        </td>
-        <td>
-          <%= link_to "Unretire", retire_path(pro), method: :patch, class: "button" %>
-        </td>
-        <td>
-          <%= link_to "Edit", edit_product_path(pro.id) %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+  <h4>Retired Products Products</h4>
+  <%= render partial: "order_table", locals: {
+    data: @merchant.invisible_products
+  }
+  %>
+  
 </section>
