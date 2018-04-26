@@ -1,11 +1,11 @@
-<table>
+<table class="table-orders">
   <thead class="table-head">
     <tr>
-      <th>Product ID</th>
+      <th class="small">Product ID</th>
       <th>Name</th>
-      <th>stock</th>
-      <th>Retire</th>
-      <th>Edit</th>
+      <th class="small">Stock</th>
+      <th class="small">Status</th>
+      <th class="small">Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -22,7 +22,7 @@
         <td><%= link_to "Unrtire", retire_path(d), method: :patch, class: "button" %>
         </td>
         <% end %>
-        <td><%= link_to "Edit", edit_product_path(d.id) %></td>
+        <td><%= link_to "Edit", edit_product_path(d.id), class: "button" %></td>
 
       </tr>
     <% end %>
