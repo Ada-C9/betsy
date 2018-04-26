@@ -3,6 +3,7 @@ require 'pry'
 class CartController < ApplicationController
 
   def access_cart
+
     @action = update_cart_info_path
 
     @cart = Order.find_by(id: session[:cart_order_id])
@@ -99,12 +100,24 @@ class CartController < ApplicationController
     @cart.order_items.each do |order_item|
       order_item.destroy
     end
-    render :empty_cart
+    redirect_to cart_path
   end
 
   def remove_single_item
     @order_item = OrderItem.find_by(id: params[:id])
-    @order_item.destroy
+    @item_name = @order_item.product.name
+    if @order_item
+      @order_item.destroy
+      flash[:status] = :success
+      flash[:result_text] = "#{@item_name} removed from your cart!"
+      if !@cart.order_items.count > 0
+        render :empty_cart and return
+      end
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Unable to remove the items from your cart."
+      flash[:errors] = @cart.errors.messages
+    end
     redirect_to cart_path
   end
 
