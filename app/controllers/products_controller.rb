@@ -2,9 +2,11 @@ class ProductsController < ApplicationController
   def index
     @category = Category.new
     @user = User.new
+    # binding.pry
     if params[:category_id]
       @current_category = Category.find_by(id: params[:category_id])
       @products = @current_category.products
+      # binding.pry
       @current_user = nil
     elsif params[:user_id]
       @current_user = User.find_by(id: params[:user_id])
@@ -43,38 +45,51 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by(id: params[:id])
-    @review = Review.new
-    @action = product_reviews_path(params[:id])
     if @product.nil?
       render_404
+    else
+      @review = Review.new
+      @action = product_reviews_path(params[:id])
     end
   end
 
   def edit
     @product = Product.find_by(id: params[:id])
-    @action = product_path(params[:id])
+    if @product.nil?
+      render_404
+    else
+      @action = product_path(params[:id])
+    end
   end
 
   def update
     @product = Product.find_by(id: params[:id])
-    @product.update(product_params)
-    if @product.save
-      flash[:status] = :success
-      flash[:result_text] = "#{@product.name} has been successfully updated!"
-      redirect_to product_path(@product.id)
+    if @product.nil?
+      render_404
     else
-      flash[:status] = :failure
-      flash[:result_text] = "Update failed."
-      flash[:messages] = @product.errors.messages
-      render :edit, status: :bad_request
+      @product.update(product_params)
+      if @product.save
+        flash[:status] = :success
+        flash[:result_text] = "#{@product.name} has been successfully updated!"
+        redirect_to product_path(@product.id)
+      else
+        flash[:status] = :failure
+        flash[:result_text] = "Update failed."
+        flash[:messages] = @product.errors.messages
+        render :edit, status: :bad_request
+      end
     end
   end
 
   def set_status
     @product = Product.find_by(id: params[:id])
-    @product.toggle_is_active
-    @product.save
-    redirect_back fallback_location: user_path(@product.user)
+    if @product.nil?
+      render_404
+    else
+        @product.toggle_is_active
+        @product.save
+      redirect_back fallback_location: user_path(@product.user)
+    end
   end
 
 private

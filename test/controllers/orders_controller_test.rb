@@ -157,6 +157,29 @@ end
             patch order_path(non_existant_order)
             must_respond_with :not_found
     end
+
+    it 'will return a bad request for an attempt to update an order with invalid data' do
+      proc{
+            patch order_path(orders(:order_2).id), params:{
+              order: {status:orders(:order_2).status,
+                      name: "",
+                      email: orders(:order_2).email,
+                      street_address: orders(:order_2).street_address,
+                      city: orders(:order_2).city,
+                      state: orders(:order_2).state,
+                      zip: orders(:order_2).zip,
+                      name_cc: orders(:order_2).name_cc,
+                      credit_card:orders(:order_2).credit_card,
+                      expiry: orders(:order_2).expiry,
+                      ccv: orders(:order_2).ccv ,
+                      billing_zip: orders(:order_2).billing_zip }
+            }
+      }.must_change 'Order.count', 0
+
+      must_respond_with :bad_request
+  
+    end
+
   end
 
   describe 'Cancel' do

@@ -17,6 +17,7 @@ describe ReviewsController do
     end
 
     it 'will render a bad request for an invalid review' do
+      binding.pry
       proc{
         post product_reviews_path(products(:product_4).id), params:{
           review: {rating:"",
@@ -24,6 +25,7 @@ describe ReviewsController do
                   product:reviews(:review_4).product }
           }
     }.must_change 'Review.count', 0
+    binding.pry
       must_respond_with :bad_request
     end
 

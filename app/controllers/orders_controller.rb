@@ -39,29 +39,17 @@ class OrdersController < ApplicationController
       render_404
     else
         @order.update_attributes(order_params)
-         # @order.status = params[:status]
-         # @order.name = params[:name]
-         # @order.email = params[:email]
-         # @order.street_address = params[:street_address]
-         # @order.city = params[:city]
-         # @order.state = params[:state]
-         # @order.zip = params[:zip]
-         # @order.name_cc = params[:name_cc]
-         # @order.credit_card = params[:credit_card]
-         # @order.expiry = params[:expiry]
-         # @order.ccv= params[:ccv]
-         # @order.billing_zip = params[:billing_zip]
          if @order.valid?
            @order.save
 
            redirect_to order_path(@order.id)
-              # binding.pry
+            
            flash[:success] = "#{@order.name} has been updated"
-           # binding.pry
+
          else
            render :show , status: :bad_request
            flash[:error] = "#{@order.name} update has failed"
-           binding.pry
+
          end
      end
   end
