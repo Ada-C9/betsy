@@ -114,7 +114,9 @@ describe CartController do
 
       must_respond_with :bad_request
 
+    end
 
+      
   end
 
   describe "update_to_paid" do
@@ -138,6 +140,12 @@ describe CartController do
   end
 
   describe "remove_single_item" do
+
+    it "destroys a specified order-item" do
+    end
+
+    it "" do
+    end
   end
 
 end
