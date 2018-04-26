@@ -139,12 +139,22 @@ describe CartController do
       ###Validate test
       cart_order.order_items.count.must_equal 1
       current_product_in_cart = cart_order.order_items.last.product.name
+      added_product_1_order_id = cart_order.order_items.last.order_id
+      added_product_1_order_id.must_equal cart_order.id
 
       #Act
       post add_to_cart_path(@product_3.id)
+
+      #Assert
       cart_order.order_items.count.must_equal 2
+
+      ###The names of the two products will be different
       new_product_in_cart = cart_order.order_items.last.product.name
       current_product_in_cart.wont_equal new_product_in_cart
+
+      ### The order_ids of the two order_items will be the same.
+      added_product_2_item_id = cart_order.order_items.last.order_id
+      added_product_2_item_id.must_equal added_product_1_order_id
 
     end
 
