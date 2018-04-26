@@ -66,8 +66,16 @@ class OrdersController < ApplicationController
 
   def cancel
     @order = Order.find_by(id: params[:id])
-    @order.update(status: "cancelled")
-    redirect_back fallback_location: order_confirmation_path(@order)
+    @order.cancel
+    if @order.save
+      flash[:status] = :success
+      flash[:result_text] = "Your order has been cancelled!"
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Something has gone wrong in your orders cancellation."
+      flash[:messages] = @order.errors.messages
+    end
+    redirect_to products_path
   end
 
   def destroy
@@ -81,7 +89,7 @@ class OrdersController < ApplicationController
   end
 
   private
-  
+
   def order_params
     params.require(:order).permit(:status,:name,:email,:street_address,:city,:state,:zip,:name_cc,:credit_card,:expiry,:ccv,:billing_zip)
   end
