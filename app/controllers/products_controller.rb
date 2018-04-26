@@ -2,11 +2,9 @@ class ProductsController < ApplicationController
   def index
     @category = Category.new
     @user = User.new
-    # binding.pry
     if params[:category_id]
       @current_category = Category.find_by(id: params[:category_id])
       @products = @current_category.products
-      # binding.pry
       @current_user = nil
     elsif params[:user_id]
       @current_user = User.find_by(id: params[:user_id])
@@ -17,8 +15,6 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
-
-    @products = Product.all
   end
 
   def new
