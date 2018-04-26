@@ -45,7 +45,7 @@
         <%= form_for order do |f| %>
         <%= f.label :status %>
         <%= f.select :status, options_for_select([["#{order.status}",""],"Pending", "Paid", "Completed", "Cancelled"],:disabled => ["Pending"],:prompt => ["#{order.status}"] )%>
-        <%= f.submit%>
+        <%= f.submit "Change status"%>
         <%end%>
       </td>
     </tr>

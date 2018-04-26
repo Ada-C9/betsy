@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
   def update
     @product.assign_attributes(product_params)
     @product.merchant_id = session[:merchant_id]
-    
+
     if @product.save
       redirect_to product_path(@product)
     else
@@ -77,6 +77,13 @@ class ProductsController < ApplicationController
       end
     end
     redirect_back fallback_location: merchant_path(Merchant.find(session[:merchant_id]))
+  end
+
+  def by_name
+    product_name = params[:name]
+    @products = Product.where(visible: true).where(name: product_name)
+
+    render :index
   end
 
   private
