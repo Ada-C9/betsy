@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :sessions, except: [:destroy]
 
   put 'order_items/:id/status', to: 'order_items#set_status', as: 'order_item_set_status'
-  resources :order_items, only: [:new, :create, :update]
+  resources :order_items, only: [:update]
 
   resources :categories, except: [:edit, :update, :show, :destroy] do
     resources :products, only: [:index]
