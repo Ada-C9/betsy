@@ -54,7 +54,7 @@ require 'pry'
     it 'Invalid Order object should not be posted/created' do
       proc{
        post orders_path, params:{
-            order: {status:"",
+            order: {status:" ",
               email: orders(:order_2).email,
               street_address: orders(:order_2).street_address,
               city: orders(:order_2).city,
@@ -162,7 +162,7 @@ end
       proc{
             patch order_path(orders(:order_2).id), params:{
               order: {status:orders(:order_2).status,
-                      name: "",
+                      name: "  ",
                       email: orders(:order_2).email,
                       street_address: orders(:order_2).street_address,
                       city: orders(:order_2).city,
@@ -177,7 +177,7 @@ end
       }.must_change 'Order.count', 0
 
       must_respond_with :bad_request
-  
+
     end
 
   end

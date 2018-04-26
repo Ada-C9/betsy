@@ -24,17 +24,23 @@ class OrdersController < ApplicationController
 
   def confirmation
     @order = Order.find_by(id: params[:id])
-    not_found_check(@order)
+    if @order.nil?
+      render_404
+    end
   end
 
   def show
     @order = Order.find_by(id: params[:id])
-    not_found_check(@order)
+    if @order.nil?
+      render_404
+    end
   end
 
   def edit
     @order = Order.find_by(id: params[:id])
-    not_found_check(@order)
+    if @order.nil?
+      render_404
+    end
   end
 
   def update
@@ -48,12 +54,14 @@ class OrdersController < ApplicationController
            redirect_to order_path(@order.id)
            flash[:status] = :success
            flash[:result_text] = "#{@order.name} has been updated"
+           redirect_to order_path
          else
-           flash[:status] = :success
+           render :show, status: :bad_request
+           #check how this effects the page
+           flash[:status] = :failure
            flash[:result_text] = "#{@order.name} update has failed"
            flash[:messages] = @order.errors.messages
          end
-         redirect_to order_path
      end
   end
 
