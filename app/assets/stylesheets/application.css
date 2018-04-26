@@ -279,7 +279,10 @@ footer {
   display: grid;
   grid-template-columns: 3fr 4fr;
   padding-right: 30px;
-  min-width: 600px;
+  width: 600px;
+  margin-top: 20px;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
 }
 
 .order-item-photo img {
@@ -290,20 +293,36 @@ footer {
   width: 80px;
 }
 
+.subtotal-remove-container {
+  width: 300px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
 .checkout-container {
-  padding-left: 30px;
-  border-left: 1px solid #f1f1f1;
   width: 600px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 .checkout-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-bottom: 10px;
+  border-left: 1px solid #f1f1f1;
 }
 
 .shipping-info, .billing-info {
   width: 250px;
+  padding-left: 30px;
+}
+
+.cart-button {
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 /*--------- account ---------*/
@@ -327,6 +346,17 @@ footer {
 
   .page-header h1 {
     font-size: 50px;
+  }
+
+  /********** cart **********/
+  .cart {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .order-items li {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 300px;
   }
 }
 
@@ -368,6 +398,20 @@ footer {
     display: block;
   }
 
+  /********** cart **********/
+  .cart, .checkout-form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  .checkout-container {
+    padding-left: 0px;
+  }
+
+  .checkout-form {
+    border: none;
+  }
   /********** account-page **********/
   .status-container {
     width: 100px;
