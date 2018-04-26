@@ -30,6 +30,29 @@ describe ProductsController do
       must_respond_with :not_found
     end
   end
+
+  #QUESTION: These are only valid methods for logged in users. Do I need to create two sets of tests for these methods: 1) for logged in users & 2) tests for how it should respond to non log in users?
+
+  describe 'new' do
+
+  end
+
+  describe 'create' do
+
+  end
+
+  describe 'edit' do
+
+  end
+
+  describe 'update' do
+
+  end
+
+  describe 'retire' do
+
+  end
+
+
 end
 # TODO: Tests for the following methods: new, create, edit, update. product_params, find_products
-#FIXME: TESTS: Case 1) -finding a product ---> post exsists, and can be found when user is not logged in: will respond with success

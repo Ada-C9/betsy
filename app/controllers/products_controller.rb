@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
   def update
     @product.assign_attributes(product_params)
     @product.merchant_id = session[:merchant_id]
-    
+
     if @product.save
       redirect_to product_path(@product)
     else
@@ -90,5 +90,3 @@ class ProductsController < ApplicationController
   end
 
 end
-# REVIEW: Adding in image shadows in orbital
-# TODO: Tests for the following methods: new, create, edit, update. product_params, find_products
