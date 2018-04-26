@@ -17,17 +17,19 @@ describe CartController do
     @item9 = order_items(:order_item_9) #prod 9
     @item9 = order_items(:order_item_10) #prod 10
 
+    #PRODUCTS
+    @product_1 = products(:product_1)
+    @product_2 = products(:product_2)
+    @product_3 = products(:product_3)
+    @product_4 = products(:product_4)
+    @product_5 = products(:product_5)
+    @product_6 = products(:product_6)
+
     #PRODUCTS ATTACHED TO ORDER_ITEMS FOR ORDER 4
     @product_7 = products(:product_7)
     @product_8 = products(:product_8)
     @product_9 = products(:product_9)
     @product_10 = products(:product_10)
-
-    #OTHER PRODUCTS
-    @product_2 = products(:product_2)
-    @product_3 = products(:product_3)
-    @product_4 = products(:product_4)
-    @product_5 = products(:product_5)
 
   end
 
@@ -159,6 +161,32 @@ describe CartController do
     end
 
     it "Increments the existing order-item's quantity by one, if the user already has an order-item with that product id in their cart " do
+
+      #Arrange
+      post add_to_cart_path(@product_6.id)
+      cart_order = Order.find_by(id: session[:cart_order_id])
+
+      ###Validate test
+      cart_order.order_items.count.must_equal 1
+      current_product_in_cart_name = cart_order.order_items.last.product.name
+      current_product_in_cart_quantity = cart_order.order_items.last.quantity
+      current_product_in_cart_quantity.must_equal 1
+
+      #Act
+      post add_to_cart_path(@product_6.id)
+
+      #Assert
+
+      ### No more order items will have been added.
+      cart_order.order_items.count.must_equal 1
+
+      ### The product's name will not have changed.
+      product_after_second_post_name = cart_order.order_items.last.product.name
+      product_after_second_post_name.must_equal current_product_in_cart_name
+
+      ### The quantity will have increased by one.
+      product_after_second_post_quantity = cart_order.order_items.last.quantity
+      (product_after_second_post_quantity - current_product_in_cart_quantity).must_equal 1
 
     end
 
