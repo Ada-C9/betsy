@@ -127,3 +127,6 @@ footer {
 .ownership p {
   padding-left: 10px;
 }
+.pagination .current {
+  background-color: rgb(64, 34, 2);
+}
