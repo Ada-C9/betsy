@@ -55,7 +55,7 @@
           <% if outfit.is_active %>
             <h4><%= link_to outfit.name, product_path(outfit.id) %></h4>
             <%= outfit.photo_url %>
-            <%# link_to image_tag(outfit.photo_url, alt: outfit.name), product_path(outfit.id) %>
+            <% link_to image_tag("11.jpeg", alt: outfit.name), product_path(outfit.id) %>
           <% end %>
         <% end %>
       </ul>
