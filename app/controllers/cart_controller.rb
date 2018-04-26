@@ -3,12 +3,10 @@ require 'pry'
 class CartController < ApplicationController
 
   def access_cart
-
     @action = update_cart_info_path
-
     @cart = Order.find_by(id: session[:cart_order_id])
     if @cart.nil?
-      render :empty_cart
+      render :empty_cart and return
     else
       render "orders/cart"
     end
@@ -24,11 +22,13 @@ class CartController < ApplicationController
     @product = Product.find(params[:id])
     if @product.nil?
       flash[:status] = :failure
+      binding.pry
       flash[:result_text] = "That product could not be added to your cart"
       flash[:messages] = @product.errors.messages
     end
     desired_quantity = total_quantity_requested
     if desired_quantity > @product.stock
+      binding.pry
       flash[:status] = :failure
       flash[:result_text] = "Not enough inventory on-hand to complete your request."
       flash[:messages] = @product.errors.messages
@@ -110,18 +110,17 @@ class CartController < ApplicationController
       @order_item.destroy
       flash[:status] = :success
       flash[:result_text] = "#{@item_name} removed from your cart!"
-      if !@cart.order_items.count > 0
-        render :empty_cart and return
-      end
     else
       flash[:status] = :failure
       flash[:result_text] = "Unable to remove the items from your cart."
       flash[:errors] = @cart.errors.messages
     end
-    redirect_to cart_path
+    if !@cart.order_items.count > 0
+      render :empty_cart and return
+    end
   end
 
-  private
+private
 
   def create_cart
     @cart = Order.new status: "pending"
