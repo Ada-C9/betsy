@@ -20,6 +20,8 @@ describe CartController do
     @product_10 = products(:product_10)
 
     @product_2 = products(:product_2)
+    @product_3 = products(:product_3)
+    @product_4 = products(:product_4)
 
   end
 
@@ -79,7 +81,26 @@ describe CartController do
 
     end
 
-    it "If a cart already exists, finds an instance of Order according to the key in session" do
+    it "If a cart already exists, finds the corresponding instance of Order according to the key in session, and does not add to the database" do
+
+      #Arrange
+      before_1st_post_count = Order.count
+      post add_to_cart_path(@product_3.id)
+      after_1st_post_count = Order.count
+      initial_session_cart_id = session[:cart_order_id]
+
+      #### Validate the test
+      (after_1st_post_count - before_1st_post_count).must_equal 1
+      initial_session_cart_id.wont_be_nil
+
+      #Act
+      post add_to_cart_path(@product_4.id)
+      after_2nd_post_count = Order.count
+      test_session_cart_id = session[:cart_order_id]
+
+      #Assert
+      (after_1st_post_count - after_2nd_post_count).must_equal 0
+      test_session_cart_id.must_equal initial_session_cart_id
 
     end
 
