@@ -104,6 +104,7 @@ class CartController < ApplicationController
   def remove_single_item
     @order_item = OrderItem.find_by(id: params[:id])
     @item_name = @order_item.product.name
+    @cart = Order.find_by(id: session[:cart_order_id])
     if @order_item
       @order_item.destroy
       flash[:status] = :success
@@ -113,8 +114,10 @@ class CartController < ApplicationController
       flash[:result_text] = "Unable to remove the items from your cart."
       flash[:errors] = @cart.errors.messages
     end
-    if !@cart.order_items.count > 0
+    if !(@cart.order_items.count > 0)
       render :empty_cart and return
+    else
+      redirect_to cart_path
     end
   end
 
