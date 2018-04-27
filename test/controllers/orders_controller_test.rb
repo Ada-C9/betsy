@@ -202,12 +202,11 @@ end
       must_respond_with :bad_request
 
     end
-
   end
 
   describe 'Cancel' do
     it 'will update the status of a current order to "cancelled"' do
-      put order_cancel_path(   orders(:order_2).id     )
+      put order_cancel_path( orders(:order_2).id )
       must_respond_with :redirect
       must_redirect_to products_path
 
@@ -227,7 +226,7 @@ end
 
         put order_cancel_path(orders(:order_2)), params:{
           order: {status:orders(:order_2).status,
-                  name: nil,
+                  name: nil ,
                   email: orders(:order_2).email,
                   street_address: orders(:order_2).street_address,
                   city: orders(:order_2).city,
@@ -240,7 +239,7 @@ end
                   billing_zip: orders(:order_2).billing_zip }
                 }
         updated_order = Order.find_by(id: orders(:order_2).id)
-        # binding.pry
+
         must_respond_with :redirect
         must_redirect_to products_path
 
@@ -263,5 +262,4 @@ end
     end
   end
 
-###end of class##
 end

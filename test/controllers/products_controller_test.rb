@@ -13,12 +13,12 @@ describe ProductsController do
             category:{name: categories(:category_1).name
             }
         }
-
-      #look in to rails spec to confirm that you can see categories
       must_respond_with :success
+      #how to get the specific category to return.
     end
 
     it 'will display the associated products to a specific user' do
+        #need help with this test
     end
 
   end
@@ -39,12 +39,23 @@ describe ProductsController do
           product:{ name: "A Product",
             is_active: true,
             description: "ldkfjsldkfj",
-            price: 11,
+            price: 111,
             photo_url: nil,
             stock: 12,
             user_id: users(:user_1).id}
             }
       }.must_change 'Product.count',1
+      new_product.name.must_equal "A Product"
+      new_product.is_active.must_equal true
+      new_product.price.must_equal 11
+      #model method multiplies by 100 ?
+      new_product.photo_url.must_equal nil
+      new_product.stock.must_equal 12
+      new_product.user_id.must_equal users(:user_1).id
+
+
+      flash[:result_text].must_equal "A Product has been successfully created!"
+
       must_respond_with :redirect
       must_redirect_to product_path(Product.last.id)
 

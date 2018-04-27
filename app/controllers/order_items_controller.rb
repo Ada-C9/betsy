@@ -1,25 +1,20 @@
 class OrderItemsController < ApplicationController
 
   def update
-    #update the number of products within the order item
     @order_item = OrderItem.find_by(id: params[:id])
     if @order_item.nil?
       render_404 and return
     else
       @order_item.quantity = params[:order_item][:quantity]
-      binding.pry
       if @order_item.save
-        binding.pry
         flash[:status] = :success
         flash[:result_text] = "Quantity updated!"
       else
-        binding.pry
         flash[:status] = :failure
         flash[:result_text] = "Could not add the desired quantity of this item to the cart."
         flash[:messages] = @order_item.errors.messages
       end
     end
-    # binding.pry
     redirect_to cart_path
   end
 
