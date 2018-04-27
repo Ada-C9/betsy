@@ -45,7 +45,7 @@ class CartController < ApplicationController
 
   def update_cart_info
     @cart = Order.find_by(id: session[:cart_order_id])
-    if @cart
+    if @cart.id == session[:cart_order_id]
       @cart.name = params[:order][:name]
       @cart.email = params[:order][:email]
       @cart.street_address = params[:order][:street_address]
@@ -61,13 +61,17 @@ class CartController < ApplicationController
         # redirect_to order_path(@order.id)
         flash[:status] = :success
         flash[:result_text] = "Your order information has been successfully updated!"
-        redirect_to cart_path
+        redirect_to cart_path and return
       else
         flash[:status] = :failure
         flash[:result_text] = "We were unable to update your order information."
         flash[:messages] = @cart.errors.messages
-        redirect_to cart_path
+        redirect_to cart_path and return
       end
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "We were unable to find your cart."
+      render_404
     end
   end
 
@@ -93,26 +97,37 @@ class CartController < ApplicationController
     if @cart.nil?
       flash[:status] = :failure
       flash[:result_text] = "Unable to remove the items from your cart."
-      flash[:errors] = @cart.errors.messages
+      redirect_to cart_path and return
     end
-    @cart.order_items.each do |order_item|
-      order_item.destroy
+    if @cart.order_items.count > 0
+      @cart.order_items.each do |order_item|
+        order_item.destroy
+      end
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Your cart was already empty!."
     end
     redirect_to cart_path
   end
 
   def remove_single_item
-    @order_item = OrderItem.find_by(id: params[:id])
-    @item_name = @order_item.product.name
     @cart = Order.find_by(id: session[:cart_order_id])
-    if @order_item
+    @order_item = OrderItem.find_by(id: params[:id])
+    if @order_item && @cart && (@order_item.order_id == @cart.id)
+      @item_name = @order_item.product.name
       @order_item.destroy
       flash[:status] = :success
       flash[:result_text] = "#{@item_name} removed from your cart!"
     else
       flash[:status] = :failure
       flash[:result_text] = "Unable to remove the items from your cart."
-      flash[:errors] = @cart.errors.messages
+      if @cart
+        flash[:errors] = @cart.errors.messages
+      end
+      if @order_item
+        flash[:errors] = @order_item.errors.messages
+      end
+      redirect_to cart_path and return
     end
     if !(@cart.order_items.count > 0)
       render :empty_cart and return
