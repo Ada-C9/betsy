@@ -19,3 +19,8 @@ item_three:
   cart: cart_two
   product: macaron
   quantity: 1
+
+item_four:
+  cart: cart_three
+  product: cheesecake
+  quantity: 6

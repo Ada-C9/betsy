@@ -32,3 +32,7 @@ order_two:
   billing_address: 123 Main Street
   zipcode: 11111
   status: pending
+
+order_three:
+  cart: cart_three
+  status: pending

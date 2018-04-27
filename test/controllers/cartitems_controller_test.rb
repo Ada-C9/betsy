@@ -1,8 +1,9 @@
 require "test_helper"
 
 describe CartitemsController do
+
   describe "create" do
-    
+
   end
 
   describe "update" do
@@ -21,7 +22,7 @@ describe CartitemsController do
 
 
   describe "destroy" do
-    it "succeeds for an extant cartitem ID" do
+    it "succeeds for an existing cartitem ID" do
       item = Cartitem.first
       item_id = item.id
       old_item_count = Cartitem.count
