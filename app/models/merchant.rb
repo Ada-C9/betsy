@@ -35,7 +35,7 @@ class Merchant < ApplicationRecord
   end
 
   def my_carts
-    Cart.joins(:cartitems).where(cartitems: {id: self.my_cartitems.ids})
+    Cart.joins(:cartitems).where(cartitems: {id: self.my_cartitems.ids}).uniq
   end
 
   def my_orders

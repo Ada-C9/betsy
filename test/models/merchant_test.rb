@@ -126,4 +126,169 @@ describe Merchant do
       result[0].price.must_equal product1[:price]
     end
   end
+
+  describe "build_from_github" do
+  end
+
+  describe "visible_products" do
+    before do
+      @merchant1 = Merchant.first
+      product1 = {
+        name: 'product1',
+        price: 233,
+        merchant: @merchant1,
+        visible: true
+      }
+      product2 = {
+        name: 'product2',
+        price: 233,
+        merchant: @merchant1,
+        visible: false
+      }
+      product3 = {
+        name: 'product3',
+        price: 233,
+        merchant: @merchant1,
+        visible: true
+      }
+
+      new_products = [product1, product2, product3]
+      new_products.each do |prod|
+        @merchant1.products << Product.create(prod)
+      end
+    end
+
+    it "should show the correct quantity of visible products" do
+
+      @merchant1.visible_products.count.must_equal 2
+
+    end
+
+    it "should return 0 when no visible products" do
+      @merchant1.products.each do |prod|
+        prod.visible = false
+      end
+
+      @merchant1.visible_products.count.must_equal 0
+    end
+  end
+
+  describe "invisible_products" do
+    before do
+      @merchant1 = Merchant.first
+      product1 = {
+        name: 'product1',
+        price: 233,
+        merchant: @merchant1,
+        visible: true
+      }
+      product2 = {
+        name: 'product2',
+        price: 233,
+        merchant: @merchant1,
+        visible: false
+      }
+      product3 = {
+        name: 'product3',
+        price: 233,
+        merchant: @merchant1,
+        visible: true
+      }
+
+      new_products = [product1, product2, product3]
+      new_products.each do |prod|
+        @merchant1.products << Product.create(prod)
+      end
+    end
+
+    it "should show the correct quantity of invisible products" do
+
+      @merchant1.invisible_products.count.must_equal 1
+
+    end
+
+    it "should return 0 when no visible products" do
+      @merchant1.products.each do |prod|
+        prod.visible = true
+      end
+
+      @merchant1.invisible_products.count.must_equal 0
+    end
+  end
+
+  describe "my_cartitems" do
+    before do
+      @merchant1 = Merchant.first
+      product1 = {
+        name: 'product1',
+        price: 233,
+        merchant: @merchant1,
+      }
+      product2 = {
+        name: 'product2',
+        price: 233,
+        merchant: @merchant1,
+      }
+
+      new_products = [product1, product2]
+      new_products.each do |prod|
+        @merchant1.products << Product.create(prod)
+      end
+    end
+
+    it "should return all the cartitems that exit that are my products" do
+      cartitem1 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: Cart.first.id, quantity: 2)
+      cartitem2 = Cartitem.create(product_id: @merchant1.products.last.id, cart_id: Cart.first.id, quantity: 1)
+      cartitem3 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: Cart.last.id, quantity: 3)
+
+      @merchant1.my_cartitems.count.must_equal 3
+    end
+
+    it "should return 0 when no cartitems that have my products" do
+      cartitem1 = Cartitem.create(product_id: Product.last.id + 1, cart_id: Cart.first.id, quantity: 2)
+      cartitem2 = Cartitem.create(product_id: Product.last.id + 2, cart_id: Cart.first.id, quantity: 1)
+      cartitem3 = Cartitem.create(product_id: Product.last.id + 3, cart_id: Cart.last.id, quantity: 3)
+
+      @merchant1.my_cartitems.count.must_equal 0
+    end
+  end
+
+  describe "my_carts" do
+    before do
+      @merchant1 = Merchant.first
+      product1 = {
+        name: 'product1',
+        price: 233,
+        merchant: @merchant1,
+      }
+      product2 = {
+        name: 'product2',
+        price: 233,
+        merchant: @merchant1,
+      }
+
+      new_products = [product1, product2]
+      new_products.each do |prod|
+        @merchant1.products << Product.create(prod)
+      end
+    end
+
+    it "should return all the carts that have at least one product one time" do
+      cartitem1 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: Cart.first.id, quantity: 2)
+      cartitem2 = Cartitem.create(product_id: @merchant1.products.last.id, cart_id: Cart.first.id, quantity: 1)
+      cartitem3 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: Cart.last.id, quantity: 3)
+
+      @merchant1.my_carts.count.must_equal 2
+
+    end
+
+    it "should return an empty array when no cart have my items" do
+      cartitem1 = Cartitem.create(product_id: Product.last.id + 1, cart_id: Cart.first.id, quantity: 2)
+      cartitem2 = Cartitem.create(product_id: Product.last.id + 2, cart_id: Cart.first.id, quantity: 1)
+      cartitem3 = Cartitem.create(product_id: Product.last.id + 3, cart_id: Cart.last.id, quantity: 3)
+
+      @merchant1.my_carts.count.must_equal 0
+
+    end
+  end
 end
