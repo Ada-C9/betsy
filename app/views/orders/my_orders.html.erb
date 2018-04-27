@@ -23,36 +23,37 @@
       </tr>
     </thead>
 
-    <tbody class="table-font">
-      <% @orders.each do |order| %>
-      <tr>
-        <th class="small">
-          <%= link_to order.id, my_order_path(order) %>
-        </th>
-        <td>
-          <%=  display_date(order.created_at) %>
-        </td>
-        <td>
-          <% revenue = []%>
-          <%  order.cart.cartitems.joins(:product).where(products: { merchant_id: session[:merchant_id]}).each do |cartitem|%>
-          <% revenue << (Product.find(cartitem.product_id).price * cartitem.quantity)%>
 
-          <p>
-            <%= Product.find(cartitem.product_id).name %>
-          </p>
-          <%end%>
-        </td>
-        <td>$<%= display_dollars(revenue.sum)%></td>
-        <td>
-          <%= form_for order do |f| %>
-          <%= f.label :status %>
-          <%= f.select :status, options_for_select([["#{order.status}",""],"Pending", "Paid", "Completed", "Cancelled"],:disabled => ["Pending"],:prompt => ["#{order.status}"] ), class: "status-bar"%>
-          <%= f.submit "Change status", class: "button"%>
-          <%end%>
-        </td>
-      </tr>
-      <% end %>
-    </tboby>
-  </table>
+  <tbody class="table-font">
+    <% @orders.each do |order| %>
+    <tr>
+      <th class="small">
+        <%= link_to order.id, my_order_path(order) %>
+      </th>
+      <td>
+        <%=  display_date(order.created_at) %>
+      </td>
+      <td>
+        <% revenue = []%>
+        <%  order.cart.cartitems.joins(:product).where(products: { merchant_id: session[:merchant_id]}).each do |cartitem|%>
+        <% revenue << (Product.find(cartitem.product_id).price * cartitem.quantity)%>
+        <ul>
+          <li><%= Product.find(cartitem.product_id).name %></li>
+        <%end%>
+        </ul>
+      </td>
+      <td>$<%= display_dollars(revenue.sum)%></td>
+      <td>
+        <%= form_for order, url: change_status_path(order) do |f| %>
+        <%= f.label :status %>
+        <%= f.select :status, options_for_select([["#{order.status}",""],"Pending", "Paid", "Completed", "Cancelled"],:disabled => ["Pending"],:prompt => ["#{order.status}"] )%>
+        <%= f.submit "Change status"%>
+        <%end%>
+      </td>
+    </tr>
+    <% end %>
+  </tboby>
+</table>
+
 
 </section>
