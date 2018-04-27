@@ -35,12 +35,10 @@ class Merchant < ApplicationRecord
   end
 
   def my_carts
-    return [] if self.my_cartitems.empty?
-    Cart.joins(:cartitems).where(cartitems: {id: self.my_cartitems.ids}).uniq
+    Cart.joins(:cartitems).where(cartitems: {id: self.my_cartitems.ids})
   end
 
   def my_orders
-    return [] if self.my_cartitems.empty?
     Order.joins(:cart).where(carts: {id: self.my_carts.ids})
   end
 
