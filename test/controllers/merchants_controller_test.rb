@@ -11,7 +11,7 @@ describe MerchantsController do
     end
 
     it "succeeds when there are no merchants" do
-      Product.destroy_all      
+      Product.destroy_all
       Merchant.destroy_all
       get merchants_path
       must_respond_with :success
@@ -19,10 +19,13 @@ describe MerchantsController do
   end
 
   describe "show" do
-    it "succeeds for an extant merchant ID" do
-      merchant1 = Merchant.first
-      get merchant_path(merchant1)
-      must_respond_with :success
+    before do
+      @merchant1 = Merchant.first
+    end
+
+    it "Should redirect back if merchant is not logged in" do
+      get merchant_path(@merchant1)
+      must_respond_with :redirect
     end
 
     it "renders 404 not_found for a bogus merchant ID" do
@@ -30,6 +33,21 @@ describe MerchantsController do
       get merchant_path(merchant404)
       must_respond_with :not_found
     end
+
+    it "responds with failure if merchant is not logged in" do
+      skip
+    end
   end
+
+  describe "display" do
+  end
+
+  describe "show_products" do
+  end
+
+  describe "by_name" do
+  end
+
+
 
 end
