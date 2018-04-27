@@ -31,17 +31,26 @@ class Merchant < ApplicationRecord
   end
 
   def my_cartitems
-    Cartitem.joins(:product).where(products: { merchant_id: self.id })
-  end
-
-  def my_carts
-    return [] if self.my_cartitems.empty?
-    Cart.joins(:cartitems).where(cartitems: {id: self.my_cartitems.ids}).uniq
+    my_cartitems = []
+    Cartitem.all.each do |cartitem|
+      if self.products.include?(cartitem.product)
+        my_cartitems << cartitem
+      end
+    end
+    return my_cartitems
   end
 
   def my_orders
-    return [] if self.my_cartitems.empty?
-    Order.joins(:cart).where(carts: {id: self.my_carts.ids})
+    my_orders = []
+    Order.all.each do |order|
+      order.cart.cartitems.each do |cartitem|
+        if self.products.include?(cartitem.product)
+          my_orders << order
+        end
+      end
+    end
+    my_orders.uniq!
+    return my_orders
   end
 
   def my_total_revenue
