@@ -74,24 +74,35 @@ class ProductsController < ApplicationController
 
   def retire
     if session[:merchant_id]
+      # retires a product that still has stock
       if @product.visible == true
         @product.update(visible: false)
         flash[:status] = :success
         flash[:result_text] = "Successfully retire #{@product.name}"
       elsif
+        # can unretire an item as long as the stock is NOT 0
         @product.visible == false && @product.stock != 0
         @product.update(visible: true)
         flash[:status] = :success
         flash[:result_text] = "Successfully unretire #{@product.name}"
+      elsif
+        # retires a product if the stock drops to 0
+        @product.visible == true && @product.stock == 0
+        @product.update(visible: false)
+        flash[:status] = :failure
+        flash[:result_text] = "All out of #{@product.name}."
       else
+        # will not retire an already retired item
         flash[:status] = :failure
         flash[:result_text] = "#{@product.name} has already retired."
       end
     else
+      # fails to retire an item
       flash[:status] = :failure
       if @product.visible == true
         flash[:result_text] = "Failed to retire #{@product.name}"
       else
+        # fails to unretire an item
         flash[:result_text] = "Failed to unretire #{@product.name}"
       end
     end
