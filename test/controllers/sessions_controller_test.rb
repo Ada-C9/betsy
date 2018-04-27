@@ -29,6 +29,7 @@ describe SessionsController do
       Merchant.count.must_equal old_merchant_count + 1
       must_redirect_to root_path
       session[:merchant_id].must_equal Merchant.last.id
+
     end
 
     it "does not log in with insufficient data and redirect to root path" do
