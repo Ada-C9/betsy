@@ -309,71 +309,90 @@ describe CartController do
 
     end
 
-    # it 'will return a bad request for an attempt to update an order with invalid data' do
-    #
-    #   #Arrange
-    #
-    #   post add_to_cart_path(@product_1.id)
-    #   before_cart_order = Order.find_by(id: session[:cart_order_id])
-    #   original_cart_instance_id = before_cart_order.id
-    #
-    #   #Validate test
-    #   before_cart_order.wont_be_nil
-    #   before_cart_order.status.must_equal "pending"
-    #   before_cart_order.name.must_be_nil
-    #   before_cart_order.zip.must_be_nil
-    #   before_cart_order.city.must_be_nil
-    #
-    #   #Act
-    #   patch update_cart_info_path,  params: {
-    #       order: {
-    #         name: "11",
-    #         email: orders(:order_1).email,
-    #         street_address: orders(:order_1).street_address,
-    #         city: orders(:order_1).city,
-    #         state: orders(:order_1).state,
-    #         zip: "applesauce panda monkey",
-    #         name_cc: orders(:order_1).name_cc,
-    #         credit_card: orders(:order_1).credit_card,
-    #         "expiry(1i)" => "2019",
-    #         "expiry(2i)" => "12",
-    #         "expiry(3i)" => "11",
-    #         ccv: orders(:order_1).ccv,
-    #         billing_zip: orders(:order_1).billing_zip
-    #        }
-    #     }
-    #
-    #
-    #   after_cart_order = Order.find_by(id: session[:cart_order_id])
-    #
-    #   binding.pry
-    #
-    #   # Assert
-    #
-    #   ### The same instance of Order is acting as the cart before and after the method call.
-    #
-    #   after_cart_order.id.must_equal original_cart_instance_id
-    #
-    #   ### The cart order instance's attributes will not have been updated.
-    #
-    #   after_cart_order.wont_be_nil
-    #   after_cart_order.status.must_equal "pending"
-    #   after_cart_order.name.must_be_nil
-    #   after_cart_order.zip.must_be_nil
-    #   after_cart_order.city.must_be_ni
-    #
-    #   ### Appropriate error messages will be given
-    #
-    #   must_respond_with :bad_request
-    #   flash[:result_text].must_equal "We were unable to update your order information."
-    #
-    #   ### Appropriate redirect will happen
-    #
-    #   must_redirect_to cart_path
-    #
-    # end
+    it 'will fail if there is no cart' do
+
+      #Arrange
+
+      #Step 1: Get a session going, with a cart.
+      post add_to_cart_path(@product_1.id)
+      before_cart_order = Order.find_by(id: session[:cart_order_id])
+
+      before_cart_order.wont_be_nil
+
+      #step 2: Prepare the cart for the cart-destruction process.
+
+      patch update_cart_info_path params:{
+
+            order: {
+
+              name: "Order of Operations",
+              email: orders(:order_1).email,
+              street_address: orders(:order_1).street_address,
+              city: orders(:order_1).city,
+              state: orders(:order_1).state,
+              zip: orders(:order_1).zip,
+              name_cc: orders(:order_1).name_cc,
+              credit_card:orders(:order_1).credit_card,
+              "expiry(1i)" => "2019",
+              "expiry(2i)" => "12",
+              "expiry(3i)" => "11",
+              ccv: orders(:order_1).ccv,
+              billing_zip: orders(:order_1).billing_zip
+             }
+          }
+
+      # Step 3: Destroy the cart via the route designated for such things.
+
+      patch update_to_paid_path
+
+      #Now we have a situation where Session is awake, but the cart is gone.
+
+      #Validate the test
+      after_arrange_cart_order = Order.find_by(id: session[:cart_order_id])
+
+      after_arrange_cart_order.must_be_nil
+
+      #Act:
+
+      #Now we try this method without a cart.
+
+      patch update_cart_info_path params:{
+
+            order: {
+
+              name: "Howdy",
+              email: orders(:order_1).email,
+              street_address: orders(:order_1).street_address,
+              city: orders(:order_1).city,
+              state: orders(:order_1).state,
+              zip: orders(:order_1).zip,
+              name_cc: orders(:order_1).name_cc,
+              credit_card:orders(:order_1).credit_card,
+              "expiry(1i)" => "2019",
+              "expiry(2i)" => "12",
+              "expiry(3i)" => "11",
+              ccv: orders(:order_1).ccv,
+              billing_zip: orders(:order_1).billing_zip
+             }
+          }
+
+      #Assert
+
+      ### Must update the values of the cart's attributes.
+
+      after_act_cart_order = Order.find_by(id: session[:cart_order_id])
 
 
+      ###Must provide an appropriate response message
+      flash[:status].must_equal :failure
+      flash[:result_text].must_equal "We were unable to find your cart."
+
+      ### Must redirect to cart path.
+
+      must_respond_with :not_found
+
+
+    end
   end
 
   describe "update_to_paid" do
@@ -536,10 +555,103 @@ describe CartController do
     afterward_cart_items = OrderItem.where(order_id: cart_order_after.id)
     afterward_cart_items.count.must_equal 0
 
+    (initial_cart_items.count - afterward_cart_items.count).must_equal 0
+
     ### The method finishes by redirecting to the cart path.
 
     must_redirect_to cart_path
 
+
+    end
+
+    it "displays appropriate messages if called when the cart is already empty, and makes no changes to the database."    do
+
+    ##Arrange
+    #Step 1: Activate the cart
+    overall_before_count = OrderItem.all.count
+    post add_to_cart_path(@product_3.id)
+    cart_order_before = Order.find_by(id: session[:cart_order_id])
+    before_count = cart_order_before.order_items.count
+
+    #Vaidate Test Pt 1
+    before_count.must_equal 1
+    initial_cart_items = OrderItem.where(order_id: cart_order_before.id)
+    initial_cart_items.count.must_equal 1
+    that_one_item = initial_cart_items.first
+
+    #Step 2: Remove its one item:
+    delete remove_single_item_path(that_one_item.id)
+
+    #Validate Test Pt. 2:
+
+    stage_2_cart_items = OrderItem.where(order_id: cart_order_before.id)
+    stage_2_cart_items.count.must_equal 0
+    OrderItem.find_by(id: that_one_item.id).must_be_nil
+    current_cart = Order.find_by(id: session[:cart_order_id])
+    current_cart.order_items.count.must_equal 0
+
+    #Step 3:  Now we have an active-but-empty cart in which to act.
+
+    #ACT:
+
+    delete cart_destroy_path
+
+    #Assert :
+
+    ### Must not reduce the contents of the database
+
+    overall_after_count = OrderItem.all.count
+
+    overall_before_count.must_equal overall_after_count
+
+    ### Must serve appropriate flash messages
+
+    flash[:result_text].must_equal "Your cart was already empty!"
+
+    ### Must redirect to the cart path
+
+    must_redirect_to cart_path
+
+    end
+
+
+    it "When the cart contains a single item, destroys all the order-items associated with the current cart, and renders the empty-cart view" do  # Remember that empty_cart has been relocated.
+
+    #Arrange
+    #Step 1: Activate the cart
+    post add_to_cart_path(@product_3.id)
+    cart_order_before = Order.find_by(id: session[:cart_order_id])
+    before_count = cart_order_before.order_items.count
+
+    #Step 2: Vaidate Test
+    before_count.must_equal 1
+    initial_cart_items = OrderItem.where(order_id: cart_order_before.id)
+    initial_cart_items.count.must_equal 1
+    that_one_item = initial_cart_items.first
+
+    #ACT:
+
+    delete cart_destroy_path
+
+    #Assert
+
+    cart_order_after = Order.find_by(id: session[:cart_order_id])
+
+    ###  The same instance of cart exists before and after the method is called.
+
+    cart_order_before.id.must_equal cart_order_after.id
+
+    ### The method destroys all the items associated with the current cart
+
+    OrderItem.find_by(id: that_one_item.id).must_be_nil
+
+    cart_order_after.order_items.count.must_equal 0
+    afterward_cart_items = OrderItem.where(order_id: cart_order_after.id)
+    afterward_cart_items.count.must_equal 0
+
+    ### The method finishes by redirecting to the cart path.
+
+    must_redirect_to cart_path
 
     end
 

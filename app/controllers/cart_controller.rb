@@ -45,7 +45,7 @@ class CartController < ApplicationController
 
   def update_cart_info
     @cart = Order.find_by(id: session[:cart_order_id])
-    if @cart.id == session[:cart_order_id]
+    if @cart && @cart.id == session[:cart_order_id]
       @cart.name = params[:order][:name]
       @cart.email = params[:order][:email]
       @cart.street_address = params[:order][:street_address]
@@ -105,7 +105,7 @@ class CartController < ApplicationController
       end
     else
       flash[:status] = :failure
-      flash[:result_text] = "Your cart was already empty!."
+      flash[:result_text] = "Your cart was already empty!"
     end
     redirect_to cart_path
   end
