@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # resources :products, only: [:index, :show]
-
+  get 'merchants/by_name', to: 'merchants#by_name', as: 'merchant_by_name'
   resources :merchants do
     resources :products, only: [ :new, :create, :edit, :update]
   end

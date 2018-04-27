@@ -17,4 +17,12 @@ class MerchantsController < ApplicationController
   def display
     @merchant = Merchant.find_by(id: params[:merchant_id])
   end
+
+  def by_name
+    merchant_name = params[:username]
+    @merchants = Merchant.where("LOWER(username) like ?", "%#{merchant_name.downcase}%")
+
+    render :index
+  end
+
 end
