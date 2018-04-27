@@ -156,3 +156,25 @@
 .tabs-panel > p {
   font-size: 2rem;
 }
+
+
+#search-button-2 {
+  margin: 20px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+}
+
+#search-button-2:hover {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+}
+
+#search-field-2 {
+  display: inline;
+  width: 600px;
+}
+
+#search-bar-2 {
+  justify-content: center;
+  text-align: center;
+}
