@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
       flash[:result_text] = "Your order has been placed !"
       flash[:order_number] = "Order number: #{@order.id}"
       session[:cart_id] = nil
-      redirect_back fallback_location: order_path(@order)
+      redirect_to order_path(@order)
     else
 
       flash.now[:status] = :failure
