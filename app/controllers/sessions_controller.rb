@@ -38,9 +38,9 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  def index
-    @user = User.find(session[:user_id]) # < recalls the value set in a previous request
-  end
+  # def index
+  #   @user = User.find(session[:user_id]) # < recalls the value set in a previous request
+  # end
 
   def destroy
     session[:user_id] = nil
