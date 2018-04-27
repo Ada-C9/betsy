@@ -27,7 +27,26 @@ describe ReviewsController do
     end
   end
 
-  it "renders bad_request and does not update the DB for bogus data" do
+  it "renders forbidden and does not update the DB when product belongs to the merchant" do
+    product = Product.first
+    merchant = product.merchant
+    login(merchant)
+
+    review_data = {
+      rating: 2,
+      comment: "excellent",
+      product_id: product.id
+    }
+    Review.new(review_data).must_be :valid?
+    old_review_count = Review.count
+
+    post reviews_path, params: { review: review_data }
+
+    must_respond_with :forbidden
+    Review.count.must_equal old_review_count
+  end
+
+  it "renders bad request and does not update the DB for bogus data" do
     review_data = {
       rating: 0,
       comment: "disgusting",
@@ -42,7 +61,7 @@ describe ReviewsController do
     Review.count.must_equal old_review_count
   end
 
-  it "renders bad_request and does not update the DB for a fake product" do
+  it "renders not found and does not update the DB for a fake product" do
     review_data = {
       rating: 3,
       comment: "average",
@@ -53,7 +72,7 @@ describe ReviewsController do
 
     post reviews_path, params: { review: review_data }
 
-    must_respond_with :bad_request
+    must_respond_with :not_found
     Review.count.must_equal old_review_count
   end
 end
