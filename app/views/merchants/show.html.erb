@@ -28,7 +28,7 @@
     <p>$ <%= display_dollars(@merchant.my_total_revenue) %></p>
   </div>
   <div class="tabs-panel" id="panel2">
-    <p>$ <%= display_dollars(@merchant.my_revenue_by_status("pending")) %></p>
+    <p id="dollar-show">$ <%= display_dollars(@merchant.my_revenue_by_status("pending")) %></p>
   </div>
   <div class="tabs-panel" id="panel3">
     <p>$ <%= display_dollars(@merchant.my_revenue_by_status("paid")) %></p>
