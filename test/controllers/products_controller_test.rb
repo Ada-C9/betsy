@@ -32,11 +32,12 @@ describe ProductsController do
       must_respond_with :not_found
     end
   end
-
-  #NOTE: The following methods are only available to a logged in user aka a 'merchant'.
+  #
+  # #NOTE: The following methods are only available to a logged in user aka a 'merchant'.
 
   describe 'logged in merchant' do
     before do
+      @merchant = Merchant.first
       login(Merchant.first)
     end
 
@@ -138,20 +139,43 @@ describe ProductsController do
     end
 
     describe 'retire' do
-      it 'can successfully retire a product that still has stock and redirects' do
-        skip
+      before do
+        login(Merchant.first)
+        @product = Product.first
+        @product.merchant_id = @merchant.id
       end
 
-      it "retires an item that stock has reached 0 and redirects" do
-        skip
+      it 'can successfully retire a product that still has stock' do
+        @product.stock = 4
+
+        patch retire_path(@product)
+        @product.reload
+        @product.wont_be :visible
+        must_respond_with :redirect
+        flash[:status].must_equal :success
       end
 
-      it 'will not retire an item that is already retired' do
-        skip
+      it "retires an item that stock has reached 0" do
+        @product.stock = 0
+        @product.visible = true
+        @product.save
+
+        patch retire_path(@product)
+        @product.reload
+        @product.wont_be :visible
+        must_respond_with :redirect
+        flash[:status].must_equal :success
       end
 
-      it 'will respond with result_text if the product cannot be retired' do
-        skip
+      it 'will not retire an item that is already retired and will respond with result_text if the product cannot be retired' do
+        @product.visible = false
+        @product.stock = 0
+        @product.save
+        patch retire_path(@product)
+        @product.reload
+        @product.wont_be :visible
+        must_respond_with :redirect
+        flash[:status].must_equal :failure
       end
     end
   end
@@ -200,6 +224,25 @@ describe ProductsController do
     end
 
     it 'rejects requests to retire a product' do
+      product = Product.first
+      product_data = product.attributes
+
+      product.assign_attributes(product_data)
+      product.must_be :valid?
+
+      patch retire_path(product), params: {product: product_data}
+
+      must_respond_with :redirect
+      flash[:status].must_equal :failure
+    end
+  end
+
+  describe 'by_name' do
+    it 'can find a product by name' do
+      skip
+    end
+
+    it 'will respond with Not Found, if the name does not exsist' do
       skip
     end
   end

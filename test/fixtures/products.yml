@@ -11,6 +11,8 @@ cheesecake:
   price: 499
   stock: 6
   image: "https://images.pexels.com/photos/219293/pexels-photo-219293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+  visible: true
+
 
 bonbon:
   merchant: wini
@@ -18,6 +20,8 @@ bonbon:
   price: 329
   stock: 10
   image: "https://images.pexels.com/photos/219293/pexels-photo-219293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+  visible: true
+    
 
 macaron:
   merchant: wini
@@ -25,3 +29,4 @@ macaron:
   price: 400
   stock: 19
   image: "https://images.pexels.com/photos/219293/pexels-photo-219293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+  visible: true

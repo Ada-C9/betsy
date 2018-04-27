@@ -95,7 +95,7 @@ class ProductsController < ApplicationController
         flash[:result_text] = "Failed to unretire #{@product.name}"
       end
     end
-    redirect_back fallback_location: merchant_path(Merchant.find(session[:merchant_id]))
+    redirect_back fallback_location: root_path
   end
 
   def by_name
