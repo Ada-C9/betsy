@@ -1,4 +1,7 @@
 class OrderItemsController < ApplicationController
+  before_action :require_login
+  skip_before_action :require_login, only: [:update]
+
 
   def update
     @order_item = OrderItem.find_by(id: params[:id])

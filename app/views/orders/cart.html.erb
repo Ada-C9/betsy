@@ -19,7 +19,7 @@
             <div class="quantity-container">
               <%= form_for order_item do |f| %>
               <div class="quantity-box">
-                <%= f.select :quantity, (0..order_item.product.stock).to_a,  :prompt => "#{order_item.quantity}" %>
+                <%= f.select :quantity, (1..order_item.product.stock).to_a,  :prompt => "#{order_item.quantity}" %>
               </div>
               <div class="quantity-button">
                 <%= f.submit "Update", class: "button" %>

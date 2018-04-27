@@ -71,6 +71,7 @@
       <th>Order Items</th>
       <th class="hidden">Quantity</th>
       <th class="hidden">Subtotal</th>
+      <th class="hidden">Date Placed</th>
       <th>Shipping Status</th>
     </tr>
   </thead>
@@ -84,6 +85,7 @@
             <td><%= link_to order_item.product.name, product_path(order_item.product.id) %></td>
             <td class="hidden"><%= order_item.quantity %></td>
             <td class="hidden">$<%= order_item.subtotal %></td>
+            <td class="hidden"><%= pretty_date(order_item.created_at) %></td>
             <td>
               <% if order_item.order.status == "pending" || order_item.order.status == "cancelled" %>
                 <span>N/A</span>
