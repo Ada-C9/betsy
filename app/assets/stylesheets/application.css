@@ -137,6 +137,19 @@ footer {
   color: rgb(64, 34, 2);
 }
 
-#nav-list .double {
-  margin-right: 500px;
+#new-product-form .button {
+  margin: 20px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+  font-size: 1.1rem;
+}
+
+#new-product-form .button:hover {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+
+}
+
+#new-product-form {
+  margin: 30px;
 }
