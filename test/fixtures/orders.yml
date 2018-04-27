@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+order_one:
+  status: pending
+  buyerdetail_id: ada
+
+order_two:
+  status: paid
+  buyerdetail_id: ada

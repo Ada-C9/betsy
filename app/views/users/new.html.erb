@@ -1,0 +1,12 @@
+<h3> Login </h3>
+
+<div class="container">
+<%= form_for @user, url: login_path do |u| %>
+<%= u.label :name %>
+<%= u.text_field :name %>
+<%= u.label :username %>
+<%= u.text_field :username %>
+
+<%= u.submit 'Login', class: "button" %>
+<% end %>
+</div>

@@ -1,0 +1,46 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+odor:
+  name: Odor Eaters
+  price: 12.95
+  user: anne
+  stock: 20
+  url: http://placekitten.com/200/300
+  retired: false
+
+regret:
+  name: Pure Unadulterated Regret
+  price: 10
+  user: anne
+  stock: 200000
+  url: http://placekitten.com/200/300
+  retired: false
+
+product_one:
+  name: White Out
+  description: A description
+  price: 1.00
+  stock: 5
+  url: http://placekitten.com/200/300
+  user: anne
+  retired: false
+
+# shampoo:
+#   name: dry shampoo
+#   description: best non-shampoo you'll ever have
+#   price: 11.99
+#   stock: 5
+#   url: shampoo.jpg
+#   user_id: 1
+#   category: personal care
+# shoes:
+#   name: vans
+#   price: 10
+#   description: some black vans
+#   user: anne
+#
+# toy:
+#   name: figit spinner
+#   price: 9
+#   description: revolving toy
+#   user: anne

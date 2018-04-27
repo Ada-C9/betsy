@@ -1,0 +1,160 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*= require normalize-rails
+
+*
+*= require_tree .
+*= require_self
+*= require foundation_and_overrides
+
+*/
+
+
+*  {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body ul {
+  list-style-type: none;
+}
+
+h1 img {
+  max-height: 50px;
+}
+
+nav {
+  background-color: whitesmoke;
+}
+
+nav ul {
+  list-style-type: none;
+  z-index: 8;
+}
+
+@media (min-width: 800px) {
+  .menu{
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 2em;
+    z-index: 8;
+  }
+
+  .menu li:first-of-type {
+    align-self: flex-start;
+    z-index: 8;
+  }
+
+  .menu-item-has-children > a:after{
+    font-size: .75em;
+    content: '▼';
+    padding: .5em;
+    position: relative;
+  }
+
+  nav ul ul {
+    display: none;
+    position: absolute;
+  }
+}
+
+@media (min-width: 800px) {
+  nav ul ul {
+    display: none;
+    position: absolute;
+  }
+}
+
+nav ul li:hover > ul {
+  display:block;
+  padding-left: 0;
+}
+
+@media (min-width: 800px) {
+  nav ul li:hover > ul {
+    padding-left:0;
+    background:hsl(0, 0%, 46%);
+
+  }
+
+  nav ul li:hover > ul a{
+    color:hsl(0, 0%, 0%);
+  }
+
+  .sub-menu li {
+    display:flex;
+    padding-right:2em;
+  }
+
+  .sub-menu  li:hover, li a:hover{
+    background:hsl(0, 0%, 86%);
+    color:hsl(0, 0%, 46%);
+  }
+
+  nav ul ul ul{
+    margin:0 0 0 100%;
+    box-shadow: 0 0 2px hsla(0, 0%, 0%, 0.6);
+  }
+}
+
+li > i:after {
+  font-size: .75em;
+  padding: .5em;
+}
+
+
+footer {
+  font-size: 0.5em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.product-list {
+  background-color: whitesmoke;
+  width: 80%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 1em;
+  justify-content: flex-start;
+  width: 100vw;
+}
+
+.product-list article > img {
+  width: 20vw;
+  border-radius: 5%;
+  float: left;
+  padding: 10px;
+}
+
+.product-list > section {
+  width: 600px;
+  margin: 5px;
+  padding: 10px;
+}
+
+.product-item {
+  border: 2px groove lightgrey;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.product-item input.number-field {
+  width: 100px;
+}
+
+
+div.caption-1  a, div.caption-2  a {
+  color: white;
+  background: hsla(300, 2%, 6%, .85);
+  padding: 2vh 4vw;
+}

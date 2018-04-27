@@ -1,0 +1,11 @@
+<section class="checkout"
+<%= form_for @cart do |f| %>
+<%= f.label :products %>
+<% @cart.products.each do |product| %>
+<%= product.name %>
+<p>quantity</p>
+<% end %>
+<%= f.submit %>
+
+<% end %>
+</section>

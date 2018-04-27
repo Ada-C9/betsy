@@ -1,0 +1,55 @@
+<% if !item.retired %>
+<section class="product-item">
+  <article>
+    <h3><%= link_to item.name, item %></h3>
+    <%= image_tag (item.url) %>
+  </article>
+  <article>
+  <ul>
+    <li>
+    Categories: <% item.categories %>
+    </li>
+    <li>
+      Price: <%= number_to_currency item.price %>
+    </li>
+    <li>
+    Quantity:  <%= item.stock %>
+    </li>
+    <li>
+      <%= form_with url: add_to_cart_path do |f| %>
+      <%= f.hidden_field :product_id, value: item.id%>
+      <%= f.number_field :quantity, min: 0, :style => "width:100px;" %>
+      <%= submit_tag "add to cart", class: "hollow button primary", method: :post %>
+      <% end %>
+    </li>
+  </ul>
+  </article>
+  <article>
+    <section class='product-reviews'>
+      <p>Description: <%= item.description %></p>
+      <% if item.average_rating == 0 %>
+        <h4>Be the first to rate this product!</h4>
+      <% else %>
+        <h4>
+          average rating
+          <% item.average_rating.times do %>
+            <%= "💧" %>
+          <% end %>
+        </h4>
+      <% end %>
+      <p>
+
+        <% if item.reviews.count == 1 %>
+          <%= link_to("#{item.reviews.count} review", product_path(item)) %>
+        <% else %>
+          <%= link_to("#{item.reviews.count} reviews", product_path(item)) %>
+        <% end %>
+      </p>
+    </section>
+  </article>
+</section>
+<% else %>
+<section class="no-product">
+  This item has been discontinued.
+</section>
+<% end %>

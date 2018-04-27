@@ -1,0 +1,47 @@
+// Place all the styles related to the carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+td.img-thumbnail {
+  width: 30vw;
+  display: flex;
+  align-content: center;
+}
+
+tr.cart-items {
+  height: 20vh;
+  border-bottom-color: rgb(35, 39, 42);
+}
+
+tr.cart-items img {
+  height: 20vh;
+  padding: 2vh
+}
+
+.checkout {
+  padding: 20px;
+  background-image: image-url('shoppingtags.jpg');
+  background-position: right;
+  opacity: 0.65;
+}
+
+.cart-products {
+  padding: 20px;
+  background-image: image-url('shoppingtags.jpg');
+  background-position: left;
+  opacity: 0.65;
+}
+
+
+
+.form {
+  width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    background-color: #f1f1f1;
+
+}

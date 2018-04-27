@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ada:
+  email: ada@adadevelopersacademy.
+  mailing_address: 112 Somewhere else
+  buyer_name: Ada
+  card_number: 1234123412341234
+  expiration: 04-02-1985
+  cvv: 213
+  zipcode: 35209
+  order: 1
+
+# two:
+#   email:
+#   mailing_address:
+#   buyer_name:
+#   card_number:
+#   expiration:
+#   cvv:
+#   zipcode:
+#   order_id:

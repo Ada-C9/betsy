@@ -1,0 +1,19 @@
+<h1>Product Categories</h1>
+<article class="categories-list">
+  <ul>
+<% @categories.each do |category| %>
+<li><h2><%= link_to(category.name, category_products_path(category)) %></h2>
+  <% if @login_user %>
+  <%= link_to "Edit", edit_category_path(category), class: "hollow button tiny" %>
+  <%= link_to("Delete", category_path(category), method: :delete, class: "hollow button tiny", data: { confirm: "Are you sure you want to delete the category #{ category.name}" }) %>
+  <% end %>
+<section class="product-list">
+  <% @products = category.products %>
+
+  <%= render partial: "layouts/product", collection: @products, as: :item %>
+</section>
+
+</li>
+<% end %>
+</ul>
+</article>

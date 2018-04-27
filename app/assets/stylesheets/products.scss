@@ -1,0 +1,81 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.parallax-1 {
+    /* The image used */
+    background-image: image-url('ughmug.jpg');
+    width: 100vw;
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    opacity: 0.65;
+}
+
+.parallax-2 {
+  background-image: image-url('shoppingcart.jpg');
+  width: 100vw;
+  height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  opacity: 0.65;
+}
+
+div {
+  display: inline-block;
+}
+
+.caption-1 {
+  position: absolute;
+  left: 0;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  font-size: 2em;
+}
+
+.caption-2 {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  font-size: 2em;
+}
+
+.parallax-3 {
+  background-image: image-url('Failed.jpg');
+  width: 100vw;
+  height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  opacity: 0.65;
+}
+
+.product-show {
+  width: 80%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    background-color: #f1f1f1;
+    align-items: center;
+}
+
+.product-show img {
+  width: 300px;
+}

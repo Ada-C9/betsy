@@ -1,0 +1,32 @@
+
+<tr class="cart-items">
+  <% product = product_details(item) %>
+  <td class="img-thumbnail"><%= image_tag (product.url) %></td>
+  <td><%= link_to product.name, product_path(product) %></td>
+  <td><%= number_to_currency product.price %></td>
+  <td>
+    <td><%=item.quantity%></td>
+    <% if quantity_edit?(request.fullpath) %>
+    <td>
+      <%= form_with url: cart_path(@order), method: :patch do |f| %>
+      <%= f.hidden_field :product_id, value: product.id%>
+      <%= f.number_field :quantity, min: 0, :style => "width:10vw;" %>
+
+      <%= submit_tag "update quantity", class: "hollow button primary qty" %>
+      <% end %>
+    </td>
+
+    <td>
+      <%= form_with url: cart_path(@order), method: :patch do |f| %>
+      <%= f.hidden_field :product_id, value: product.id%>
+      <%= f.hidden_field :quantity, value: 0 %>
+      <%= submit_tag "remove", class: "hollow button primary remove" %>
+      <% end %>
+    </td>
+    <% else %>
+    <% @paid_order = item.order %>
+    <td>
+      <%= number_to_currency @paid_order.subtotal(item) %>
+    </td>
+    <% end %>
+  </tr>

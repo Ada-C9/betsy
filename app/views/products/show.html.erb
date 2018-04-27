@@ -1,0 +1,17 @@
+<section class="product-show">
+<%= render partial: "layouts/product", locals: { item: @product } %>
+<% unless @product.retired %>
+<!-- <%= link_to "Write a Review", new_product_review_path(@product) %> -->
+
+<%= render partial: 'layouts/review', locals: {object: @review} %>
+
+<br>
+<% @product.reviews.each do |r| %>
+<% r.rating.times do %>
+<%= "💧" %>
+<% end %></br>
+<%= r.review %></br>
+<%= render_date(r.created_at) %></br>
+<% end %>
+<% end %>
+</section>

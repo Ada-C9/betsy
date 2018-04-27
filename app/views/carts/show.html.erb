@@ -1,0 +1,7 @@
+<section class="cart-products">
+  <table>
+  <%= render partial: "layouts/order_products", collection: @orderitems, as: :item %>
+</table>
+
+<%= link_to "checkout", checkout_path(@order), class: "button" %>
+</section>

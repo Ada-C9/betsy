@@ -1,0 +1,55 @@
+<section class='product-item'>
+  <article class='testing'>
+    <h3><%= link_to item.name, item %></h3>
+    <% if item.url %>
+    <%= image_tag (item.url) %>
+    <% else %>
+    <%= url_tag (item.url) %>
+    <% end %>
+  </article>
+
+  <article>
+  <ul>
+    <li>
+    Categories: <ul><% item.categories.each do |category| %>
+      <%= link_to category.name, category_products_path(category) %>
+      <% end %>
+    </li>
+    <li>
+      Price: <%= number_to_currency item.price %>
+    </li>
+    <li>
+    Quantity:  <%= item.stock %>
+    </li>
+    <li>Add to cart:
+      <%= form_with url: add_to_cart_path(@order_item) do |f| %>
+      <%= f.hidden_field :product_id, value: item.id%>
+      <%= f.number_field :quantity, min: 0, class: "number-field" %>
+      <%= submit_tag "add to cart", class: "hollow button primary", method: :post %>
+      <% end %>
+    </li>
+  </ul>
+  </article>
+
+  <article class='product-reviews'>
+    <br  />
+      <p>Description: <%= item.description %></p>
+      <p>
+        <% if item.average_rating == 0 %>
+          Be the first to rate this product!
+        <% else %>
+          averate rating
+          <% item.average_rating.times do %>
+            <%= "💧" %>
+          <% end %></p>
+        <% end %>
+      <p>
+        <%= item.reviews.count %>
+        <% if item.reviews.count == 1 %>
+          review
+        <% else %>
+          reviews
+        <% end %>
+      </p>
+  </article>
+</section>

@@ -1,0 +1,15 @@
+<article class="merchant-list">
+  <br />
+  <ul>
+<% @merchants.each do |merchant| %>
+<li><h2><%= link_to merchant.username, user_products_path(merchant) %></h2>
+<section class="product-list">
+  <% @products = merchant.products %>
+
+  <%= render partial: "layouts/product", collection: @products, as: :item %>
+</section>
+
+</li>
+<% end %>
+</ul>
+</article>
