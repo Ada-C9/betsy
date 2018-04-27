@@ -8,20 +8,21 @@ require "test_helper"
       get auth_callback_path(:github)
     end
 
-    describe 'Index' do
-      it "should get index" do
-        get orders_path
-        must_respond_with :success
-      end
-    end
+    # describe 'Index' do
+    #   it "should get index" do
+    #     get orders_path
+    #     must_respond_with :success
+    #   end
+    # end
 
-  describe 'New' do
-    it 'should be able to render a new order form' do
-
-        get new_order_path
-        must_respond_with :success
-    end
-  end
+#
+  # describe 'New' do
+  #   it 'should be able to render a new order form' do
+  #
+  #       get new_order_path
+  #       must_respond_with :success
+  #   end
+  # end
 
   describe 'Create' do
     it 'should be able to create a new order' do
@@ -59,7 +60,7 @@ require "test_helper"
 
       flash[:result_text].must_equal "Your order has been made - congratulations!"
 
-    
+
 
     end
 
@@ -133,19 +134,19 @@ require "test_helper"
     end
   end
 
-  describe 'Edit' do
-    it "will provide the page to allow a user to edit an Order" do
-      get edit_order_path(orders(:order_3).id)
-      must_respond_with :success
-      orders(:order_3).id.must_equal orders(:order_3).id
-    end
-
-    it 'will render a 404 page for an edit page for a edit page that does not exist' do
-      non_existant_order = -400004
-      get edit_order_path(non_existant_order)
-      must_respond_with :not_found
-    end
-end
+#   describe 'Edit' do
+#     it "will provide the page to allow a user to edit an Order" do
+#       get edit_order_path(orders(:order_3).id)
+#       must_respond_with :success
+#       orders(:order_3).id.must_equal orders(:order_3).id
+#     end
+#
+#     it 'will render a 404 page for an edit page for a edit page that does not exist' do
+#       non_existant_order = -400004
+#       get edit_order_path(non_existant_order)
+#       must_respond_with :not_found
+#     end
+# end
 
   describe 'Update' do
     it 'is able to update a current object' do
@@ -259,17 +260,17 @@ end
     end
   end
 
-  describe 'Destroy' do
-    it 'will destroy an order' do
-      delete order_path(orders(:order_3).id)
-      must_respond_with :success
-    end
-
-    it 'will render 404 page for an order that does not exist' do
-        non_existant_order = -1001
-        delete order_path(non_existant_order)
-        must_respond_with :not_found
-    end
-  end
+  # describe 'Destroy' do
+  #   it 'will destroy an order' do
+  #     delete order_path(orders(:order_3).id)
+  #     must_respond_with :success
+  #   end
+  #
+  #   it 'will render 404 page for an order that does not exist' do
+  #       non_existant_order = -1001
+  #       delete order_path(non_existant_order)
+  #       must_respond_with :not_found
+  #   end
+  # end
 
 end

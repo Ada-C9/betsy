@@ -2,14 +2,15 @@ class OrdersController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:confirmation]
 
-  def index
-    @orders = Order.all
-  end
+  # def index
+  #   @orders = Order.all
+  # end
 
-  def new
-    @order = Order.new
-  end
+  # def new
+  #   @order = Order.new
+  # end
 
+#TODO
   def create
     @order = Order.new(order_params)
     if @order.save
@@ -38,12 +39,13 @@ class OrdersController < ApplicationController
     end
   end
 
-  def edit
-    @order = Order.find_by(id: params[:id])
-    if @order.nil?
-      render_404
-    end
-  end
+
+  # def edit
+  #   @order = Order.find_by(id: params[:id])
+  #   if @order.nil?
+  #     render_404
+  #   end
+  # end
 
   def update
   @order = Order.find_by(id: params[:id])
@@ -83,19 +85,20 @@ class OrdersController < ApplicationController
     end
   end
 
-  def destroy
-    @order = Order.find_by(id: params[:id])
-    if @order.nil?
-      render_404
-    else
-      if @order
-        @order.order_items.each do |item|
-          item.destroy
-        end
-        @order.destroy
-      end
-    end
-  end
+
+  # def destroy
+  #   @order = Order.find_by(id: params[:id])
+  #   if @order.nil?
+  #     render_404
+  #   else
+  #     if @order
+  #       @order.order_items.each do |item|
+  #         item.destroy
+  #       end
+  #       @order.destroy
+  #     end
+  #   end
+  # end
 
   private
 
