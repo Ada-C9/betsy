@@ -4,12 +4,12 @@ Congratulations! You're submitting your assignment! These comprehension question
 ## Comprehension Questions
 Question | Answer
 :------------- | :-------------
-How did your team break up the work to be done? | 
-How did your team utilize git to collaborate? | 
-What did your group do to try to keep your code DRY while many people collaborated on it? | 
-What was a technical challenge that you faced as a group? | 
-What was a team/personal challenge that you faced as a group? | 
-What could your team have done better? | 
-What was your application's ERD? (include a link) | 
-What is your Trello URL? | 
-What is the Heroku URL of your deployed application? | 
+How did your team break up the work to be done? | We divided work by MVC. We have one Model/DB person, one View person, and two Controller people. Most of the individual work were done at home. Whenever there was a need to collaborate or communicate, we did it at Ada as a whole group or pairs.
+How did your team utilize git to collaborate? | All of us had our own branches on local and/or github, especially for features we were not sure about. We learned about how to resolve merge conflicts, and realized that no merge conflicts doesn't mean no errors during merging. Although we planned to use PR in our project, we didn't try it because of time constraint. We should definitely use it in our future group project.
+What did your group do to try to keep your code DRY while many people collaborated on it? | It's hard... We kinda prioritize our work to make the app work, rather than writing beautiful codes. We did some cleanup when the app was 90% ready for demo. We probably will do more after final deployment.
+What was a technical challenge that you faced as a group? | Cart logic. After discussions with tutor and PM, we realized that there were several ways to implement it. We compared them and chose one based on how comfortable we were with the different options. It still took us a long time to implement that function.
+What was a team/personal challenge that you faced as a group? | We believed that all members in the team did their best to make our app not just work but better than we expected.
+What could your team have done better? | We probably should write controller tests first next time.
+What was your application's ERD? (include a link) | https://www.lucidchart.com/documents/edit/619b0172-f884-42d1-91fe-ea00101d45c1/0
+What is your Trello URL? | https://trello.com/b/2tpzc7EV/puppsy
+What is the Heroku URL of your deployed application? | https://puppsy.herokuapp.com/

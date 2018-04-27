@@ -6,5 +6,6 @@ class HomepageController < ApplicationController
     category_food = Category.find_by(name: "Food")
     @foods = category_food.products
     @categories = Category.all
+
   end
 end

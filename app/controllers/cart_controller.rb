@@ -45,7 +45,7 @@ class CartController < ApplicationController
 
   def update_cart_info
     @cart = Order.find_by(id: session[:cart_order_id])
-    if @cart
+    if @cart && @cart.id == session[:cart_order_id]
       @cart.name = params[:order][:name]
       @cart.email = params[:order][:email]
       @cart.street_address = params[:order][:street_address]
@@ -61,13 +61,17 @@ class CartController < ApplicationController
         # redirect_to order_path(@order.id)
         flash[:status] = :success
         flash[:result_text] = "Your order information has been successfully updated!"
-        redirect_to cart_path
+        redirect_to cart_path and return
       else
         flash[:status] = :failure
         flash[:result_text] = "We were unable to update your order information."
         flash[:messages] = @cart.errors.messages
-        redirect_to cart_path
+        redirect_to cart_path and return
       end
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "We were unable to find your cart."
+      render_404
     end
   end
 
@@ -93,26 +97,37 @@ class CartController < ApplicationController
     if @cart.nil?
       flash[:status] = :failure
       flash[:result_text] = "Unable to remove the items from your cart."
-      flash[:errors] = @cart.errors.messages
+      redirect_to cart_path and return
     end
-    @cart.order_items.each do |order_item|
-      order_item.destroy
+    if @cart.order_items.count > 0
+      @cart.order_items.each do |order_item|
+        order_item.destroy
+      end
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Your cart was already empty!"
     end
     redirect_to cart_path
   end
 
   def remove_single_item
-    @order_item = OrderItem.find_by(id: params[:id])
-    @item_name = @order_item.product.name
     @cart = Order.find_by(id: session[:cart_order_id])
-    if @order_item
+    @order_item = OrderItem.find_by(id: params[:id])
+    if @order_item && @cart && (@order_item.order_id == @cart.id)
+      @item_name = @order_item.product.name
       @order_item.destroy
       flash[:status] = :success
       flash[:result_text] = "#{@item_name} removed from your cart!"
     else
       flash[:status] = :failure
       flash[:result_text] = "Unable to remove the items from your cart."
-      flash[:errors] = @cart.errors.messages
+      if @cart
+        flash[:errors] = @cart.errors.messages
+      end
+      if @order_item
+        flash[:errors] = @order_item.errors.messages
+      end
+      redirect_to cart_path and return
     end
     if !(@cart.order_items.count > 0)
       render :empty_cart and return
@@ -150,59 +165,3 @@ private
     return total_quantity
   end
 end
-
-#
-# def add_to_cart
-#   if session[:cart_order_id].nil? #If there is no cart yet
-#     @order = Order.create status: "pending"
-#     session[:cart_order_id] = @order.id
-#     if @order.save
-#       flash[:status] = :success
-#       flash[:result_text] = "Welcome to the Puppsy shopping experience!"
-#     else
-#       flash[:status] = :failure
-#       raise
-#       flash[:result_text] = "We weren't able to create your shopping cart."
-#       flash[:mssages] = @order.errors.messages
-#       #some redirect, status: :bad_request
-#     end
-#   elsif @order = Order.find(session[:cart_order_id])
-#     flash[:status] = :success
-#   else
-#     flash[:status] = :failure
-#     flash[:result_text] = "We couldn't find your shopping cart."
-#     flash[:mssages] = @order.errors.messages
-#     #some redirect, status: :bad_request
-#   end
-#   if @product = Product.find(params[:id])
-#     flash[:status] = :success
-#     flash[:result_text] = "#{@product.name} has been successfully added to your cart!"
-#   else
-#     flash[:status] = :failure
-#     flash[:result_text] = "You have chosen an unrecognized product."
-#     flash[:messages] = @product.errors.messages
-#     render :index, status: :bad_request
-#   end
-#   duplicate = false
-#   @order.order_items.each do |order_item|
-#     if order_item.product.id == @product.id
-#       order_item.quantity += 1
-#       order_item.sav
-#       duplicate = true
-#       flash[:status] = :success
-#       flash[:result_text] = "#{@product.name} has been successfully added to your cart!"
-#     end
-#   end
-#   unless duplicate == true
-#     @order_item = OrderItem.create product_id: @product.id, order_id: @order.id, quantity: 1, is_shipped: "false"
-#     if !@order_item.save
-#       flash[:status] = :failure
-#       flash[:result_text] = "Could not add this product to your cart."
-#       flash[:messages] = @product.errors.messages
-#     else
-#       flash[:status] = :success
-#       flash[:result_text] = "#{@product.name} has been successfully added to your cart!"
-#     end
-#   end
-#   redirect_to cart_path
-# end
