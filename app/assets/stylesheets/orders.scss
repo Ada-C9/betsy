@@ -31,7 +31,7 @@
   width: 200px;
 }
 
- .display-products .double-button {
+.display-products .double-button {
   margin-left: 30px;
   background-color: rgb(64, 34, 2);
   color: rgb(192, 242, 205);
@@ -39,8 +39,8 @@
 }
 
 .display-products .double-button:hover {
- background-color: rgb(192, 242, 205);
- color: rgb(64, 34, 2);
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
 }
 
 .show-merchant .button {
@@ -51,55 +51,130 @@
 }
 
 .show-merchant .button:hover {
- background-color: rgb(192, 242, 205);
- color: rgb(64, 34, 2);
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
 }
 
 .orders-display .double-button {
- margin-left: 30px;
- background-color: rgb(64, 34, 2);
- color: rgb(192, 242, 205);
- font-size: 1.5rem;
+  margin-left: 30px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+  font-size: 1.5rem;
 
 }
 
 .orders-display .double-button:hover {
-background-color: rgb(192, 242, 205);
-color: rgb(64, 34, 2);
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
 }
 
 .display-my-order .double-button {
- margin-left: 30px;
- background-color: rgb(64, 34, 2);
- color: rgb(192, 242, 205);
- font-size: 1.5rem;
+  margin-left: 30px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+  font-size: 1.5rem;
 }
 
 .display-my-order .double-button:hover {
-background-color: rgb(192, 242, 205);
-color: rgb(64, 34, 2);
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
 }
 
 .new-product-form .double-button {
- margin-left: 30px;
- background-color: rgb(64, 34, 2);
- color: rgb(192, 242, 205);
- font-size: 1.5rem;
+  margin-left: 30px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+  font-size: 1.5rem;
 }
 
 .new-product-form .double-button:hover {
-background-color: rgb(192, 242, 205);
-color: rgb(64, 34, 2);
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
 }
 
 .new-category-form .double-button {
- margin:auto 30px;
- background-color: rgb(64, 34, 2);
- color: rgb(192, 242, 205);
- font-size: 1.2rem;
+  margin:auto 30px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+  font-size: 1.2rem;
 }
 
 .new-category-form .double-button:hover {
-background-color: rgb(192, 242, 205);
-color: rgb(64, 34, 2);
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+}
+
+.orders-display .orders-table .small {
+  width: 100px;
+  padding-left: 30px;
+}
+
+.orders-display .orders-table .middle {
+  width: 200px;
+}
+
+.orders-display .orders-table .large {
+  width: 400px;
+}
+
+.status-bar {
+  display: inline-block;
+  width: 100px;
+}
+
+#search-button {
+  margin: auto 20px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+}
+
+#search-button:hover {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+}
+
+#search-field {
+  display: inline;
+  width: 600px;
+}
+
+#search-bar {
+  justify-content: center;
+  text-align: center;
+}
+
+#example-tabs .tabs-title > a {
+  color: rgb(64, 34, 2);
+  font-size: 1.2rem;
+}
+
+#example-tabs .tabs-title > a:hover {
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+}
+
+.tabs-panel > p {
+  font-size: 2rem;
+}
+
+
+#search-button-2 {
+  margin: 20px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+}
+
+#search-button-2:hover {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+}
+
+#search-field-2 {
+  display: inline;
+  width: 600px;
+}
+
+#search-bar-2 {
+  justify-content: center;
+  text-align: center;
 }

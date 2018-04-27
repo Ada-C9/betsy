@@ -1,3 +1,4 @@
+<section class="cart-page">
 
 <h3>My Cart</h3>
 
@@ -39,6 +40,8 @@
   </tbody>
 </table>
 
-<%= link_to "Continue Shopping", products_path, class: "button" %>
-<%= link_to "Empty Cart", empty_cart_path(@cart), method: :patch, data: { confirm: "Are you sure you want to empty your entire cart?" }, class: "button" %>
-<%= link_to "Proceed to Checkout", new_order_path, class: "button" %>
+<%= link_to "Continue Shopping", products_path, class: "button double-button" %>
+<%= link_to "Empty Cart", empty_cart_path(@cart), method: :patch, data: { confirm: "Are you sure you want to empty your entire cart?" }, class: "button double-button" %>
+<%= link_to "Proceed to Checkout", new_order_path, class: "button double-button" %>
+
+</section>

@@ -18,7 +18,7 @@ describe CategoriesController do
   end
 
   describe 'show' do
-    it "can find an exsisting category" do
+    it "can find an existing category" do
       get category_path(Category.first)
       must_respond_with :success
     end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # resources :products, only: [:index, :show]
-
+  get 'merchants/by_name', to: 'merchants#by_name', as: 'merchant_by_name'
   resources :merchants do
     resources :products, only: [ :new, :create, :edit, :update]
   end
@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   resources :orders
   get "/my_orders", to: "orders#my_orders", as: "my_orders"
   get "/my_orders/:id", to: "orders#my_order", as: "my_order"
+  patch "/my_orders/:id/change_status" , to: "orders#change_status", as: "change_status"
 
+  get "/merchants/:id/show_products", to: "merchants#show_products", as: "show_products"
 
   resources :categories, only: [:index, :edit, :show]
   resources :carts, only: [:show]

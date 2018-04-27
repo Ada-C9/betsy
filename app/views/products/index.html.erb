@@ -1,9 +1,8 @@
 <h2>Delicious Products</h2>
 
-<%= form_tag product_by_name_path, method: :get do %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name, params[:name], required: true%>
-  <%= button_tag "Search", class: 'button is-primary is-outlined is-inverted is-small' %>
+<%= form_tag product_by_name_path, method: :get, id: "search-bar" do %>
+  <%= text_field_tag :name, params[:name], required: true, id: "search-field"%>
+  <%= button_tag "Search Bonbon", class: "button is-primary is-outlined is-inverted is-small", id: "search-button" %>
 <% end %>
 
 <table class= "treats-table">
@@ -25,7 +24,7 @@
         <%= link_to product.name, product_path(product) %>
       </td>
       <td>
-        <%= link_to product.merchant.username, merchant_path(product) %>
+        <%= link_to product.merchant.username, show_products_path(product.merchant) %>
       </td>
       <td>
         <%= stars(product.average_rating) %>

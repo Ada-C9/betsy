@@ -1,36 +1,37 @@
-<section class = "orders-display">
+<section class="orders-display">
 
-<%= link_to "Back to my account", merchant_path(session[:merchant_id]), class: "button float-right double-button" %>
+  <%= link_to "Back to my account", merchant_path(session[:merchant_id]), class: "button float-right double-button" %>
 
-<table class="orders-table">
-  <thead>
-    <tr>
-      <th>
-        ID
-      </th>
-      <th>
-        Date
-      </th>
-      <th>
-        My products
-      </th>
-      <th>
-        Revenue
-      </th>
-      <th>
-        Status
-      </th>
-    </tr>
-  </thead>
+  <table class="orders-table">
+    <thead>
+      <tr>
+        <th class="small">
+          ID
+        </th>
+        <th class="middle">
+          Date
+        </th>
+        <th class="large">
+          My products
+        </th>
+        <th class="middle">
+          Revenue
+        </th>
+        <th>
+          Status
+        </th>
+      </tr>
+    </thead>
 
-  <tbody>
+
+  <tbody class="table-font">
     <% @orders.each do |order| %>
     <tr>
-      <th>
+      <th class="small">
         <%= link_to order.id, my_order_path(order) %>
       </th>
       <td>
-        <%=  order.created_at %>
+        <%=  display_date(order.created_at) %>
       </td>
       <td>
         <% revenue = []%>
@@ -43,7 +44,7 @@
       </td>
       <td>$<%= display_dollars(revenue.sum)%></td>
       <td>
-        <%= form_for order do |f| %>
+        <%= form_for order, url: change_status_path(order) do |f| %>
         <%= f.label :status %>
         <%= f.select :status, options_for_select([["#{order.status}",""],"Pending", "Paid", "Completed", "Cancelled"],:disabled => ["Pending"],:prompt => ["#{order.status}"] )%>
         <%= f.submit "Change status"%>
@@ -53,5 +54,6 @@
     <% end %>
   </tboby>
 </table>
+
 
 </section>

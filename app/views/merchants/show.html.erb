@@ -15,7 +15,7 @@
 
   <%= link_to "View all orders", my_orders_path, class: "button" %>
 
-  <h3>My Revenue</h3>
+  <h2>My Revenue</h2>
   <ul class="tabs" data-tabs id="example-tabs">
     <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Total Revenue</a></li>
     <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Revenue: Pending Orders</a></li>
@@ -40,7 +40,5 @@
     <p>$ <%= display_dollars(@merchant.my_revenue_by_status("cancelled")) %></p>
   </div>
 </div>
-
-  <h3>My Orders</h3>
 
 </section>

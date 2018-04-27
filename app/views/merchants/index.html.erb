@@ -1,7 +1,13 @@
 <section class="all-merchants">
+
+  <%= form_tag merchant_by_name_path, method: :get, id: "search-bar-2" do %>
+    <%= text_field_tag :username, params[:username], required: true, id: "search-field-2"%>
+    <%= button_tag "Search Baker", class: 'button is-primary is-outlined is-inverted is-small', id: "search-button-2"  %>
+  <% end %>
+
   <% @merchants.each do |merchant| %>
   <h2>
-    <%= link_to merchant.username, merchant_path(merchant) %>
+    <%= link_to merchant.username, show_products_path(merchant.id) %>
   </h2>
   <ul class="merchant-display">
     <% merchant.show_four.each do |pro| %>
@@ -13,4 +19,6 @@
   </ul>
   <% end %>
 </section>
+<%if @merchants.count > 4%>
 <%= will_paginate @merchants %>
+<%end%>
