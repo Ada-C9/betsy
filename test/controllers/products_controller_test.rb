@@ -33,7 +33,7 @@ describe ProductsController do
     end
   end
   #
-  # #NOTE: The following methods are only available to a logged in user aka a 'merchant'.
+  # The following methods are only available to a logged in user aka a 'merchant'.
 
   describe 'logged in merchant' do
     before do
@@ -157,14 +157,14 @@ describe ProductsController do
 
       it "retires an item that stock has reached 0" do
         @product.stock = 0
-        @product.visible = true
+        @product.visible = false
         @product.save
 
         patch retire_path(@product)
         @product.reload
         @product.wont_be :visible
         must_respond_with :redirect
-        flash[:status].must_equal :success
+        flash[:status].must_equal :failure
       end
 
       it 'will not retire an item that is already retired and will respond with result_text if the product cannot be retired' do
@@ -177,10 +177,21 @@ describe ProductsController do
         must_respond_with :redirect
         flash[:status].must_equal :failure
       end
+
+      it 'unretires an item thats stock is not 0' do
+        @product.visible = false
+        @product.stock = 5
+        @product.save
+        patch retire_path(@product)
+        @product.reload
+        @product.must_be :visible
+        must_respond_with :redirect
+        flash[:status].must_equal :success
+      end
     end
   end
+  # These are tests for a guest user. No ability to alter or create products. Only show and index.
 
-  #NOTE: These are tests for a guest user. No ability to alter or create products. Only show and index.
 
   describe 'guest user' do
     it 'rejects requests for new product form' do
@@ -246,6 +257,5 @@ describe ProductsController do
       skip
     end
   end
-end
 
-# TODO: Tests for the following methods: new, create, edit, update. product_params, find_products
+end
