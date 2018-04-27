@@ -26,37 +26,49 @@
     <!-- FOUNDATION STYLING FOR DROP DOWN MENUS -->
     <div id="nav-bar float-left">
       <h3 class= "menu toggle"></h3>
-      <nav>
+      <nav id="nav-list">
+
         <div class= "top-bar">
+
           <div class= "top-bar-left">
+            <% if session[:merchant_id] %>
+
             <ul class="menu toggle" data-dropdown-menu>
               <li class= "go-away-blue-box">
-                <a class="dropdown-1">Browse</a>
+                <a class="dropdown-1 button">My Account</a>
                 <ul class="menu">
-                  <li><a href="/products">All Products</a></li>
                   <li>
-                    <a href="/categories">All Products By Category</a>
+                    <%= link_to "Profile", merchant_path(session[:merchant_id]), class: "button" %>
                   </li>
                   <li>
-                    <a href="/merchants">All Products By Baker</a>
+                    <%= link_to "My products", display_path(session[:merchant_id]), class: "button" %>
+                  </li>
+                  <li>
+                    <%= link_to "My orders", my_orders_path, class: "button" %>
                   </li>
                 </ul>
               </li>
             </ul>
+            <% end %>
+
           </div>
+
+          <%= link_to "Bonbons", products_path, class: "button" %>
+          <%= link_to "Categories", categories_path, class: "button" %>
+          <%= link_to "Bakers", merchants_path, class: "button double" %>
+
 
           <div class="user-nav columns large-3 small-12 float-right">
 
             <% if session[:cart_id] %>
-            <%= link_to "My Cart", cart_path(session[:cart_id]), class: "float-right" %>
+            <%= link_to "My Cart", cart_path(session[:cart_id]), class: "float-right button" %>
 
             <% end %>
 
             <% if session[:merchant_id] %>
-            <%= link_to "Log Out", logout_path, method: :delete, class: "float-right" %>
-            <%= link_to "Logged in as #{Merchant.find(session[:merchant_id]).username}", merchant_path(session[:merchant_id]), class: "float-right" %>
+            <%= link_to "Log Out", logout_path, method: :delete, class: "float-right button" %>
             <% else %>
-            <%= link_to "Log In", "/auth/github", class: "float-right" %>
+            <%= link_to "Log In", "/auth/github", class: "float-right button" %>
             <% end %>
 
           </div>
