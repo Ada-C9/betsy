@@ -5,10 +5,9 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    find_merchant
     if params[:merchant_id]
       @category = Category.new
-    else
-      flash[:message] = "You must log in to add a category"
     end
   end
 
@@ -38,4 +37,5 @@ class CategoriesController < ApplicationController
     @category = Category.find_by(id: params[:id])
     head :not_found unless @category
   end
+
 end
