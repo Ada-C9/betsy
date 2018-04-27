@@ -1,0 +1,69 @@
+<div class="product-row">
+  <% if @product.status == false || @product.stock == 0 %></div>
+  <div class="banner">
+    <h5>This product is currently unavailable</h5>
+  </div>
+  <% end %>
+  <section id = "show-page-content">
+    <section class = "show-product-view">
+      <article class="block1">
+        <%= image_tag(@product.image_url) %>
+
+
+        <section class ="product-info">
+          <h2><%= @product.name %></h2>
+          <h3>By <%= link_to @merchant.username, user_path(@merchant.id) %></h3>
+          <p><%= render partial: "layouts/starrating", locals: { rating: @product.average_rating } %>
+            (<%= @product.reviews.count %>)</p>
+
+
+
+            <p>Price:$  <%= (@product.price) %></p>
+            <%if @product.stock == 0%>
+            <span class="green">No stock for retired products </span>
+            <% else %>
+            <% if @product.stock != nil && @product.stock != 0 %>
+            <p><span class="green">In Stock</span> (only <%= @product.stock %> left)</p>
+            <% else %>
+            <p><span class="grey">Out of Stock</span></p>
+            <% end %>
+            <% end %>
+            <p> Description:
+              <%= @product.description %></p>
+
+
+
+
+              <% if @product.stock != 0 %>
+              <%= form_for @order_item do |f| %>
+              <%= f.hidden_field :product_id, value: @product.id%>
+              <%= f.label :Quantity %>
+              <%= f.select :quantity, (1..@product.stock).to_a %>
+              <%= f.submit "Add to Cart", class: "cart button"%>
+              <% end %>
+              <%end%>
+
+            </div>
+
+
+            <div class="review row">
+              <section class = "show-product-review">
+                <h3>Customer Reviews:</h3><span></span>
+                <p><span><%= render partial: "layouts/starrating", locals: { rating: @product.average_rating } %></span> (<%= @product.reviews.count %>)</p>
+                <article class="reviews">
+                  <% @product.reviews.each do |review| %>
+                  <section>
+                    <p><span><%= render partial: "layouts/starrating", locals: { rating: review.rating } %></span></p>
+                    <% if @user %>
+                    <p>Reviewed by: <%= @user.username %></p>
+                    <% else %>
+                    <p>Reviewed by: Guest </p>
+                    <% end %>
+                    <p>Reviewed on: <%= review.created_at.localtime.strftime("%d %b %Y") %></p>
+                    <p>Review: "<%= review.text_review %>"</p>
+                  </section>
+                  <% end %>
+                  <%= link_to "Write a Review", new_product_review_path(@product.id), class: " button" %>
+                </article>
+
+              </div>
