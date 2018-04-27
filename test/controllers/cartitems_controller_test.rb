@@ -1,27 +1,52 @@
 require "test_helper"
 
 describe CartitemsController do
+
   describe "create" do
-    
+
   end
 
   describe "update" do
      it "can update quantity if there is enough stock" do
-       cartitem1 = Cartitem.first
-       new_cartitem_info = {quantity: cartitem1.quantity + 1}
-       new_quantity = cartitem1.quantity + 1
-       patch cartitem_path(cartitem1), params: { cartitem: new_cartitem_info }
+       cartitem = Cartitem.first
+       old_quantity = cartitem.quantity
+       new_cartitem_info = { quantity: (old_quantity - 1) }
+       patch cartitem_path(cartitem), params: { cartitem: new_cartitem_info }
 
        must_respond_with :redirect
-       must_redirect_to cart_path(cartitem1.cart)
-       Cartitem.first.quantity.must_equal new_quantity
+       must_redirect_to cart_path(cartitem.cart)
+       Cartitem.first.quantity.must_equal (old_quantity - 1)
      end
 
+
+     it "does not update quantity if there is not enough stock" do
+       cartitem = Cartitem.first
+       old_quantity = cartitem.quantity
+       new_cartitem_info = { quantity: 100 }
+
+       patch cartitem_path(cartitem), params: { cartitem: new_cartitem_info }
+
+       must_respond_with :redirect
+       must_redirect_to cart_path(cartitem.cart)
+       Cartitem.first.quantity.must_equal old_quantity
+     end
+
+     it "does not update the DB for bogus data" do
+       cartitem = Cartitem.first
+       old_quantity = cartitem.quantity
+       new_cartitem_info = { quantity: -1 }
+
+       patch cartitem_path(cartitem), params: { cartitem: new_cartitem_info }
+
+       must_respond_with :redirect
+       must_redirect_to cart_path(cartitem.cart)
+       Cartitem.first.quantity.must_equal old_quantity
+     end
   end
 
 
   describe "destroy" do
-    it "succeeds for an extant cartitem ID" do
+    it "succeeds for an existing cartitem ID" do
       item = Cartitem.first
       item_id = item.id
       old_item_count = Cartitem.count

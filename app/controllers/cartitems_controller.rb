@@ -2,12 +2,7 @@ class CartitemsController < ApplicationController
   before_action :find_cartitem, only: [:show, :update, :destroy]
   before_action :cartitem_params, only: [:update, :create]
 
-  def new
-    @cartitem = Cartitem.new
-  end
-
   def create
-
     @cart = Cart.find_by(id: session[:cart_id])
     if @cart
       @cartitem = Cartitem.new(cartitem_params)
@@ -45,8 +40,8 @@ class CartitemsController < ApplicationController
 
 
   def update
-    @cartitem.update_attributes(cartitem_params)
-    if @cartitem.product.available?(@cartitem.quantity)
+    @cartitem.assign_attributes(cartitem_params)
+    if @cartitem.product.available?(params[:cartitem][:quantity].to_i)
       if @cartitem.save
         flash[:status] = :success
         flash[:result_text] = "Successfully updated your #{@cartitem.product.name} quantity"
