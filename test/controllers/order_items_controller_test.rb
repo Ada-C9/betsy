@@ -13,6 +13,7 @@ describe OrderItemsController do
 
   describe 'Update' do
     it 'should update a current valid order item' do
+
       proc{
       patch order_item_path(order_items(:order_item_4)), params:{
             order_item:{
@@ -60,9 +61,6 @@ describe OrderItemsController do
   describe 'Set-status' do
     it 'is able to set the status for a current order' do
 
-
-        order_items(:order_item_1).order.status.must_equal 'pending'
-
       put order_item_set_status_path(order_items(:order_item_1).id), params:{
         order_item:{
           quantity: order_items(:order_item_1).quantity,
@@ -71,8 +69,8 @@ describe OrderItemsController do
           order: order_items(:order_item_1).order
         }
       }
-
       updated_order_item = OrderItem.find_by(id: order_items(:order_item_1).id)
+
       updated_order_item.order.status.must_equal "complete"
       must_respond_with :found
 

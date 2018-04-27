@@ -2,27 +2,28 @@ class OrdersController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:confirmation]
 
-  def index
-    @orders = Order.all
-  end
+  # def index
+  #   @orders = Order.all
+  # end
 
-  def new
-    @order = Order.new
-  end
+  # def new
+  #   @order = Order.new
+  # end
 
-  def create
-    @order = Order.new(order_params)
-    if @order.save
-      flash[:status] = :success
-      flash[:result_text] = "Your order has been made - congratulations!"
-      redirect_to order_confirmation_path(@order.id)
-    else
-      flash[:status] = :failure
-      flash[:result_text] = "Something has gone wrong in your orders processing."
-      render :new, status: :bad_request
-      flash[:messages] = @order.errors.messages
-    end
-  end
+# #TODO
+#   def create
+#     @order = Order.new(order_params)
+#     if @order.save
+#       flash[:status] = :success
+#       flash[:result_text] = "Your order has been made - congratulations!"
+#       redirect_to order_confirmation_path(@order.id)
+#     else
+#       flash[:status] = :failure
+#       flash[:result_text] = "Something has gone wrong in your orders processing."
+#       render :new, status: :bad_request
+#       flash[:messages] = @order.errors.messages
+#     end
+#   end
 
   def confirmation
     @order = Order.find_by(id: params[:id])
@@ -38,12 +39,13 @@ class OrdersController < ApplicationController
     end
   end
 
-  def edit
-    @order = Order.find_by(id: params[:id])
-    if @order.nil?
-      render_404
-    end
-  end
+
+  # def edit
+  #   @order = Order.find_by(id: params[:id])
+  #   if @order.nil?
+  #     render_404
+  #   end
+  # end
 
   def update
   @order = Order.find_by(id: params[:id])
@@ -74,28 +76,25 @@ class OrdersController < ApplicationController
       if @order.save
         flash[:status] = :success
         flash[:result_text] = "Your order has been cancelled!"
-      else
-        flash[:status] = :failure
-        flash[:result_text] = "Something has gone wrong in your orders cancellation."
-        flash[:messages] = @order.errors.messages
       end
       redirect_to products_path
     end
   end
 
-  def destroy
-    @order = Order.find_by(id: params[:id])
-    if @order.nil?
-      render_404
-    else
-      if @order
-        @order.order_items.each do |item|
-          item.destroy
-        end
-        @order.destroy
-      end
-    end
-  end
+
+  # def destroy
+  #   @order = Order.find_by(id: params[:id])
+  #   if @order.nil?
+  #     render_404
+  #   else
+  #     if @order
+  #       @order.order_items.each do |item|
+  #         item.destroy
+  #       end
+  #       @order.destroy
+  #     end
+  #   end
+  # end
 
   private
 

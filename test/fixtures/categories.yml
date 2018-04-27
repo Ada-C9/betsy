@@ -18,3 +18,8 @@ category_9:
   name: Category_9
 category_10:
   name: Category_10
+Outfit:
+  name: Outfit
+Food:
+  name: Food
+  

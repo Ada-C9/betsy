@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
+
     if @user.nil?
       redirect_to github_login_path
     end
