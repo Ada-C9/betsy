@@ -253,44 +253,6 @@ describe Merchant do
     end
   end
 
-  describe "my_carts" do
-    before do
-      @merchant1 = Merchant.first
-      product1 = {
-        name: 'product1',
-        price: 233,
-        merchant: @merchant1,
-      }
-      product2 = {
-        name: 'product2',
-        price: 233,
-        merchant: @merchant1,
-      }
-
-      new_products = [product1, product2]
-      new_products.each do |prod|
-        @merchant1.products << Product.create(prod)
-      end
-    end
-
-    it "should return all the carts that have at least one product one time" do
-      cartitem1 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: Cart.first.id, quantity: 2)
-      cartitem2 = Cartitem.create(product_id: @merchant1.products.last.id, cart_id: Cart.first.id, quantity: 1)
-      cartitem3 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: Cart.last.id, quantity: 3)
-
-      @merchant1.my_carts.count.must_equal 2
-
-    end
-
-    it "should return an empty array when no cart have my items" do
-      cartitem1 = Cartitem.create(product_id: Product.last.id + 1, cart_id: Cart.first.id, quantity: 2)
-      cartitem2 = Cartitem.create(product_id: Product.last.id + 2, cart_id: Cart.first.id, quantity: 1)
-      cartitem3 = Cartitem.create(product_id: Product.last.id + 3, cart_id: Cart.last.id, quantity: 3)
-
-      @merchant1.my_carts.count.must_equal 0
-    end
-
-
     describe "my_orders" do
       before do
         @merchant1 = Merchant.first
@@ -320,22 +282,23 @@ describe Merchant do
 
       it "should return every order that has one of your products" do
         order1 = Order.create(cart_id: @cart1.id, status: "pending")
-      
+
         @merchant1.my_orders.count.must_equal 1
       end
-
-
     end
 
     describe "my_total_revenue" do
       it "should return 0 when there are no orders for merchant" do
-        merchant = Merchant.first
+        merchant = Merchant.create!(uid: 12355, provider: "github", username: "hi", email: "hi@something.com")
 
         merchant.my_total_revenue.must_be_kind_of Integer
         merchant.my_total_revenue.must_equal 0
       end
 
       it "should return the sum of all your products in different orders" do
+        merchant = merchants(:wini)
+
+        merchant.my_total_revenue.
       end
     end
   end

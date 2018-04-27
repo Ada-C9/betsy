@@ -3,6 +3,11 @@ require "test_helper"
 describe CartitemsController do
 
   describe "create" do
+    it "should create a cartitem when a cart already exists " do
+
+
+    end
+    end
 
   end
 

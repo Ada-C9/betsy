@@ -28,16 +28,16 @@
     <p>$ <%= display_dollars(@merchant.my_total_revenue) %></p>
   </div>
   <div class="tabs-panel" id="panel2">
-    <p>$ <%= display_dollars(@pending_orders) %></p>
+    <p>$ <%= display_dollars(@merchant.my_revenue_by_status("pending")) %></p>
   </div>
   <div class="tabs-panel" id="panel3">
-    <p>$ <%= display_dollars(@paid_orders) %></p>
+    <p>$ <%= display_dollars(@merchant.my_revenue_by_status("paid")) %></p>
   </div>
   <div class="tabs-panel" id="panel4">
-    <p>$ <%= display_dollars(@completed_orders) %></p>
+    <p>$ <%= display_dollars(@merchant.my_revenue_by_status("completed")) %></p>
   </div>
   <div class="tabs-panel" id="panel5">
-    <p>$ <%= display_dollars(@cancelled_orders) %></p>
+    <p>$ <%= display_dollars(@merchant.my_revenue_by_status("cancelled")) %></p>
   </div>
 </div>
 
