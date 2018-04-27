@@ -110,9 +110,10 @@ class ProductsController < ApplicationController
 
   def by_name
     product_name = params[:name]
-    @products = Product.where(visible: true).where("LOWER(name) like ?", "%#{product_name.downcase}%")
+    @products = Product.where(visible: true).where("LOWER(name) like ?", "%#{product_name.downcase}%").paginate(:page => params[:page], :per_page => 5)
 
     render :index
+
   end
 
   private
