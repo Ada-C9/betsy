@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe ProductsController do
+
   # describe 'Index' do
   #   it 'display all products' do
   #     get products_path
@@ -99,8 +100,11 @@ describe ProductsController do
 
     it 'will not allow a user to create a product for another user ID' do
 
+      #Arrange
       login(@user_1)
       session[:user_id].must_equal @user_1.id
+
+      #Act
 
       proc {
         post user_products_path(users(:user_2).id),
@@ -134,75 +138,75 @@ describe ProductsController do
   #   end
   # end
 
-  # describe 'Edit' do
-  #   it 'will provide the populated fields necessary for editing' do
-  #       get edit_product_path(products(:product_4).id)
-  #       must_respond_with :success
-  #       #update to confirm all fields are passing in correctly#
-  #   end
-  #
-  #   it 'will render 404 not found for a request to edit a product that does not exist' do
-  #     non_existant_id = -100001
-  #     get edit_product_path(non_existant_id)
-  #     must_respond_with :not_found
-  #   end
-  # end
+  describe 'Edit' do
+    it 'will provide the populated fields necessary for editing' do
+        get edit_product_path(products(:product_4).id)
+        must_respond_with :success
+        #update to confirm all fields are passing in correctly#
+    end
 
-  # describe 'Update' do
-  #   it 'will allow a user to update an existing product' do
-  #
-  #   proc  {patch product_path(products(:product_1).id), params:{
-  #       product:{ name: "new product name",
-  #         is_active: products(:product_1).is_active,
-  #         description: products(:product_1).description,
-  #         price: products(:product_1).price,
-  #         photo_url: products(:product_1).photo_url,
-  #         stock: products(:product_1).stock,
-  #         user_id: users(:user_1).id }
-  #     }}.wont_change 'Product.count'
-  #     must_respond_with :redirect
-  #     must_redirect_to product_path(products(:product_1))
-  #
-  #   end
-  #
-  #   it 'will render 404 if the product being requested to update does not exist' do
-  #     non_existant_id = -100001
-  #     patch product_path(non_existant_id)
-  #     must_respond_with :not_found
-  #   end
+    it 'will render 404 not found for a request to edit a product that does not exist' do
+      non_existant_id = -100001
+      get edit_product_path(non_existant_id)
+      must_respond_with :not_found
+    end
+  end
 
-    # it "will not allow other users to update another user's product" do
-    #   proc  {patch product_path(products(:product_1)), params:{
-    #       product:{ name: "new product name",
-    #         is_active: products(:product_2).is_active,
-    #         description: products(:product_2).description,
-    #         price: products(:product_2).price,
-    #         photo_url: products(:product_2).photo_url,
-    #         stock: products(:product_2).stock,
-    #         user_id: users(:user_1).id }
-    #     }}.wont_change 'Product.count'
-    #     must_respond_with :redirect
-    # end
+  describe 'Update' do
+    it 'will allow a user to update an existing product' do
 
-    # it "will not allow a user to update a product with invalid data" do
-    #   proc  {patch product_path(products(:product_1).id), params:{
-    #       product:{ name: "",
-    #         is_active: products(:product_1).is_active,
-    #         description: products(:product_1).description,
-    #         price: products(:product_1).price,
-    #         photo_url: products(:product_1).photo_url,
-    #         stock: products(:product_1).stock,
-    #         user_id: users(:user_1).id }
-    #     }}.wont_change 'Product.count'
-    #     must_respond_with :bad_request
-    # end
+    proc  {patch product_path(products(:product_1).id), params:{
+        product:{ name: "new product name",
+          is_active: products(:product_1).is_active,
+          description: products(:product_1).description,
+          price: products(:product_1).price,
+          photo_url: products(:product_1).photo_url,
+          stock: products(:product_1).stock,
+          user_id: users(:user_1).id }
+      }}.wont_change 'Product.count'
+      must_respond_with :redirect
+      must_redirect_to product_path(products(:product_1))
 
-      # it "will not allow a user to modify the amount of stock" do
-      #
-      # end
+    end
+
+    it 'will render 404 if the product being requested to update does not exist' do
+      non_existant_id = -100001
+      patch product_path(non_existant_id)
+      must_respond_with :not_found
+    end
+
+    it "will not allow other users to update another user's product" do
+      proc  {patch product_path(products(:product_1)), params:{
+          product:{ name: "new product name",
+            is_active: products(:product_2).is_active,
+            description: products(:product_2).description,
+            price: products(:product_2).price,
+            photo_url: products(:product_2).photo_url,
+            stock: products(:product_2).stock,
+            user_id: users(:user_1).id }
+        }}.wont_change 'Product.count'
+        must_respond_with :redirect
+    end
+
+    it "will not allow a user to update a product with invalid data" do
+      proc  {patch product_path(products(:product_1).id), params:{
+          product:{ name: "",
+            is_active: products(:product_1).is_active,
+            description: products(:product_1).description,
+            price: products(:product_1).price,
+            photo_url: products(:product_1).photo_url,
+            stock: products(:product_1).stock,
+            user_id: users(:user_1).id }
+        }}.wont_change 'Product.count'
+        must_respond_with :bad_request
+    end
+
+      it "will not allow a user to modify the amount of stock" do
+
+      end
 
 
-  # end
+  end
 
   describe 'Set Status' do
 
