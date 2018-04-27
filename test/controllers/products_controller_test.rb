@@ -41,42 +41,99 @@ describe ProductsController do
     end
 
     describe 'new' do
-      it 'responds with success' do
-        skip
+      it 'responds with success for a logged in user' do
+        get new_product_path
+        must_respond_with :success
       end
     end
 
     describe 'create' do
       it 'can add a valid product' do
-        skip
+        product_data = products(:cheesecake)
+
+        counting = Product.count
+
+        product_data.must_be :valid?
+
+        post products_path, params: { product: product_data.attributes }
+
+        must_respond_with :redirect
+        must_redirect_to product_path(Product.last.id)
+
+        Product.count.must_equal counting + 1
+        Product.last.name.must_equal product_data[:name]
       end
 
       it 'will not add an invalid product' do
-        skip
+        product_data = {
+          name: " "
+        }
+        old_count = Product.count
+
+        # Assumptions
+        Product.new(product_data).wont_be :valid?
+
+        # Act
+        post products_path, params: { product: product_data }
+
+        # Assert
+        must_respond_with :bad_request
+        Product.count.must_equal old_count
       end
     end
 
     describe 'edit' do
       it 'sends success if the product does exsist' do
-        skip
+        get edit_product_path(Product.first)
+        must_respond_with :success
       end
 
       it 'sends not_found if the book does not exsist' do
-        skip
+        product_id = Product.last.id + 1
+
+        get edit_product_path(product_id)
+
+        must_respond_with :not_found
       end
     end
 
     describe 'update' do
       it 'updates an exsisting product with valid data' do
-        skip
+        product = Product.first
+        product_data = product.attributes
+        product_data[:name] = "some updated name"
+
+        # Assumptions
+        product.assign_attributes(product_data)
+        product.must_be :valid?
+
+        # Act
+        patch product_path(product), params: { product: product_data }
+
+        # Assert
+        must_redirect_to product_path(product)
+
+        product.reload
+        product.name.must_equal product_data[:name]
       end
 
       it 'sends a bad request for invalid data' do
-        skip
-      end
+        product = Product.first
+        product_data = product.attributes
+        product_data[:name] = ""
 
-      it 'sends not_found if the the product does not exsist' do
-        skip
+        # Assumptions
+        product.assign_attributes(product_data)
+        product.wont_be :valid?
+
+        # Act
+        patch product_path(product), params: { product: product_data }
+
+        # Assert
+        must_respond_with :bad_request
+
+        product.reload
+        product.name.wont_equal product_data[:name]
       end
     end
 
@@ -93,7 +150,7 @@ describe ProductsController do
         skip
       end
 
-      it 'will resoind with result_text if the product cannot be retired' do
+      it 'will respond with result_text if the product cannot be retired' do
         skip
       end
     end
@@ -102,9 +159,50 @@ describe ProductsController do
   #NOTE: These are tests for a guest user. No ability to alter or create products. Only show and index.
 
   describe 'guest user' do
+    it 'rejects requests for new product form' do
+      get new_product_path
+      must_respond_with :redirect
+    end
 
+    it 'rejects requests to create a product' do
+      product_data = products(:cheesecake)
+
+      old_count = Product.count
+
+      # Assumptions
+      product_data.must_be :valid?
+
+      # Act
+      post products_path, params: { product: product_data }
+
+      must_respond_with :redirect
+      Product.count.must_equal old_count
+    end
+
+    it 'rejectes requests for the edit form' do
+      get edit_product_path(Product.first.id)
+      must_respond_with :redirect
+    end
+
+    it 'rejects requests to update a product' do
+      product = Product.first
+      product_data = product.attributes
+      product_data[:name] = "some updated name"
+
+      # Assumptions
+      product.assign_attributes(product_data)
+      product.must_be :valid?
+
+      # Act
+      patch product_path(product), params: {product: product_data}
+
+      must_respond_with :unauthorized
+    end
+
+    it 'rejects requests to retire a product' do
+      skip
+    end
   end
-
 end
 
 # TODO: Tests for the following methods: new, create, edit, update. product_params, find_products

@@ -1,37 +1,40 @@
+require 'pry'
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :retire, :destroy]
 
   def homepage;end
 
   def index
-    if params[:merchant_id]
-      @merchant = Merchant.find(params[:merchant_id])
-      @products = @merchant.products
-    else
-      @products = Product.where(visible: true).paginate(:page => params[:page], :per_page => 5)
-    end
+    @products = Product.where(visible: true).paginate(:page => params[:page], :per_page => 5)
   end
 
+
   def new
-    if params[:merchant_id]
+    if session[:merchant_id]
       @product = Product.new(merchant_id: params[:merchant_id])
     else
       flash[:message] = "You must log in to add a product"
+      redirect_back fallback_location: products_path
     end
   end
 
   def create
-    @product = Product.new(product_params)
-
-    if @product.save
-      flash[:status] = :success
-      flash[:result_text] = "Product added successfully"
-      redirect_to product_path(@product)
+    if session[:merchant_id]
+      @product = Product.new(product_params)
+      if @product.save
+        flash[:status] = :success
+        flash[:result_text] = "Product added successfully"
+        redirect_to product_path(@product)
+      else
+        flash.now[:status] = :failure
+        flash.now[:result_text] = "Failed to add new product"
+        flash.now[:messages] = @product.errors.messages
+        render :new, status: :bad_request
+      end
     else
-      flash.now[:status] = :failure
-      flash.now[:result_text] = "Failed to add new product"
-      flash.now[:messages] = @product.errors.messages
-      render :new, status: :bad_request
+      flash[:status] = :failure
+      flash[:result_text] = "You must be logged in to do that"
+      redirect_back fallback_location: products_path
     end
   end
 
@@ -40,18 +43,34 @@ class ProductsController < ApplicationController
     @review = Review.new
   end
 
-  def edit; end
-
-  def update
-    @product.assign_attributes(product_params)
-    @product.merchant_id = session[:merchant_id]
-
-    if @product.save
-      redirect_to product_path(@product)
+  def edit
+    if session[:merchant_id]
+      @product = Product.find(params[:id])
     else
-      render :edit, status: :bad_request
+      flash[:status] = :failure
+      flash[:result_text] = "You must be logged in to do that"
+      redirect_to products_path
+      return
     end
   end
+
+  def update
+    if session[:merchant_id]
+      @product.merchant_id = session[:merchant_id]
+      @product.assign_attributes(product_params)
+      if @product.save
+        redirect_to product_path(@product)
+      else
+        render :edit, status: :bad_request
+      end
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "You must be logged in to do that"
+      redirect_to products_path, status: :unauthorized
+      return
+    end
+  end
+
 
   def retire
     if session[:merchant_id]
@@ -88,12 +107,11 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    return params.require(:product).permit(:name, :price, :merchant_id, :description, :image, :stock, :visible, category_ids: [])
+    params.require(:product).permit(:name, :price, :merchant_id, :description, :image, :stock, :visible, category_ids: [])
   end
 
   def find_product
     @product = Product.find_by(id: params[:id])
     head :not_found unless @product
   end
-
 end
