@@ -17,4 +17,9 @@ class MerchantsController < ApplicationController
   def display
     @merchant = Merchant.find_by(id: params[:merchant_id])
   end
+
+  def show_products
+    @products = Product.where(merchant_id: params[:id])
+    @merchant = Merchant.find_by(id: params[:id])
+  end
 end

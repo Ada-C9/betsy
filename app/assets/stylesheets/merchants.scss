@@ -42,3 +42,12 @@
 .edit-product, .display-products, .create-category {
   padding: 30px 50px;
 }
+
+
+.show-merchant-products .grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  grid-gap: 50px;
+  margin-bottom: 3em;
+}

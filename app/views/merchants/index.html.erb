@@ -1,7 +1,7 @@
 <section class="all-merchants">
   <% @merchants.each do |merchant| %>
   <h2>
-    <%= link_to merchant.username, merchant_path(merchant) %>
+    <%= link_to merchant.username, show_products_path(merchant.id) %>
   </h2>
   <ul class="merchant-display">
     <% merchant.show_four.each do |pro| %>

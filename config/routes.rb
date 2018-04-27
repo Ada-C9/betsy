@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "/my_orders", to: "orders#my_orders", as: "my_orders"
   get "/my_orders/:id", to: "orders#my_order", as: "my_order"
 
+  get "/merchants/:id/show_products", to: "merchants#show_products", as: "show_products"
 
   resources :categories, only: [:index, :edit, :show]
   resources :carts, only: [:show]
