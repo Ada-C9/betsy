@@ -62,29 +62,39 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find_by(id: params[:id])
     if @product.nil?
-      render_404
-    else
+      render_404 and return
+    end
+    if @product.user_id == session[:user_id]
       @action = product_path(params[:id])
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Merchants are only allowed to modify their own products"
+      redirect_to root_path
     end
   end
 
   def update
     @product = Product.find_by(id: params[:id])
     if @product.nil?
-      render_404
-    else
+      render_404 and return
+    end
+    if @product.user_id == session[:user_id]
       @product.update(product_params)
       @product.price = params[:product][:price].to_i * 100
       if @product.save
         flash[:status] = :success
         flash[:result_text] = "#{@product.name} has been successfully updated!"
-        redirect_to product_path(@product.id)
+        redirect_to product_path(@product.id) and return
       else
         flash[:status] = :failure
         flash[:result_text] = "Update failed."
         flash[:messages] = @product.errors.messages
-        render :edit, status: :bad_request
+        render :edit, status: :bad_request and return
       end
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Merchants are only allowed to modify their own products"
+      redirect_to product_path(@product.id)
     end
   end
 
