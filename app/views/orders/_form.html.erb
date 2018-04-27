@@ -1,5 +1,4 @@
-
-<section>
+<section id="form-order">
 
   <%= form_for @order do |t|%>
 
@@ -38,7 +37,7 @@
 
   <%= t.hidden_field :status, value: "paid" %>
   <section class = "lowerbar">
-    <%= t.submit "Place Order", class: "button hollow"%>
+    <%= t.submit "Place Order", class: "button hollow double-button"%>
   </section>
   <%end%>
 
