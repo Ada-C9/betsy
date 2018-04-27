@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :require_login
+  skip_before_action :require_login, only: [:confirmation]
 
   def index
     @orders = Order.all

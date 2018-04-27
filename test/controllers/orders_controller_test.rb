@@ -10,6 +10,7 @@ require "test_helper"
 
   describe 'New' do
     it 'should be able to render a new order form' do
+
         get new_order_path
         must_respond_with :success
     end
@@ -50,6 +51,8 @@ require "test_helper"
       Order.last.billing_zip.must_equal "22222"
 
       flash[:result_text].must_equal "Your order has been made - congratulations!"
+
+    
 
     end
 

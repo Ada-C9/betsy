@@ -11,4 +11,11 @@ class ApplicationController < ActionController::Base
     render file: "/public/404.html", status: 404
   end
 
+  def require_login
+    
+    if @user.nil?
+      redirect_to github_login_path
+    end
+  end
+
 end

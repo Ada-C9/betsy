@@ -4,6 +4,7 @@ describe OrderItemsController do
 
   describe 'Update' do
     it 'should update a current valid order item' do
+
       proc{
       patch order_item_path(order_items(:order_item_4)), params:{
             order_item:{
@@ -50,6 +51,13 @@ describe OrderItemsController do
 
   describe 'Set-status' do
     it 'is able to set the status for a current order' do
+      # create a logged in user
+      user = User.new(provider: "github", uid: 40420, username: "drywall_bob", email: "bob@drywall.com")
+      initial_user_id = user.id
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
+      get auth_callback_path(:github)
+
+      binding.pry
       order_items(:order_item_1).order.status.must_equal 'pending'
 
       put order_item_set_status_path(order_items(:order_item_1).id), params:{
@@ -60,8 +68,8 @@ describe OrderItemsController do
           order: order_items(:order_item_1).order
         }
       }
-
       updated_order_item = OrderItem.find_by(id: order_items(:order_item_1).id)
+      binding.pry
       updated_order_item.order.status.must_equal "complete"
       must_respond_with :found
 
