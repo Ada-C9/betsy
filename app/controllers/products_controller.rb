@@ -30,8 +30,11 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.price = params[:product][:price].to_i * 100
-    @product.user = User.find(params[:user_id])
-    if @product.save
+    @product.user = User.find(session[:user_id])
+    unless @product.user_id == session[:user_id]
+      @product.destroy
+    end
+    if @product.save && ( @product.user_id == session[:user_id] )
       flash[:status] = :success
       flash[:result_text] = "#{@product.name} has been successfully created!"
       redirect_to product_path(@product.id)
@@ -40,6 +43,9 @@ class ProductsController < ApplicationController
       flash[:result_text] = "Could not create this product."
       flash[:messages] = @product.errors.messages
       render :new, status: :bad_request
+      if @product
+        @product.destroy
+      end
     end
   end
 
