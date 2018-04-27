@@ -40,8 +40,17 @@ class Merchant < ApplicationRecord
   end
 
   def my_orders
-    return [] if self.my_cartitems.empty?
-    Order.joins(:cart).where(carts: {id: self.my_carts.ids})
+    return [] if session[:merchant_id].nil?
+    orders = []
+    Order.all.each do |order|
+      order.cart.products.each do |product|
+        
+        if product.merchant_id == session[:merchant_id]
+          orders << order unless orders.include?(order)
+        end
+      end
+      return orders
+    end
   end
 
   def my_total_revenue
