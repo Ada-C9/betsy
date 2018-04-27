@@ -615,19 +615,25 @@ describe CartController do
     end
 
 
-    it "When the cart contains a single item, destroys all the order-items associated with the current cart, and renders the empty-cart view" do  # Remember that empty_cart has been relocated.
+    it "When the cart contains items whose quantities are greater than zero, destroys all the order-items associated with the current cart, and renders the empty-cart view" do  # Remember that empty_cart has been relocated.
 
     #Arrange
     #Step 1: Activate the cart
     post add_to_cart_path(@product_3.id)
+    post add_to_cart_path(@product_3.id)
+    post add_to_cart_path(@product_4.id)
+    post add_to_cart_path(@product_4.id)
     cart_order_before = Order.find_by(id: session[:cart_order_id])
     before_count = cart_order_before.order_items.count
 
     #Step 2: Vaidate Test
-    before_count.must_equal 1
+    before_count.must_equal 2
     initial_cart_items = OrderItem.where(order_id: cart_order_before.id)
-    initial_cart_items.count.must_equal 1
-    that_one_item = initial_cart_items.first
+    initial_cart_items.count.must_equal 2
+    first_item = initial_cart_items.first
+    last_item = initial_cart_items.last
+    first_item.quantity.must_equal 2
+    last_item.quantity.must_equal 2
 
     #ACT:
 
@@ -641,9 +647,11 @@ describe CartController do
 
     cart_order_before.id.must_equal cart_order_after.id
 
-    ### The method destroys all the items associated with the current cart
+    ### The method destroys the earlier-created items, so that no order-items are associated with the current cart any longer.
 
-    OrderItem.find_by(id: that_one_item.id).must_be_nil
+    OrderItem.find_by(id: first_item.id).must_be_nil
+
+    OrderItem.find_by(id: last_item.id).must_be_nil
 
     cart_order_after.order_items.count.must_equal 0
     afterward_cart_items = OrderItem.where(order_id: cart_order_after.id)
