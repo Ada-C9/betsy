@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     else
       render :new, status: :bad_request
       flash[:status] = :failure
-      flash[:result_text] = "Your comment was saved"
+      flash[:result_text] = "Your comment was not saved"
       flash[:messages] = @review.errors.messages
     end
   end

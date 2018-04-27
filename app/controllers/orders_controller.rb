@@ -56,7 +56,6 @@ class OrdersController < ApplicationController
            flash[:result_text] = "#{@order.name} has been updated"
          else
            render :show, status: :bad_request
-           #check how this effects the page
            flash[:status] = :failure
            flash[:result_text] = "#{@order.name} update has failed"
            flash[:messages] = @order.errors.messages
@@ -70,6 +69,7 @@ class OrdersController < ApplicationController
       render_404
     else
       @order.cancel
+      # binding.pry
       if @order.save
         flash[:status] = :success
         flash[:result_text] = "Your order has been cancelled!"
