@@ -12,6 +12,8 @@ cheesecake:
   stock: 6
   visible: true
   image: "https://images.pexels.com/photos/219293/pexels-photo-219293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+  visible: true
+
 
 bonbon:
   merchant: wini
@@ -20,6 +22,8 @@ bonbon:
   stock: 10
   visible: true
   image: "https://images.pexels.com/photos/219293/pexels-photo-219293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+  visible: true
+    
 
 macaron:
   merchant: wini
@@ -28,3 +32,4 @@ macaron:
   stock: 19
   visible: true
   image: "https://images.pexels.com/photos/219293/pexels-photo-219293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+  visible: true

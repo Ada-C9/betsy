@@ -1,3 +1,44 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.cart-page .double-button {
+  margin: 20px 30px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+  font-size: 1.2rem;
+}
+
+.cart-page .double-button:hover {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+}
+
+.order-new .lowerbar .double-button {
+  margin: 20px 30px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+  font-size: 1.2rem;
+}
+
+.order-new .lowerbar .double-button:hover {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+}
+
+#form-order .double-button {
+  margin: 20px 30px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+  font-size: 1.2rem;
+}
+
+#form-order .double-button:hover {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+}
+
+.edit-order, .order-new, .cart-page{
+  margin: 20px;
+}
