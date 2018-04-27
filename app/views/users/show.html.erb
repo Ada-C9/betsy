@@ -1,0 +1,73 @@
+<h2><%= @merchant.username %>'s Shop</h2>
+
+<div class="grid-container">
+  <div class="grid-x grid-padding-x small-up-2 medium-up-3 large-up-4">
+    <% if @products.length == 0 %>
+      <p>
+        No items yet!
+      </p>
+    <% else %>
+    <% if @merchant == @user %>
+    <section class="cell">
+        <p class="merchant-new">
+          <%= link_to "Add New Product", new_user_product_path(@user.id), class: "button" %>
+          <%= link_to "Add New Category", new_category_path, class: "button" %>
+        </p>
+    <% end %>
+    </section>
+      <% @products.each do |product| %>
+      <section class="cell">
+        <section class="card homepage-cards">
+          <p class="homepage-card-image">
+            <%= link_to image_tag(product.image_url), product_path(product.id), :alt => "#{product.name} image", :title => "#{product.name}" %>
+          </p>
+          <h4 class="card-divider"><%= link_to product.name, product_path(product.id) %></h4>
+          <p class="card-section">
+            <%= link_to product.description, product_path(product.id) %>
+          </p>
+          <p class="card-section">
+            <% if @merchant == @user %>
+            <%= link_to "Edit #{product.name}", edit_user_product_path(@user.id, product.id), class: "button" %>
+            <% end %>
+          </p>
+        </section>
+      </section>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<section class="merchant-area">
+  <% if @merchant == @user %>
+  <section>
+    <article class="gray-box">
+      <h3>Stats for <%= @merchant.username %></h3>
+      <p>Total Orders: <%= @orders.count %></p>
+      <p>Total Revenue: $<%= @merchant.get_total_revenue %></p>
+    </article>
+
+    <article class="merchant-private gray-box">
+      <h3>Order Console</h3>
+      <article>
+        <% @orders.each do |sub_order| %>
+        <ul>
+          <li><h5><%= link_to "Order #{sub_order.id}", order_path(sub_order) %></h5></li>
+          <li>Status: <%= sub_order.status %></li>
+          <ul>
+              <% sub_order.order_items.each do |item| %>
+              <% if item.product.user_id == @user.id %>
+              <li>Creature: <%= item.product.name %></li>
+              <li>Quantity: <%= item.quantity %></li>
+              <li>Price: $<%= item.product.price * item.quantity %></li><br/>
+
+              <% end %>
+              <% end %>
+            </ul>
+        </ul>
+        <% end %>
+      </article>
+      </article>
+    </section>
+  <% end %>
+
+</section>

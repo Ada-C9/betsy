@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rating: 1
+  product: dragon
+  user: ada
+  text_review: This dragon is a cute dragon
+two:
+  rating: 1
+  product: dragon
+  user: gretchen
+  text_review: This is the loudest pet I have ever owned. It burned my house down. 
