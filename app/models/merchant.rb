@@ -35,14 +35,17 @@ class Merchant < ApplicationRecord
   end
 
   def my_carts
+    return [] if self.my_cartitems.empty?
     Cart.joins(:cartitems).where(cartitems: {id: self.my_cartitems.ids}).uniq
   end
 
   def my_orders
+    return [] if self.my_cartitems.empty?
     Order.joins(:cart).where(carts: {id: self.my_carts.ids})
   end
 
   def my_total_revenue
+    return 0 if self.my_cartitems.empty?
     total_revenue = 0
     self.my_orders.each do |order|
       order.cart.cartitems.where(id: self.my_cartitems).each do |item|
@@ -54,6 +57,7 @@ class Merchant < ApplicationRecord
   end
 
   def my_revenue_by_status(status)
+    return 0 if self.my_cartitems.empty?
     total_revenue = 0
     self.my_orders.where(status: status).each do |order|
       order.cart.cartitems.where(id: self.my_cartitems).each do |item|
@@ -62,10 +66,5 @@ class Merchant < ApplicationRecord
       end
     end
     return total_revenue
-  end
-
-# TODO: calculate order numbers based on status
-  def get_order_numbers
-
   end
 end
