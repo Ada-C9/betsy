@@ -2,7 +2,12 @@ require "test_helper"
 
 
 describe ReviewsController do
+  before do
+    user = User.new(provider: "github", uid: 13461, username: "test_me", email: "test_user@gmail.com")
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
 
+    get auth_callback_path(:github)
+  end
   describe 'Create' do
     it 'will create a new review that is valid for a product' do
 

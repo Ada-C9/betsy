@@ -1,6 +1,15 @@
 require "test_helper"
 
 describe OrderItemsController do
+  before do
+    user = User.new(provider: "github", uid: 13461, username: "test_me", email: "test_user@gmail.com")
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
+
+    get auth_callback_path(:github)
+
+  end
+
+
 
   describe 'Update' do
     it 'should update a current valid order item' do
@@ -50,7 +59,9 @@ describe OrderItemsController do
 
   describe 'Set-status' do
     it 'is able to set the status for a current order' do
-      order_items(:order_item_1).order.status.must_equal 'pending'
+
+
+        order_items(:order_item_1).order.status.must_equal 'pending'
 
       put order_item_set_status_path(order_items(:order_item_1).id), params:{
         order_item:{
