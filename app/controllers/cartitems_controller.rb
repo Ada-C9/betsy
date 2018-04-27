@@ -40,8 +40,8 @@ class CartitemsController < ApplicationController
 
 
   def update
-    @cartitem.update_attributes(cartitem_params)
-    if @cartitem.product.available?(@cartitem.quantity)
+    @cartitem.assign_attributes(cartitem_params)
+    if @cartitem.product.available?(params[:cartitem][:quantity].to_i)
       if @cartitem.save
         flash[:status] = :success
         flash[:result_text] = "Successfully updated your #{@cartitem.product.name} quantity"
