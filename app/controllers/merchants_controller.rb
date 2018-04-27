@@ -7,6 +7,10 @@ class MerchantsController < ApplicationController
     @merchant = Merchant.find_by(id: session[:merchant_id])
     if session[:merchant_id].to_s == params[:id]
       @orders = @merchant.my_orders
+      @pending_orders = @merchant.total_revenue_by_status("pending")
+      @paid_orders = @merchant.total_revenue_by_status("paid")
+      @completed_orders = @merchant.total_revenue_by_status("completed")
+      @cancelled_orders = @merchant.total_revenue_by_status("cancelled")
     else
       flash[:status] = :failure
       flash[:result_text] = "You can not view other merchant's account page"
