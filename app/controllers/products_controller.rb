@@ -68,6 +68,7 @@ class ProductsController < ApplicationController
       render_404
     else
       @product.update(product_params)
+      @product.price = params[:product][:price].to_i * 100
       if @product.save
         flash[:status] = :success
         flash[:result_text] = "#{@product.name} has been successfully updated!"
