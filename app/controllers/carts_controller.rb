@@ -5,14 +5,16 @@ class CartsController < ApplicationController
   def show; end
 
   def empty_cart
-    @cart.cartitems.destroy_all
+    if @cart.id == session[:cart_id]
+      @cart.cartitems.destroy_all
 
-    if @cart.total_items == 0
-      flash[:success]
-      flash[:result_text] = "Your cart has been emptied"
+      if @cart.total_items == 0
+        flash[:success]
+        flash[:result_text] = "Your cart has been emptied"
+      end
     else
       flash[:status] = :failure
-      flash[:result_text] = "Could not empty your cart"
+      flash[:result_text] = "You can could not empty other people's cart"
       flash[:messages] = @cart.errors.messages
     end
     redirect_back(fallback_location: cart_path(@cart))

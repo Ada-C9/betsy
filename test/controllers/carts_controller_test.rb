@@ -18,13 +18,17 @@ describe CartsController do
 
   describe "empty_cart" do
     it "succeeds for an extant cart ID" do
-      cart = Cart.first
-      items_in_cart = cart.cartitems.count
-      old_item_count = Cartitem.count
+      data = {
+        product_id: Product.first.id,
+        quantity: 3
+      }
+      post cartitems_path, params: { cartitem: data }
+
+      cart = Cart.find_by(id: session[:cart_id])
 
       patch empty_cart_path(cart.id)
 
-      (old_item_count - Cartitem.count).must_equal items_in_cart
+      cart.total_items.must_equal 0
       must_respond_with :redirect
       must_redirect_to cart_path(cart.id)
     end
@@ -47,6 +51,18 @@ describe CartsController do
 
       must_respond_with :redirect
       must_redirect_to cart_path(cart.id)
+    end
+
+    it "does not allow to empty other user's cart" do
+      cart = Cart.first
+      items_in_cart = cart.cartitems.count
+      old_item_count = Cartitem.count
+
+      cart = Cart.last
+      patch empty_cart_path(cart.id)
+
+      must_respond_with :redirect
+      flash[:status].must_equal :failure
     end
   end
 end
