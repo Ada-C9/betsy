@@ -3,8 +3,8 @@ class CartitemsController < ApplicationController
   before_action :cartitem_params, only: [:update, :create]
 
   def create
-    @cart = Cart.find_by(id: session[:cart_id])
-    if @cart
+    if session[:cart_id]
+      @cart = Cart.find_by(id: session[:cart_id])
       @cartitem = Cartitem.new(cartitem_params)
       @cartitem.cart_id = session[:cart_id]
       if @cartitem.save

@@ -3,10 +3,81 @@ require "test_helper"
 describe CartitemsController do
 
   describe "create" do
+    it "should create a cartitem when a cart does not exit" do
+      old_cartitem_count = Cartitem.count
+      data = {
+        product_id: Product.first.id,
+        quantity: 3
+      }
+      post cartitems_path, params: { cartitem: data }
+      Cartitem.count.must_equal old_cartitem_count + 1
+
+    end
+
     it "should create a cartitem when a cart already exists " do
+       data = {
+         product_id: Product.first.id,
+         quantity: 3
+       }
+       post cartitems_path, params: { cartitem: data }
+       old_cartitem_count = Cartitem.count
 
+       data2 = {
+         product_id: Product.last.id,
+         quantity: 5
+       }
+       post cartitems_path, params: {cartitem: data2}
+       Cartitem.count.must_equal old_cartitem_count + 1
+    end
 
-      
+    it "should not create a cartitem when quantity is missing" do
+      old_cartitem_count = Cartitem.count
+
+      data = {
+        product_id: Product.first.id,
+      }
+
+      post cartitems_path, params: { cartitem: data }
+
+      Cartitem.count.must_equal old_cartitem_count
+    end
+
+    it "should not create a new cartitem when another cartitem has the same product" do
+      data = {
+        product_id: Product.first.id,
+        quantity: 3
+      }
+      post cartitems_path, params: { cartitem: data }
+
+      old_cartitem_count = Cartitem.count
+
+      data2 = {
+        product_id: Product.first.id,
+        quantity: 5
+      }
+
+      post cartitems_path, params: {cartitem: data2}
+      Cartitem.count.must_equal old_cartitem_count
+    end
+
+    it "should not create a new cartitem when there is no such product" do
+      data = {
+        product_id: Product.first.id,
+        quantity: 3
+      }
+
+      post cartitems_path, params: { cartitem: data }
+
+      old_cartitem_count = Cartitem.count
+
+      data2 = {
+        product_id: Product.last.id + 100,
+        quantity: 5
+      }
+
+      post cartitems_path, params: {cartitem: data2}
+      flash[:result_text].must_equal "It was not possible to add this product to the cart"
+
     end
 
   end
