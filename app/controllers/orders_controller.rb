@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
   def edit; end
 
   def update
-    @order.update_attributes(order_params)
+    @order.assign_attributes(order_params)
 
     if @order.save
       @cart.cartitems.each do |cartitem|
@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
   end
 
   def change_status
-    @order.update_attributes(order_params)
+    @order.assign_attributes(order_params)
 
     if @order.save
       flash[:status] = :success

@@ -1,21 +1,17 @@
 class MerchantsController < ApplicationController
-before_action :find_merchant, only: [:show, :display, :show_products ]
-
+  before_action :find_merchant, only: [:show, :display, :show_products]
 
   def index
     @merchants = Merchant.all.paginate(:page => params[:page], :per_page => 3)
-
   end
 
   def show
     if session[:merchant_id].to_s == params[:id]
       @orders = @merchant.my_orders
     else
-
-        flash[:status] = :failure
-        flash[:result_text] = "You can not view other merchant's account page"
-        redirect_back fallback_location: root_path
-
+      flash[:status] = :failure
+      flash[:result_text] = "You can not view other merchant's account page"
+      redirect_back fallback_location: root_path
     end
   end
 
@@ -33,10 +29,8 @@ before_action :find_merchant, only: [:show, :display, :show_products ]
   end
 
   private
-
   def find_merchant
-  @merchant = Merchant.find_by(id: params[:id])
+    @merchant = Merchant.find_by(id: params[:id])
     head :not_found unless @merchant
   end
-
 end

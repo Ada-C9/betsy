@@ -41,7 +41,6 @@ class Merchant < ApplicationRecord
   end
 
   def my_orders
-
     my_orders = []
     Order.all.each do |order|
       order.cart.cartitems.each do |cartitem|
@@ -57,10 +56,12 @@ class Merchant < ApplicationRecord
   def my_total_revenue
     return 0 if self.my_cartitems.empty?
     total_revenue = 0
-    self.my_orders.each do |order|
-      order.cart.cartitems.where(id: self.my_cartitems).each do |item|
-        revenue = item.product.price * item.quantity
-        total_revenue += revenue
+    my_orders.each do |order|
+      order.cart.cartitems.each do |item|
+        if self.products.include?(item.product)
+          revenue = item.product.price * item.quantity
+          total_revenue += revenue
+        end
       end
     end
     return total_revenue
@@ -69,10 +70,13 @@ class Merchant < ApplicationRecord
   def my_revenue_by_status(status)
     return 0 if self.my_cartitems.empty?
     total_revenue = 0
-    self.my_orders.where(status: status).each do |order|
-      order.cart.cartitems.where(id: self.my_cartitems).each do |item|
-        revenue = item.product.price * item.quantity
-        total_revenue += revenue
+    orders_by_status = my_orders.select { |order| order.status.downcase == status }
+    orders_by_status.each do |order|
+      order.cart.cartitems.each do |item|
+        if self.products.include?(item.product)
+          revenue = item.product.price * item.quantity
+          total_revenue += revenue
+        end
       end
     end
     return total_revenue

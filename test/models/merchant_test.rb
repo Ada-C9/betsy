@@ -236,7 +236,7 @@ describe Merchant do
       end
     end
 
-    it "should return all the cartitems that exit that are my products" do
+    it "should return all the cartitems that exist that are my products" do
       cartitem1 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: Cart.first.id, quantity: 2)
       cartitem2 = Cartitem.create(product_id: @merchant1.products.last.id, cart_id: Cart.first.id, quantity: 1)
       cartitem3 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: Cart.last.id, quantity: 3)
@@ -253,53 +253,91 @@ describe Merchant do
     end
   end
 
-    describe "my_orders" do
-      before do
-        @merchant1 = Merchant.first
-        product1 = {
-          name: 'product1',
-          price: 233,
-          merchant: @merchant1,
-        }
-        product2 = {
-          name: 'product2',
-          price: 233,
-          merchant: @merchant1,
-        }
+  describe "my_orders" do
+    before do
+      @merchant1 = Merchant.first
+      product1 = {
+        name: 'product1',
+        price: 233,
+        merchant: @merchant1,
+      }
+      product2 = {
+        name: 'product2',
+        price: 233,
+        merchant: @merchant1,
+      }
 
-        new_products = [product1, product2]
-        new_products.each do |prod|
-          @merchant1.products << Product.create(prod)
-        end
-        @cart1 = Cart.create
-        @cart2 = Cart.create
-
-        cartitem1 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: @cart1.id, quantity: 2)
-        cartitem2 = Cartitem.create(product_id: @merchant1.products.last.id, cart_id: @cart2.id, quantity: 1)
-        cartitem3 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: @cart2.id, quantity: 3)
-
+      new_products = [product1, product2]
+      new_products.each do |prod|
+        @merchant1.products << Product.create(prod)
       end
+      @cart1 = Cart.create
+      @cart2 = Cart.create
 
-      it "should return every order that has one of your products" do
-        order1 = Order.create(cart_id: @cart1.id, status: "pending")
+      cartitem1 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: @cart1.id, quantity: 2)
+      cartitem2 = Cartitem.create(product_id: @merchant1.products.last.id, cart_id: @cart2.id, quantity: 1)
+      cartitem3 = Cartitem.create(product_id: @merchant1.products.first.id, cart_id: @cart2.id, quantity: 3)
 
-        @merchant1.my_orders.count.must_equal 1
-      end
     end
 
-    describe "my_total_revenue" do
-      it "should return 0 when there are no orders for merchant" do
-        merchant = Merchant.create!(uid: 12355, provider: "github", username: "hi", email: "hi@something.com")
+    it "should return every order that has one of your products" do
+      order1 = Order.create(cart_id: @cart1.id, status: "pending")
 
-        merchant.my_total_revenue.must_be_kind_of Integer
-        merchant.my_total_revenue.must_equal 0
-      end
+      @merchant1.my_orders.count.must_equal 1
+    end
+  end
 
-      it "should return the sum of all your products in different orders" do
-        merchant = merchants(:wini)
+  describe "my_total_revenue" do
+    it "should return 0 when there are no orders for merchant" do
+      merchant = Merchant.create!(uid: 12355, provider: "github", username: "hi", email: "hi@something.com")
 
-        merchant.my_total_revenue.
-      end
+      merchant.my_total_revenue.must_equal 0
+    end
+
+    it "should return the sum of all your products in different orders" do
+      merchant = merchants(:wini)
+      merchant.my_orders.count.must_equal 2
+      merchant.my_total_revenue.must_equal 1716
+    end
+  end
+
+  describe "my_revenue_by_status" do
+    it "returns 0 when there are no orders for a merchant" do
+      merchant = merchants(:ada)
+      merchant.my_orders.count.must_equal 0
+      merchant.my_revenue_by_status("pending").must_equal 0
+      merchant.my_revenue_by_status("paid").must_equal 0
+      merchant.my_revenue_by_status("completed").must_equal 0
+      merchant.my_revenue_by_status("cancelled").must_equal 0
+    end
+
+    it "returns the appropriate revenue by status" do
+      merchant = merchants(:wini)
+      merchant.my_orders.count.must_equal 2
+      merchant.my_revenue_by_status("pending").must_equal 400
+      merchant.my_revenue_by_status("completed").must_equal 1316
+      merchant.my_revenue_by_status("paid").must_equal 0
+      merchant.my_revenue_by_status("cancelled").must_equal 0
+    end
+
+    it "responds to changes in order status" do
+      merchant = merchants(:wini)
+      order_1 = orders(:order_one)
+      order_2 = orders(:order_two)
+
+      order_1.status.must_equal "completed"
+      order_2.status.must_equal "pending"
+
+      pending_revenue_before = merchant.my_revenue_by_status("pending")
+      completed_revenue_before = merchant.my_revenue_by_status("completed")
+
+      order_1.update_attributes(status: "cancelled")
+      order_2.update_attributes(status: "completed")
+
+      merchant.my_revenue_by_status("cancelled").must_equal completed_revenue_before
+      merchant.my_revenue_by_status("completed").must_equal pending_revenue_before
+      merchant.my_revenue_by_status("pending").must_equal 0
+      merchant.my_revenue_by_status("paid").must_equal 0
     end
   end
 end
