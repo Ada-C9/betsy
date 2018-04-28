@@ -6,47 +6,47 @@ describe CartitemsController do
     it "should create a cartitem when a cart already exists " do
 
 
-    end
+      
     end
 
   end
 
   describe "update" do
-     it "can update quantity if there is enough stock" do
-       cartitem = Cartitem.first
-       old_quantity = cartitem.quantity
-       new_cartitem_info = { quantity: (old_quantity - 1) }
-       patch cartitem_path(cartitem), params: { cartitem: new_cartitem_info }
+    it "can update quantity if there is enough stock" do
+      cartitem = Cartitem.first
+      old_quantity = cartitem.quantity
+      new_cartitem_info = { quantity: (old_quantity - 1) }
+      patch cartitem_path(cartitem), params: { cartitem: new_cartitem_info }
 
-       must_respond_with :redirect
-       must_redirect_to cart_path(cartitem.cart)
-       Cartitem.first.quantity.must_equal (old_quantity - 1)
-     end
+      must_respond_with :redirect
+      must_redirect_to cart_path(cartitem.cart)
+      Cartitem.first.quantity.must_equal (old_quantity - 1)
+    end
 
 
-     it "does not update quantity if there is not enough stock" do
-       cartitem = Cartitem.first
-       old_quantity = cartitem.quantity
-       new_cartitem_info = { quantity: 100 }
+    it "does not update quantity if there is not enough stock" do
+      cartitem = Cartitem.first
+      old_quantity = cartitem.quantity
+      new_cartitem_info = { quantity: 100 }
 
-       patch cartitem_path(cartitem), params: { cartitem: new_cartitem_info }
+      patch cartitem_path(cartitem), params: { cartitem: new_cartitem_info }
 
-       must_respond_with :redirect
-       must_redirect_to cart_path(cartitem.cart)
-       Cartitem.first.quantity.must_equal old_quantity
-     end
+      must_respond_with :redirect
+      must_redirect_to cart_path(cartitem.cart)
+      Cartitem.first.quantity.must_equal old_quantity
+    end
 
-     it "does not update the DB for bogus data" do
-       cartitem = Cartitem.first
-       old_quantity = cartitem.quantity
-       new_cartitem_info = { quantity: -1 }
+    it "does not update the DB for bogus data" do
+      cartitem = Cartitem.first
+      old_quantity = cartitem.quantity
+      new_cartitem_info = { quantity: -1 }
 
-       patch cartitem_path(cartitem), params: { cartitem: new_cartitem_info }
+      patch cartitem_path(cartitem), params: { cartitem: new_cartitem_info }
 
-       must_respond_with :redirect
-       must_redirect_to cart_path(cartitem.cart)
-       Cartitem.first.quantity.must_equal old_quantity
-     end
+      must_respond_with :redirect
+      must_redirect_to cart_path(cartitem.cart)
+      Cartitem.first.quantity.must_equal old_quantity
+    end
   end
 
 

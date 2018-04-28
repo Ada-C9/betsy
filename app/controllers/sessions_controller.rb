@@ -28,14 +28,13 @@ class SessionsController < ApplicationController
   end
 
   def logout
-    find_merchant
-    if session[:merchant_id] == @login_merchant.id
-      session[:merchant_id] = nil
-      flash[:status] = :success
-      flash[:result_text] = "Successfully logged out"
-    elsif session[:merchant_id] != @login_merchant.id
-      flash[:status] = :failure
-      flash[:result_text] = "You can only log your account out"
+    if session[:merchant_id]
+      @login_merchant = Merchant.find_by(id: session[:merchant_id])
+      if session[:merchant_id] == @login_merchant.id
+        session[:merchant_id] = nil
+        flash[:status] = :success
+        flash[:result_text] = "Successfully logged out"
+      end
     else
       flash[:status] = :failure
       flash[:result_text] = "You must login in"
