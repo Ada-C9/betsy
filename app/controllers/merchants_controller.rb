@@ -1,5 +1,5 @@
 class MerchantsController < ApplicationController
-  before_action :find_merchant, only: [:show, :display, :show_products]
+  before_action :find_merchant, only: [:show, :show_products]
 
   def index
     @merchants = Merchant.all.paginate(:page => params[:page], :per_page => 3)
@@ -15,7 +15,9 @@ class MerchantsController < ApplicationController
     end
   end
 
-  def display; end
+  def display
+    @merchant = Merchant.find_by(id: params[:merchant_id])
+  end
 
   def show_products
     @products = Product.where(merchant_id: params[:id])
