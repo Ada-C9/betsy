@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Arsenal|Dosis|Handlee|Neucha|Raleway|Shadows+Into+Light" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title><%= "Sweatsy" %></title>
+
+  <!-- Font Awesome CDN -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
+
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <nav class='navbar'>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="top-bar-left">
+          <li class="menu-text title"><strong><%= link_to "Sweatsy", root_path %></li></strong>
+        </ul>
+      </div>
+      <div class="top-bar">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li>
+            <strong><%= link_to 'Browse products', products_path, class:' button'%></strong>
+            <ul class="menu vertical">
+              <li><a href="/merchants">By Merchant</a></li>
+              <li><a href="/categories">By Category</a></li>
+              <li><a href="/products">All Products</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <% if @current_user %>
+          <%= link_to " #{@current_user.username}'s Dashboard ",merchant_path(@current_user), class: 'hollow button'%>
+          <%= link_to "Logout", logout_path, method: :delete, class: 'button' %>
+        <%else%>
+          <%= link_to "Login/Become a Merchant", '/auth/github', class: "button" %>
+          <%end%>
+
+        <a href="/cart"><i class="fa fa-shopping-cart fa-2x"></i></a>
+      </div>
+    </div>
+  </nav>
+
+
+  <main>
+    <section class="flash" >
+      <% flash.each do |name, message| %>
+      <div class="callout <%= name %>"><%= message %></div>
+      <% end %>
+    </section>
+
+    <%= yield %>
+  </main>
+
+  <footer class="site-footer">
+    <div class="grid-x">
+      <div class="medium-4 columns">
+        <h4 class="site-footer-name">SWEATSY</h4>
+        <p>Sweatsy is a proud member of the Sweatastic Society and promotes healthy living and perspiration. Sweat constantly and awesomely, but don't sweat the little things!</p>
+
+      </div>
+      <div class="medium-4 columns contact">
+        <h4 class="site-footer-title">Contact Info</h4>
+        <div class="site-footer-block">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <p>Vilnius, Lithuania 94015</p>
+        </div>
+        <div class="site-footer-block">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          <p>1 (800) 555-5555</p>
+        </div>
+        <div class="site-footer-block">
+          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          <div class='y-grid'>
+            <p>Sweatsyco@hotmail.com</p>
+            <p>Sweatsysupport@aol.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="medium-4 columns">
+        <h4 class="site-footer-title">Instagram</h4>
+        <div class="grid-x gutter-small">
+          <div class="column medium-3">
+            <img src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fi2.cdscdn.com%2Fpdt2%2F7%2F6%2F2%2F1%2F700x700%2Fmp07228762%2Frw%2F3d-pullover-sweat-a-capuche-homme-femme-couple-cos.jpg" alt="instagram photo"/>
+          </div>
+          <div class="column medium-3">
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQzoJTF3yc69QKeZy3vovPU0TU0_lkXryLt6g2gmngkrfznDkAW_63XmhrPWi2T-R-X5UDqbaE&usqp=CAE" alt="instagram photo" />
+          </div>
+          <div class="column medium-3">
+            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTlwbPqcsnv4oi1OFO6GKmlV-tNflMzfpWvN_hknZI_BoUUlt7IZcqBXhebQGDSFV8XKU-Peno&usqp=CAE" alt="" />
+          </div>
+          <div class="column medium-3">
+            <img src="https://vignette.wikia.nocookie.net/warehouse-13-artifact-database/images/4/4c/702358daf131aff5f2ed16a3afbbfb64.jpg/revision/latest?cb=20150801090056" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="grid-x">
+        <div class="column">
+          <p>&copy; 2018 All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

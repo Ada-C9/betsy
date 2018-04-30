@@ -1,0 +1,24 @@
+<h2><%= @category.name.capitalize %></h2>
+
+<ul>
+  <% @category.products.each do |p| %>
+  <li class="thumbnail">
+    <div class='image'>
+      <img src="<%= p.photo %>"/>
+    </div>
+
+    <div class='caption'>
+      <h5><strong><%=link_to p.name, product_path(p) %></strong> </h5>
+      <h5 class='float-right'><%= number_to_currency(p.price) %></h5>
+      <p class='description'><%= p.description %></p>
+      <p class='num_available'> <%= p.available%> Available </p>
+    </div>
+
+    <div class='rating'>
+      <p> Ratings! </p>
+      <p class='float-right'> Reviews </p>
+    </div>
+
+  </li>
+  <% end %>
+</ul>

@@ -1,0 +1,33 @@
+<h2>All products by category</h2>
+
+
+  <% @products_by_category.each do | c, prods | %>
+
+  <h4><%= link_to c.name.capitalize, category_path(c) %></h4>
+  <div class='grid-x'>
+    <ul>
+      <% prods.each do |p| %>
+      <li class="thumbnail">
+        <div class='image'>
+          <img src="<%=p.photo%>" alt='product photo'/>
+        </div>
+
+        <div class='caption'>
+          <h5><strong><%=link_to p.name, product_path(p) %></strong> </h5>
+          <p class='description'><%= p.description %></p>
+          <p class='num_available'> <%= p.available%> Available </p>
+          <p class='float-right'><strong><%= number_to_currency(p.price) %></strong></p>
+        </div>
+
+        <div class='rating'>
+          <p> Average Rating <%=average_rating(p)%> </p>
+          <p class='float-right'> Reviews </p>
+        </div>
+
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+<% end %>

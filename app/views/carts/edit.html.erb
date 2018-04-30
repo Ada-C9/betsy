@@ -1,0 +1,69 @@
+<h2><%= "Checkout for order #{@current_order.id}" %></h2>
+
+<%= render partial: "layouts/error_messages", locals: { model: @current_order } %>
+
+<table>
+  <thead>
+    <tr>
+      <td>Product</td>
+      <td>Quantity</td>
+      <td>Subtotal</td>
+    </tr>
+  </thead>
+
+  <% @order_products.each do |i| %>
+
+  <tbody>
+
+    <tr>
+      <td><%= link_to i.product.name, product_path(i.product.id) %></td>
+      <td><%= "x #{i.quantity}" %></td>
+      <td><%= "#{number_to_currency(i.subtotal)}" %></td>
+    </tr>
+
+  </tbody>
+
+  <% end %>
+
+</table>
+
+  <h3>Order Total: <%= number_to_currency current_order.order_total %></h3>
+
+<section id="checkout">
+
+  <section class="form">
+    <!-- keeps form from blowing up if validations fail -->
+    <% @current_order.expiry_date = nil %>
+
+    <%= form_for @current_order, url: cart_path do |f| %>
+
+      <%= f.label :name, "Name: " %>
+      <%= f.text_field :name, placeholder: "Dwayne Johnson" %>
+
+      <%= f.label :email, "Email: " %>
+      <%= f.email_field :email, placeholder: "dwayne.johnson@sweatsy.com" %>
+
+      <%= f.label :address, "Address: " %>
+      <%= f.text_field :address, placeholder: "1234 Main Street Los Angeles, CA 90001" %>
+
+      <%= f.label :cc_num, "Credit Card: " %>
+      <%= f.number_field :cc_num, placeholder: "XXXXXXXXXXXX" %>
+
+      <%= f.label :cc_cvv, "CVV: " %>
+      <%= f.number_field :cc_cvv, placeholder: "XXX" %>
+
+      <%= f.label :expiry_date, "Expiration: " %>
+
+      <%= f.date_select :expiry_date, {order: [:month, :year], prompt: { month: 'Select month', year: 'Select year' }, start_year: Date.today.year, end_year: Date.today.year + 10}, {required: true} %>
+
+      <%= f.label :zip, "Billing Zip: " %>
+      <%= f.number_field :zip, placeholder: "XXXXX" %>
+
+      <%= f.submit "Place Order", class: 'button' %>
+
+      <%= link_to "Back to Cart", cart_path, class: "button" %>
+
+    <% end %>
+  </section>
+
+</section>

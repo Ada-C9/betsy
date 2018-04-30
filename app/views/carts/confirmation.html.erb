@@ -1,0 +1,59 @@
+<h2>
+  <%= "Confirmation for order #{@previous_order.id}" %>
+</h2>
+
+<section>
+
+<p>Summary</p>
+  <ul>
+    <li>Placed: <%= date_placed(@previous_order) %></li>
+    <li>Status: <%= @previous_order.status.titleize %></li>
+  </ul>
+
+</section>
+
+<section>
+
+<p>Contact</p>
+  <ul>
+    <li>Name: <%= @previous_order.name %></li>
+    <li>Email: <%= @previous_order.email %></li>
+    <li>Address: <%= @previous_order.address %></li>
+  </ul>
+
+</section>
+
+<section>
+
+<p>Billing</p>
+  <ul>
+    <li>Credit Card: <%= last_four(@previous_order) %></li>
+    <li>Expiration: <%= @previous_order.expiry_date %></li>
+    <li>CCV Number: <%= @previous_order.cc_cvv %></li>
+    <li>Billing Zip: <%= @previous_order.zip %></li>
+  </ul>
+
+</section>
+
+<section>
+
+  <p>Products</p>
+
+  <% @previous_order.order_products.each do |i| %>
+
+  <div class="checkout-items">
+
+    <span>
+      <%= link_to i.product.name, product_path(i.product.id) %>
+      <%= "x #{i.quantity}" %>
+    </span>
+
+    <span><%= "Sub Total: #{number_to_currency(i.subtotal)}" %></span>
+
+  </div>
+
+  <% end %>
+
+  <h3>Order Total: <%= number_to_currency(@previous_order.total) %></h3>
+
+</section>

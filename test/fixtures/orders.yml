@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+
+basic_order:
+  status: in progress
+  name: Dan
+  email: dan@adaacademy.org
+  address: 1215 4th Ave, Seattle, WA 98161
+  cc_num: 1234567891011121
+  expiry_date: 1020
+  cc_cvv: 111
+  zip: 98161
+
+paid_order:
+  status: in progress
+  name: Kari
+  email: kari@adaacademy.org
+  address: 3333 8th Ave, Seattle, WA 98161
+  cc_num: 1234567892323232
+  expiry_date: 0120
+  cc_cvv: 101
+  zip: 98111

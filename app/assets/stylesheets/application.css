@@ -1,0 +1,290 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*= require normalize-rails
+
+*
+*= require_tree .
+*= require_self
+*= require foundation_and_overrides
+
+*/
+
+/*all page body styling*/
+body,html {
+  height: 100%;
+}
+
+body {
+  /*font-family: 'Raleway', sans-serif;*/
+  /*font-family: 'Dosis', sans-serif;*/
+  font-family: 'Shadows Into Light', cursive;
+  /*font-family: 'Handlee', cursive;*/
+  /*font-family: 'Arsenal', sans-serif;*/
+  /*font-family: 'Neucha', cursive;*/
+}
+
+h2, h3, h4, h5 {
+  font-family: 'Shadows Into Light', cursive;
+}
+
+/*Navbar styling*/
+.nav {
+  width: 100%;
+  position: fixed;
+}
+.top-bar-left {
+  list-style-type: none;
+  font-size: 40px;
+}
+
+
+
+/*form styling*/
+form {
+  padding: 2em;
+}
+
+/*Home page styling*/
+#home-background-img {
+  background-image: url('home_img.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 2em;
+  height: 30em;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7em;
+}
+
+
+.homepage-title {
+  color: #fff;
+  font-weight: bold;
+  font-size: 2.75em;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.8),
+  0px 8px 13px rgba(0,0,0,0.4),
+  0px 18px 23px rgba(0,0,0,0.4);
+}
+
+.home-header {
+  text-align: center;
+  padding: 1em;
+  font-weight: 400;
+}
+
+hr {
+  width: 20%;
+  padding: 0;
+  border-color: #000;
+}
+
+.homepage p {
+  padding: 3em;
+  text-align: justify;
+}
+
+.homepage h4 {
+  line-height: 1em;
+  margin: 0 auto;
+}
+
+.home-image-expand {
+  max-width: 100%;
+
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.home-image-expand:hover {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul.merchants li {
+  padding: 1.5em;
+  margin: 0 auto;
+}
+
+.size1, .size2, .size3, .size4 {
+  font-size: 2em;
+}
+.size1 :hover {
+  color: purple;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.size2 :hover {
+  color: #cc3500;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.size3 :hover {
+  color: #d8c100;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.size4 :hover {
+  color: #2daf00;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+i {
+  color: #C36891;
+  cursor: pointer;
+}
+/*product grid styling*/
+.grid-x {
+  display: flex;
+}
+
+.thumbnail .description {
+  display:flex;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+/*merchant grid*/
+.merchant-grid-x {
+  display: flex;
+  /*grid-template-rows: 1fr 1fr 1fr 1fr;*/
+}
+.merchant-grid-x ul{
+  list-style-type: none;
+}
+
+.image {
+  padding: 30px;
+}
+/*cart item styling*/
+.quantity {
+  width: 3em;
+  display: inline;
+}
+
+/*.cart-items {
+  display:grid;
+  grid-template-columns: 1fr 5em repeat(2, 1fr) repeat(2, 100px);
+  font-size: 1.25em;
+}*/
+
+.checkout-items {
+  display:grid;
+  grid-template-columns: repeat(4, 250px);
+  font-size: 1.25em;
+}
+
+.checkout {
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+
+  opacity: 1;
+
+}
+
+/** FOOTER **/
+
+.site-footer {
+  background: #2c3840;
+  color: #8aa0ae;
+  padding: 2rem;
+}
+
+.site-footer .column-block {
+  margin-bottom: 30px;
+}
+
+.site-footer > .row {
+  margin-bottom: 1rem;
+}
+
+.site-footer-name {
+  color: #fefefe;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.site-footer-title {
+  color: #fefefe;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.site-footer-block {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.site-footer-block .fa {
+  font-size: 2rem;
+  color: #020304;
+}
+
+div.column.medium-3 img {
+  padding: .5em;
+}
+
+.contact {
+  padding-left: 3em;
+}
+
+div.site-footer-block i.fa {
+  color: #fff;
+}
+
+.y-grid p {
+  margin: 0;
+}
+
+.site-footer-block p {
+  margin-left: 1rem;
+  line-height: 1.125rem;
+}
+
+.site-footer-bottom {
+  background: #020304;
+  padding: 1rem 0;
+}
+
+.site-footer-bottom p,
+.site-footer-bottom .menu {
+  margin-bottom: 0;
+}
+
+.site-footer-bottom .site-footer-bottom-links {
+  float: right;
+}
+
+.site-footer-bottom .site-footer-bottom-links a {
+  color: #8aa0ae;
+}

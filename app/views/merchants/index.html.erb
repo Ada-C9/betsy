@@ -1,0 +1,61 @@
+<div>
+  <div class="top">
+    <h2>Browse by Merchant:</h2>
+  </div>
+  <div>
+    <ul class="pagination text-center">
+      <li class="pagination-previous disabled">Previous</li>
+      <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+      <li><a href="#" aria-label="Page 2">2</a></li>
+      <li><a href="#" aria-label="Page 3">3</a></li>
+      <li><a href="#" aria-label="Page 4">4</a></li>
+      <li><a href="#" aria-label="Page 5">5</a></li>
+      <li><a href="#" aria-label="Page 6">6</a></li>
+      <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+    </ul>
+  </div>
+  <div class='merchant-grid-x'>
+    <% @merchants.each do |merchant| %>
+    <ul>
+      <li class='thumbnail'>
+        <section class="name text-center">
+          <h4 >
+            <%= link_to merchant.username.capitalize, merchant_products_path(merchant.id) %>
+          </h4>
+        </section>
+
+        <!-- <div class="categories text-center">
+          <% cat = merchant.product_categories.uniq%>
+          <% cat.each do |category| %>
+          <p>
+            <%= link_to category.name, category_path(category) %>
+          </p>
+
+          <% end %>
+        </div> -->
+        <% merchant.products.each do |product| %>
+        <div class='image'>
+
+          <img src='<%=product.photo%>' alt='placeholder photo' />
+        </div>
+        <%end%>
+
+
+      </li>
+    </ul>
+    <% end %>
+  </div>
+
+  <div>
+    <ul class="pagination text-center">
+      <li class="pagination-previous disabled">Previous</li>
+      <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+      <li><a href="#" aria-label="Page 2">2</a></li>
+      <li><a href="#" aria-label="Page 3">3</a></li>
+      <li><a href="#" aria-label="Page 4">4</a></li>
+      <li><a href="#" aria-label="Page 5">5</a></li>
+      <li><a href="#" aria-label="Page 6">6</a></li>
+      <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+    </ul>
+  </div>
+</div>
