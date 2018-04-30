@@ -1,0 +1,21 @@
+<section class="display-products">
+
+  <h2>View all products</h2>
+
+  <%= link_to "Add a new product", new_merchant_product_path(@merchant), class: "button float-right double-button" %>
+
+  <%= link_to "Back to my account", merchant_path(@merchant), class: "button float-right double-button" %>
+
+  <h4>Available Products</h4>
+  <%= render partial: "order_table", locals: {
+    data: @merchant.visible_products
+  }
+  %>
+
+  <h4>Retired Products</h4>
+  <%= render partial: "order_table", locals: {
+    data: @merchant.invisible_products
+  }
+  %>
+
+</section>

@@ -1,0 +1,44 @@
+<section id="form-order">
+
+  <%= form_for @order do |t|%>
+
+  <h2>Personal information:</h2>
+  <%= t.label :name %>
+  <%= t.text_field :name%>
+
+  <%= t.label :email %>
+  <%= t.email_field :email%>
+
+  <h2>Payment information:</h2>
+  <%= t.label :name_on_card%>
+  <%= t.text_field :name_on_card%>
+
+  <%= t.label :creditcard%>
+  <%= t.number_field :creditcard%>
+
+  <%= t.label :expiration_month%>
+  <%= t.date_select :expiration_month, :discard_day => true, :discard_year => true, :use_month_numbers => true %>
+
+  <%= t.label :expiration_year%>
+  <%= t.date_select :expiration_year, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :discard_month => true%>
+
+  <%= t.label :cvv%>
+  <%= t.number_field :cvv%>
+
+  <%= t.label :billing_address%>
+  <%= t.text_field :billing_address%>
+
+  <h2>Delivery information:</h2>
+  <%= t.label :mail_address%>
+  <%= t.text_field :mail_address%>
+
+  <%= t.label :zipcode%>
+  <%= t.number_field :zipcode%>
+
+  <%= t.hidden_field :status, value: "paid" %>
+  <section class = "lowerbar">
+    <%= t.submit "Place Order", class: "button hollow double-button"%>
+  </section>
+  <%end%>
+
+</section>

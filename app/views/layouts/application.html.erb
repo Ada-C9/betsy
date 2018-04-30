@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <%= favicon_link_tag asset_path('cake.png'), :rel => 'icon', :type =>  'image/png' %>
+  <title>Ali-Bon-Bon</title>
+  <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
+
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<div id="bg">
+  <img src="" alt="">
+</div>
+
+<body>
+  <header>
+    <section>
+      <h2 class="image-header">
+        <%= link_to "Ali-Bon-Bon : Treat Yo Self!", root_path %>
+      </h2>
+    </section>
+    <!-- FOUNDATION STYLING FOR DROP DOWN MENUS -->
+    <div id="nav-bar float-left">
+      <h3 class= "menu toggle"></h3>
+      <nav id="nav-list">
+
+        <div class= "top-bar">
+
+          <div class= "top-bar-left">
+            <% if session[:merchant_id] %>
+
+            <ul class="menu toggle" data-dropdown-menu>
+              <li class= "go-away-blue-box">
+                <a class="dropdown-1 button">My Account</a>
+                <ul class="menu">
+                  <li>
+                    <%= link_to "Profile", merchant_path(session[:merchant_id]), class: "button" %>
+                  </li>
+                  <li>
+                    <%= link_to "My products", display_path(session[:merchant_id]), class: "button" %>
+                  </li>
+                  <li>
+                    <%= link_to "My orders", my_orders_path, class: "button" %>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <% end %>
+
+          </div>
+
+          <%= link_to "Bonbons", products_path, class: "button" %>
+          <%= link_to "Categories", categories_path, class: "button" %>
+          <%= link_to "Bakers", merchants_path, class: "button", id: "distance" %>
+
+
+          <div class="user-nav columns large-3 small-12 float-right">
+
+            <% if session[:cart_id] %>
+            <%= link_to "My Cart", cart_path(session[:cart_id]), class: "float-right button" %>
+
+            <% end %>
+
+            <% if session[:merchant_id] %>
+            <%= link_to "Log Out", logout_path, method: :delete, class: "float-right button" %>
+            <% else %>
+            <%= link_to "Log In", "/auth/github", class: "float-right button" %>
+            <% end %>
+
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <% if flash[:result_text] or flash[:messages] %>
+  <section class="status <%= flash[:status] %>">
+    <h3><%= flash[:status] == :failure ? "A problem occurred: " : "" %><%= flash[:result_text] %></h3>
+    <% if flash[:messages] %>
+    <ul>
+      <% flash[:messages].each do |name, problems| %>
+      <% problems.each do |problem| %>
+      <li><%= name %>: <%= problem %></li>
+      <% end %>
+      <% end %>
+    </ul>
+    <% end %>
+  </section>
+  <% end %>
+
+  <main class="main">
+
+    <%= yield %>
+  </main>
+
+  <footer>
+    <div class= "ownership">
+      <p>
+        Created By:
+      </p>
+      <ul>
+        <li>
+          Wenjie
+        </li>
+        <li>
+          Caroline
+        </li>
+        <li>
+          Wini
+        </li>
+        <li>
+          Ana Lisa
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<section class="order-new">
+
+  <h3>Order Review</h3>
+
+  <%= render partial: "order_items_review" %>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>Subtotal: $<%= display_dollars(@cart.subtotal)%></td>
+      </tr>
+      <tr>
+        <td>Tax: $<%= display_dollars(@cart.tax)%></td>
+      </tr>
+      <tr>
+        <td><h3>Total: $<%= display_dollars(@cart.total_cost)%></h3></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <section class = "lowerbar">
+    <%= link_to "Edit shopping cart", cart_path(session[:cart_id]), class: "hollow button double-button"%>
+    <%= form_for @order do |t|%>
+    <%= t.hidden_field :status, value: "pending" %>
+    <%= t.submit "Proceed to payment", class: "hollow button double-button" %>
+    <%end%>
+  </section>
+
+</section>

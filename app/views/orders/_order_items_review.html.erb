@@ -1,0 +1,26 @@
+<section>
+
+  <table>
+    <thead>
+      <tr>
+        <th><h4>Delicious Baked Goodness</h4></th>
+        <th><h4>Quantity</h4></th>
+        <th></th>
+        <th><h4>Unit Price</h4></th>
+        <th><h4>Subtotal</h4></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @cart.cartitems.each do |item| %>
+      <tr>
+        <td><%= link_to "#{item.product.name}", product_path(item.product_id) %></td>
+        <td><%= item.quantity %></td>
+        <td></td>
+        <td><%= display_dollars(item.product.price) %></td>
+        <td><%= display_dollars(item.subtotal) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

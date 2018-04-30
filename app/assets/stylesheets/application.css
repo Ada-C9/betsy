@@ -1,0 +1,159 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*= require normalize-rails
+
+*
+*= require_tree .
+*= require_self
+*= require foundation_and_overrides
+
+*/
+html {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+a {
+  color: rgb(64, 34, 2);
+}
+body {
+  color: rgb(64, 34, 2);
+  height: 100%;
+
+  /* Full height */
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+  font-family: 'Berkshire Swash';font-size: 22px;
+  font-weight: lighter;
+}
+.image-header a {
+  font-family: 'Berkshire Swash';font-size: 75px;
+  text-align: center;
+  background-color: rgb(192, 242, 205);
+}
+.image-header a {
+  color: rgb(64, 34, 2);
+}
+ul.menu.toggle {
+  background-color: rgb(192, 242, 205);
+}
+
+.button-group {
+  float: right;
+}
+header {
+  color: rgb(64, 34, 2);
+  background-color: #3adb765c;
+  border-top-style:double;
+  border-bottom-style:double;
+  padding-top:5px;
+  padding-bottom:5px;
+  border-top-color:inherit;
+  border-bottom-color:inherit;
+  border-top-width:20px;
+  border-bottom-width:20px;
+}
+
+a.float-right {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div.top-bar {
+  background-color: rgb(192, 242, 205);
+}
+
+#nav-list > .top-bar > .top-bar-left ul {
+  background-color: rgb(192, 242, 205);
+}
+body .button {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+  border: 2px solid rgb(64, 34, 2);
+}
+
+body .button:hover {
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+}
+
+main {
+  color: rgb(64, 34, 2);
+  border: 10px double rgb(64, 34, 2);
+  background-color: rgb(192, 242, 205);
+}
+
+img.orbit-image {
+  border: 10px solid rgb(64, 34, 2);
+  border-width: 5px;
+  margin-top: 30px;
+}
+
+footer {
+  margin-top: 2em;
+  height: 15%;
+  color: rgb(64, 34, 2);
+  border: 10px double rgb(64, 34, 2);
+  background-color: rgb(192, 242, 205);
+}
+
+.ownership ul {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.ownership p {
+  padding-left: 10px;
+}
+.pagination .current {
+  background-color: rgb(64, 34, 2);
+}
+
+#nav-list .button {
+  margin: 20px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+  font-size: 1.1rem;
+}
+
+#nav-list .button:hover {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+}
+
+#new-product-form .button {
+  margin: 20px;
+  background-color: rgb(64, 34, 2);
+  color: rgb(192, 242, 205);
+  font-size: 1.1rem;
+}
+
+#new-product-form .button:hover {
+  background-color: rgb(192, 242, 205);
+  color: rgb(64, 34, 2);
+
+}
+
+#new-product-form {
+  margin: 30px;
+}
+
+#distance {
+  margin-right: 500px;
+}

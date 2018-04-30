@@ -1,0 +1,50 @@
+.merchant-display {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.merchant-display > li {
+  margin: 10px 40px;
+}
+
+.middle-pro {
+  width: 250px;
+  height: 200px;
+}
+
+.middle-pro:hover {
+  border-radius: 50%;
+}
+
+.all-merchants h2 {
+  text-align: left;
+}
+
+.all-merchants .pro-name {
+  width: 250px;
+  height: 120px;
+  text-align: center;
+}
+
+.show-merchant > ul {
+  list-style-type: none;
+}
+
+.show-merchant {
+  padding: 20px 20px;
+}
+
+.edit-product, .display-products, .create-category {
+  padding: 30px 50px;
+}
+
+
+.show-merchant-products .grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  grid-gap: 50px;
+  margin-bottom: 3em;
+}

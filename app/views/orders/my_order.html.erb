@@ -1,0 +1,11 @@
+<section class="display-my-order">
+<ul>
+  <li>Name: <%=@order.name%></li>
+  <li>Email: <%=@order.email%></li>
+  <li>Mailing address: <%=@order.mail_address%></li>
+  <li>Credit Card: ************<%=@order.creditcard.to_s.last(4)%>/li>
+  <li>Credit Card Expiration Date: <%=@order.expiration_month.strftime("%m")%>, <%=@order.expiration_year.strftime("%Y")%></li>
+</ul>
+<%= link_to "Back to my order list", my_orders_path, class: "button float-right double-button" %>
+<%= link_to "Back to my account", merchant_path(session[:merchant_id]), class: "button float-right double-button" %>
+</section>

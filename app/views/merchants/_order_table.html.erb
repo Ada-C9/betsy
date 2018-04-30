@@ -1,0 +1,30 @@
+<table class="table-orders">
+  <thead class="table-head">
+    <tr>
+      <th class="small">Product ID</th>
+      <th>Name</th>
+      <th class="small">Stock</th>
+      <th class="small">Status</th>
+      <th class="small">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.each do |d| %>
+      <tr>
+        <td><%= d.id %></td>
+        <td><%= link_to d.name, product_path(d) %></td>
+        <td><%= d.stock %></td>
+        <% if d.visible == true  %>
+        <td><%= link_to "Retire", retire_path(d), method: :patch, class: "button" %>
+        </td>
+
+        <% else  %>
+        <td><%= link_to "Unretire", retire_path(d), method: :patch, class: "button" %>
+        </td>
+        <% end %>
+        <td><%= link_to "Edit", edit_product_path(d.id), class: "button" %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

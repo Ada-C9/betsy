@@ -1,0 +1,36 @@
+<h2>Delicious Products</h2>
+
+<%= form_tag product_by_name_path, method: :get, id: "search-bar" do %>
+  <%= text_field_tag :name, params[:name], required: true, id: "search-field"%>
+  <%= button_tag "Search Bonbon", class: "button is-primary is-outlined is-inverted is-small", id: "search-button" %>
+<% end %>
+
+<table class= "treats-table">
+  <thead>
+    <tr>
+      <th>Ooooo</th>
+      <th>Name:</th>
+      <th>Sold By:</th>
+      <th>Average Rating:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+    <tr>
+      <td>
+        <%= link_to image_tag(product.image, alt: "bonbon-image", class: "product_pic"), product_path(product) %>
+      </td>
+      <td>
+        <%= link_to product.name, product_path(product) %>
+      </td>
+      <td>
+        <%= link_to product.merchant.username, show_products_path(product.merchant) %>
+      </td>
+      <td>
+        <%= stars(product.average_rating) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate(@products) %>
