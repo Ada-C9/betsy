@@ -1,0 +1,120 @@
+<div class="homepage">
+  <div id="home-background-img">
+    <section class="home-container">
+      <h2 class="homepage-title">SWEATSY</h2>
+      <div class="content-underline"></div>
+      <h4 class="homepage-title"><em>Get ready to get sweaty!</em></h4>
+    </section>
+  </div>
+  <section>
+    <h4 class='home-header'>Our Story</h4>
+    <hr />
+
+    <section class = 'text-center'>
+      <h5><em><strong>Sweatsy</strong>, adj.: being both sweaty and sexy.</em></h5>
+    </section>
+
+    <p>Are you ready to get sweaty? <strong>Sweatsy</strong> is the brainchild of Ludwig Von Swetson and Lucretia Sweatovsky, two exercise enterpreneur enthusiasts. Their <strong>vision</strong> was to start business to offer people of all walks of life <strong>high-end</strong> couture active wear. From leggings to spandex, to leotards and scrunchies, our apparel is guaranteed to <strong>make you sweat</strong> in as fabulous a way possible. We source from the most elite factories of the Lithuanian countryside and use the most <strong>sweatastic</strong> and semipermeable textiles. We hope you enjoy perusing our stock of sweaty accessories and consider buying something to help you reach sweat <strong>success</strong>! Don't sweat the small stuff! Start your day with sweatsy and love your life <strong>bigly</strong>. Hashtag live life to the <strong>sweatiest</strong>. Hashtag life is sweet and sweaty. Don't forget to follow us on Instagram puh-lease! Thank you for visiting our beautiful website! It is the best website, trust us no bugs just sweat.
+    </p>
+  </section>
+
+  <section>
+    <div class="text-center">
+      <h4 class='home-header'>Browse Top <big>P</big>roducts</h4>
+      <hr />
+      <ul>
+        <li class='thumbnail'>
+          <div class='caption'>
+            <h5><strong> Red Leotard </strong> </h5>
+          </div>
+          <div class='home-image-expand'>
+            <img src='https://img.etsystatic.com/il/ba4e45/1088013044/il_570xN.1088013044_iqj2.jpg?version=1' alt='placeholder photo' height= '200' width= '250' />
+          </div>
+        </li>
+
+        <li class='thumbnail'>
+          <div class='caption'>
+            <h5><strong> Jazz Legs </strong> </h5>
+          </div>
+          <div class='home-image-expand'>
+            <img src='https://i.pinimg.com/originals/23/de/e8/23dee8bb0263a8507325f0cdbd8b37f9.jpg' alt='placeholder photo' height= '200' width= '250' />
+          </div>
+        </li>
+
+
+        <li class='thumbnail'>
+          <div class='caption'>
+            <h5><strong> Dry-Fit Shirt </strong> </h5>
+          </div>
+          <div class='home-image-expand'>
+            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQEwKyPTI4qtkNvqj5V4i5fjDTTJ0WpErK6AFZp0Jf9MgBlRKwMg' alt='placeholder photo' height= '200' width= '250' />
+          </div>
+        </li>
+
+      </ul>
+      <%= link_to "See More", products_path, class:'button' %>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="text-center">
+      <h4 class='home-header'>Browse by <big>C</big>ategory</h4>
+      <hr />
+      <ul >
+        <li class='thumbnail'>
+          <div class='caption'>
+            <h5><strong><%= link_to 'Shirts', categories_path %></strong> </h5>
+          </div>
+          <div class='home-image'>
+            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQEwKyPTI4qtkNvqj5V4i5fjDTTJ0WpErK6AFZp0Jf9MgBlRKwMg' alt='placeholder photo' />
+          </div>
+        </li>
+
+        <li class='thumbnail'>
+          <div class='caption'>
+            <h5><strong><%= link_to 'Shoes', categories_path %></strong> </h5>
+          </div>
+          <div class='home-image'>
+            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVlQpQlULhphplRcysE375sKUo8Z6mwCiCeFYYrZ-jmBbrA10QaA' alt='placeholder photo' />
+          </div>
+        </li>
+
+        <li class='thumbnail'>
+          <div class='caption'>
+            <h5><strong><%= link_to 'Accessories', categories_path %></strong> </h5>
+          </div>
+          <div class='home-image'>
+            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIO2Fgsx7PxowCtLuzPtRLIR7yIam8ayH97oBYStJBSBbsqNVs' alt='placeholder photo' />
+          </div>
+        </li>
+
+        <li class='thumbnail'>
+          <div class='caption'>
+            <h5><strong><%= link_to 'Tights', categories_path %></strong> </h5>
+          </div>
+          <div class='home-image'>
+            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzwAoa1ivQNHyTTkcQpxAdx6kKfDwouri_Dhx9mIfhZdD77nkT' alt='placeholder photo' />
+          </div>
+        </li>
+
+      </ul>
+      <%= link_to "See More", categories_path, class:'button'  %>
+    </div>
+  </section>
+
+  <section>
+    <div class="text-center">
+
+      <h4 class='home-header'>See Top <big>S</big>ellers</h4>
+      <hr />
+      <ul class="grid-x merchants">
+        <li class="size1"><%= link_to Merchant.find(1).username, merchants_path %></li>
+        <li class="size2"><%= link_to Merchant.find(2).username, merchants_path %></li>
+        <li class="size3"><%= link_to Merchant.find(3).username, merchants_path %></li>
+        <li class="size4"><%= link_to Merchant.find(4).username, merchants_path %></li>
+      </ul>
+      <%= link_to "See More", merchants_path, class:'button'  %>
+    </div>
+  </section>
+</div>

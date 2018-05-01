@@ -1,0 +1,53 @@
+<h3 class='text-center'><%= @merchant.username.capitalize %>'s Order Summary Page</h3>
+
+<div class='order-summary'>
+  <h4>Order Details</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Buyer</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Ship</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to Product.find(order.product_id).name, product_path(Product.find(order.product_id)) %></td>
+        <td><%= order.quantity %></td>
+        <td><%= number_to_currency(order.subtotal) %></td>
+        <td><%= order.order.status %></td>
+        <td><%= order.order.created_at.strftime("%B %d, %Y") %></td>
+        <td><%= order.order.name %></td>
+        <td><%= order.order.email %></td>
+        <td><%= order.order.address %></td>
+        <td><%= link_to "Ship Order", :controller => "orders", :action => "ship_order", :id => order.order.id%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h4>Revenue</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Revenue from Paid Orders (not shipped)</th>
+        <th>Revenue from Shipped Orders</th>
+        <th>Total Revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= number_to_currency(@unshipped_orders) %></td>
+        <td><%= number_to_currency(@shipped_orders) %></td>
+        <td><%= number_to_currency(@total) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

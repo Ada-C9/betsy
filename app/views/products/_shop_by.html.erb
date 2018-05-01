@@ -1,0 +1,15 @@
+<section class="top-ten">
+  <h3>Top <%= shop_by.pluralize.capitalize %></h3>
+  <ul>
+    <% data.each do |datum| %>
+      <li>
+        <h4>
+          <%= link_to datum.title, work_path(datum) %>
+          <small>by <%= datum.creator %></small>
+        </h4>
+        <p><%= datum.vote_count %> votes</p>
+      </li>
+    <% end %>
+  </ul>
+  <!-- <%= link_to "View More #{media_category.pluralize.capitalize}", works_path(media_category.pluralize.downcase) %> -->
+</section>

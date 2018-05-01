@@ -1,0 +1,63 @@
+<div class='order-summary'>
+
+<% if @order_products.any? %>
+
+  <h2><%= "Cart for order #{@current_order.id}" %></h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Products</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Subtotal:</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <% @order_products.each do |i| %>
+
+        <%= form_for i do |f| %>
+
+        <td>
+          <%= link_to i.product.name, product_path(i.product.id) %>
+        </td>
+        <td>
+          <% max = i.product.available %>
+          <%= f.hidden_field :product_id, value: i.product.id %>
+          <%= f.number_field :quantity, value: i.quantity, min: 1, max: max, class: "quantity" %>
+        </td>
+        <td>
+          <%= number_to_currency(i.product.price) %>
+        </td>
+        <td>
+          <%= number_to_currency(i.subtotal) %>
+        </td>
+        <td>
+          <%= f.submit "Update", class: "button" %>
+        </td>
+        <td>
+          <%= link_to "Delete", order_product_path(i), :data => {:confirm => "You sure you want to remove #{i.product.name} from your cart?", :method => "delete"}, class: "button" %>
+        </td>
+      </tr>
+    </tbody>
+
+    <% end %>
+
+    <% end %>
+  </table>
+
+  <h3>Order Total: <%= number_to_currency(current_order.order_total) %></h3>
+
+  <%= link_to "Proceed to Checkout", checkout_path, class: "button" %>
+
+  <%= link_to "Contine Shopping", products_path, class: "button" %>
+
+  <% else %>
+  <h2>Your shopping cart is empty.</h2>
+
+  <% end %>
+
+</div>
