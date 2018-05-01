@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+merchant_one:
+  username: merchant_one
+  email: merchant_one@example.com
+  uid: 1
+  provider: :google_oauth2
+
+batambaman:
+  username: batambaman
+  email: thebatambaman@gmail.com
+  uid: 12345
+  provider: google_oauth2

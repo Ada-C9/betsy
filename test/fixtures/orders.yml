@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_name: Peter Parker
+  customer_email: iluvheros@fan.net
+  credit_card: 1234567891011121
+  cvv: 987
+  cc_expiration: 09/35
+  status: paid
+  shipping_address: 1234 Lovelace Ave Seattle WA 98103
+  billing_address: 98103
+
+two:
+  customer_name: Jane Foster
+  customer_email: desertphenom@smartypants.com
+  credit_card: 9876543210111213
+  cvv: 786
+  cc_expiration: 03/23
+  status: paid
+  shipping_address: 109 Desert Road Nowhere AZ 29843
+  billing_address: 29843

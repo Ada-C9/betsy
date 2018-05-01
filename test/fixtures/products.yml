@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+batarang:
+  name: Batarang
+  stock: 10
+  price: 40.00
+  description: The only weapon you'll ever need.
+  merchant: merchant_one
+  # categories:
+  #   - memorabilia
+  #   - awesome
+  photo_url: http://www.equistaff.com/Images/noimageavailable.gif
+
+lasso:
+  name: Lasso of Truth
+  stock: 10
+  price: 234.99
+  description: Lasso
+  merchant: merchant_one
+  # categories:
+  #     - memorabilia
+  #     - awesome
+  photo_url: http://www.equistaff.com/Images/noimageavailable.gif
+
+
+utility_belt:
+  name: Utility Belt
+  stock: 20
+  price: 59.99
+  description: A fanny pack, but better
+  merchant: batambaman
+  photo_url: http://www.equistaff.com/Images/noimageavailable.gif

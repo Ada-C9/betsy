@@ -1,0 +1,168 @@
+<% if @merchant %>
+
+
+  <p>
+  <h3 class="orders-title">Orders Overview</h3>
+  <%= link_to 'Manage My Products', merchant_manage_products_path(@merchant), class: 'button body-button manage-products-button' %>
+  <section class="table">
+    <table>
+      <tr>
+        <th>
+        </th>
+        <th>
+          Pending Orders
+        </th>
+        <th>
+          Paid Orders
+        </th>
+        <th>
+          Completed Orders
+        </th>
+        <th>
+          Cancelled Orders
+        </th>
+        <th>
+          All Orders
+        </th>
+      </tr>
+      <tr>
+        <th>
+          Revenue
+        </th>
+        <td>
+          --
+        </td>
+        <td>
+          <%= number_to_currency(@merchant.total_revenue_by("paid")) %>
+        </td>
+        <td>
+          <%= number_to_currency(@merchant.total_revenue_by("completed")) %>
+        </td>
+        <td>
+          --
+        </td>
+        <td>
+          <%= number_to_currency(@merchant.total_revenue_by("all")) %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          No. Orders
+        </th>
+        <td>
+          <%= @merchant.count_orders_by("pending")  %>
+        </td>
+        <td>
+          <%= @merchant.count_orders_by("paid") %>
+        </td>
+        <td>
+          <%= @merchant.count_orders_by("completed") %>
+        </td>
+        <td>
+          <%= @merchant.count_orders_by("cancelled") %>
+        </td>
+        <td>
+          <%= @merchant.count_orders_by("all") %>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <h3 class="orders-title">
+    <%= @merchant.username %>'s orders
+  </h3>
+
+  <section class="orders-by-status">
+    <%= form_tag orders_path, class: "form-inline by-status", method: :get do %>
+      <%= select_tag :order_status_filter, options_for_select(['all', 'paid', 'pending', 'completed', 'cancelled'], params[:order_status_filter]) %>
+      <%= submit_tag "Search", class: 'button body-button status-submit' %>
+    <% end %>
+    <% if params[:order_status_filter] %>
+      <h4><%= params[:order_status_filter].capitalize %> orders:</h4>
+    <% else %>
+      <h4>All orders:</h4>
+    <% end %>
+  </section>
+
+  <section>
+    <% if @orders_and_items.empty? %>
+    <p>
+      <%= @merchant.username %> has no <%= params[:order_status_filter] unless params[:order_status_filter] == 'all' %> orders yet.
+    </p>
+    <% else %>
+
+    <table>
+      <tr>
+        <th>
+          Order
+        </th>
+        <th>
+          Order Status
+        </th>
+        <th>
+          Product
+        </th>
+        <th>
+          Quantity
+        </th>
+        <th>
+          Subtotal
+        </th>
+        <th>
+          Placed On
+        </th>
+        <th>
+          Mark as Shipped
+        </th>
+        <th>
+          Cancel
+        </th>
+      </tr>
+
+      <% @orders_and_items.each do |order, order_items| %>
+      <tr>
+        <td rowspan="<%= order_items.length %>" >
+          <%= link_to order, order_path(order) %>
+        </td>
+        <td rowspan="<%= order_items.length %>" >
+          <%= Order.find(order).order_status.capitalize %>
+        </td>
+
+        <% order_items.each do |order_item| %>
+        <td>
+          <%= link_to order_item.product.name, product_path(order_item.product) %>
+        </td>
+        <td>
+          <%= order_item.quantity %>
+        </td>
+        <td>
+          <%= number_to_currency(order_item.subtotal) %>
+        </td>
+        <td>
+          <%= readable_date(order_item.order.updated_at) %>
+        </td>
+        <td>
+          <% if order_item.status == "pending" %>
+            <%= link_to_if Order.find(order).status != "pending", "Ship", ship_path(order_item), method: :patch %>
+          <% elsif order_item.status == "shipped" %>
+            Shipped
+          <% end %>
+        </td>
+        <td>
+          <% if order_item.status == "pending" %>
+            <%= link_to_if Order.find(order).status != "pending", "Cancel", cancel_path(order_item), method: :patch %>
+          <% elsif order_item.status == "cancelled" %>
+            Cancelled
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+
+      <% end %>
+
+    </table>
+
+    <% end %>
+
+  </section>
+<% end %>

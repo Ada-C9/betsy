@@ -1,0 +1,23 @@
+<h3 class='products-title'><%= @logged_merchant.username %></h3>
+
+<%= link_to 'Add a New Product or Category', new_merchant_product_path(@logged_merchant), class: 'button body-button manage-products-button' %>
+
+<table class="table">
+  <thead>
+    <th>Product</th>
+    <th>Stock</th>
+    <th>Product Status</th>
+    <th colspan='2'>Manage Product</th>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product_path(product.id) %></td>
+        <td><%= product.stock %></td>
+        <td><%= product.retired == false ? 'Active' : 'Retired' %></td>
+        <td><%= link_to 'Edit', edit_merchant_product_path(product.merchant_id, product.id) %></td>
+        <td><%= link_to 'Retire', merchant_product_path(@logged_merchant.id, product.id), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
