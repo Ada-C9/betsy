@@ -1,0 +1,25 @@
+<section class="user-products-view">
+  <h1><%= @user.username%> products</h1>
+  <% unless @user_products.first.nil?  %>
+  <!-- Show products that user has for sale: -->
+  <table >
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Options</th>
+    </tr>
+    <%  @user_products.each do |product|  %>
+    <tr>
+      <td><%= product.name %><br /></td>
+      <td><%= product.quantity %></td>
+      <td><%= format_price(product.price) %></td>
+      <td><%= link_to "Edit Item", edit_product_path(product.id) %></td>
+    </tr>
+    <% end %>
+  </table>
+  <% else %>   <!-- If user has no products for sale -->
+  <h4>You have no products for sale.</h4>
+  <% end %>
+  <p><%= link_to("Add Product", new_product_path, :class => "button") %>
+  </section>

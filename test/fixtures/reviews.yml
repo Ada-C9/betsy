@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+candy:
+  rating: 2
+  comment: A tasty candy
+
+cake:
+  rating: 3
+  comment: A pretty cake

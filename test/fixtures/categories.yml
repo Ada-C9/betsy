@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+candy:
+  name: Candy
+
+chocolate:
+  name: Chocolate
+
+cookie:
+  name: Cookie

@@ -1,0 +1,50 @@
+<h1><%= "Order # #{@order.id}" %></h1>
+
+<section class="order-status">
+
+</section>
+
+<section class="order-info">
+  <h3>Order Details</h3>
+
+  <p><strong>Status:</strong> <%= "#{@order.status.capitalize}" %></p>
+  <p><strong>Created on: </strong> <%= "#{@order.created_at.to_formatted_s(:long)}" %> </p>
+  <!-- TODO: make it a better display of date -->
+  <p><strong>Client: </strong><%= Merchant.find_by(id: @order.merchant_id).username %></p>
+  <p><strong>Contact: </strong><%= @order.email %></p>
+  <!-- find the merchant name instead of the merchant id -->
+  <p> <strong>Charged to card: </strong><%= " ************#{@order.cc_number[13]}#{@order.cc_number[14]}#{@order.cc_number[15]}" %> <span>  <%= "| Expiration date:".concat(@order.cc_expiration.to_formatted_s(:long)) if @order.cc_expiration  %></span></p>
+  <p><strong>Shipping information: </strong><%= @order.address %> - <%= @order.zip_code %></p>
+
+</section>
+
+<table class="order-table">
+  <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <% @order.orderproducts.each do |op| %>
+    <% p = Product.find_by(id: op.product_id) %>
+    <td><%= link_to p.name, product_path(p.id)  %></td>
+    <td><%= op.quantity %></td>
+    <td><%= format_price(@order.find_total_of_product(op)) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<div class="cart-center">
+   <p>
+     <strong>Total:</strong> <%=format_price(@order.total) %>
+   </p>
+ </div>
+
+
+
+<div>
+<div class="order-button">
+  <% unless @order.status == "canceled"%>
+  <%= link_to "Cancel this order", order_path(@order.id), method: :patch, :class => "button"%>
+  <% end %>
+</div>

@@ -1,0 +1,361 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*= require normalize-rails
+
+*
+*= require_tree .
+*= require_self
+*= require foundation_and_overrides
+
+*/
+body {
+  font-family: 'Pontano Sans', sans-serif;
+}
+
+.title-box {
+  display: flex;
+  justify-content: center;
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+#home-title {
+  border-radius: .5em;
+  border: solid thin grey;
+  width: 250px;
+  height: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: darkorange;
+}
+
+.nav-drop p a {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  border: 0;
+}
+
+#pic {
+  width: 250px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  border: thin solid grey;
+}
+
+.nav-drop p {
+  margin: 0;
+  padding-left: .2em;
+}
+
+.submit {
+  background-color: darkorange;
+  border: solid thin;
+  width: 10em;
+  height: 3em;
+  font-weight: bold;
+}
+
+#login {
+  padding:.25em .25em;
+  display: flex;
+  flex-direction: row;
+}
+
+#login a {
+  margin: 0;
+}
+
+.top-bar {
+  background-color: darkorange;
+  border-bottom: dotted;
+  border-bottom-color: white;
+  padding: .25em;
+  margin: 0;
+}
+
+.top-bar .button {
+  background-color: white;
+}
+
+.button a {
+  background-color: #F3F3F3;
+  color: black;
+  font-weight: bold;
+}
+
+.button {
+  background-color: #F3F3F3;
+  color: black;
+  font-weight: bold;
+}
+
+.button a:hover {
+  color: #2678CF;
+  background-color: #E3E3E3;
+}
+
+.button:hover {
+  color: #2678CF;
+  background-color: #E3E3E3;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.item-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.merch-container {
+  display: grid;
+  grid-template:
+  "image"
+  "text";
+  padding: 2em;
+}
+
+.merch-container #pic {
+  grid-area: image;
+  display: flex;
+  justify-content: center;
+}
+
+.root-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.merch-container p {
+  grid-area: text;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.rating-container p, h4 {
+  display: flex;
+  justify-content: center;
+}
+
+.rating-container {
+  padding-top: 3em;
+}
+
+.rating-container ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+strong {
+  margin-right: .3em;
+}
+
+.product-container {
+  padding: 1.5em;
+  margin-bottom: 4em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5em;
+  width: 500px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.product-container h4 {
+  display: flex;
+  justify-content: center;
+}
+
+.product-info {
+  border: solid;
+  border-style: outset;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-info p {
+  margin: 0;
+  padding-left: .5em;
+}
+
+td {
+  text-align: center;
+  background-color: white;
+  border: solid grey thin;
+}
+
+th {
+  background-color: darkorange;
+  border: solid grey thin;
+}
+
+.cart-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+table {
+  width: 80%;
+  margin: 80px;
+  margin-left: 10%;
+}
+
+.user-profile, .user-products-view {
+  text-align: center;
+}
+
+#review {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#review ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#review li {
+  list-style: none;
+  padding: 8px;
+}
+
+.status ul {
+  list-style: none;
+}
+
+.status {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid thin grey;
+}
+
+.success {
+  background-color: hsla(120, 100%, 75%, 0.3)
+}
+
+.failure {
+  margin-top: 1%;
+  background-color: hsla(0, 100%, 70%, 0.3);
+}
+
+.merch-container {
+  display: grid;
+  grid-template:
+  "image"
+  "text";
+  padding: 2em;
+}
+
+.product-show-details {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5%;
+}
+
+.product-show-details #show-pic {
+  margin: 0;
+}
+
+.product-show-container {
+  padding-top: 1.5em;
+  width: 450px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.new-product {
+  padding-right: .5em;
+  padding-left: .5em;
+  padding-top: 1.5em;
+  width: 450px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.product-form {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.product-show-details p {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  margin: 0;
+}
+
+.new_orderproduct, .cart-center{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  align-items: center;
+  margin: auto;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 1.5em;
+  width: 300px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.category-list li {
+  list-style: none;
+}
+
+.category-button, #submit, .order-button {
+  display: flex;
+  justify-content: center;
+}
+
+.cart-checkout {
+  padding: 30%;
+  padding-top: 2%;
+}
+
+.order-table {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}

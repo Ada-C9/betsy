@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1
+  product_id: products(:candy).id
+  order_id: orders(:paid).id
+
+two:
+  quantity: 1
+  product_id: products(:cake).id
+  order_id: orders(:paid).id

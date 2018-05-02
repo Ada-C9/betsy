@@ -1,0 +1,32 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+candy:
+  name: Candy
+  price: 10
+  quantity: 7
+  description: Great for sharing
+  merchant_id: mercahts(:atul).id
+  # orderproduct_id:
+  status: active
+  photo: fruit_bouquet.jpg
+
+
+cake:
+  name: Cake
+  price: 6
+  quantity: 20
+  description: Delicious
+  merchant_id: mercahts(:lucy).id
+  # orderproduct_id:
+  status: active
+  photo: german_choco_cake.jpg
+
+flan:
+  name: Flan
+  price: 13
+  quantity: 9
+  description: Homemade and floppy
+  merchant_id: mercahts(:lucy).id
+  # orderproduct_id:
+  status: retired
+  photo: flan.jpg

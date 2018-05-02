@@ -1,0 +1,17 @@
+<h1>Merchants</h1>
+
+<section class="item-box">
+  <% @merchants.each do |merchant| %>
+  <div class="merch-container">
+    <%= link_to image_tag("profile-pic.jpg", alt: "Product does not have a picture."), merchant_path(merchant.id) %>
+    <div>
+      <p>
+        <strong>Username:</strong><%= link_to merchant.username, merchant_path(merchant.id) %>
+      </p>
+      <p>
+        <strong>Email:</strong><%= merchant.email %>
+      </p>
+    </div>
+  </div>
+  <% end %>
+</section>

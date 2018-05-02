@@ -1,0 +1,32 @@
+<section class="cart-checkout">
+
+<h2>Cart <%= page_title %></h2>
+<%= form_for @order do |f| %>
+
+<%= f.label :address %>
+<%= f.text_field :address %>
+
+<%= f.label :card_name %>
+<%= f.text_field :card_name %>
+
+<%= f.label :cc_number %>
+<%= f.text_field :cc_number %>
+
+<%= f.label :cc_expiration %>
+<%= f.text_field :cc_expiration %>
+
+<%= f.label :cvv %>
+<%= f.text_field :cvv %>
+
+<%= f.label :zip_code %>
+<%= f.text_field :zip_code %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+<%= f.hidden_field :status, value: "paid" %>
+
+<%= f.submit "Submit payment and complete order" %>
+
+<% end %>
+</section>

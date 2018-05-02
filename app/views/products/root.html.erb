@@ -1,0 +1,22 @@
+<div class="title-box">
+  <h1 id="home-title">Sweetsy!</h1>
+</div>
+
+<section class="item-box">
+  <% @products.each do |product| %>
+  <div class="product-container">
+    <div id="pic">
+      <% if product.photo %>
+      <%= image_tag(product.photo, alt: "Product picture.") %>
+      <% else %>
+      <%= image_tag("No-image-available.jpg", alt: "Product does not have a picture.") %>
+      <% end %>
+    </div>
+    <div class="root-info">
+      <h5><%= link_to product.name, product_path(product.id) %></h5>
+      <span><strong>Price: </strong> <%= format_price(product.price) %></span>
+      <span><strong>Stock: </strong> <%= product.quantity %></span>
+    </div>
+  </div>
+  <% end %>
+</section>

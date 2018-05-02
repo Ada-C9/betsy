@@ -1,0 +1,63 @@
+<h1><%= @user.username %> Cart</h1>
+
+<% if @orderproducts && @orderproducts.first %>
+
+<section class="cart-table">
+  <table>
+    <tr>
+      <th>
+        Item
+      </th>
+      <th>
+        Quantity
+      </th>
+      <th>
+        Price
+      </th>
+      <th>
+        Subtotal
+      </th>
+      <th colspan="2">
+        Options
+      </th>
+    </tr>
+    <% @orderproducts.each do |op| %>
+    <% product = Product.find(op.product_id) %>
+    <tr>
+      <td>
+        <%= product.name %><br />
+      </td>
+      <td>
+        <%= op.quantity %>
+      </td>
+      <td>
+        <%= format_price(product.price) %>
+      </td>
+      <td>
+        <%= format_price(op.quantity * product.price) %>
+      </td>
+      <td>
+        <%= link_to "Edit", edit_orderproduct_path(op.id) %>
+      </td>
+      <td>
+        <%= link_to "Remove", orderproduct_path(op.id), method: :delete %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+  <div class="cart-center">
+    <p>
+      <strong>Total:</strong> <%=format_price(@order.first.total) %>
+    </p>
+    <p>
+      <%= link_to "Checkout", edit_order_path(@orderproducts.first.order_id), class: "button" %>
+      <%= link_to "Clear cart", clearcart_path, class: "button" %>
+    </p>
+  </div>
+
+
+  <% else %>
+  <h3>Empty cart!</h3>
+  <% end %>
+</section>

@@ -1,0 +1,43 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.product_show{
+  display: flex;
+}
+.image-show img {
+
+  flex-flow: column wrap;
+  align-items: left;
+}
+
+
+.product-show h3, .description, .rating article {
+  border-bottom: 1px 
+
+}
+
+.description, .rating-average, .rating article {
+  margin: 1em 0;
+  padding: 1em 0;
+}
+
+.rating-average {
+  margin-top: 3em;
+}
+
+.product-show h3{
+  font-size: 1.5em;
+  text-transform: uppercase;
+  padding-bottom: 0.5em;
+}
+
+.product-show {
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+
+
+.image-show {
+  text-align: center;
+}

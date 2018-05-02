@@ -1,0 +1,27 @@
+<h1><%= @category.name %></h1>
+
+<section class="item-box">
+  <% @category.products.each do |product| %>
+  <div class="product-container">
+    <h4><%= link_to product.name, product_path(product.id) %></h4>
+    <div id="pic">
+      <% if product.photo %>
+      <%= image_tag(product.photo, alt: "Product picture.") %>
+      <% else %>
+      <%= image_tag("No-image-available.jpg", alt: "Product does not have a picture.") %>
+      <% end %>
+    </div>
+    <div class="product-info">
+      <p>
+        <strong>Price: </strong> <%= format_price(product.price) %>
+        <p>
+          <strong>Stock: </strong> <%= product.quantity %>
+        </p>
+      </p>
+      <p class="button">
+        <%= link_to "Add to cart", url_for(:controller => 'orderproducts', :action => 'create', :product_id => product.id, :quantity => product.quantity), method: :post %>
+      </p>
+    </div>
+  </div>
+  <% end %>
+</section>

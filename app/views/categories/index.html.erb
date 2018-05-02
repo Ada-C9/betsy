@@ -1,0 +1,14 @@
+<h1>Categories</h1>
+
+<section class="category-list">
+  <p class="category-button">
+    <%= link_to "Add category", new_category_path, class: "button" %>
+  </p>
+  <% @categories.each do |category| %>
+  <ul>
+    <li>
+      <h4><%= link_to category.name, category_path(category.id) %></h4>
+    </li>
+  </ul>
+  <% end %>
+</section>

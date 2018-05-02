@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Pacifico|Pontano+Sans" rel="stylesheet">
+  <title><%= content_for?(:title) ? yield(:title) : "Sweetsy!" %></title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<header class="nav-bar">
+  <section class="top-bar" data-topbar role="navigation">
+
+    <div class="nav-drop">
+      <p>
+          <%= link_to "Home", homepage_path, class: "button" %>
+      </p>
+    </div>
+
+    <div>
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <%= link_to "Products", products_path, class: "button" %>
+          <ul class="menu">
+            <li>
+              <%= link_to "View all", products_path, class: "button" %>
+            </li>
+            <% Product.all.each do |product|%>
+            <li>
+              <%= link_to product.name, product_path(product.id), class: "button" %>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <%= link_to "Merchants", merchants_path, class: "button" %>
+          <ul class="menu">
+            <li>
+              <%= link_to "View all", merchants_path, class: "button" %>
+            </li>
+            <% Merchant.all.each do |merchant|%>
+            <li>
+              <%= link_to merchant.username, merchant_path(merchant.id), class: "button" %>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <%= link_to "Categories", categories_path, class: "button" %>
+          <ul class="menu">
+            <li>
+              <%= link_to "View all", categories_path, class: "button" %>
+            </li>
+            <% Category.all.each do |cat|%>
+            <li><%= link_to cat.name, category_path(cat.id), class: "button" %></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="nav-drop" id="login">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <% if @user %>
+          <%= link_to "Logged in as #{@user.username}", user_profile_path(@user), class: "button" %>
+          <ul class="menu">
+            <li>
+              <%= link_to "My Profile", user_profile_path(@user.id), class: "button" %>
+            </li>
+            <li>
+              <%= link_to "My Purchases", orders_path, class: "button" %>
+            </li>
+            <li>
+              <%= link_to "My Products", user_products_path(@user.id), class: "button" %>
+            </li>
+            <li>
+              <%= link_to "Add Product", new_product_path, class: "button" %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p><%= link_to "Log Out", logout_path, method: :delete, class: "button" %></p>
+
+      <p><%= link_to "View cart", cart_path, class: "button" %></p>
+
+      <% else %>
+    </p>
+    <p>
+      <%= link_to "Log In", github_login_path, class: "button" %>
+      <% end %>
+    </p>
+  </div>
+</section>
+</header>
+
+<body>
+
+
+  <% if flash[:result_text] or flash[:messages] %>
+  <section class="status <%= flash[:status] %>">
+    <h5><%= flash[:status] == :failure ? "A problem occurred: " : "" %><%= flash[:result_text] %></h5>
+  </section>
+  <% if flash[:messages] %>
+  <section class="status <%= flash[:status] %>">
+    <ul>
+      <% flash[:messages].each do |name, problems| %>
+      <% problems.each do |problem| %>
+      <li><%= name %>: <%= problem %></li>
+      <% end %>
+      <% end %>
+    </ul>
+    <% end %>
+  </section>
+  <% end %>
+
+
+  <%= yield %>
+
+</body>
+</html>

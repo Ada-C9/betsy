@@ -1,0 +1,12 @@
+<h1> Edit Order Item Quantity </h1>
+
+<% product = Product.find(@orderproduct.product_id) %>
+
+<section>
+  <%= form_for @orderproduct do |f| %>
+  <%= f.hidden_field :product_id, value: @orderproduct.product_id %>
+  <%= f.label :quantity %>
+  <%= f.select :quantity, options_for_select(1..product.quantity) %>
+  <%= f.submit "Submit", class: "button" %>
+  <% end %>
+</section>

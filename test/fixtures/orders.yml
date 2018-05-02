@@ -1,0 +1,34 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+paid:
+  status: paid
+  email: some_person@testing.com
+  address: 123 Fake addres, Faketown
+  card_name: Fake Buyer
+  cc_number: 1234123412341234
+  cc_expiration: 2018-04-19
+  cvv: 1234
+  zip_code: 98010
+  merchant_id: merchants(:lucy).id
+
+open:
+  status: open
+  email: random_person@testing.com
+  address: 456 Fake addres, Faketown
+  card_name: Second Fake Buyer
+  cc_number: MyString
+  cc_expiration: 2018-04-19
+  cvv: 4567
+  zip_code: 98000
+  merchant_id: merchants(:atul).id
+
+canceled:
+  status: canceled
+  email: random_person@testing.com
+  address: 456 Fake addres, Faketown
+  card_name: Second Fake Buyer
+  cc_number: MyString
+  cc_expiration: 2018-04-19
+  cvv: 4567
+  zip_code: 98000
+  merchant_id: merchants(:atul).id

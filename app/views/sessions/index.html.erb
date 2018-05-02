@@ -1,0 +1,53 @@
+<section class="user-profile">
+
+  <% if @merchant.id == @user.id  %>
+  <h1>Welcome <%= @merchant.username %> !</h1>
+
+  <h3><%= link_to("See Your Purchase Orders", orders_path, :class => "button")%></h3>
+  <h3><%= link_to("See Your Products", user_products_path(@user.id), :class => "button")%></h3>
+  <h3><%= link_to("Add Product", new_product_path, :class => "button")%></h3>
+  <% end %>
+
+  <% unless @total_revenue == 0 %> <!-- if there is revenue to show -->
+  <table>
+    <tr>
+      <th colspan="4">Total Revenue by Status</th>
+    </tr>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity Sold</th>
+      <th>Product Revenue</th>
+    </tr>
+    <% @sold_products.each do |p| %>
+    <tr>
+      <td><%= link_to p.name, product_path(p.id) %> </td>
+      <td><%= format_price(p.price) %> </td>
+      <% sum = 0 %>
+      <% @sold_products.each do |product| %>
+      <% sum =+ 1 if product.id == p.id %>
+      <td><%= sum %></td>
+      <% end %>
+      <td><%= format_price(sum * p.price)%> </td>
+      <% end %>
+    </tr>
+    <tr>
+      <th colspan="4">Total revenue: <strong><%= format_price(@total_revenue) %></strong></th>
+    </tr>
+  </table>
+  <% else %>
+  <p>No revenue.</p>
+  <% end %>
+</section>
+
+<!-- TODO: Total Revenue by status -->
+<!-- TODO: Total number of orders by status -->
+<!-- TODO: Filter orders displayed by status -->
+
+<!-- A list of orders including at least one of my products: -->
+<!-- TODO: - Each order item sold by me with a quantity and line-item subtotal -->
+<!-- TODO: - A link to the item description page -->
+<!-- TODO: - DateTime the order was placed -->
+
+<!-- TODO:- Link to transition the order item to marked as shipped -->
+<!-- TODO: - The current status of the order ("pending", "paid", "complete", "cancelled") -->

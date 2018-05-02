@@ -1,0 +1,5 @@
+<h1><%= @user.username %> Cart</h1>
+
+<% @orderproduct.products.each do |product| %>
+<strong>Item: </strong> <%= product.name %>
+<% end %>
