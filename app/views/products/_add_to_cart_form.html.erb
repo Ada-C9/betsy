@@ -1,0 +1,10 @@
+<section>
+  <%= form_for @order_item do |f| %>
+  <%= f.label :quantity %>
+  <%= f.select :quantity, options_for_select(1..@product.stock)%>
+  <%= f.hidden_field :product_id, { :value => @product.id } %>
+  <%= f.hidden_field :is_shipped, value: false %>
+  <%= f.hidden_field :price, value: @product.price %>
+  <%= f.submit "Add to Cart"%>
+  <% end %>
+</section>

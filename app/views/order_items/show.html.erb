@@ -1,0 +1,16 @@
+<section class="large-9 cell">
+	<h3>Order Item Info</h3>
+		<section class="grid-x">
+			<section class="cell medium-auto">
+				<h4>Order Item ID: <%= @order_item.id %></h4>
+				<p>quantity: <%= @order_item.quantity %></p>
+				<p>price: <%= @order_item.price.cents_to_dollars %></p>
+				<p>is_shipped: <%= @order_item.is_shipped %></p>
+				<p>product_id: <%= @order_item.product_id %></p>
+
+			<%= link_to "Edit Order Item", edit_order_item_path, class: "button" %>
+			<%= link_to "New Order Item", new_order_item_path, class: "button" %>
+			<%= link_to "Back to Welcome Page", root_path, class: "button" %>
+		</section>
+	</secton>
+</secton>

@@ -1,0 +1,48 @@
+<section class="large-10 cell">
+  <section class = "fulfillment-container">
+    <section class = "merchant-order-metrics">
+      <br>
+      <h4 > Merchant Metrics for <%= @merchant.username %> </h4>
+      <table>
+        <thead>
+          <tr>
+            <th width="100"></th>
+            <th width="100"><strong>Total</strong></th>
+            <th width="100"><strong><%= link_to 'Paid', {controller: 'merchants', action: 'order_fulfillment', :status => 'paid'} %></strong> </th>
+            <th width="100"><strong><%= link_to 'Complete', {controller: 'merchants', action: 'order_fulfillment', :status => 'completed'} %></strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> <strong>Order Count</strong></td>
+            <td> <%= @orders.count %></td>
+            <td> <%= @paid_orders.count %></td>
+            <td> <%= @complete_orders.count %></td>
+          </tr>
+          <tr>
+            <td> <strong>Revenue</strong></td>
+            <td> <%= @merchant.get_merchant_revenue("all").cents_to_dollars %></td>
+            <td> <%= @merchant.get_merchant_revenue("paid").cents_to_dollars %></td>
+            <td> <%= @merchant.get_merchant_revenue("complete").cents_to_dollars %> </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <br><br>
+    <section class = "table-order-items">
+      <h4> Order Fulfillment Summary </h4>
+      <h5> Paid Orders </h5>
+      <% @paid_orders.each do |order| %>
+      <%= link_to "Order ##{order.id}", merchant_order_path(@merchant.id, order.id) %>  (<%= order.created_at.show_date %>)
+      <%= render partial: "shared/table" , locals: { table_order_items: order.order_items.where(product_id: @merchant.get_merchant_products), page_title: "#{@merchant.username} orders" } %>
+      <% end %>
+
+      <h5>  Completed Orders </h5>
+      <% @complete_orders.each do |order| %>
+      <%= link_to "Order ##{order.id}", merchant_order_path(@merchant.id, order.id) %>  (<%= order.created_at.show_date %>)
+      <%= render partial: "shared/table" , locals: { table_order_items: order.order_items.where(product_id: @merchant.get_merchant_products), page_title: "#{@merchant.username} orders" } %>
+      <% end %>
+    </section>
+  </section>
+</section>

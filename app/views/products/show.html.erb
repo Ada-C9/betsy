@@ -1,0 +1,74 @@
+<section>
+  <section class="product-main">
+    <section class="product-image">
+      <%= image_tag(@product.photo, :alt => "product image") %>
+    </section>
+    <section class="product-details">
+      <h2><%= @product.name %></h2>
+      <% if @product.discontinued == false %>
+
+      <p><%= @product.stock %> <%= @product.inventory_status %></p>
+      <% else %>
+      <p class="retired">
+        Product is discontinued.
+      </p>
+      <%end %>
+
+      <p><%= @product.get_price_in_dollars %></p>
+      <p><%= link_to @product_merchant.username, merchant_path(@product_merchant.id) %></p>
+      <% if @product.discontinued == false %>
+
+      <div><%= render partial: "add_to_cart_form" %></div>
+
+      <% else %>
+
+      <%end %>
+      <p>Description: <%= @product.description %></p>
+      <p>
+        Categories:
+        <% @product.categories.each do |category| %>
+        <%= category.name %>
+        <%end%>
+      </p>
+    </section>
+  </section>
+
+
+  <section class = "row rating-average container">
+    <h4>Ratings Summary</h4>
+    <p><%= @product.get_average_rating%></p>
+  </section>
+
+  <section class = "row rating container">
+    <h4>Reviews</h4>
+    <% if @product.reviews.empty? %>
+    <% if !@merchant.nil? && @merchant.id != @product.merchant.id %>
+    <p>Be the first martian to review!</p>
+    <% else %>
+    <p>This product has no reviews</p>
+    <% end %>
+    <%else %>
+    <ul>
+      <li>
+        <% @product.reviews.each do |review| %>
+        <% review.rating.times do%>
+        <%= "🚀" %>
+        <% end %>
+      </li>
+      <p><%= review.comment %></p>
+      <% end%>
+    </ul>
+    <% end%>
+  </section>
+
+
+  <% if @merchant.nil? || @merchant.id != @product.merchant.id %>
+  <p><%=link_to "Review Now!", new_product_review_path(@product.id), class: 'button' %></p>
+  <% end %>
+  <% if !@merchant.nil? && @merchant.id == @product.merchant.id %>
+  <% if @product.discontinued == false %>
+  <p><%= link_to "Deactivate this product", deactivate_product_path(@product.id), class: 'button', method: :patch %></p>
+  <% end %>
+  <% end %>
+
+</section>

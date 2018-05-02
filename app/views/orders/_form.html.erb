@@ -1,0 +1,68 @@
+<section class="large-9 cell">
+<h3>Order Summary<%= link_to "Edit Cart", view_cart_path(id: session[:cart_id]), class: "button in-line-button float-right" %></h3>
+  <section class="grid-x">
+    <section class="cell medium-auto">
+      <% if @order.nil? || @order.order_items.empty? %>
+        <h4>Cart is empty!</h4>
+      <% else %>
+        <section>
+
+        </section>
+        <section>
+          <%= form_for @order, :url => checkout_order_path(@order.id) do |f| %>
+            <h5>Customer:</h5>
+
+            <%= f.label :customer_name %>
+            <%= f.text_field :customer_name, placeholder:"Must be at least one character" %>
+            <%= f.label :email_address %>
+            <%= f.text_field :email_address, placeholder:"Must be at least one character and have an '@' sign" %>
+
+            <h4>Shipping Address:</h4>
+            <%= f.label :street %>
+            <%= f.text_field :street, placeholder:"Must be at least one character" %>
+
+            <%= f.label :city %>
+            <%= f.text_field :city, placeholder:"Must be at least one character" %>
+
+            <%= f.label :state %>
+            <%= f.select :state, Order::STATES %>
+
+
+            <%= f.label :mailing_zip %>
+            <%= f.text_field :mailing_zip, placeholder:"Must be 5 digits" %>
+
+            <h5>Payment Method:</h5>
+            <%= f.label :credit_card_holder_name %>
+            <%= f.text_field :cc_name, placeholder:"Must be at least one character" %>
+
+            <%= f.label :credit_card_number %>
+            <%= f.text_field :cc_number, placeholder:"Must be 16 digits" %>
+
+            <%= f.label :credit_card_cvv %>
+            <%= f.text_field :cc_cvv, placeholder:"Must be 3 digits" %>
+
+            <%= f.label :credit_card_zip_code %>
+            <%= f.text_field :cc_zip, placeholder:"Must be 5 digits" %>
+
+            <%= f.label :credit_card_expiration_month %>
+            <%= f.text_field :cc_exp_month %>
+
+            <%= f.label :credit_card_expiration_year %>
+            <%= f.text_field :cc_exp_year %>
+
+            <%= f.hidden_field :status, value: "paid" %>
+
+            <%= f.submit "Place your order", class:"button" %>
+
+          <% end %>
+        </section>
+        <section class="checkout-options">
+          <% if @order.status == "pending" %>
+          <%= link_to('Cancel Order', mark_order_cancelled_path(@order), method: :patch, class: "button in-line-button float-right") %>
+          <%= link_to('Continue Shopping', root_path, class: "button in-line-button float-right") %>
+          <% end %>
+        </section>
+      <% end %>
+    </section>
+  </section>
+</section>

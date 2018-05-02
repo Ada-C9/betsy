@@ -1,0 +1,33 @@
+<section class = "row container">
+  <h1>Write your review</h1>
+</section>
+<section class = "row container">
+  <article class = "columns small-12 large-6">
+    <%= image_tag @product.photo, alt:"product image to review"%>
+    <h3><%=@product.name%></h3>
+  </article>
+  <article class = "columns small-12 large-6">
+
+    <%= form_tag(product_reviews_path(id: @product.id), method: :post, class: 'rating') do %>
+    <%=label_tag%>
+    <div class='rating-labels'>
+      <%= radio_button_tag(:rating, 1) %>
+      <label for='rating_5'></label>
+      <%= radio_button_tag(:rating, 2) %>
+      <label for='rating_4'></label>
+      <%= radio_button_tag(:rating, 3) %>
+      <label for='rating_3'></label>
+      <%= radio_button_tag(:rating, 4) %>
+      <label for='rating_2'></label>
+      <%= radio_button_tag(:rating, 5) %>
+      <label for='rating_1'></label>
+    </div>
+    <%= label_tag(:comment, 'Review') %>
+    <%= text_field_tag(:comment) %>
+
+
+    <%= submit_tag('Save')%>
+    <% end %>
+
+  </article>
+</section>

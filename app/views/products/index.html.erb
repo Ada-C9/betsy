@@ -1,0 +1,27 @@
+<% if params[:merchant_id]%>
+  <h2 class="prod-title"><%= Merchant.find(params[:merchant_id]).username  %>'s Mars Supply Shop</strong></h2>
+<% elsif params[:category_id] %>
+  <h2 class="prod-title"><%= Category.find(params[:category_id]).name  %> -  Supplies</strong></h2>
+<% else %>
+  <h2 class="prod-title"><strong>All Products</strong></h2>
+<% end %>
+
+<section class="grid-container">
+  <section class="grid-x grid-margin-x">
+    <ul class="prod-container">
+      <% @products.each do |p| %>
+      <li class="product">
+        <%= link_to product_path(p.id) do %>
+        <div class="product-summary">
+          <%= image_tag(p.photo, :alt => "product image") %>
+          <div><%= p.name %></div>
+          <div><small><%= p.price.cents_to_dollars %></small></div>
+        </div>
+        <%end%>
+      </li>
+      <%end%>
+    </ul>
+  </section>
+</section>
+
+<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>

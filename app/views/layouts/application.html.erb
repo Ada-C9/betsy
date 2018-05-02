@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= favicon_link_tag 'favicon.ico' %>
+  <title><%= content_for?(:title) ? yield(:title) : "Mars Depot" %></title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Quicksand:400,500,700" rel="stylesheet">
+</head>
+
+
+
+<body>
+  <header>
+
+
+    <!-- Navigation -->
+    <secton class="row expanded">
+      <secton class="column">
+        <secton class="large-article-header">
+          <secton class="large-article-header-content">
+            <secton class="center-container">
+              <secton class="article-title">
+                <%= link_to "MarsDepot", root_path%>
+              </secton>
+            </secton>
+          </secton>
+        </secton>
+      </secton>
+    </secton>
+    <secton  data-sticky-containerdata >
+      <secton data-sticky data-options="marginTop:0;">
+
+        <secton class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+          <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+          <secton class="title-bar-title">Menu</secton>
+        </secton>
+
+        <secton class="top-bar" id="example-menu">
+          <ul class="vertical medium-horizontal dropdown menu" data-responsive-menu="accordion medium-dropdown">
+            <!-- <li class="menu-text">Site Title</li> -->
+            <li>
+              <%= link_to "Categories", categories_path, class:"nav-group" %>
+              <ul class="menu vertical nested submenu">
+                <% Category.all.each do |category| %>
+                  <li><%= link_to category.name, category_products_path(category.id) %></li>
+                <% end %>
+              </ul>
+            </li>
+            <li>
+              <%= link_to "Merchants", merchants_path, class:"nav-group"%>
+              <ul class="menu vertical nested submenu">
+                <% Merchant.all.each do |merchant| %>
+                  <li><%= link_to merchant.username, merchant_products_path(merchant.id) %></li>
+                <% end %>
+              </ul>
+            </li>
+
+                <%= link_to "Shop All", products_path, class:"nav-group" %>
+
+          </ul>
+        <!-- </secton> -->
+
+        <secton class="top-bar-right">
+          <% @curr_merchant = Merchant.find_by(id: session[:merchant_id]) %>
+          <ul class="vertical medium-horizontal dropdown menu" data-responsive-menu="accordion medium-dropdown">
+          <% if @curr_merchant %>
+            <!-- <li class="astronaut" > -->
+              <li>
+                <a href="#" class="nav-group"><%= image_tag("icons/if_astronaut_44938.png", size: "40x40", alt: "User icon") %><%= @curr_merchant.username %></a>
+                <ul class="menu vertical nested submenu">
+                  <li><%= link_to "Manage Inventory", manage_inventory_path %></li>
+                  <li><%= link_to "Order Fullfillment", merchant_orders_path(@merchant.id) %></li>
+                  <li><%= link_to "My Shop", merchant_products_path(@merchant.id) %></li>
+                  <li><%= link_to "Logout", logout_path, method: :delete %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Login With GitHub", github_login_path, class: "button" %></li>
+          <% end %>
+            <li class="cart-container"><%= link_to image_tag("icons/if_shopping_cart red_10535.png", size: "40x40", alt: "Shopping Cart", class: "cart"),  view_cart_path(id: session[:cart_id]) %></li>
+          </ul>
+
+        </secton>
+      </secton>
+
+      </secton>
+    </secton>
+
+
+  </header>
+  <main>
+    <section class="alert-section">
+
+
+        <% if flash[:alert] || flash[:success] %>
+          <% if flash[:alert] %>
+            <section class="callout alert" data-closable>
+              <ul>
+                <% flash[:alert].each do |field, message| %>
+                  <li><%= field %>: <%= message.is_a?(String) ? message : message.pop %></li>
+                <% end %>
+              </ul>
+            </section>
+          <% else %>
+            <h5 class="success callout" data-closable><%= flash[:success] %></h5>
+          <% end %>
+        <% end %>
+
+
+    </section>
+
+    <section class="grid-container">
+         <section class="grid-x grid-margin-x align-center">
+
+  <%= yield %>
+  </section>
+  </section>
+</secton>
+
+</main>
+</body>
+</html>

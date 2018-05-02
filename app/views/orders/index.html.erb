@@ -1,0 +1,28 @@
+<h3>List of Orders</h3>
+<table>
+  <thead>
+    <tr>
+      <th width="50">Order ID</th>
+      <th width="150">Customer Name</th>
+      <th width="100">Email Address</th>
+      <th width="200">Mailing Address</th>
+      <th width="100">Order Date</th>
+      <th width="100">Order Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%= link_to order.id, order_path(order.id) %></td>
+      <td><%= order.customer_name %></td>
+      <td><%= order.email_address %></td>
+      <td><%= order.street %> <%= order.city %>, <%= order.state %> <%= order.mailing_zip %></td>
+      <td><%= order.created_at.show_date %></td>
+      <td><%= order.status %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New Order", new_order_path, class: "button" %>
+<%= link_to "Back to Welcome Page", root_path, class: "button" %>

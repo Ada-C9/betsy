@@ -1,0 +1,39 @@
+<section class = "order-container">
+<section class = "order-summary-container">
+<% if params[:merchant_id]%>
+  <h3 ><%= Merchant.find(params[:merchant_id]).username  %>'s Products in Order #<%= @order.id %>  </h3>
+  <p> Total revenue: <%= @order.get_total_revenue.cents_to_dollars %> </p>
+  <% merchant = Merchant.find(params[:merchant_id])  %>
+<% else %>
+    <h3> Order Info for Order #<%= @order.id %></h3>
+    <p> Total Cost: <%= @order.get_total_revenue.cents_to_dollars %> </p>
+<% end %>
+<p>Order ID: <%= @order.id %></p>
+<p>Email Address: <%= @order.email_address %></p>
+<p>Customer Name: <%= @order.customer_name %></p>
+<p>Shipping Address: <%= @order.street %> <%= @order.city %>, <%= @order.state %> <%= @order.mailing_zip %></p>
+<p>CC Number: **<%= @order.cc_number.to_s[-4..-1]  %></p>
+<p>CC CVV: <%= @order.cc_cvv %></p>
+<p>CC Zip: <%= @order.cc_zip %></p>
+<p>Exp: <%= @order.cc_exp_month %>/<%= @order.cc_exp_year %></p>
+<p>Date placed: <%= @order.created_at.show_date %></p>
+<p>Status: <%= @order.status %></p>
+</section>
+<br>
+<br>
+<section class = "orders-container">
+<% if params[:merchant_id]%>
+  <%= render partial: "shared/table" , locals: { table_order_items: @order.order_items.where(product_id: merchant.get_merchant_products) } %>
+<% else%>
+<%= render partial: "shared/table" , locals: { table_order_items: @order.order_items } %>
+<% end %>
+</section>
+<br>
+<br>
+<section class = "order-options-container">
+<%= link_to "Edit Order", edit_order_path, class: "button" %>
+<%= link_to "New Order", new_order_path, class: "button" %>
+<%= link_to "View All Orders", orders_path, class: "button" %>
+<%= link_to "Back to Welcome Page", root_path, class: "button" %>
+</section>
+</section>

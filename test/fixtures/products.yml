@@ -1,0 +1,46 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ball:
+  name: bouncy ball
+  price: 249
+  description: If you thought balls were fun on earth, you'll LOVE how high these bounce!!
+  stock: 100
+  discontinued: false
+  photo: https://d28rv7itqgss13.cloudfront.net/assets/img/mars_ball-1600_large_2x.jpg
+  merchant: astro
+
+sweater:
+  name: marslandic sweater
+  price: 6032
+  description: Cozy sweater that has buttons to adjust to the huge variations in temperature on Mars!
+  stock: 7
+  discontinued: false
+  photo: https://cdn1.thehunt.com/app/public/system/zine_images/10913029/zine_view_thumb/773d365ac79dc0dca998dd9816e781a8.jpeg
+  merchant: quasar
+
+soap:
+  name: mars mud soap
+  price: 408
+  description: Keep your hands clean and soft with this luxurious soap made out of the most precious Martian mud.
+  stock: 100
+  discontinued: false
+  photo: https://cdn.shopify.com/s/files/1/1295/4039/products/il_570xN.1013704753_qfr7_grande.jpg
+  merchant: quasar
+
+icecream:
+  name: artisan ice cream
+  price: 702
+  description: Miss your favorite ice cream? We've got you covered - you won't even notice it's dehydrated!
+  stock: 50
+  discontinued: false
+  photo: http://cdn.sweetsandsavourysnacksworld.com/wp-content/uploads/1056-Mars-6-Pack1-copy-600x400.jpg
+  merchant: rover
+
+soda:
+  name: dr pepper
+  price: 4
+  description: Favorite drink
+  stock: 50
+  discontinued: true
+  photo: http://cdn.sweetsandsavourysnacksworld.com/wp-content/uploads/1056-Mars-6-Pack1-copy-600x400.jpg
+  merchant: quasar

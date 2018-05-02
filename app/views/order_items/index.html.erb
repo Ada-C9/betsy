@@ -1,0 +1,7 @@
+<h4>This order_items index is for development use only; is not meant to be published </h4>
+
+<%= render partial: "shared/table", locals: { table_order_items: @order_items } %>
+
+<%= link_to "Back to Welcome Page", root_path, class: "button" %>
+
+<%= render partial: "shared/cart", locals: { cart_order_items: @order_items } %>

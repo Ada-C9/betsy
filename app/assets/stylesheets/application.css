@@ -1,0 +1,303 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*= require normalize-rails
+
+*
+*= require_tree .
+*= require_self
+*= require foundation_and_overrides
+
+*/
+
+
+html * {
+  font-family: 'Quicksand', sans-serif;
+
+}
+body {
+  background-size: 100% auto;
+  background-color: black;
+}
+
+body > * {
+  color: #EEEEEE;
+}
+
+label {
+  color: #EEEEEE;
+}
+
+td {
+  color: dimgray;
+}
+
+.mars {
+  margin-right: auto;
+  font-size: 5em;
+}
+
+.mars a {
+  color: rgb(210, 101, 0);
+  background-color: rgb(23, 1, 110)
+}
+
+.planet a {
+  background-color: rgb(23, 1, 110)
+}
+
+ul {
+  list-style-type: none;
+}
+
+.alert-section {
+  max-width: 66rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding-bottom: 2rem;
+  padding: 3px;
+}
+
+.astronaut {
+  margin-right: 75px;
+  margin-bottom: 10px;
+}
+
+.cart {
+  margin-right: 50px;
+  margin-bottom: 10px;
+}
+
+
+
+.merch-name {
+  color: #EEEEEE;
+}
+
+.nav-group {
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
+.nav-items {
+  font-size: 1.5em;
+  display: flex;
+  flex-wrap: wrap;
+}
+.nav-items li {
+  padding: 10px;
+  display: inline;
+}
+
+.cart-sections {
+  max-width: 100%;
+  border-bottom: 1px solid #EEEEEE;
+  margin-bottom: 10px;
+  padding: 25px 20px 10px 20px;
+}
+
+
+.item-name-in-cart {
+  font-size: 1.5rem;
+}
+
+.page-header {
+  font-size: 3rem;
+}
+
+.order-item-cart-pic {
+  max-width: 2rem;
+  max-height: auto;
+  min-width: 75px;
+  min-height: auto;
+}
+
+.callout {
+  font-size: 0.9em;
+  max-width: 66rem;
+align-items: center;
+}
+
+
+.prod-title {
+  text-align: center;
+}
+
+.product {
+  width: 350px;
+  padding: 70px;
+  margin-right: 10px;
+
+}
+
+.prod-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.product-summary {
+
+  text-align: center;
+  font-size: 1.2em;
+
+}
+
+.product-summary:hover {
+  font-size: 1.2em;
+  color: rgb(235, 124, 8)
+}
+
+.top-bar {
+  background-color: black;
+}
+
+
+.large-article-header {
+  background: url("https://undark.org/wp-content/uploads/sites/2/2018/02/2600-mars.jpg") no-repeat center;
+  background-size: cover;
+  height: 20.25rem;
+  position: relative;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .large-article-header {
+    height: 20.83333rem;
+  }
+}
+
+.large-article-header-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  bottom: 3.125rem;
+  left: 0;
+  right: 0;
+}
+
+
+@media screen and (max-width: 39.9375em) {
+  .large-article-header-content {
+    bottom: 1.25rem;
+  }
+}
+
+.large-article-header-content .center-container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .large-article-header-content .center-container {
+    width: 100%;
+    padding: 0 1.25rem;
+  }
+}
+
+.large-article-header-content .article-date {
+  color: #fefefe;
+}
+
+.large-article-header-content .article-title a {
+  line-height: 3.125rem;
+  color: #fefefe;
+  font-weight: 600;
+  font-size: 4em;
+  font-family: 'Audiowide', cursive;
+  pdding-left: none;
+
+}
+
+@media screen and (max-width: 39.9375em) {
+  .large-article-header-content .article-title h1 {
+    line-height: 1.875rem;
+  }
+}
+
+.large-article-header-content .article-details {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.large-article-header-content .article-details a {
+  color: #fefefe;
+}
+
+.large-article-header-content .article-author {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem 0;
+}
+
+.large-article-header-content .article-author img {
+  border-radius: 3.125rem;
+}
+
+.large-article-header-content .article-author a {
+  margin-left: 1rem;
+}
+.top-bar ul { background-color: black; }
+
+.submenu {
+  border: none;
+}
+
+.one-body {
+  width: 100%;
+  align-content: center;
+}
+
+.is-submenu-item a:hover {
+  color: rgb(235, 124, 8);
+}
+
+.tiny-button-in-cart {
+  margin: 0;
+  padding: 0.5em 1em;
+
+}
+
+.tiny-button-in-cart {
+  padding: none;
+  justify-content: center;
+}
+
+.items-subtotal-price-in-cart {
+  text-align: right;
+}
+
+.subtotal-summary {
+  padding-right: 35px;
+}
+
+.in-line-button {
+  padding: 0.5em 1em;
+  vertical-align: middle;
+}
+select{
+  width: auto;
+}

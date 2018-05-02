@@ -1,0 +1,14 @@
+<section class="large-9 cell">
+  <h3>Categories</h3>
+  <section class="grid-x">
+		<section class="cell medium-auto">
+      <ul>
+      <% @categories.each do |category| %>
+        <li>
+          <h5><%= link_to "#{category.name} - View Products", category_products_path(category[:id]) %></h5>
+        </li>
+      <% end %>
+      </ul>
+    </section>
+  </section>
+</section>

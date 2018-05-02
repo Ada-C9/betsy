@@ -1,0 +1,14 @@
+<section class="large-9 cell">
+	<h3>List of Merchants</h3>
+	<section class="grid-x">
+		<section class="cell medium-auto">
+		  <ul>
+				<% @merchants.each do |merchant| %>
+				<li>
+					<h5><%= link_to "#{merchant.username} - View Products", merchant_products_path(merchant[:id]) %></h5>
+					</li>
+				<% end %>
+				</ul>
+		</section>
+	</section>
+</section>

@@ -1,0 +1,111 @@
+
+<section class="large-9 cell">
+
+	<section class="add-buttons">
+
+		<%= link_to "Add New Product", new_product_path, class: "button" %>
+		<%= link_to "Add New Category", new_category_path, class: "button" %>
+	</section>
+
+	<h3 class="header-status">Active Listings</h3>
+	<% if @active_products.empty? %>
+		<p>
+			NO PRODUCTS
+		</p>
+		<%else%>
+	<section class="grid-x">
+		<section class="cell medium-auto">
+
+
+			<section>
+				<section class="row grid-x grid-padding-x grid-padding-y align-middle">
+					<section class="large-3 large-2 cell"><strong></strong></section >
+						<section class="small-2 small-2 cell manage-header"><strong>Product Name</strong></section>
+						<section class="small-2 small-2 cell manage-header"><strong>Unit Price</strong></section>
+						<section class="small-1 small-1 cell manage-header"><strong>Stock</strong></section>
+						<section class="small-2 small-2 cell"> </section>
+						<section class="small-2 small-2 cell manage-header"><strong> </strong></section>
+					</section>
+				</section>
+
+				<% @active_products.each do |product| %>
+				<section>
+
+					<section class="row grid-x grid-padding-x grid-padding-y align-middle cart-sections" id="listing-section">
+
+						<section class="large-3 large-2 cell"><%= image_tag(product.photo, :alt => "product image", class:"order-item-cart-pic") %></section>
+
+						<section class="small-2 small-2 cell">
+							<%= link_to product.name, product_path(product.id) %>
+						</section>
+
+						<section class="small-2 small-2 cell">
+							<%= product.price.cents_to_dollars %>
+						</section>
+
+						<section class="small-1 small-1 cell">
+							<%= product.stock %>
+						</section>
+
+						<section class="small-2 small-2 cell">
+							<%= link_to "Retire Product", deactivate_product_path(product.id), class: "button", method: :patch %>
+						</section>
+
+						<section class="small-2 small-2 cell">
+							<%= link_to "Edit Product", edit_product_path(product.id), class: 'button' %>
+						</section>
+					</section>
+					<% end %>
+
+
+				</section>
+				<%end%>
+
+
+				<section class="listing-section">
+					<h3 class="header-status">Inactive Listings</h3>
+					<% if @inactive_products.empty? %>
+					<p>
+						NO PRODUCTS
+					</p>
+					<%else%>
+
+					<section>
+						<section class="row grid-x grid-padding-x grid-padding-y align-middle">
+							<section class="large-3 large-2 cell"><strong></strong></section >
+								<section class="small-2 small-2 cell manage-header"><strong>Product Name</strong></section>
+								<section class="small-2 small-2 cell manage-header"><strong>Unit Price</strong></section>
+
+							</section>
+						</section>
+
+						<% @inactive_products.each do |product| %>
+						<section>
+
+							<section class="row grid-x grid-padding-x grid-padding-y align-middle cart-sections" id="listing-section">
+
+								<section class="large-3 large-2 cell"><%= image_tag(product.photo, :alt => "product image", class:"order-item-cart-pic") %></section>
+
+								<section class="small-2 small-2 cell">
+									<%= link_to product.name, product_path(product.id) %>
+								</section>
+
+								<section class="small-2 small-2 cell">
+									<%= product.price.cents_to_dollars %>
+								</section>
+
+								<section class="small-2 small-2 cell"> </section>
+								<section class="small-1 small-1 cell"> </section>
+
+								<section class="small-1 small-1 cell">Inactive
+								</section>
+
+							</section>
+							<% end %>
+						</section>
+					</section>
+					<%end%>
+
+				</section>
+			</section>
+		</section>

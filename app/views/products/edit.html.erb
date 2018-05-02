@@ -1,0 +1,6 @@
+<%= render partial: "product_form", locals: {page_title: "#{@product.name.titleize} - Edit"} %>
+<% if !@merchant.nil? && @merchant.id == @product.merchant.id %>
+<p>
+  <%= link_to "Deactivate this product", deactivate_product_path(@product.id), class: 'button', method: :patch %>
+</p>
+<% end %>

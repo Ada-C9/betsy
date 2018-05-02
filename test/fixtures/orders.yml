@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+star_mouse_order:
+  email_address: starmouse@crater.com
+  cc_name: Star Mouse
+  cc_number: 1234192910310395
+  cc_cvv: "123"
+  cc_zip: "99503"
+  status: paid
+  customer_name: Ada Lovelace
+  street: 123 Kickass Ave
+  city: Seattle
+  state: WA
+  mailing_zip: "98103"
+  cc_exp_month: 12
+  cc_exp_year: 2020
+
+user_mcuser_order:
+  email_address: rover_mania@astro.com
+  cc_name: User McUser
+  cc_number: 3928450302049586
+  cc_cvv: "113"
+  cc_zip: "35425"
+  status: paid
+  customer_name: User McUser
+  street: 111 Comet Street
+  city: Aurora
+  state: GA
+  mailing_zip: "99921"
+  cc_exp_month: 12
+  cc_exp_year: 2019
+
+mystring_order:
+  email_address: rover_mania@astro.com
+  cc_name: MyString
+  cc_number: 3928450302049587
+  cc_cvv: "114"
+  cc_zip: "35485"
+  status: pending
+  customer_name: Maria Meteor
+  street: 51 Canal Street
+  city: Titan
+  state: WA
+  mailing_zip: "12940"
+  cc_exp_month: 12
+  cc_exp_year: 2018
+
+pending_order:
+  status: pending

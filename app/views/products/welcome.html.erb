@@ -1,0 +1,23 @@
+
+<section>
+  <h1>Trending</h1>
+</section>
+
+
+<section class="grid-container">
+  <section class="grid-x grid-margin-x">
+    <ul class="prod-container">
+      <% @products.each do |p| %>
+      <li class="product">
+        <%= link_to product_path(p.id) do %>
+        <div class="product-summary">
+          <%= image_tag(p.photo, :alt => "product image") %>
+          <div><%= p.name %></div>
+          <div><small><%= p.price.cents_to_dollars %></small></div>
+        </div>
+        <%end%>
+      </li>
+      <%end%>
+    </ul>
+  </section>
+</section>

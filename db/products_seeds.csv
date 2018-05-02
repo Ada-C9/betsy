@@ -1,0 +1,109 @@
+name,price,description,stock,discontinued,photo,merchant_id
+Antenna,374,Listen to all your favorite Martian radio shows ,23,false,products/antella.png,10
+Antibiotics,3027,Drug used in the treatment and prevention of bacterial infections.,39,false,products/antibiotics.jpg,16
+Aspirin,260,Medication used to treat pain/fever/inflammation.,33,false,products/aspirin.png,8
+Astronaut Pen,2042,Write upside down! Write in microgravity!,18,false,products/astronaut_pen.jpg,6
+Ball collection,4883,These will bounce so much higher on Mars! Hours of fun!,26,false,products/sport-balls-collection.jpg,1
+Bandana,3119,Keep sweat off your face and keep a diagram of your rover handy!,11,false,products/bandana.jpg,15
+Beef jerky,2582,This meat will last your through your six month journey to the red planet,24,false,products/jerky.jpg,13
+Binoculars,342,Two telescopes mounted side-by-side and aligned to point in the same direction.,31,false,products/Binos.jpg,3
+Biology kit,2272,Includes microscope/slides/magnifying glass/more,13,false,products/bio_kit.jpg,4
+Birth control,1231,Method or device used to prevent pregnancy.,11,false,products/Birth_Control_Pills.png,2
+Bivy Sack,3536,Improvised camp site or shelter that is usually of a temporary nature.,18,false,products/Pratt_bivouac_by_Tom_Frost.jpg,16
+Books,1372,Learn about all the fun things you can do on Mars,19,false,products/mars_book.jpg,1
+Camera,4553,Take photos of all your new friends,27,false,products/camera.png,20
+Chemistry kit,4409,Includes glassware/safety glasses/lab coat/more ,32,false,products/ChemistrySet.jpg,12
+Compass,4767,A compass so complicated that you won't even notice there's barely a magnetic field,27,false,products/compass.jpg,3
+Dehydrated Ice Cream ,1349,Neopolitan,22,false,products/Freeze-Dried-Ice-Cream.jpg,15
+Dehydrated Soup ,4919,Packets of mushroom soup,23,false,products/space-food-2.jpg,6
+Firestarter,1078,Good luck with this firestarter. You'll need it.,13,false,products/campfire.jpg,17
+First Aid Kit,2673,Includes manual,43,false,products/Emergency-Kit.jpg,4
+Flashlight,4118,,27,false,products/flashlight.jpg,15
+Food Bars,3012,Spirulina bar developed for space,23,false,products/Spirulina_astronaut_food.jpg,7
+General Ledger,2015,You'll need to keep track of budgets and accounts even on other planets,39,false,products/alexandre-field-drawing.jpg,20
+Hammer,232,Just as useful on the 4th planet,41,false,products/hammer.jpg,14
+Handcrank Radio,2481,,31,false,products/radio.jpg,13
+Herb Garden,3384,Inflatible herb garden,39,false,products/mars-neighborhood.jpg,10
+Infant Formula,1423,In case the birth control doesn't work out.,22,false,products/baby_food.jpg,9
+Lab notebook,3281,All weather ,15,false,products/science.jpg,14
+Lantern,3241,Color coordinate your light with the surface of the planet,14,false,products/lantern.jpg,11
+LED Party Light,3153,If you're going to have light it might as well be fun,38,false,products/party_lights.jpg,18
+Life Straw,4470,If you're lucky enough to find water - only drink it through a heavily filtered straw.,38,false,products/lifestraw.jpg,1
+LlamaHup Hydration Vat,3790,Stores all your water safely,22,true,products/mdrs.png,7
+Map,4688,A paper map is a better use of energy than an app on your phone,54,false,products/twoguys.jpg,5
+Mars Boots,3245,Warm and sturdy,43,false,products/two_on_hill.jpg,6
+Martian sweater,4285,When on Mars; dress like Mars,19,false,products/bruno_mars_sweater.jpg,15
+Math Tool Kit,4348,Includes solar calculator/ruler/compass/protractor/abacus/graph paper/slide rule/hand tally counter/hourglass/pendulum/more,34,false,products/math_kit.jpg,1
+Meal Prep Kit,2825,More than just a burner and a couple of pans,20,false,products/camp_cook.jpg,10
+Mechanical Wristwatch,3891,Uses a mechanism to measure the passage of time; must be wound periodically.,43,false,products/watch.jpg,14
+Multivitamin Gummies,1001,Dietary supplement with vitamins/dietary minerals/other nutritional elements,41,false,products/vitamin_supplement_tablets.jpg,13
+n-95 mask,3200,Protect your airways,31,false,products/masks.png,8
+Oxygen Tank,1322,So lightweight and airy that you'll never want to climb a hill with any other oxygen tank brand,15,false,products/two_guys_on_hill.png,17
+Paper Ballots,1816,Facilitates democracies.,48,false,products/ballots.jpg,20
+Paracord,224,So many uses,43,false,products/paracord.jpg,8
+Penicillin ,1236,Group of antibiotics which include penicillin G/penicillin V/procaine penicillin/benzathine penicillin,23,false,products/penicillin.jpg,10
+Playing Cards/Survival Flashcards,4761,These cards put the fun in functional.,34,false,products/playing_cards.jpg,17
+Pole Vault,890,Much more fun on Mars,41,false,products/pole_vault.jpg,8
+Radiation Shields,4478,You'll be very far away from Earth's protective atmosphere.,11,true,products/shield.jpg,8
+Robert's Rules of Order,726,Planning a Martian election? Manual of parliamentary procedure ,50,true,products/RONR11_Cover.jpg,8
+S-Bend Pipe,3912,There's a lot to appreciate in this simple design,34,false,products/s_pipe.jpg,8
+Sewing Kit,238,Sew your own clothes,33,false,products/sewing_kit.jpg,12
+Soap,2376,Made from Martian soil,17,false,products/mars_soap.jpg,7
+Sundial,1772,A calibration sundial that was devised for Mars,38,false,products/MarsDial.jpg,5
+Tarp,3344,,31,false,products/tarp.jpg,12
+Trampoline,4640,"""The Best Exercises for Healthy Bones.""",21,false,products/Trampoline.png,20
+Walkie Talkies,1588,Fits comfortably inside your helmet,26,false,products/walkietalkie.jpg,15
+Wool Blanket,2131,Warm reminder of the bunny you left behind,49,false,products/wool_blanket.jpg,3
+Wool Long Underwear,3537,Extreme temperatures variations call for lots of long underwear.,23,false,products/long_underwear.jpg,14
+Zip ties,2605,Keep all those hoses and cords under control,53,false,products/indoors.jpg,17
+3D Printer,3713,A subset of CNC machines: they use stepper motors to move along X/Y/and Z axes according to gCode. Modular. Included in Global Village Construction Set,44,false,products/3D_Printerpic.png,19
+3D Scanner,1196,Enables near-instantaneous input of spatial data into digital systems. Modular. Included in Global Village Construction Set,43,true,products/800px-Kinect.jpg,19
+Aluminum Extractor,905,Extracts raw aluminum from alumina common clay. Modular. Included in Global Village Construction Set,22,false,products/AluminumExtractor.png,19
+Backhoe,470,Excavating equipment used for digging holes and trenches Modular. Included in Global Village Construction Set,36,false,products/Backhoe.png,19
+Bakery Oven,1124,Device for heating various forms of dough into breads and other baked goods. Modular. Included in Global Village Construction Set,43,false,products/BakeryOver.png,19
+Baler,171,Compresses hay and other light and dispersed materials into more compact bales. Modular. Included in Global Village Construction Set,24,true,products/Baler.png,19
+Bioplastic Extruder,877,Enables plastics production.  Modular. Included in Global Village Construction Set,25,false,products/PlasticExtruder.png,19
+Bulldozer,4417,High-traction/earth-moving machine indispensible to building ponds/berms/or other earth-moving tasks such as building roads or clearing land. Modular. Included in Global Village Construction Set,26,true,products/600px-Microtrac2015.jpg,19
+Car,2437,An automobile designed for transporting passengers.  Modular. Included in Global Village Construction Set,38,false,products/Automobile.png,19
+CEB Press,861,Automatic/high throughput Compressed Earth Brick Press. It Modular. Included in Global Village Construction Set,14,false,products/Machine.jpg,19
+Cement Mixer,4653,Device that homogeneously combines cement/aggregate such as sand or gravel/and water to form concrete. [ Modular. Included in Global Village Construction Set,28,false,products/CementMixer.png,19
+Chipper Hammermill,1830,Combination device that chips and hammers biomass into a uniform size useful for processing in the Pelletizer.  Modular. Included in Global Village Construction Set,12,false,products/Chipper.png,19
+CNC Circuit Mill,2587,Used for PCB Milling Modular. Included in Global Village Construction Set,17,false,products/Vmcmounting.png,19
+CNC Torch Table,1750,Enables creation of custom parts for fabrication or replacement of broken components.  Modular. Included in Global Village Construction Set,25,false,products/CNC_Torch_Tablepic.jpg,19
+Dairy Milker,3634,Yields milk and dairy products from dairy cows. Modular. Included in Global Village Construction Set,51,false,products/MilkingMachine.png,19
+Drill Press,2764,Fixed style of drill that may be mounted on a stand or bolted to the floor or workbench.  Modular. Included in Global Village Construction Set,14,false,products/DrillPress.jpg,19
+Electric Motor Generator,3250,Serves the function of converting electrical energy into mechanical energy and vice-versa. Modular. Included in Global Village Construction Set,36,false,products/ElectricMotorGenerator.png,19
+Gasifier Burner,4043,Converts biomass fuel into power and useful chemicals.  Modular. Included in Global Village Construction Set,34,false,products/GasifierBurner.png,19
+Hay Cutter,3417,Device that cuts grass/hay/straw/or other light biomass. It Modular. Included in Global Village Construction Set,41,false,products/HayCutter.png,19
+Hay Rake,3052,Agricultural rake used to collect cut hay or straw into windrows for later collection. Modular. Included in Global Village Construction Set,31,false,products/HayRake.png,19
+Hydraulic Motor,2493,Mechanical actuator that converts hydraulic pressure and flow into torque and rotation.  Modular. Included in Global Village Construction Set,48,false,products/HydraulicMotor.png,19
+Induction Furnace,414,Electrical furnace in which the heat is applied by induction heating of metal. Modular. Included in Global Village Construction Set,42,false,products/InductionFurnace.png,19
+Industrial Robot,4839,Automated machine that perform a wide variety of functions depending on which tools its hand is equipped with.  Modular. Included in Global Village Construction Set,20,false,products/IndustrialRobot.jpg,19
+Ironworker,241,Ironworker machines can shear/punch holes and notch in steel plates. Modular. Included in Global Village Construction Set,50,false,products/Ironworker.jpg,19
+Laser Cutter,1551,Enables CNC cutting and engraving of metal/wood/and other materials.  Modular. Included in Global Village Construction Set,24,false,products/Laser_Cutterpic.png,19
+Metal Roller,875,Sends sheet metal and plate through gaps between cylinders to roll-bend them; this operation is used for producing cylindrical or conical components as well as wiring cylindrical edges. Modular. Included in Global Village Construction Set,28,false,products/Metal_Roller.png,19
+Microcombine,3591,Complex device that cuts/threshes/and winnows grains and field crops of all sorts. Modular. Included in Global Village Construction Set,44,false,products/Microcombine.png,19
+Microtractor,1681,Small scale/walk/ride-behind version of LifeTrac suited for construction/agriculture/and general home and garden maintenance. Modular. Included in Global Village Construction Set,29,false,products/MicroTrac1.jpg,19
+Multimachine,4080,Connects the Z axis support frame to the Y axis frame/as well as how the Y axis frame rests on the table. Modular. Included in Global Village Construction Set,28,false,products/Vmcmounting.png,19
+Nickel-Iron Battery,3446,Primary electrical energy storage device.  Modular. Included in Global Village Construction Set,41,false,products/Nickel-Iron_Batterypic.png,19
+Pelletizer,1932,Creates fuel pellets out of biomass. Modular. Included in Global Village Construction Set,17,false,products/Pelletizer.png,19
+Plasma Cutter,2936,Used to cut metals and other materials. Modular. Included in Global Village Construction Set,30,false,products/PlasmaCutter.png,19
+Power Cube,3121,Modular engine unit that powers mechanical machines. Included in Global Village Construction Set,16,false,products/800px-PowerCube.jpg,19
+Press Forge,251,Takes molten steel fresh from the Induction Furnace and presses it into useful forms. Modular. Included in Global Village Construction Set,12,true,products/PressForge.png,19
+Rod and Wire Mill,4226,Draws out molten metal into useful rods and wires. Modular. Included in Global Village Construction Set,12,false,products/Rod_and_Wire_Mill.png,19
+Rototiller,481,A tractor implement that tills soil with blades via rotary action.  Modular. Included in Global Village Construction Set,40,false,products/Rototiller.png,19
+Sawmill,4913,Converts felled logs from trees into green wood lumbar. Modular. Included in Global Village Construction Set,27,false,products/Sawmill2.jpg,19
+Seeder,2145,Enables Tractor planting of any type of seed from small seeds like clover to large seeds such as potatoes.  Modular. Included in Global Village Construction Set,21,false,products/Seeder.png,19
+Solar Concentrator,4770,Systems that use mirrors or lenses to concentrate a large area of sunlight onto a small area. Modular. Included in Global Village Construction Set,15,false,products/SolarConcentrator.png,19
+Spader,4352,Set of mechanical shovels that prepare soil for planting without causing a hardpan typical of rototiller tilling. Modular. Included in Global Village Construction Set,21,false,products/Spader.png,19
+Steam Engine,1569,Takes energy available as high pressure and high temperature steam; converts it into reciprocal motion. Modular. Included in Global Village Construction Set,47,false,products/Design-7-A.png,19
+Steam Generator,3842,Device used to create steam by applying heat energy to water. Modular. Included in Global Village Construction Set,26,false,products/Steam_Generator.png,19
+Tractor,858,Low-cost and multipurpose open source tractor; workhorse backbone. Modular. Included in Global Village Construction Set,38,false,products/LiftTracWithTracks.jpg,19
+Trencher,231,Used to dig trenches; typically for laying pipes or for drainage.  Modular. Included in Global Village Construction Set,39,false,products/1000px-Trencherv1.jpg,19
+Truck,3223,Transportation machine that you can drive in order to move yourself and your stuff to wherever you can get with wheels. Modular. Included in Global Village Construction Set,49,false,products/Truck.png,19
+Universal Power Supply,2988,Forms the backbone of an off-grid electrical system.  Modular. Included in Global Village Construction Set,21,false,products/UPS.png,19
+Universal Rotor,546,A standardized triple interface mount that allows for various tasks to be accomplished by harnessing the high rotational torque and speeds generated by a hydraulic motor. Modular. Included in Global Village Construction Set,17,false,products/UniversalRotor.png,19
+Welder,3210,Enables the fabrication process that joins metal pieces together.  Modular. Included in Global Village Construction Set,39,false,products/Welderpic.png,19
+Well-Drilling Rig,3938,Enables the construction of water wells. Modular. Included in Global Village Construction Set,30,false,products/Well-Drilling_Rigpic.png,19
+Wind Turbine,2154,Converts mechanical kinetic energy of the wind into electrical energy.  Modular. Included in Global Village Construction Set,18,false,products/WindTurbine.png,19
+Rover Rack,2605,Safe place to store your rover - easy install,53,false,products/image_not_available.jpg,20

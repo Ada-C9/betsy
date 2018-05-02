@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+order_one:
+  quantity: 1
+  price: 6032
+  is_shipped: false
+  product: sweater
+  order: star_mouse_order
+
+order_two:
+  quantity: 10
+  price: 249
+  is_shipped: false
+  product: soda
+  order: user_mcuser_order
+
+order_three:
+  quantity: 5
+  price: 6032
+  is_shipped: false
+  product: sweater
+  order: user_mcuser_order
+
+order_four:
+  quantity: 10
+  price: 408
+  is_shipped: false
+  product: soap
+  order: user_mcuser_order
+
+order_five:
+  quantity: 10
+  price: 702
+  is_shipped: false
+  product: icecream
+  order: user_mcuser_order
+
+order_six:
+  quantity: 1
+  price: 702
+  is_shipped: false
+  product: icecream
+  order: mystring_order

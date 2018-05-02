@@ -1,0 +1,17 @@
+<h2 class="cat-title"><strong><%= @category.name%></strong></h2></h2>
+<section>
+  <ul class="prod-container">
+    <% @category.products.each do |product| %>
+    <li class="product">
+      <%= link_to product_path(product.id) do %>
+      <div class="product-summary">
+        <%= image_tag(product.photo, :alt => "product image") %>
+        <%= product.name %>
+        <small><%= product.price.cents_to_dollars %></small>
+      </div>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+
+</section>

@@ -1,0 +1,31 @@
+<section class = "order-table-container">
+<table>
+  <thead>
+    <tr>
+      <th width="100">Product</th>
+      <th width="50">Quantity</th>
+      <th width="100">Price</th>
+      <th width="100">Subtotal</th>
+      <th width="100">Shipping Status</th>
+      <th width="100"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% table_order_items.each do |order_item| %>
+    <tr>
+      <td><%= link_to order_item.get_item_name, product_path(order_item.product_id) %></td>
+      <td><%= order_item.quantity %></td>
+      <td><%= order_item.price.cents_to_dollars %></td>
+      <td> <%= order_item.get_subtotal.cents_to_dollars %></td>
+      <% if order_item.shipping_status == "Ready to ship" &&  params[:merchant_id]%>
+      <td>  <%= link_to('Mark Shipped', mark_item_shipped_path(order_item), method: :patch) %></td>
+      <td></td>
+      <% else %>
+      <td>  <%= order_item.shipping_status %></td>
+      <td>Merchant: <%= link_to order_item.get_item_merchant, merchant_products_path(order_item.get_item_merchant_id) %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</section>

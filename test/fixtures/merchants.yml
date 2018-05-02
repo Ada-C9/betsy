@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+astro:
+  username: Astro_Anna
+  email: astro_anna@transmars.com
+  provider: github
+  uid: 29172354
+
+quasar:
+  username: Quasar_Qutie
+  email: quasar_qutie@meteor.com
+  provider: github
+  uid: 23457332
+
+rover:
+  username: Rover_Rocks
+  email: rrrrrrrover@marsmail.com
+  provider: github
+  uid: 46788885
+
+no_activity_merchant:
+  username: Nada
+  email: nothinghere@blackhole.org
+  provider: github
+  uid: 98765
