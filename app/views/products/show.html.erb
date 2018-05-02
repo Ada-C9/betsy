@@ -1,0 +1,51 @@
+<h3><%= @product.name %></h3>
+<h4>by <%= link_to @product.user.username, user_products_path(@product.user.id) %></h4>
+
+<% if @product.is_active %>
+  <div class="product-container">
+    <section class="product-details">
+      <% if @product.photo_url.nil? %>
+        <%= link_to image_tag('favicon.png', alt: 'No URL in record'), product_path(@product.id) %>
+      <% else %>
+        <%= link_to image_tag(@product.photo_url, alt: @product.name), product_path(@product.id) %>
+      <% end %>
+      <p><%= @product.description %></p>
+      <p>Price: $<%= price_in_dollar(@product.price) %></p>
+      <% if @product.stock > 0 %>
+      <p><span class="color-text"><%= @product.stock %></span> in stock</p>
+      <%= button_to "Add to Cart", {:action =>"add_to_cart", :controller => "cart", id: @product.id }, method: :post, class: "button" %>
+    <% else %>
+      <p class="alert button">Out of Stock</p>
+      <% end %>
+    </section>
+
+    <div class="review">
+      <h4>Write a Review</h4>
+      <section class="new-review">
+        <%= form_for @review, url: @action, validate: true do |f| %>
+        <%= f.select :rating, (1..5).to_a, :prompt => 'Select a rating'%>
+
+        <%= f.label :comment %>
+        <%= f.text_area :content %>
+
+        <%= f.submit "Sumbit", class: "button" %>
+        <% end %>
+      </section>
+
+      <h4>Reviews</h4>
+      <% @product.reviews.reverse.each do |review| %>
+      <section class="existing-reviews">
+        <p>
+          <% review.rating.times do |i| %>
+          ⭐️
+          <% end %>
+        </p>
+        <p><%= review.content %></p>
+      </section>
+      <% end %>
+    </div>
+  </div>
+
+<% else %>
+  <p>The product has been discontinued by seller.</p>
+<% end %>

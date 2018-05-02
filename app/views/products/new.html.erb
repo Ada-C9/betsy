@@ -1,0 +1,25 @@
+<h3>Create a New Product</h3>
+
+<div class="form">
+  <%= form_for @product, url: @action, validate: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :price %>
+  <%= f.text_field :price, placeholder: "$" %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :select_a_category %>
+  <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {}, {multiple: true} %>
+
+  <%= f.label :photo_url %>
+  <%= f.text_field :photo_url %>
+
+  <%= f.label :stock %>
+  <%= f.text_field :stock %>
+
+  <%= f.submit "Save", class: "button" %>
+  <% end %>
+</div>

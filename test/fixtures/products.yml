@@ -1,0 +1,80 @@
+product_1:
+  name: product_1
+  is_active: true
+  description: description_1
+  price: 1
+  photo_url: https://placebear.com/
+  stock: 1
+  user: user_1
+product_2:
+  name: product_2
+  is_active: true
+  description: description_2
+  price: 2
+  photo_url: https://placebear.com/
+  stock: 2
+  user: user_2
+product_3:
+  name: product_3
+  is_active: true
+  description: description_3
+  price: 3
+  photo_url: https://placebear.com/
+  stock: 3
+  user: user_2
+product_4:
+  name: product_4
+  is_active: true
+  description: description_4
+  price: 4
+  photo_url: https://placebear.com/
+  stock: 4
+  user: user_3
+product_5:
+  name: product_5
+  is_active: true
+  description: description_5
+  price: 5
+  photo_url: https://placebear.com/
+  stock: 5
+  user: user_3
+product_6:
+  name: product_6
+  is_active: true
+  description: description_6
+  price: 6
+  photo_url: https://placebear.com/
+  stock: 6
+  user: user_3
+product_7:
+  name: product_7
+  is_active: true
+  description: description_7
+  price: 7
+  photo_url: https://placebear.com/
+  stock: 7
+  user: user_4
+product_8:
+  name: product_8
+  is_active: true
+  description: description_8
+  price: 8
+  photo_url: https://placebear.com/
+  stock: 8
+  user: user_4
+product_9:
+  name: product_9
+  is_active: true
+  description: description_9
+  price: 9
+  photo_url: https://placebear.com/
+  stock: 9
+  user: user_4
+product_10:
+  name: product_10
+  is_active: true
+  description: description_10
+  price: 10
+  photo_url: https://placebear.com/
+  stock: 10
+  user: user_4

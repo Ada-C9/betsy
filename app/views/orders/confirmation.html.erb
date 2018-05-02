@@ -1,0 +1,47 @@
+<h3>Order Confirmation</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order number</th>
+      <th>Total price</th>
+      <th>Date placed</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @order.id %></td>
+      <td>$<%= @order.total_cost %></td>
+      <td><%= pretty_date(@order.updated_at) %></td>
+      <td>
+        <%= @order.status %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% if @order.can_cancel? %>
+  <%= link_to "Cancel", order_cancel_path(@order.id), method: :put, class: "button" %>
+<% end %>
+
+<h4>Order Items</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |order_item| %>
+    <tr>
+      <td><%= link_to order_item.product.name, product_path(order_item.product) %></td>
+      <td><%= order_item.quantity %></td>
+      <td>$<%= order_item.subtotal %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

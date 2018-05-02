@@ -1,0 +1,49 @@
+<h3>Order Details</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order number</th>
+      <th>Total price</th>
+      <th>Date placed</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @order.id %></td>
+      <td>$<%= @order.total_cost %></td>
+      <td><%= pretty_date(@order.updated_at) %></td>
+      <td><%= @order.status %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Customer Information</h4>
+
+<table class="transpose">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Street Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip Code</th>
+      <th>Last 4 digits of Card</th>
+      <th>Expiration Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @order.name %></td>
+      <td><%= @order.email %></td>
+      <td><%= @order.street_address %></td>
+      <td><%= @order.city %></td>
+      <td><%= @order.state %></td>
+      <td><%= @order.zip %></td>
+      <td><%= @order.credit_card_last_digits %></td>
+      <td><%= discard_day(@order.expiry) %></td>
+    </tr>
+  </tbody>
+</table>

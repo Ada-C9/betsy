@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Puppsy</title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true, 'rails.validations' => true %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.png' %>
+  </head>
+
+  <body>
+
+    <header class="page-header">
+      <nav>
+         <h1>🐶 <%= link_to "Puppsy", root_path %></h1>
+         <div class="nav-button">
+           <%= link_to "Home", root_path, class: "button"  %>
+           <%= link_to "All Products", products_path, class: "button"  %>
+           <%= link_to "Cart", cart_path, class: "button"  %>
+         </div>
+         <div class="float-right nav-button">
+           <% if session[:user_id] %>
+           <%= link_to "Account Page", user_path(session[:user_id]), class: "button"  %>
+           <%= link_to "Log out", logout_path, method: :delete, class: "button"  %>
+           <% else %>
+           <%= link_to "Login with Github", "/auth/github", class: "button" %>
+           <% end %>
+         </div>
+      </nav>
+    </header>
+
+
+    <main class="main-container">
+      <section class = "flash">
+        <% if flash[:result_text] || flash[:status] || flash[:messages] %>
+          <section class="callout">
+            <% flash.each do |name, message| %>
+              <% if name == "messages" %>
+                <ul>
+                  <% flash[:messages].each do |type, message| %>
+                  <li class="error">
+                    <h6><%= type %>: <%= message[0] %><h6>
+                  </li>
+                  <% end %>
+                </ul>
+              <% elsif name == "status" %>
+                <% if flash[:status] == "success" %>
+                  <h5 class="success"><%= flash[:result_text] %></h5>
+                <% elsif flash[:status] == "failure" %>
+                  <h5 class="alert"><%= flash[:result_text] %></h5>
+                <% end %>
+              <% end %>
+            <% end %>
+          </section>
+        <% end %>
+      </section>
+
+      <%= yield %>
+
+    </main>
+
+    <footer>
+      <%= image_tag "dog-with-keys.png", alt: "Fur-eign Keys", class: "fureign-keys" %><span> ©2018 Fur-eign Keys</span>
+    </footer>
+
+  </body>
+</html>
