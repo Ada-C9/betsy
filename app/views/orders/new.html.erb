@@ -1,0 +1,23 @@
+<h1>My Cart</h1>
+
+<% @order.order_items.each do |item| %>
+<% id = item.product_id %>
+<% product = Product.find(id) %>
+<%= product.name %>
+<ul>
+  <li>Price: <%= product.price %></li>
+</ul>
+Quantity: <%= form_for :quantity, url: order_item_path(item.id), method: :put do |f| %>
+<%= f.number_field :quantity, value: item.quantity, min: 1, max: product.stock %>
+<%= f.submit "Update Quantity" %>
+<% end %>
+
+<%= form_for item, url: order_item_path(item.id), method: :delete do |f| %>
+<%= f.submit "Delete Item" %>
+<% end %>
+
+<% end %>
+
+<h1>Payment Information </h1>
+
+<%= render partial: "complete_form" %>
