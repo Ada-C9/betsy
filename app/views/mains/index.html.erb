@@ -1,0 +1,72 @@
+<article>
+  <section>
+    <%= image_tag "dog_shopping.jpg", width:"500", height:"500", class:"homepage-picture"%>
+    <strong><span>New Arrivals</span></strong>
+    <span><%= link_to "Shop Now", products_path, class:"button  " %></span>
+  </section>
+  <hr>
+  <div class = "pet-type">
+    <section >
+      <div class="main">
+        <p class="main-images">
+          <%= image_tag "cat.jpg", class:"pictures"%>
+        </p>
+        <h3 class="center-image-title">Cats</h3>
+      </div>
+
+      <ul>
+        <% @cat_products.each do |product| %>
+        <li class="list">
+          <h5>
+            <%= link_to product.name, product_path(product) %>
+            <%= link_to( image_tag(product.photo_url),  product_path(product)) unless product.photo_url.blank? %>
+            <%= format_price(product.price) %>
+          </h5>
+        </li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section>
+      <div class="main">
+        <p class="main-images">
+          <%= image_tag "dog_home.jpg", class:"pictures"%>
+        </p>
+        <h3 class="center-image-title">Dogs</h3>
+      </div>
+
+      <ul>
+        <% @dog_products.each do |product| %>
+        <li class="list">
+          <h5>
+            <%= link_to product.name, product_path(product) %>
+            <%= link_to( image_tag(product.photo_url),  product_path(product)) unless product.photo_url.blank? %>
+            <%= format_price(product.price) %>
+          </h5>
+        </li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section>
+      <div class="main">
+        <p class="main-images">
+          <%= image_tag "reptile_home.jpg", class:"pictures"%>
+        </p>
+        <h3 class="center-image-title">Reptile</h3>
+      </div>
+
+      <ul>
+        <% @reptile_products.each do |product| %>
+        <li class="list">
+          <h5>
+            <%= link_to product.name, product_path(product) %>
+            <%= link_to( image_tag(product.photo_url),  product_path(product)) unless product.photo_url.blank? %>
+            <%= format_price(product.price) %>
+          </h5>
+        </li>
+        <% end %>
+      </ul>
+    </section>
+  </div>
+</article>

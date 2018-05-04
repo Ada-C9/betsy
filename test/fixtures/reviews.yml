@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rating: 4
+  comments: Great product
+  product: product2
+
+two:
+  rating: 3
+  comments: Love this so much
+  product: product1
+
+three:
+  rating: 4
+  comments:
+  product: product1

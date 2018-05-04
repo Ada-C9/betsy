@@ -1,0 +1,54 @@
+<div class="container">
+
+  <h2>Merchant: <%= link_to @product.user_id, user_path %></h2>
+
+  <p>
+    <% @product.categories.each do |category| %>
+
+    <h4><%= category.name %></h4>
+
+    <% end %>
+  </p>
+
+  <div class="thumbnail">
+    <%=image_tag(@product.photo_url)%>
+    <h2><%= @product.name %></h2>
+    <h4><%= format_price(@product.price) %></h4>
+    <p><%= @product.description %></p>
+    <p><%= @product.stock %> Available</p>
+
+    <p class="product-review">
+      <h5>Product Reviews:</h5>
+      <ul>
+        <% if @product.reviews.count == 0 %>
+        <li>
+          <%= @product.show_rating %>
+        </li>
+        <% else %>
+          <% @product.reviews.each do |review| %>
+        <li>
+          <%= render_stars(review.rating) %>
+          <%= review.comments %>
+          <%= render_date(review.created_at) %>
+        </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </p>
+
+
+    <p>
+      <%= form_for @order_item do |f| %>
+      <%= f.hidden_field :product_id %>
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity %>
+      <%= f.submit "Add to cart" , class:"button"%>
+      <% end %>
+    </p>
+
+    <div>
+      <%= render partial: "reviews/form", locals: { action_name: "Save My Review" } %>
+    </div>
+
+  </div>
+</div>

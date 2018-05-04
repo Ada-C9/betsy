@@ -1,0 +1,125 @@
+// Place all the styles related to the mains controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.pictures {
+  border-radius: 70%;
+}
+
+.homepage-picture {
+  margin-left: 10%;
+}
+
+span {
+  padding-right: 5%;
+  color: #00cc66;
+  font-size: 30pt;
+}
+
+.shop-now {
+  display: flex;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  padding-top: 5%;
+  padding-left: 10%;
+}
+
+.name {
+  font-size: 50pt;
+  color: red;
+}
+
+#etsy {
+  color: green;
+}
+
+.site-nav {
+  background-color: red;
+}
+
+
+.list {
+  list-style-type: none;
+  color: darkblue;
+  text-align: center;
+  border: lightblue 2px solid;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.list a {
+  list-style-type: none;
+  color: black;
+}
+
+.list a:hover {
+  color: blue;
+}
+
+.pet-type {
+  display: flex;
+  flex-direction: row;
+  padding-top: 5%;
+  padding-left: 0px;
+  padding-right: 10%;
+}
+
+.pet-name {
+  color: #ff6600;
+  padding-left: 10%;
+}
+
+.main {
+  padding-bottom: 100px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.main-images {
+  position: relative;
+  height: 250px;
+  width: 250px;
+}
+//
+// .main .main-images img {
+//   /* position: absolute; */
+//   border-radius: 50%;
+//   border: #bcd9e2 3px solid;
+//   width: 250px;
+//   height: 250px;
+//   margin: 50px;
+// }
+//
+// .main-images .center-image-title {
+//   position: absolute;
+//   border-radius: 50%;
+//   border: #bcd9e2 3px solid;
+//   margin: 50px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 250px;
+//   height: 250px;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   background: #F7B26E;
+//   color: #fff;
+//   visibility: hidden;
+//   opacity: 0;
+//   transition: opacity 1s, visibility 1s;
+// }
+//
+// .main .main-images:hover .center-image-title {
+//   visibility: visible;
+//   opacity: 1;
+// }

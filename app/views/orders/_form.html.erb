@@ -1,0 +1,32 @@
+<section>
+
+  <%= render partial: "layouts/error_messages", locals: { model: @category } %>
+
+
+  <%= form_for @order do |f| %>
+    <%= f.label :cc_name, "NAME" %>
+    <%= f.text_field :cc_name %>
+
+    <%= f.label :mail_adr, "ADDRESS" %>
+    <%= f.text_field :mail_adr %>
+
+    <%= f.label :email, "EMAIL" %>
+    <%= f.text_field :email %>
+
+    <%= f.label :cc_num, "CREDIT CARD NUMBER" %>
+    <%= f.text_field :cc_num %>
+
+    <%= f.label :cc_exp, "EXPIRATION DATE" %>
+    <%= f.text_field :cc_exp %>
+
+    <%= f.label :cc_cvv, "CVV" %>
+    <%= f.text_area :cc_cvv %>
+
+    <%= f.label :bill_zip, "BILLING ZIP CODE" %>
+    <%= f.text_area :bill_zip %>
+
+    <%= f.hidden_field :status, value: "paid" %>
+
+    <%= f.submit "Proceed to checkout" , class:"button"%>
+  <% end %>
+</section>

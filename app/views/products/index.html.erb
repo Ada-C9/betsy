@@ -1,0 +1,43 @@
+<div>
+  <h3>New Collection of Products</h3>
+  <%= link_to root_path %>
+  <ul id="image-container" class="image">
+    <li><%= image_tag "cat.jpg", width:"200", height:"400", class: "pictures" %></li>
+    <li><%= image_tag "dog_home.jpg", width:"200", height:"400", class:"pictures"%></li>
+    <li><%= image_tag "reptile_home.jpg", width:"200", height:"400", class:"pictures"%></li>
+  </ul>
+</div>
+
+<% Product.by_pet_type.each do |pet_type, products| %>
+<% if pet_type.nil? %>
+  <h4><strong> NIL </strong></h4>
+<% else %>
+  <h4><strong> <%= pet_type.capitalize %> </strong></h4>
+<% end %>
+<div class="product-container">
+  <% products.each do |product| %>
+  <div class="thumbnail">
+    <div class="container-products">
+      <%= link_to( image_tag(product.photo_url),  product_path(product)) unless product.photo_url.blank? %>
+      <p><strong><%= link_to(product.name, product_path(product)) %></strong></p>
+      <p><%= format_price(product.price) %></p>
+      <p><%= product.description %></p>
+      <p><%= product.stock %> Available</p>
+      <span class="glyphicon glyphicon-star"></span>
+
+      <p> Rating:
+        <% if product.reviews.count == 0 %>
+        No reviews
+        <% else %>
+        <%= render_stars(product.show_rating) %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<% end %>
+<% end %>
+</div>

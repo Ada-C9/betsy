@@ -1,0 +1,36 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#image-container.image{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-right: 30px;
+  list-style-type: none;
+}
+
+#image-container li{
+  padding-right: 75px;
+}
+
+.product-container{
+  display: flex;
+  align-items: center;
+}
+
+.container-products{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items:center;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.container{
+  display: inline;
+  margin-left: 10%;
+}

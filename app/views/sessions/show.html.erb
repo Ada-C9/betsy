@@ -1,0 +1,17 @@
+<section>
+
+  <%= render partial: "layouts/error_messages", locals: { model: @user } %>
+
+  <div class="container">
+
+  <%= form_for @user, url: login_path do |u| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.submit "Login", class: "button" %>
+  <% end %>
+
+  </div>
+
+
+</section>

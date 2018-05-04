@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+decor:
+  name: decor
+
+food:
+  name: food
+
+accessory:
+  name: accessory

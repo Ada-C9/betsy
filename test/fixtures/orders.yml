@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+order1:
+  status: pending
+  email: email1
+  mail_adr: mail_adr1
+  cc_name: cc_name1
+  cc_num: 123456789123456
+  cc_exp: 11/22
+  cc_cvv: 123
+  bill_zip: 98075
+
+order2:
+  status: pending
+  email: email1
+  mail_adr: mail_adr1
+  cc_name: cc_name1
+  cc_num: 123456789123456
+  cc_exp: 11/22
+  cc_cvv: 123
+  bill_zip: 98075

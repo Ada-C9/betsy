@@ -1,0 +1,17 @@
+<% unless !model %>
+<% if model.errors.messages.any? %>
+  <section class="callout secondary">
+    <h3>There were some problems</h3>
+    <ul>
+      <% model.errors.messages.each do |field, problems| %>
+        <% problems.each do |problem| %>
+          <li>
+            <strong><%= field %></strong>
+            <%= problem %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+<% end %>

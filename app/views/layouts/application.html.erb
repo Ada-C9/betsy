@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title><%= content_for?(:title) ? yield(:title) : "pEtsy" %></title>
+
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body>
+  <header class="page-header">
+    <div>
+      <a href="/", class="name">pEtsy</a>
+      <!-- <p class="name">p</<span id="etsy">Etsy</span></p> -->
+    </div>
+    <!-- <nav>
+    <div class="site-nav">
+    <ul class="dropdown menu" data-dropdown-menu>
+    <li><%= link_to "Home", root_path, class: "button" %></li>
+    <li>
+    <a href="#" class="button" data-dropdown="drop">Browse</a>
+    <ul id="drop" class="menu">
+    <li><%= link_to "All Products", products_path, class: "button" %></li>
+    <li><%= link_to "All Categories", categories_path, class: "button" %></li>
+    <li><%= link_to "All Merchants", users_path, class: "button" %></li>
+  </ul>
+</ul>
+<div class=login>
+<% if session[:user_id] %>
+<%= link_to "Log out", logout_path, method: "delete"   %>
+<% else %>
+<%= link_to "Login with Github", "/auth/github", class: "button"%>
+<% end %>
+</div>
+</div>
+</nav> -->
+
+<div class="navbar">
+  <a href="/order_items">My Cart</a>
+  <div class="dropdown">
+    <button class="dropbtn">Browse<i class="fa fa-caret-down"></i></button>
+    <div class="dropdown-content">
+      <a href="#"><%= link_to "All Products", products_path%></a>
+      <a href="#"><%= link_to "All Categories", categories_path%></a>
+      <a href="#"><%= link_to "All Merchants", users_path%></a>
+    </div>
+  </div>
+
+  <div class=login>
+    <% if @login_user %>
+    <%= link_to "Logged in as #{@login_user.username}", user_path(@login_user) %>
+    <%= link_to "Log Out", logout_path, method: :delete  %>
+    <% else %>
+    <%= link_to "Login with Github", "/auth/github" %>
+    <% end %>
+  </div>
+</div>
+
+</header>
+
+<% if flash[:result_text] or flash[:messages] %>
+<section class="status <%= flash[:status] %>">
+  <h3><%= flash[:status] == :failure ? "A problem occurred: " : "" %><%= flash[:result_text] %></h3>
+  <% if flash[:messages] %>
+  <ul>
+    <% flash[:messages].each do |name, problems| %>
+    <% problems.each do |problem| %>
+    <li><%= name %>: <%= problem %></li>
+    <% end %>
+    <% end %>
+  </ul>
+  <% end %>
+</section>
+<% end %>
+
+<main>
+  <%= yield %>
+</main>
+
+<section class="contact-footer-nav">
+  <div>
+    <h3>pEtsy LLC</h3>
+    <ul>
+      <li>
+        Founded in 2018
+      </li>
+      <li>
+        We care and love your pets
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>Contact US</h3>
+    <ul>
+      <li>
+        pEtsyn@gmail.com
+      </li>
+      <li>
+        253-867-5309
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>Social Media</h3>
+    <ul>
+      <li>
+        <a href="#" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+      </li>
+      <li>
+        <a href="#" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
+      </li>
+      <li>
+        <a href="#" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+      </li>
+      <li>
+        <a href="#" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer">
+  <h6>copyright &copy; 2018 pEtsy LLC. All Rights Reserved</h6>
+</footer>
+
+</body>
+
+</html>

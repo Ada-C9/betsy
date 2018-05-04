@@ -1,0 +1,34 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+product1:
+  name: tank
+  stock: 7
+  price: 2100
+  description: A bullet proof tank for the most wanted of reptiles
+  pet_type: reptile
+  photo_url: Pickles.jpg
+  user: one
+
+
+product2:
+  name: collar
+  stock: 25
+  price: 1000
+  description: A stylish collar for your most tamed canines
+  pet_type: dog
+  photo_url: Pickles.jpg
+  user: one
+
+
+product3:
+  name: Dog Scarf
+  stock: 15
+  price: 1000
+  description: A fabulous scarf for your fabulous pooch
+  pet_type: dog
+  photo_url: Pickles.jpg
+  user: two

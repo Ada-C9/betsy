@@ -1,0 +1,43 @@
+<section class="thumbnails">
+
+  <% if @order_items && @order_items.last %>
+  <h4>Your Shopping Cart</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @order_items.each do |item| %>
+      <tr>
+        <td><%= link_to(item.product.name, product_path(item.product.id)) %></td>
+        <td><%= item.product.description %></td>
+        <td><%= format_price(item.product.price) %></td>
+        <td> <%= form_for item, url: order_item_path(item.id), method: :patch do |f| %>
+          <%= f.select :quantity, (1..item.product.stock).to_a, :selected => item.quantity %>
+          <%= f.submit "Update" %>
+          <% end %>
+        </td>
+        <td><%= format_price(item.sub_total) %></td>
+        <td><%= link_to "Remove", order_item_path(item.id), method: :delete,
+        data: { confirm: "Are you sure you want to delete #{item.product.name}?"}%></td>
+        <% end %>
+      </tr>
+
+    </tbody>
+  </table>
+  <h3>Total: <%= format_price(@order.total_sum) %></h3>
+
+  <%= link_to "Place my order", edit_order_path(@order_items.last.order_id), class:"button" %>
+
+  <% else %>
+  <h3> Your shopping cart is empty! </h3>
+  <%end%>
+</section>

@@ -1,0 +1,10 @@
+<h1>Category Form Page</h1>
+
+<%= render partial: "layouts/error_messages", locals: { model: @category } %>
+
+<%= form_for @category do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit class: "button" %>
+<% end %>

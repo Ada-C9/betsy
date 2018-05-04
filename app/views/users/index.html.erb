@@ -1,0 +1,46 @@
+<article>
+  <h1>All Merchants:</h1>
+
+  <% @users.each do |user| %>
+
+  <%= link_to(user.username, user_path(user.id), alt: 'link to') %>
+  <%end%>
+  <p>
+    <ul class="merchants">
+      <% @users.each do |user| %>
+
+      <%= link_to(user.username, user_path(user.id), alt: 'link to') %>
+      <div class="me">
+        <li>
+          <% user.products.each do |product| %>
+          <ul class="container">
+            <div class="small-container">
+              <li>
+                <%= link_to( image_tag(product.photo_url),  product_path(product)) unless product.photo_url.blank? %>
+              </li>
+              <li>
+                <%= link_to product.name, product_path(product) %>
+              </li>
+              <li>
+                <%= format_price(product.price) %>
+              </li>
+              <li>
+                <%= product.description %>
+              </li>
+              <li>
+                <% if product.reviews.count == 0 %>
+                No reviews
+                <% else %>
+                <%= render_stars(product.show_rating) %>
+                <% end %>
+              </li>
+            </div>
+          </ul>
+          <% end %>
+        </li>
+      </div>
+      <% end %>
+    </ul>
+  </p>
+
+</article>

@@ -1,0 +1,48 @@
+<section class="user-profile">
+<h1>Orders of all merchants</h1>
+<p><%= link_to "Back to all merchants", users_path, class:"button"%></p>
+<p><%= link_to("Continue Shopping", products_path, :class => "button") %>
+
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Status</th>
+    <th>Total</th>
+  </tr>
+  <tbody>
+    <tr>
+      <% @orders.each do |order| %>
+      <% unless order.status == "pending" %>
+      <td> <strong><%= link_to  "Order ##{order.id}", order_path(order.id)  %><br /></strong></td>
+      <td><%= order.status.capitalize %></td>
+      <td><%= format_price(order.total_sum) %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @orders != "paid"  %>
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Status</th>
+    <th>Total</th>
+  </tr>
+  <tbody>
+    <tr>
+      <% @orders.each do |order| %>
+      <% unless order.status == "paid" %>
+      <td> <strong><%= link_to  "Order ##{order.id}", order_path(order.id)  %><br /></strong></td>
+      <td><%= order.status.capitalize %></td>
+      <td><%= format_price(order.total_sum) %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <h4>You have no orders yet.</h4>
+  <p><%= link_to("Continue Shopping", new_product_path, :class => "button") %>
+<% end %>
+<section>

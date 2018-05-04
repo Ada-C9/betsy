@@ -1,0 +1,39 @@
+<section>
+
+  <% if @user.id == @user.id  %>
+  <h2>Welcome!</h2>
+
+  <p><%= link_to "Back to User Summary", user_path, class:"button"%></p>
+
+  <% end %>
+
+  <% unless @total_revenue == 0 %>
+
+  <table>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity Sold</th>
+      <th>Product Revenue</th>
+    </tr>
+    <% @products_sold.each do |product| %>
+    <tr>
+      <td><%= link_to product.name, product_path(product.id) %> </td>
+      <td><%= format_price(product.price) %> </td>
+      <% qty= 0 %>
+      <% @products_sold.each do |product| %>
+      <% qty += 1 if product.id == product.id %>
+      <td><%= qty %></td>
+      <!-- <% end %> -->
+      <td><%= format_price(qty * product.price)%> </td>
+      <% end %>
+    </tr>
+    <tr>
+      <th>Total revenue: <strong><%= format_price(@total_revenue) %></strong></th>
+    </tr>
+  </table>
+  <% else %>
+  <p>No revenue.</p>
+  <% end %>
+
+</section>

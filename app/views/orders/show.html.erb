@@ -1,0 +1,40 @@
+<section>
+  <h3>Thanks for your order!</h3>
+
+  <p>Order Total: <%=format_price(@order.total_sum) %></p>
+  <p>Order Status: <%= @order.status %></p>
+  <div>
+    <h4>Customer Information</h4>
+    <ul>
+      <li>Name: <%= @order.cc_name %></li>
+      <li>Email: <%= @order.email %></li>
+      <li>Credit Card: <%=  " ************#{@order.cc_num[13]}#{@order.cc_num[14]}#{@order.cc_num[15]}"%></li>
+      <li>Shipping Address: <%= @order.mail_adr %></li>
+      <li>Order Status: <%= @order.status %></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Purchased Items</h4>
+    <table>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Subtotal</th>
+      <tr>
+        <% @order.order_items.each do |item| %>
+        <tr>
+          <td><%= item.product.name%></td>
+          <td><%= item.quantity %></td>
+          <td><%= format_price(item.product.price) %></td>
+          <td><%= format_price(item.sub_total) %></td>
+        </tr>
+        <% end %>
+      </tr>
+    </table>
+
+
+    <% unless @order.status == "canceled"%>
+    <%= link_to "Cancel", order_path(@order.id), method: :patch, class: "button" %>
+     <% end %>
+  </div>
+</section>

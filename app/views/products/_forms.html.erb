@@ -1,0 +1,39 @@
+<h4>
+  <% page_title %>
+  <%= page_title %>
+</h4>
+
+<section>
+
+
+  <%= render partial: "layouts/error_messages", locals: { model: @product } %>
+
+  <%= form_for @product do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :stock %>
+  <%= f.number_field :stock %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :pet_type, "Pet Type" %>
+  <%= f.select :pet_type, ["dog", "cat", "reptile"] %>
+
+  <%= f.label :photo_url, "Photo" %>
+  <%= f.text_field :photo_url %>
+
+  <div>
+    <%= f.label :categories %>
+    <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :name) %>
+  </div>
+
+
+  <%= f.submit class: "button" %>
+  <% end %>
+</section>
