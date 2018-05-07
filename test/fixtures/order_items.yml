@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# I am unsure of what to call the status
+fruit_salad:
+  order: cart1
+  product: cherries
+  quantity: 3
+  status: paid
+
+watermelon_salad:
+  order: cart2
+  product: watermelon
+  quantity: 2
+  status: paid
+
+citris_salad:
+  order: cart2
+  product: orange
+  quantity: 2
+  status: paid

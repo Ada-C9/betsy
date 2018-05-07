@@ -1,0 +1,43 @@
+<div class="checkout_page">
+
+  <article class="checkout_form">
+    <%= render partial: "form" %>
+    <br>
+  </article>
+
+  <article class="checkout_cart">
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% unless session[:order] == nil %>
+          <% session[:order].each do |key, val| %>
+          <% @product = Product.find_by(id: key.to_i) %>
+          <% params[:id] = key %>
+          <tr>
+            <td><%= @product.name %></td>
+            <td><%= @product.description %></td>
+            <td>$<%= sprintf('%.2f', @product.price)%></td>
+            <%= form_tag('/order', method: :patch) do %>
+            <td><%="#{val}" %></td>
+            <%= hidden_field_tag 'id', "#{key}" %>
+            <% end %>
+          </tr>
+
+          <% end %>
+        <%end%>
+      </tbody>
+    </table>
+    <p>Total: $<%= calculate_total %></p>
+  </article>
+
+</div>

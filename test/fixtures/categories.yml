@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+summer:
+  name: summer fruit
+
+fruit:
+  name: fruit salad
+
+pits:
+  name: pits
+
+edible:
+  name: edible fruit

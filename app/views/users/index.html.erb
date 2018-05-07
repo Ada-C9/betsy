@@ -1,0 +1,10 @@
+<h1>All Merchants</h1>
+<ul>
+  <% @users.each do |user| %>
+  <% if !user.uid.nil? %>
+      <li>
+        <%= link_to user.name, user_products_path(user.id) %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

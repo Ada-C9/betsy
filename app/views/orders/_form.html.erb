@@ -1,0 +1,31 @@
+<%= form_for @order, url: '/orders' do |f| %>
+  <%= f.label :name, :class => "label"%>
+  <%= f.text_field :name %>
+
+  <%= f.label :email, :class => "label"%>
+  <%= f.text_field :email %>
+
+  <%= f.label :card_number, :class => "label" %>
+  <%= f.text_field :card_number %>
+
+  <%= f.label :cvv, :class => "label" %>
+  <%= f.text_field :cvv %>
+
+  <%= f.label :expiration_date, :class => "label" %>
+  <%= f.month_field :date_month,
+      min: Date.today.beginning_of_month %>
+
+  <%= f.label :street, :class => "label" %>
+  <%= f.text_field :street %>
+
+  <%= f.label :city, :class => "label" %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state, :class => "label" %>
+  <%= f.text_field :state %>
+
+  <%= f.label :zip, :class => "label" %>
+  <%= f.text_field :zip %>
+
+  <%= f.submit :class => "button"%>
+<% end %>

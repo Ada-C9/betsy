@@ -1,0 +1,14 @@
+<h1><%= @category.name %></h1>
+<section>
+  <ul class="frontpage">
+    <% @category.products.each do |product| %>
+      <li>
+        <img class="thumbnail" src="<%= product.image %>" alt="fruit!">
+        <span class='product-name'><%= link_to product.name, product_path(product.id) %></span>
+        <span class='product-price color'>$<%= sprintf('%.2f', product.price) %></span>
+        <p class='color'><%= product.description %></p>
+
+      </li>
+    <% end %>
+  </ul>
+</section>

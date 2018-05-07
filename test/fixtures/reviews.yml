@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+rating1:
+  product: cherries
+  rating: 1
+  text_review: too sour
+
+rating3:
+  product: cherries
+  rating: 1
+  text_review: rotten
+
+rating2:
+  product: watermelon
+  rating: 5
+  text_review: perfect

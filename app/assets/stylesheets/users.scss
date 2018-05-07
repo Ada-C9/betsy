@@ -1,0 +1,56 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.merchant-profile h2 {
+  text-align: center;
+  color: gray;
+  margin-bottom: 1.5em;
+}
+
+.merchant-show {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.merchant-pic {
+  margin-bottom: 3em;
+  margin-right: 1em;
+}
+
+.merchant-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.merchat-info p {
+  margin-left: 2em;
+}
+
+.merchant-show .merchant-info .color {
+  color: gray;
+}
+
+.merchant-profile h2 {
+  margin-bottom: .8em;
+}
+
+.merchant-profile section p {
+  font-size: 1.4rem;
+}
+
+.user-form {
+  max-width: 30%;
+}
+
+.label {
+  background: rgba(245,243,244,0.1);
+  color: purple;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.label::after {
+  content: ":";
+}

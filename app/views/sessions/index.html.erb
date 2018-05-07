@@ -1,0 +1,46 @@
+<h1>Fruit Basket</h1>
+
+<% if session[:order].nil? || session[:order] == {} %>
+<span class="empty_basket">
+  <p>Your basket is empty</p>
+  <p><%= link_to "Add to Basket", products_path, class: "button" %></p>
+</span>
+
+<span class="empty_basket">
+<img src="https://images.unsplash.com/photo-1488815812041-73ab30a49bb9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04bb4d0a4cce246d48a2d722ce69969a&auto=format&fit=crop&w=800&q=60" alt="People walk through an Asian produce market with baskets" class="thumbnail"  width="300" height="auto">
+</span>
+
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% session[:order].each do |key, val| %>
+        <% @product = Product.find_by(id: key.to_i) %>
+        <% params[:id] = key %>
+      <tr>
+        <td><%= link_to @product.name, product_path(@product.id) %></td>
+        <td><%= @product.description %></td>
+        <td>$<%= sprintf('%.2f', @product.price) %></td>
+          <%= form_tag('/order', method: :patch) do %>
+            <td><%= number_field_tag 'quantity', "#{val}" %></td>
+            <%= hidden_field_tag 'id', "#{key}" %>
+            <td><%= button_tag "Update", method: :patch, class: "button" %></td>
+          <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p>Total: $<%= calculate_total %></p>
+  <span><%= link_to "Checkout", new_order_path, class: "button" %></span>
+  <span><%= link_to "Clear Basket", delete_order_path, method: :delete, data: { confirm: "Are you sure?" }, class: "button" %></span>
+  <span><%= link_to "Continue Shopping", products_path, class: "button" %></span>
+<% end %>
