@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+order_one:
+  status: 
+  billing_email:
+  billing_address:
+  billing_name:
+  billing_num:
+  billing_exp:
+  billing_cvv:
+  billing_zipcode:
+
+order_three:
+  status: complete
+  billing_email: coy@purdymckenzie.co
+  billing_address: 48144 Hackett Wells
+  billing_name: Rowena Ravenclaw
+  billing_num: 1234567887654321
+  billing_exp: 6/18
+  billing_cvv: 333
+  billing_zipcode: 95176
+
+order_four:
+  status: paid
+  billing_email: jaqueline_cole@littel.co
+  billing_address: 5414 Swift Ramp
+  billing_name: Cuthbert Binns
+  billing_num: 1234567887654321
+  billing_exp: 6/18
+  billing_cvv: 640
+  billing_zipcode: 67894
+
+order_five:
+  status:
+  billing_email:
+  billing_address:
+  billing_name:
+  billing_num:
+  billing_exp:
+  billing_cvv:
+  billing_zipcode:

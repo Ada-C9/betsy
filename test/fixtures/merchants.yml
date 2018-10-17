@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+mads:
+  username: mads
+  email: mads@mads.com
+  uid: 12345678
+  provider: github
+
+ange:
+  username: ange
+  email: ang@ange.com
+  uid: 23456789
+  provider: github
+
+nora:
+  username: nora
+  email: nora@nora.com
+  uid: 34567890
+  provider: github
+
+kat:
+  username: kat
+  email: kat@kat.com
+  uid: 98765432o
+  provider: github
+
+user:
+  username: user123
+  email: user@test.com
+  uid: 87654321
+  provider: github

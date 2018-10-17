@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+    <title>Hipsty</title>
+    <%=favicon_link_tag 'mustache.png', type: 'image/png'%>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <header class="page-header">
+      <nav class='nav1'>
+        <ul class='top-nav'>
+          <% if @current_merchant %>
+          <li class="welcome"><%= link_to "Welcome #{@current_merchant.username}", account_page_path %></li>
+          <li><%= link_to "Log Out", logout_path, method: :delete %> </li>
+          <li><%= link_to "Account", account_page_path %> </li>
+
+
+          <% else %>
+          <li><%= "Welcome Guest" %></li>
+          <li><%= link_to "Log In", github_login_path %> </li>
+          <li><%= link_to "Sign Up", github_login_path %> </li>
+          <% end %>
+          <li>
+            <% count = Order.find_by(id: session[:order_id]).order_products.count %>
+            <%= link_to "Cart(#{count})", cart_path %>
+          </li>
+        </ul>
+        <span><h2 class="title">
+          <%= link_to image_tag("Hipsty-logo.png"), root_path %></h2>
+        </span>
+      </nav>
+    </header>
+
+      <% flash.each do | name, message | %>
+        <div class="flash-container">
+          <% if name == "error" %>
+          <h4 class="error">You're doing something wrong</h4>
+          <dl class="error">
+            <% flash[:error].each do |field, error_messages| %>
+              <div>
+                <dt><strong><%= field.upcase %></strong></dt>
+                <% if error_messages.class == Array %>
+                  <% error_messages.each do |error_message| %>
+                    <dd> >> <%= error_message %></dd>
+                  <% end %>
+                <% else %>
+                  <dd> >> <%= error_messages %></dd>
+                <% end %>
+              </div>
+            <% end %>
+          </dl>
+          <% else %>
+            <h4><%= message %></h4>
+          <% end %>
+        </div>
+      <% end %>
+
+
+    <% unless controller_name == "merchants" || action_name == "new"|| action_name == "edit" || action_name == "checkout" || (controller_name != "products" && action_name == "index") %>
+
+    <nav class="nav2">
+      <ul  class="menu dropdown" data-dropdown-menu >
+        <li><%= link_to "Shop All Products", products_path %></li>
+        <li>
+          <a href="#">Shop by Merchant</a>
+          <ul class="menu vertical">
+            <% Merchant.all.each do |merchant| %>
+            <li><%= link_to merchant.username, merchant_products_path(merchant.id) %></li>
+            <% end %>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Shop by Category</a>
+          <ul class="menu vertical">
+            <% Category.all.each do |category| %>
+            <li><%= link_to category.category_name, category_products_path(category.id) %></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <%end%>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+  <footer id="footer">
+    <p id="find-order"><%= link_to "Homepage", root_path %>   |   <%= link_to "Find An Order", enter_order_path %>   |   <%= link_to "About Us", about_us_path %></p>
+    <p class="copyright ">Copyright 2018, MAKN it Work</p>
+  </footer>
+</html>

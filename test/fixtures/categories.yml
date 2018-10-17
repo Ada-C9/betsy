@@ -1,0 +1,24 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+clothes:
+  category_name: Clothing
+  products:
+extra:
+  category_name: So Extra
+  products: sage
+home:
+  category_name: Home
+food:
+  category_name: Food
+  products: kombucha, sage
+beverage:
+  category_name: Beverage
+  products: kombucha
+kitchen:
+  category_name: Kitchen
+spiritual:
+  category_name: Spiritual AF
+heard:
+  category_name: You probably haven't heard of it
+health:
+  category_name: Health
