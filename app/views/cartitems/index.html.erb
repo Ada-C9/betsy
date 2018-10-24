@@ -1,0 +1,29 @@
+<h2>Shopping Cart</h2>
+
+<table>
+  <tr>
+    <td><strong>Product Name</strong></td>
+    <td><strong>Price</strong></td>
+    <td><strong>Quantity</strong></td>
+    <td><strong>Product Total</strong></td>
+    <td><strong>Remove</strong></td>
+  </tr>
+
+  <% @cart_items.each do |item| %>
+  <tr>
+    <td><%= link_to item.product.name, product_path(item.product) %></td>
+    <td><%= number_to_currency(item.product.price) %></td>
+    <td><%= form_for item, url: update_cartitem_path(item.id) do |f| %>
+      <div .form-two-section>
+        <%= f.select :quantity, options_for_select(1..item.product.stock, :selected => item.quantity) %>
+        <%= f.submit "Update", class: "button" %>
+        <div .form-two-section>
+          <% end %>
+        </td>
+        <td><%= number_to_currency(item.quantity * item.product.price) %></td>
+        <td><%= link_to "Remove", delete_cartitem_path(item.id), method: :delete, class: "button", data: { confirm: "Are you sure you want to remove this item from your shopping cart?" } %></td>
+      </tr>
+      <% end %>
+    </table>
+
+    <%= link_to "Checkout", edit_order_path(session[:order_id]), class: "button" %>

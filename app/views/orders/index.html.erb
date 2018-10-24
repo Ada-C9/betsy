@@ -1,0 +1,207 @@
+
+<article class="tabs">
+
+  <section id="tab1">
+
+    <h2><a href="#tab1">Pending Orders</a></h2>
+
+    <table>
+
+      <tr>
+        <td><strong>Order Number</strong></td>
+        <td><strong>Product Name</strong></td>
+        <td><strong>Subtotal Product Revenue</strong></td>
+      </tr>
+
+      <% total_revenue = 0 %>
+      <% total_orders = 0 %>
+
+      <% @cartitems.each do |cartitem| %>
+
+      <% if cartitem.order.state == 'pending' %>
+      <tr>
+        <td>
+          <%= link_to cartitem.order.id, order_path(cartitem.order) %>
+        </td>
+        <td>
+          <%= link_to cartitem.product.name, product_path(cartitem.product) %>
+        </td>
+        <td>
+          <%= number_to_currency(cartitem.quantity * cartitem.product.price) %>
+        </td>
+
+        <% total_revenue += cartitem.quantity * cartitem.product.price %>
+        <% total_orders += 1 %>
+      </tr>
+      <% end %>
+      <% end %>
+    </table>
+    <p><strong>Total Pending Revenue: </strong><%= number_to_currency(total_revenue) %> </p>
+    <p><strong>Total number of pending orders: </strong><%= total_orders %> </p>
+
+
+  </section>
+
+  <section id="tab2">
+    <h2><a href="#tab2">Paid Orders</a></h2>
+
+    <table>
+
+      <tr>
+        <td><strong>Order Number</strong></td>
+        <td><strong>Product Name</strong></td>
+        <td><strong>Subtotal Product Revenue</strong></td>
+        <td><strong>Actions</strong></td>
+      </tr>
+
+      <% total_revenue = 0 %>
+      <% total_orders = 0 %>
+
+      <% @cartitems.each do |cartitem| %>
+
+      <% if cartitem.order.state == 'paid' %>
+      <tr>
+        <td>
+          <%= link_to cartitem.order.id, order_path(cartitem.order) %>
+        </td>
+        <td>
+          <%= link_to cartitem.product.name, product_path(cartitem.product) %>
+        </td>
+        <td>
+          <%= number_to_currency(cartitem.quantity * cartitem.product.price) %>
+        </td>
+        <td>
+          <%= link_to "Mark as Shipped", ship_path(cartitem), method: :patch, class: "button" %>
+        </td>
+
+        <% total_revenue += cartitem.quantity * cartitem.product.price %>
+        <% total_orders += 1 %>
+      </tr>
+      <% end %>
+      <% end %>
+    </table>
+    <p><strong>Total Paid Revenue: </strong><%= number_to_currency(total_revenue) %> </p>
+    <p><strong>Total number of paid orders: </strong><%= total_orders %> </p>
+
+  </section>
+
+  <section id="tab3">
+    <h2><a href="#tab3">Complete Orders</a></h2>
+
+    <table>
+
+      <tr>
+        <td><strong>Order Number</strong></td>
+        <td><strong>Product Name</strong></td>
+        <td><strong>Subtotal Product Revenue</strong></td>
+      </tr>
+
+      <% total_revenue = 0 %>
+      <% total_orders = 0 %>
+
+      <% @cartitems.each do |cartitem| %>
+
+      <% if cartitem.order.state == 'complete' %>
+      <tr>
+        <td>
+          <%= link_to cartitem.order.id, order_path(cartitem.order) %>
+        </td>
+        <td>
+          <%= link_to cartitem.product.name, product_path(cartitem.product) %>
+        </td>
+        <td>
+          <%= number_to_currency(cartitem.quantity * cartitem.product.price) %>
+        </td>
+
+        <% total_revenue += cartitem.quantity * cartitem.product.price %>
+        <% total_orders += 1 %>
+      </tr>
+      <% end %>
+      <% end %>
+    </table>
+    <p><strong>Total Complete Revenue: </strong><%= number_to_currency(total_revenue) %> </p>
+    <p><strong>Total number of complete orders: </strong><%= total_orders %> </p>
+
+
+  </section>
+
+  <section id="tab4">
+    <h2><a href="#tab4">Cancelled Orders</a></h2>
+
+    <table>
+
+      <tr>
+        <td><strong>Order Number</strong></td>
+        <td><strong>Product Name</strong></td>
+        <td><strong>Subtotal Product Revenue</strong></td>
+      </tr>
+
+      <% total_revenue = 0 %>
+      <% total_orders = 0 %>
+
+      <% @cartitems.each do |cartitem| %>
+
+      <% if cartitem.order.state == 'cancelled' %>
+      <tr>
+        <td>
+          <%= link_to cartitem.order.id, order_path(cartitem.order) %>
+        </td>
+        <td>
+          <%= link_to cartitem.product.name, product_path(cartitem.product) %>
+        </td>
+        <td>
+          <%= number_to_currency(cartitem.quantity * cartitem.product.price) %>
+        </td>
+
+        <% total_revenue += cartitem.quantity * cartitem.product.price %>
+        <% total_orders += 1 %>
+      </tr>
+      <% end %>
+      <% end %>
+    </table>
+    <p><strong>Total Cancelled Revenue: </strong><%= number_to_currency(total_revenue) %> </p>
+    <p><strong>Total number of cancelled orders: </strong><%= total_orders %> </p>
+
+  </section>
+
+  <section id="tab4">
+    <h2><a href="#tab4">Completed Orders</a></h2>
+
+    <table>
+
+      <tr>
+        <td><strong>Order Number</strong></td>
+        <td><strong>Product Name</strong></td>
+        <td><strong>Subtotal Product Revenue</strong></td>
+      </tr>
+
+      <% total_revenue = 0 %>
+      <% total_orders = 0 %>
+
+      <% @cartitems.each do |cartitem| %>
+
+      <% if cartitem.order.state == 'complete' %>
+      <tr>
+        <td>
+          <%= link_to cartitem.order.id, order_path(cartitem.order) %>
+        </td>
+        <td>
+          <%= link_to cartitem.product.name, product_path(cartitem.product) %>
+        </td>
+        <td>
+          <%= number_to_currency(cartitem.quantity * cartitem.product.price) %>
+        </td>
+
+        <% total_revenue += cartitem.quantity * cartitem.product.price %>
+        <% total_orders += 1 %>
+      </tr>
+      <% end %>
+      <% end %>
+    </table>
+    <p><strong>Total Complete Revenue: </strong><%= number_to_currency(total_revenue) %> </p>
+    <p><strong>Total number of complete orders </strong><%= total_orders %> </p>
+
+
+  </section>
+
+</article>

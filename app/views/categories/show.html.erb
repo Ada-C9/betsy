@@ -1,0 +1,21 @@
+<h2>Category: <%= @category.name %></h2>
+
+<section class="product-container">
+<% @category.products.each do |product| %>
+  <% if product.stock > 0 %>
+  <div class="product-box">
+
+    <%= image_tag product.image.url(:medium), :alt => "picture of product" %>
+
+
+    <strong><%= link_to(product.name, product_path(product)) %></strong>
+    <li>
+      Price: <%= number_to_currency(product.price) %>
+    </li>
+    <li>
+      Average Rating:<%= average_rating(product) %>
+    </li>
+  </div>
+<% end %>
+<% end %>
+</section>

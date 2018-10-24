@@ -1,0 +1,56 @@
+<h3><%= @user.name %>'s Profile</h3>
+
+<% if session[:user_id] == @user.id %>
+<span class="button hollow"><%= link_to "Edit Info", edit_user_path(@user) %></span>
+<span class="button hollow"><%= link_to "Delete Account", user_path, method: :delete, data: { confirm: "Are you sure?" } %></span>
+<span class="button hollow"><%= link_to "Order Fufillment", orders_path %></span>
+<% end %>
+
+<div class="pic"><%=  image_tag @user.image.url(:medium), :alt => "picture of seller" %></div>
+
+<h4><u>Merchant Info</u></h4>
+
+<p>Number of Orders: <%= @user.products.count %></p>
+<p>User Since: <%= @user.created_at %></p>
+<%= mail_to @user.email do %>
+<strong>E-mail Merchant</strong>
+<% end %>
+
+
+<% if session[:user_id] == @user.id %>
+<h4><u>Manage Products</u></h4>
+<span class="button hollow"><%= link_to "Create New Product", new_user_product_path(@user) %></span>
+<span class="button hollow"><%= link_to "Create New Category", new_category_path %></span>
+<% end %>
+
+<section class="all-products">
+  <% prod_type = {
+    available: @available,
+    soldout: @soldout,
+    retired: @retired
+    }%>
+    <% prod_type.each do |type, collection| %>
+
+    <% if collection.count > 0 %>
+    <h4><u><%= type.capitalize %> Products</u></h4>
+      <ul class="product-type">
+        <div>
+        <% collection.each do |product| %>
+        <%= image_tag product.image.url(:thumb), :alt => "picture of product" %>
+
+      </div>
+        <div>
+          <li><strong>Product Name:</strong> <%= link_to "#{product.name}", product_path(product) %></li>
+          <li><strong>Price:</strong> <%= number_to_currency(product.price) %></li>
+          <li><strong>Items Available:</strong> <%= product.stock %></li>
+
+          <% if session[:user_id] == @user.id %>
+          <li><%= link_to "Edit", edit_product_path(product) %></li>
+          <li><%= link_to "Discontinue", product_retire_path(product), method: :post, data: { confirm: "Are you sure?" } %></li>
+          <% end %>
+        </div>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+</section>

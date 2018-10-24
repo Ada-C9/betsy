@@ -1,0 +1,8 @@
+<%= form_for @user, url: login_path do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.submit "Login", class: "button"%>
+
+<% end %>

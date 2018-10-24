@@ -1,0 +1,12 @@
+<h2>Shop by Category</h2>
+
+<ul class="product-container">
+<% @categories.each do |cat| %>
+<% if cat.products.count > 0 %>
+  <section class="category product-box">
+    <strong><%= link_to(cat.name, category_path(cat)) %></strong>
+    <p><%= cat.products.count %> Products</p>
+</section>
+<% end %>
+<% end %>
+</ul>

@@ -1,0 +1,40 @@
+<table>
+
+  <tr>
+    <td><strong>Product Name</strong></td>
+    <td><strong>Quantity</strong></td>
+    <td><strong>Price</strong></td>
+    <td><strong>Subtotal</strong></td>
+  </tr>
+
+
+  <% @order.cartitems.each do |cartitem| %>
+  <tr>
+    <td>
+      <%= link_to cartitem.product.name, product_path(cartitem.product) %>
+    </td>
+    <td>
+      <%= cartitem.quantity %>
+    </td>
+    <td>
+      <%= number_to_currency(cartitem.product.price) %>
+    </td>
+    <td>
+      <%= number_to_currency(cartitem.quantity * cartitem.product.price) %>
+    </td>
+  </tr>
+  <% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><strong>Total</strong></td>
+    <td><strong><%= number_to_currency(@order.total) %></strong></td>
+  </tr>
+</table>
+
+<ul>
+  <li><strong>Order number : </strong><%= @order.id %></li>
+  <li><strong>Date of order : </strong><%= @order.updated_at %></li>
+  <li><strong>Order status :  </strong><%= @order.state %></li>
+</ul>
+<%= link_to "Cancel order", order_path(@order), method: :delete, data: {confirm: "Are you sure you want to cancel the order?"}, class: "button" %>

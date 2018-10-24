@@ -1,0 +1,42 @@
+
+<%= render partial: "layouts/errors", locals: { model: @order } %>
+
+<h3>Order Confirmation</h3>
+<p>Please provide information below and click submit to complete your purchase.</p>
+
+
+<section class="order-form">
+
+  <%= form_for @order do |f| %>
+
+  <%= f.hidden_field :state %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+
+
+  <%= f.label :zipcode %>
+  <%= f.text_field :zipcode %>
+
+  <%= f.label :ccnumber, "Credit Card Number" %>
+  <%= f.text_field :ccnumber %>
+
+
+  <%= f.label :ccexpiration, "Credit Card Expiration" %>
+  <div .form-two-section>
+    <%= f.date_select :ccexpiration, order: [:month, :year], use_two_digit_numbers: true, default: {day: 1} %>
+  </div>
+  <%= f.label :cvv, "CVV" %>
+  <%= f.text_field :cvv %>
+
+  <%= f.submit "Submit", class: "button" %>
+
+  <% end %>
+
+</section>

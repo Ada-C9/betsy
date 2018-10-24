@@ -1,0 +1,17 @@
+<h2>Shop by Seller</h2>
+<section class="product-container">
+  <% @users.each do |user| %>
+  <section class="user product-box">
+    <ul>
+      <div class="pic"></div>
+      <li><%= link_to(user.name, user_path(user)) %></li>
+
+      <li class="pic"><%= image_tag user.image.url(:medium), :alt => "picture of seller" %></li>
+
+      <li>Products Available: <%= user.products.count %></li>
+      <li>Average Rating: <%= '%.2f' % average_rating(user) %></li>
+    </ul>
+  </section>
+
+  <% end %>
+</section>

@@ -1,0 +1,90 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.marquee {
+ height: 100px;
+ overflow: hidden;
+ position: relative;
+ padding: 100px;
+}
+.marquee h3 {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: left;
+ font-size: 5em;
+ font-family: fantasy;
+
+ /* Apply animation to this element */
+ -moz-animation: marquee 5s ease-out;
+ -webkit-animation: marquee 5s ease-out;
+ animation: marquee 5s ease-out;
+}
+/* Move it (define the animation) */
+@-moz-keyframes marquee {
+ 0%   { -moz-transform: translateX(200%); }
+ 100% { -moz-transform: translateX(0%); }
+}
+@-webkit-keyframes marquee {
+ 0%   { -webkit-transform: translateX(200%); }
+ 100% { -webkit-transform: translateX(0%); }
+}
+@keyframes marquee {
+ 0%   {
+ -moz-transform: translateX(200%); /* Firefox bug fix */
+ -webkit-transform: translateX(200%); /* Firefox bug fix */
+ transform: translateX(200%);
+ }
+ 100% {
+ -moz-transform: translateX(0%); /* Firefox bug fix */
+ -webkit-transform: translateX(0%); /* Firefox bug fix */
+ transform: translateX(0%);
+ }
+}
+audio {
+  display: flex;
+  justify-content: center;
+}
+
+#home-container {
+    border: black solid 7px;
+    text-align: center;
+    padding: 1.5em;
+    max-width: 500px;
+    // position: fixed;
+    margin: auto;
+}
+
+.sign {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  grid-template-rows: auto auto;
+  justify-content: center;
+}
+
+section {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  background-color: white;
+}
+
+body {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
+  // justify-content: center;
+}
+
+section.flash {
+
+  background-color: lightgrey;
+}
+
+#home-container {
+  background-color: white;
+}

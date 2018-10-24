@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+toy:
+  name: chew toy
+  stock: 18
+  price: 7.78
+  description: really cool toy
+  user: kari
+  product_status: retired
+
+food:
+  name: biscuit
+  stock: 100
+  price: 0.76
+  description: yummy biscuit
+  user: dan
+  product_status: nil

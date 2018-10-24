@@ -1,0 +1,47 @@
+<%= render partial: "layouts/errors", locals: { model: @product} %>
+<h4>
+  <% page_title ||= "Product Changes" %>
+  <%= page_title %>
+</h4>
+
+<%= form_for @product, html: { multipart: true } do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <!--
+  Only show the author dropdown if we don't
+  already have one. Is this acutally good UX
+  design? Depends on the application!
+  -->
+
+  <%= f.label :stock %>
+  <%= f.number_field :stock %>
+
+  <%= f.label :price %>
+ <%= f.number_field :price, :step => 0.01 %>
+
+
+  <%= f.hidden_field :user_id %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <div class="add category">
+
+
+    Select a category from the list (Or create new category in 'Account' page)
+
+    <div>
+      <%= f.label :categories %>
+      <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :name) %>
+      </div>
+
+
+  </div>
+
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+
+  <%= f.submit class: "button" %>
+
+<% end %>

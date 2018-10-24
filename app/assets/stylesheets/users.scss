@@ -1,0 +1,24 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.product-type {
+  overflow: scroll;
+  max-height: 300px;
+  background-color: white;
+  padding: 1em;
+  margin: 0 1em 1em 0;
+  width: 80vw;
+  display: grid;
+
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr;
+}
+ .product-type div {
+   padding-bottom: 1em;
+   width: 250px;
+ }
+
+section {
+  background-color: lightgrey;
+}

@@ -1,0 +1,104 @@
+<h2>Details for <%= @product.name %></h2>
+
+
+        <ul class = "productshowbottombuttons">
+          <% if session[:user_id] == @product.user_id %>
+          <li class = "button hollow">
+            <%= link_to "Edit", edit_product_path(@product) %>
+          </li>
+          <li class = "button hollow">
+            <%= link_to("Discontinue", product_retire_path(@product), method: :post, data: { confirm: "Are you sure you want to discontinue Product #{ @product.name }?" }) %>
+          </li>
+            <% end %>
+        </ul>
+
+
+<article class="tabs">
+
+  <section id="tab1 tab-block">
+    <ul id = "tab-block">
+      <li id = "tab-block-item">
+
+        <%= image_tag @product.image.url(:large), :alt => "picture of product" %>
+
+      </li>
+      <li id = "tab-block-item">
+        <h2><a href="#tab1">Product Info</a></h2>
+        <h4> <%= @product.name %> Summary</h4>
+        <p>Average Rating: <%= average_rating(@product) %> | Sold by: <%= link_to @product.user.name, user_path(@product.user)%></p>
+        <p>Price: <%= number_to_currency(@product.price) %></p>
+        <p>Stock: <%= @product.stock %></p>
+        <p>Description: <%= @product.description %>
+        <p>Categories:</p>
+        <ul class = "categoryproductpage">
+
+          <% @product.categories.each do |category| %>
+          <li>
+            <%= link_to category.name.capitalize, category_path(category.id) %>
+          </li>
+          <% end %>
+        </ul>
+
+        <%= form_for @cart_item , url: product_cartitems_path(@product.id) do |f| %>
+        <%= f.label :quantity %>
+        <%= f.select :quantity, options_for_select(1..@product.stock) %>
+        <%= f.submit "Add to cart", class: "button"%>
+        <% end %>
+      </li>
+    </ul>
+  </section>
+
+  <section id="tab2">
+    <h2><a href="#tab2">Read Product Reviews</a></h2>
+    <h4>Product Reviews</h4>
+    <table>
+      <tr>
+        <td><strong>User</strong></td>
+        <td><strong>Date</strong></td>
+        <td><strong>Rating</strong></td>
+        <td><strong>Review</strong></td>
+      </tr>
+
+      <% @product.reviews.each do |review| %>
+      <tr>
+        <td>Anonymous</td>
+        <td><%= review.created_at %></td>
+        <td><%= review.rating %></td>
+        <td><%= review.text %></td>
+      </tr>
+      <% end %>
+    </table>
+  </section>
+
+  <% if session[:user_id] != @product.user_id %>
+  <section id="tab3">
+    <h2><a href="#tab3">Write New Review</a></h2>
+    <h4>Submit a New Review</4>
+
+      <%= render partial: "layouts/errors", locals: { model: @review } %>
+
+      <h4>Rate This Product:</h4>
+
+
+      <%= form_for @review, url: product_reviews_path(@product.id) do |f| %>
+
+      <%= f.label :text %>
+      <%= f.text_field :text %>
+
+      <%= f.label :rating %>
+      <%= f.radio_button :rating, 1 %>
+      <%= label :rating, "1" %>
+      <%= f.radio_button :rating, 2 %>
+      <%= label :rating, "2" %>
+      <%= f.radio_button :rating, 3 %>
+      <%= label :rating, "3" %>
+      <%= f.radio_button :rating, 4 %>
+      <%= label :rating, "4" %>
+      <%= f.radio_button :rating, 5 %>
+      <%= label :rating, "5" %>
+
+      <%= f.submit "Review", class:"button" %>
+      <% end %>
+    </section>
+    <% end %>
+  </article>

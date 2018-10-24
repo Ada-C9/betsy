@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rating: 2
+  text: the toy was just ok
+  product: toy
+
+two:
+  rating: 5
+  text: It was awesome and i love it
+  product: food

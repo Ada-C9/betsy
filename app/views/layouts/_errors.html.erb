@@ -1,0 +1,16 @@
+
+<% if model.errors.messages.any? %>
+<section class="alert callout">
+  <h3>Please correct the following:</h3>
+  <ul>
+    <% model .errors.messages.each do |field, problems| %>
+      <% problems.each do |problem| %>
+      <li>
+        <%= field %>
+        <%= problem %>
+      </li>
+      <% end %>
+    <% end %>
+  </ul>
+</section>
+<% end %>
